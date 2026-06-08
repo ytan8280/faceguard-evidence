@@ -106,7 +106,7 @@ In a terminal from the repository root:
 
 ```bash
 cd dev/backend
-python -m uvicorn app.main:app --reload --host 127.0.0.1 --port 8000
+python -m uvicorn app.main:app --reload --host 127.0.0.1 --port 8001
 ```
 
 ### 4. Start frontend
@@ -126,7 +126,7 @@ Open the application at:
 
 Verify backend readiness:
 
-- `GET http://127.0.0.1:8000/api/health`
+- `GET http://127.0.0.1:8001/api/health`
 
 Example response:
 

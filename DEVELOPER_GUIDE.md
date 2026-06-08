@@ -9,7 +9,7 @@ FaceGuard runs as two independent local services:
 
 | Service | Responsibility | Default URL |
 |---|---|---|
-| Backend (FastAPI) | Model loading, inference, API endpoints | `http://127.0.0.1:8000` |
+| Backend (FastAPI) | Model loading, inference, API endpoints | `http://127.0.0.1:8001` |
 | Frontend (React + Vite) | User interface and API client | `http://localhost:5173` |
 
 Both services must run concurrently during local development.
@@ -17,7 +17,7 @@ Both services must run concurrently during local development.
 Important:
 
 - Open only `http://localhost:5173` in your browser for normal use.
-- The frontend communicates with the backend on port 8000.
+- The frontend communicates with the backend on port 8001.
 - Localhost and 127.0.0.1 addresses are local loopback addresses and are not sensitive.
 
 ## 2. Prerequisites
@@ -68,13 +68,13 @@ Two terminals are required.
 
 ```powershell
 cd dev/backend
-python -m uvicorn app.main:app --reload --host 127.0.0.1 --port 8000
+python -m uvicorn app.main:app --reload --host 127.0.0.1 --port 8001
 ```
 
 Expected output includes:
 
 ```text
-Uvicorn running on http://127.0.0.1:8000
+Uvicorn running on http://127.0.0.1:8001
 ```
 
 ### Terminal 2: Start frontend
@@ -97,7 +97,7 @@ running on another port, because backend CORS policy may be restricted to 5173.
 
 Verify backend health:
 
-- `http://127.0.0.1:8000/api/health`
+- `http://127.0.0.1:8001/api/health`
 
 Expected JSON when score-level fusion is active:
 
@@ -186,13 +186,13 @@ Resolution:
 2. Delete all `__pycache__` directories.
 3. Restart backend and verify `/api/health`.
 
-### 8.2 Port 8000 already in use
+### 8.2 Port 8001 already in use
 
 ```powershell
-$p = Get-NetTCPConnection -LocalPort 8000 -ErrorAction SilentlyContinue |
+$p = Get-NetTCPConnection -LocalPort 8001 -ErrorAction SilentlyContinue |
      Select-Object -First 1 -ExpandProperty OwningProcess
 if ($p) { Stop-Process -Id $p -Force; Write-Output "Stopped PID $p" }
-else { Write-Output "Port 8000 is free" }
+else { Write-Output "Port 8001 is free" }
 ```
 
 ### 8.3 Port 5173 already in use
@@ -225,7 +225,7 @@ Get-ChildItem -Path . -Recurse -Directory -Filter "__pycache__" |
 
 # Restart services
 cd dev/backend
-python -m uvicorn app.main:app --reload --host 127.0.0.1 --port 8000
+python -m uvicorn app.main:app --reload --host 127.0.0.1 --port 8001
 
 # In a separate terminal
 cd dev/frontend
