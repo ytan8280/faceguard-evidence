@@ -1,0 +1,8 @@
+{
+  "appName": "FaceGuard MVP",
+  "appTagline": "Privacy-first deepfake profile photo detection",
+  "allowedFormats": ["JPEG", "PNG", "WEBP"],
+  "maxUploadMb": 10,
+  "fakeThreshold": 0.5
+}
+
