@@ -9,8 +9,9 @@ analysis, authentication, profile and history capabilities while adding file
 metadata, versioned model documentation, measured evaluation evidence,
 authoritative research and media-verification guidance.
 
-> **Project status:** Phase 0 provenance and reproducibility audit. The RAG
-> implementation has not started.
+> **Project status:** Phase 1 evidence-corpus preparation. Provenance,
+> baseline reproducibility and the versioned detector adapter are complete;
+> RAG ingestion and retrieval implementation have not started.
 
 ## Why This Project Exists
 
@@ -87,9 +88,8 @@ University Malaysia:
 <https://github.com/MCS24-Team/FaceGuard-AI-Detector-MVP>
 
 It remains separately attributed team work. The original repository's full Git
-history will be preserved when its website is integrated into this private
-repository, retaining the original authors and commits rather than copying the
-files into a fresh commit.
+history is preserved in this private repository, retaining the original
+authors and commits rather than copying the files into a fresh commit.
 
 Tan's new RAG work will be added after that preserved history. Detector access
 will still use a small, versioned adapter so the model remains replaceable and
@@ -305,14 +305,33 @@ checkpoint file is missing or failed to load.
 
 ## Backend Tests
 
-Run the detector-adapter and API-contract tests from the repository root:
+Run the backend and source-snapshot regression tests from the repository root:
 
 ```bash
-python -m pytest dev/backend/tests
+python -m pytest dev/backend/tests tests
 ```
 
 The tests generate their own in-memory images and do not require a checkpoint,
 database connection or user image.
+
+## Evidence Source Snapshots
+
+Approved external sources are captured as normalized Markdown plus JSON
+metadata:
+
+```bash
+python tools/capture_sources.py
+```
+
+Capture one source by ID:
+
+```bash
+python tools/capture_sources.py EXT-GUIDE-001
+```
+
+The utility verifies the official downloaded content against its pinned
+SHA-256 before writing. It commits neither raw HTML nor PDFs. Existing
+snapshots are not replaced unless `--force` is supplied.
 
 ## API Contract
 

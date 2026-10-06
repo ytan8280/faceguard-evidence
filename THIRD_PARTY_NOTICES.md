@@ -56,14 +56,18 @@ Suggested academic citation, as supplied by the upstream project:
 - **Project:** DeepfakeBench
 - **Repository:** <https://github.com/SCLBD/DeepfakeBench>
 - **Paper:** <https://arxiv.org/abs/2307.01426>
+- **Repository code license:** CC BY-NC 4.0
 
 The AI-Face project states that part of its code was adapted from
 DeepfakeBench. DeepfakeBench is therefore part of the transitive provenance
 chain for the original training workflow.
 
-No DeepfakeBench code is currently included in FaceGuard Evidence. Its exact
-license and the files inherited through AI-Face must be reviewed before any
-training implementation is copied or adapted.
+No DeepfakeBench code is currently included in FaceGuard Evidence. The
+repository's license permits attributed noncommercial use, but that does not
+establish which exact DeepfakeBench files were inherited through AI-Face or
+whether every associated dataset, model artifact and paper uses the same
+terms. Those scopes must be reviewed before any training implementation is
+copied or adapted.
 
 ## Torchvision ViT-B/16 and ImageNet Weights
 

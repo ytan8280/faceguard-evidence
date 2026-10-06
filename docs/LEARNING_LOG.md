@@ -128,7 +128,6 @@ The RAG layer should not reinterpret the probability as certainty.
 ### Questions still open
 
 - Which decision threshold should FaceGuard Evidence adopt?
-- Which exact documents will form the first approved retrieval corpus?
 - Which embedding and reranking models meet the project's Azure cost and
   reproducibility requirements?
 - What evaluation set can be legally retained for independent detector
@@ -140,7 +139,8 @@ Phase 0 is complete, and the original website history is preserved in this
 repository. The imported application baseline, checkpoint loading, Atlas
 connection and one controlled still-image inference have been verified. No RAG
 ingestion, chunking, retrieval, prompting or evaluation implementation has
-started.
+started. Phase 1 source acceptance and corpus snapshot preparation are now in
+progress.
 
 ## 2026-10-06 - Versioned Detector Boundary
 
@@ -174,3 +174,42 @@ justify the additional network and versioning boundary.
 The endpoint response remains unchanged. Adapter-specific provenance fields are
 available internally for future evidence records rather than being added to the
 historical frontend contract immediately.
+
+## 2026-10-06 - First Evidence Corpus
+
+### What I learned
+
+Choosing a corpus is not the same as downloading documents. Every source needs
+an acceptance decision covering authority, version identity, permitted use,
+storage treatment and the claims it is suitable to support.
+
+Search summaries are discovery aids, not evidence. During source review, one
+search result incorrectly described the DeepfakeBench code license as Apache
+2.0, while the repository's actual license file specifies CC BY-NC 4.0.
+Another result described C2PA `2.4` as the stable release, while the official
+C2PA release record identifies `2.3` as the latest final release. Primary
+sources corrected both claims.
+
+The first corpus should be small enough to inspect manually. A six-document
+mixed corpus can still demonstrate meaningful retrieval:
+
+- FaceGuard model, experiment and attribution evidence answer project-specific
+  questions;
+- the C2PA specification and explainer answer media-provenance questions; and
+- NIST AI 100-4 supplies broader synthetic-content transparency and risk
+  guidance.
+
+DeepfakeBench remains relevant, but public availability and a repository code
+license do not automatically establish rights for committing the paper's full
+text.
+
+### Decisions made
+
+Approved external documents will be stored as normalized UTF-8 snapshots with
+source metadata. Raw PDFs and HTML will not be committed. Each snapshot will
+retain both original-download and normalized-text hashes plus transformation
+notes.
+
+These snapshots are source inputs, not chunks. Tan will write the
+structure-aware ingestion and chunking logic so the transformation from source
+document to retrievable chunk remains explainable and testable.
