@@ -37,6 +37,7 @@ Do not record estimated, expected or invented values as results.
 | `FG-EXP-003` | 2026-10-06 | Atlas and authentication-path verification | Completed | Atlas ping succeeded; database-backed nonexistent sign-in returned expected `401` |
 | `FG-EXP-004` | 2026-10-06 | Controlled still-image inference | Completed | `/api/analyze` returned a `vit3` prediction, valid Grad-CAM PNG and baseline report in `12.357403 s` |
 | `FG-EXP-005` | 2026-10-06 | Detector-adapter regression and equivalence | Completed | Two regression tests passed and the real checkpoint preserved the recorded `/api/analyze` output contract |
+| `FG-EXP-006` | 2026-10-07 | Structure-aware chunking baseline | Completed | Six verified documents produced 847 deterministic chunks; 23 preserved technical blocks were marked oversized |
 
 ## FG-EXP-001: Imported Website Baseline Verification
 
@@ -483,8 +484,120 @@ No performance improvement is claimed.
 
 ### Next Decision
 
-Define the first evidence-document set and source-approval criteria before Tan
-writes the ingestion and structure-aware chunking logic.
+Define the first evidence-document set and source-approval criteria before
+implementing ingestion and structure-aware chunking.
+
+## FG-EXP-006: Structure-Aware Chunking Baseline
+
+### Question
+
+Can the approved six-document corpus be divided into deterministic,
+citation-ready chunks that preserve Markdown heading ancestry and PDF page
+context without cutting ordinary prose arbitrarily?
+
+### Revision and Corpus
+
+- Working tree base revision:
+  `1160e3f39790c9d915ecfd0ecffac8bc8f01db35`
+- Chunker version: `markdown-structure-v1`
+- Approved documents: `6`
+- Source loader integrity checks: byte count, UTF-8 line count and SHA-256
+- Input corpus characters loaded: `952,538`
+
+Input content identities:
+
+| Source ID | Input SHA-256 |
+|---|---|
+| `EXT-GUIDE-001` | `EA688ECCEC74CB763FBDEA8814D6A52BF7626AB9FE104FF67C50926479540049` |
+| `EXT-REPORT-001` | `3FDE169446464461B89279CF8019D249EA2FCA7E4AA41F90949F3EC9F3F2915D` |
+| `EXT-STD-001` | `921DFD0AFF4C55278C57FDD823A236DAECED9336DE450156B5B02BC3C94C240F` |
+| `FG-DOC-001` | `5284318A3A8403ECBED991D78BC87039CE63FB09E995FB036FAE79D412C58862` |
+| `FG-DOC-002` | `198F44A7267919B8CC12B1D272E4E9217334BE94C8539F99CBF3239CCB0F918C` |
+| `FG-DOC-003` | `B9F1C636C3729247120E8F0EAAD6A3212CDAB70EFC9F8BC0001A97393162132D` |
+
+The chunker implementation and experiment record were uncommitted when this
+measurement was run.
+
+### Configuration
+
+| Setting | Value |
+|---|---|
+| Soft maximum chunk size | `2,000` characters |
+| Overlap | None |
+| Markdown heading depth | Levels `1` through `6` |
+| PDF context | One-based source page marker |
+| Oversized prose handling | Split at sentence boundaries, then word boundaries if necessary |
+| Table, fenced-code and list handling | Preserve as atomic blocks |
+| Chunk ID | Source ID, four-digit ordinal and first 12 SHA-256 characters |
+
+### Procedure
+
+1. Loaded and integrity-verified all six approved source documents.
+2. Parsed Markdown headings into hierarchical heading paths.
+3. Parsed NIST source-page comments into page metadata.
+4. Preserved fenced code, Markdown tables and list blocks.
+5. Combined compatible blocks under the `2,000`-character soft limit.
+6. Split only oversized prose at sentence or word boundaries.
+7. Kept oversized atomic technical blocks intact and marked them.
+8. Removed isolated numeric PDF page-number artifacts.
+9. Generated chunks twice and compared their IDs for determinism.
+10. Measured chunk counts and size distributions by source.
+
+No chunk output file or database record was persisted during this baseline.
+
+### Measured Results
+
+| Source ID | Chunks | Median characters | Maximum characters | Oversized | Under 100 characters |
+|---|---:|---:|---:|---:|---:|
+| `EXT-GUIDE-001` | `36` | `598.5` | `1,907` | `0` | `0` |
+| `EXT-REPORT-001` | `141` | `1,710.0` | `2,000` | `0` | `0` |
+| `EXT-STD-001` | `609` | `921.0` | `10,761` | `23` | `4` |
+| `FG-DOC-001` | `14` | `581.5` | `1,136` | `0` | `0` |
+| `FG-DOC-002` | `42` | `399.5` | `940` | `0` | `0` |
+| `FG-DOC-003` | `5` | `549.0` | `789` | `0` | `0` |
+| **Total** | **`847`** | N/A | **`10,761`** | **`23`** | **`4`** |
+
+Additional checks:
+
+- all `81` NIST PDF source pages were represented;
+- all ordinary chunks were at or below `2,000` characters;
+- all chunk IDs were unique;
+- repeated chunking produced the same ordered chunk IDs;
+- all six source IDs produced at least one chunk; and
+- five targeted chunking tests passed in `0.11 s`.
+
+### Interpretation
+
+The baseline preserves meaningful source structure while producing manageable
+retrieval units. Heading paths retain section context without copying headings
+into every chunk, and NIST page metadata provides a future citation location.
+
+The `23` oversized chunks are C2PA technical tables, code or list structures.
+Keeping them intact avoids corrupting normative values or examples. The four
+short C2PA chunks belong to distinct headings; merging them across section
+boundaries would reduce citation precision.
+
+No overlap was used. This creates a clearer keyword/vector retrieval baseline
+with fewer duplicate results. Overlap can be evaluated later as an explicit
+retrieval experiment rather than assumed to help.
+
+### Limitations
+
+- Character count is not a model-token count.
+- Sentence splitting uses deterministic punctuation rules rather than a
+  language model or language-specific tokenizer.
+- The largest preserved technical block is `10,761` characters and may exceed
+  a future embedding model's input limit.
+- Heading text is metadata and is not yet combined with content into embedding
+  or full-text-search input.
+- Retrieval relevance has not been measured.
+- Chunks have not been persisted to PostgreSQL.
+
+### Next Decision
+
+Define how chunk content and provenance metadata map into PostgreSQL full-text
+and pgvector records, including how oversized technical blocks will be handled
+for the selected embedding model.
 
 ## Planned Experiment Areas
 

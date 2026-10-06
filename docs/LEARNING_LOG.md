@@ -210,6 +210,61 @@ source metadata. Raw PDFs and HTML will not be committed. Each snapshot will
 retain both original-download and normalized-text hashes plus transformation
 notes.
 
-These snapshots are source inputs, not chunks. Tan will write the
-structure-aware ingestion and chunking logic so the transformation from source
-document to retrievable chunk remains explainable and testable.
+These snapshots are source inputs, not chunks. The source loading and chunking
+logic is implemented in small reviewed stages with a detailed walkthrough so
+the transformation from source document to retrievable chunk remains
+explainable and testable.
+
+## 2026-10-07 - Verified Loading and Structure-Aware Chunking
+
+### What I learned
+
+RAG ingestion should not begin by splitting arbitrary files. The source loader
+first verifies that content matches approved metadata, remains inside the
+repository boundary and has the expected byte count, line count and SHA-256.
+Only then does it create an immutable `SourceDocument`.
+
+Chunking needs to preserve the document's meaning and citation location:
+
+- Markdown headings become a hierarchical heading path;
+- NIST PDF page markers become page metadata;
+- ordinary prose may be divided at sentence boundaries;
+- tables, fenced code and lists remain atomic; and
+- chunk IDs include a content-hash prefix so changed content produces a changed
+  identity.
+
+A maximum chunk size is not an absolute rule when respecting source structure.
+The first baseline uses a `2,000`-character soft limit. Twenty-three C2PA
+technical blocks exceed it because splitting them would risk separating table
+headers from values or damaging code examples. They are marked explicitly for
+later embedding-model handling.
+
+No overlap was selected for the baseline. Heading metadata already provides
+context, while overlap would introduce duplicate retrieval results and make
+the first retrieval evaluation harder to interpret.
+
+### Measured baseline
+
+The six approved documents produced `847` deterministic chunks:
+
+- `36` from the C2PA explainer;
+- `141` from NIST AI 100-4;
+- `609` from the C2PA technical specification;
+- `14` from the FaceGuard model card;
+- `42` from the experiment log; and
+- `5` from the attribution record.
+
+These measurements describe chunk construction only. They do not establish
+that retrieval quality is good; that must be evaluated with versioned
+questions and relevance judgments after indexing.
+
+### Corpus revision lesson
+
+The experiment log is itself an approved corpus document. Recording a new
+experiment therefore changes that source's content hash and creates a new
+corpus revision.
+
+The `847`-chunk baseline remains reproducible because `FG-EXP-006` records the
+six exact input hashes used for the measurement. Future ingestion runs may
+produce a different chunk count after the living internal documentation
+changes; that is versioned corpus evolution, not an unexplained inconsistency.
