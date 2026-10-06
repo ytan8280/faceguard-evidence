@@ -151,6 +151,8 @@ activemq-data/
 
 # Environments
 .env
+.env.*
+!.env.example
 .envrc
 .venv
 env/
@@ -218,3 +220,33 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# FaceGuard Evidence: restricted and local data
+data/private/
+data/restricted/
+data/uploads/
+private-audit/
+
+# FaceGuard Evidence: external model artifacts
+artifacts/models/
+*.pth
+*.pt
+*.ckpt
+*.safetensors
+*.onnx
+
+# FaceGuard Evidence: generated evaluation artifacts
+artifacts/evaluations/
+*.npy
+*.npz
+
+# FaceGuard Evidence: local application state
+storage/
+pgdata/
+.postgres/
+*.db
+*.sqlite
+*.sqlite3
+
+# FaceGuard Evidence: runtime output
+*.log
