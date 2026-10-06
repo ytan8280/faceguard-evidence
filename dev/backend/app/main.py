@@ -26,14 +26,20 @@ from .services.demo_overrides import (
     build_elon_musk_demo_report,
     is_elon_musk_demo_file,
 )
+from .services.detector_adapter import FaceGuardDetectorAdapterV1
 from .services.model_service import model_service_from_settings
-from .services.preprocessing import crop_largest_face, image_to_tensor, strip_exif_and_load_image, validate_upload
+from .services.preprocessing import strip_exif_and_load_image, validate_upload
 from .services.report_service import ReportService
 
 
 settings = load_settings()
 logger = logging.getLogger(__name__)
 model_service = model_service_from_settings(settings)
+detector_adapter = FaceGuardDetectorAdapterV1(
+    model_service,
+    enable_face_crop=settings.enable_face_crop,
+    face_crop_margin=settings.face_crop_margin,
+)
 report_service = ReportService(enabled=settings.enable_detection_report)
 auth_service = AuthService(
     enabled=settings.enable_database,
@@ -61,7 +67,7 @@ app.add_middleware(
 @app.on_event("startup")
 def startup_event() -> None:
     try:
-        model_service.ensure_loaded()
+        detector_adapter.ensure_ready()
     except Exception:
         # Allow app startup so /api/health can report model readiness.
         return
@@ -70,8 +76,8 @@ def startup_event() -> None:
 @app.get("/api/health", response_model=HealthResponse)
 def health() -> HealthResponse:
     return HealthResponse(
-        model_ready=model_service.model_ready,
-        model_name=settings.model_name,
+        model_ready=detector_adapter.model_ready,
+        model_name=detector_adapter.model_name,
     )
 
 
@@ -178,25 +184,11 @@ def analyze_image(
             result = build_elon_musk_demo_prediction(
                 image=image,
                 threshold=settings.fake_threshold,
-                model_name=model_service.model_name,
+                model_name=detector_adapter.model_name,
             )
             report = build_elon_musk_demo_report() if settings.enable_detection_report else None
         else:
-            model_service.ensure_loaded()
-            inference_image = crop_largest_face(
-                image=image,
-                enabled=settings.enable_face_crop,
-                margin=settings.face_crop_margin,
-            )
-            tensor = image_to_tensor(
-                image=inference_image,
-                image_size=model_service.image_size,
-                device=model_service.device,
-                mean=model_service.mean,
-                std=model_service.std,
-            )
-
-            result = model_service.predict(image_tensor=tensor, source_image=inference_image)
+            result = detector_adapter.analyze(image)
             report = report_service.build_report(
                 image=image,
                 fake_probability=result.fake_probability,

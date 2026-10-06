@@ -248,6 +248,13 @@ Install backend dependencies:
 pip install -r requirements.txt
 ```
 
+For local development and backend regression tests, install the separate test
+dependencies instead:
+
+```bash
+pip install -r requirements-dev.txt
+```
+
 ### 2. Install frontend dependencies
 
 ```bash
@@ -295,6 +302,17 @@ Example response:
 
 If `model_ready` is `false`, the backend is reachable but the configured
 checkpoint file is missing or failed to load.
+
+## Backend Tests
+
+Run the detector-adapter and API-contract tests from the repository root:
+
+```bash
+python -m pytest dev/backend/tests
+```
+
+The tests generate their own in-memory images and do not require a checkpoint,
+database connection or user image.
 
 ## API Contract
 

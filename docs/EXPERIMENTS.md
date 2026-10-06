@@ -35,6 +35,8 @@ Do not record estimated, expected or invented values as results.
 | `FG-EXP-001` | 2026-10-06 | Imported website baseline verification | Completed | Backend and frontend started and responded successfully; detector not configured |
 | `FG-EXP-002` | 2026-10-06 | Verified `vit3` checkpoint loading | Completed | Hashed checkpoint loaded successfully on CPU and health reported ready |
 | `FG-EXP-003` | 2026-10-06 | Atlas and authentication-path verification | Completed | Atlas ping succeeded; database-backed nonexistent sign-in returned expected `401` |
+| `FG-EXP-004` | 2026-10-06 | Controlled still-image inference | Completed | `/api/analyze` returned a `vit3` prediction, valid Grad-CAM PNG and baseline report in `12.357403 s` |
+| `FG-EXP-005` | 2026-10-06 | Detector-adapter regression and equivalence | Completed | Two regression tests passed and the real checkpoint preserved the recorded `/api/analyze` output contract |
 
 ## FG-EXP-001: Imported Website Baseline Verification
 
@@ -277,18 +279,224 @@ failure.
 Use a temporary disposable account only when testing the complete sign-up,
 sign-in, profile and history workflow, and remove it after validation.
 
+## FG-EXP-004: Controlled Still-Image Inference
+
+### Question
+
+Can the imported `/api/analyze` path process one user-provided still image with
+the configured `vit3` checkpoint and return the expected prediction, Grad-CAM
+and report fields?
+
+### Revision and Artifacts
+
+- FaceGuard Evidence revision:
+  `45b38e0bdb6b6642ed1620670a96a0fb660380f3`
+- Model name: `vit3`
+- Model SHA-256:
+  `6FAE9B18A7A7BAFED65FE5A944FC1B66A8CE070896A8531C6C5857477806C25B`
+- Input: user-provided PNG attachment, kept outside Git
+- Input SHA-256:
+  `B315782665B072920E981931D6AD9FAD4BBE1842B26E1C6D5FC404CFC1DFBF09`
+- Input dimensions and mode: `213 x 242`, `RGBA`
+- Input size: `102,525` bytes
+- Input ground-truth class: unknown
+
+The input and generated heatmap were not retained in the repository. The
+temporary full JSON response was removed after its structure and image payload
+were validated.
+
+### Configuration
+
+| Setting | Measured value |
+|---|---|
+| Device | CPU |
+| Model image size | `224 x 224` |
+| Fake threshold | `0.25` |
+| Face cropping | Disabled |
+| Detection report | Enabled |
+| Upload limit | `10,485,760` bytes |
+| Accepted MIME type used | `image/png` |
+
+### Procedure
+
+1. Started the configured FastAPI backend on `127.0.0.1:8001`.
+2. Confirmed the server completed application startup.
+3. Submitted the image once as multipart form data to `POST /api/analyze`.
+4. Did not supply an email, preventing analysis-history persistence.
+5. Captured the HTTP status, response size and curl end-to-end request time.
+6. Parsed the JSON without printing the encoded heatmap.
+7. Base64-decoded the heatmap and verified it as a readable PNG.
+8. Inspected the generated report fields.
+9. Stopped the backend.
+
+### Measured Results
+
+| Measurement | Result |
+|---|---|
+| HTTP status | `200` |
+| End-to-end request time | `12.357403 s` |
+| Response size | `100,750` bytes |
+| Model name | `vit3` |
+| Label | `FAKE` |
+| Fake probability | `0.9996` |
+| Confidence | `0.9996` |
+| Active threshold | `0.25` |
+| Explainability method | `grad_cam` |
+| Heatmap present | Yes |
+| Heatmap data-URL characters | `98,062` |
+| Decoded heatmap | Valid RGB PNG, `213 x 242`, `73,529` bytes |
+| Report present | Yes |
+| Report fields | `breakdown`, `image_type`, `overall_forgery_score`, `summary` |
+| Report forgery score | `100.0` |
+| Report-generation error | None observed |
+| Database write | None requested |
+
+The report summary described the result as “likely AI-generated” and cited
+visible patterns including eye reflections and facial symmetry. This wording
+and the rounded `100.0` report score are recorded as baseline application
+behavior, not as verified facts about the image.
+
+### Interpretation
+
+The imported application can execute its complete still-image analysis path
+with the identified checkpoint. The response contract contains the expected
+prediction, explainability and report fields, and the Grad-CAM payload decodes
+to a valid image matching the uploaded image dimensions.
+
+This experiment proves functional execution only. Because the image has no
+verified ground-truth class, the `FAKE` label and probability do not measure
+accuracy. A detector score is also not evidence of who created an image, what
+tool was used, or whether there was deceptive intent.
+
+The generated report currently presents model output using stronger
+AI-generation language than the available evidence supports. FaceGuard
+Evidence must later separate detector output from supported conclusions and
+must not convert a high score into certainty.
+
+### Limitations
+
+- This was one image and one request.
+- The input has no verified provenance or ground-truth class.
+- The request time is an end-to-end measurement after a fresh backend start;
+  it does not isolate preprocessing, model inference, Grad-CAM or report time.
+- CPU memory usage was not measured.
+- No comparison was made against the historical application deployment.
+- No analysis-history write was requested.
+- The active `0.25` threshold remains inherited and unvalidated.
+- Grad-CAM validity here means the payload is a readable image, not that its
+  highlighted regions are causally faithful explanations.
+
+### Next Decision
+
+Add a versioned detector adapter and an endpoint-level regression test that
+preserve this response behavior while making detector output explicitly
+separate from future retrieved evidence and generated conclusions.
+
+## FG-EXP-005: Detector-Adapter Regression and Equivalence
+
+### Question
+
+Can the imported detector be placed behind a versioned adapter without
+changing the existing `/api/analyze` response contract or the measured output
+for the controlled image from `FG-EXP-004`?
+
+### Revision and Artifacts
+
+- Working tree base revision:
+  `45b38e0bdb6b6642ed1620670a96a0fb660380f3`
+- Adapter version: `faceguard-detector-adapter-v1`
+- Preprocessing version: `faceguard-rgb-resize-normalize-v1`
+- Model name: `vit3`
+- Model SHA-256:
+  `6FAE9B18A7A7BAFED65FE5A944FC1B66A8CE070896A8531C6C5857477806C25B`
+- Input SHA-256:
+  `B315782665B072920E981931D6AD9FAD4BBE1842B26E1C6D5FC404CFC1DFBF09`
+- Development test dependencies:
+  `pytest==8.3.5`, `httpx==0.27.2`
+
+The adapter implementation and tests were uncommitted when this experiment was
+run. The input remained outside Git, and the temporary JSON response was
+removed after comparison.
+
+### Procedure
+
+1. Added a detector adapter that owns the inherited face-crop, normalization,
+   inference and Grad-CAM boundary.
+2. Mapped the inherited prediction into a stable internal detector result with
+   adapter and preprocessing version identifiers.
+3. Rewired startup, health and `/api/analyze` to use the adapter.
+4. Added a unit regression test using a generated in-memory image and fake
+   inference service.
+5. Added an HTTP-level response-contract test using FastAPI's test client and
+   a generated in-memory image.
+6. Ran the two targeted tests.
+7. Started the backend with the real hashed checkpoint.
+8. Resubmitted the exact controlled input identified in `FG-EXP-004`.
+9. Compared the response fields and top-level keys with the recorded baseline.
+10. Stopped the backend and removed the temporary response.
+
+### Measured Results
+
+| Measurement | Result |
+|---|---|
+| Targeted tests | `2 passed` |
+| Test duration | `4.95 s` |
+| Test warnings | `3` deprecation warnings |
+| Live HTTP status | `200` |
+| Live request time | `4.068297 s` |
+| Live response size | `100,750` bytes |
+| Label | `FAKE`, matched baseline |
+| Confidence | `0.9996`, matched baseline |
+| Fake probability | `0.9996`, matched baseline |
+| Threshold | `0.25`, matched baseline |
+| Model name | `vit3`, matched baseline |
+| Explainability method | `grad_cam`, matched baseline |
+| Heatmap present | Yes |
+| Report present | Yes |
+| Top-level response keys | Exact match with baseline contract |
+
+The warnings came from Starlette's deprecated AnyIO alias and the imported
+application's FastAPI `on_event("startup")` handler. They did not fail the
+tests.
+
+### Interpretation
+
+The versioned adapter preserves the measured detector and endpoint behavior for
+this controlled case. New FaceGuard Evidence code can depend on the adapter's
+structured result rather than importing the model service and preprocessing
+functions directly.
+
+The `4.068297 s` request was faster than the `12.357403 s` request recorded in
+`FG-EXP-004`, but one request per implementation is not a latency comparison.
+No performance improvement is claimed.
+
+### Limitations
+
+- Equivalence was checked with one image and one checkpoint.
+- The image has no verified ground-truth class.
+- The tests replace the expensive checkpoint and report implementation with
+  deterministic fakes; the separate live request covers the integrated path.
+- The current endpoint does not expose adapter or preprocessing versions.
+- The inherited demo filename override still bypasses real model inference.
+- FastAPI startup lifecycle deprecation remains unresolved.
+- The active `0.25` threshold remains inherited and unvalidated.
+
+### Next Decision
+
+Define the first evidence-document set and source-approval criteria before Tan
+writes the ingestion and structure-aware chunking logic.
+
 ## Planned Experiment Areas
 
 These are plans, not results:
 
-1. detector-adapter equivalence against the pinned original implementation;
-2. detector latency on the selected local or hosted environment;
-3. PostgreSQL full-text retrieval baseline;
-4. pgvector semantic-retrieval baseline;
-5. hybrid-fusion comparison;
-6. reranking comparison;
-7. retrieval evaluation using a versioned question set;
-8. generation evaluation using supported-claim and citation checks; and
-9. Azure token, latency and cost measurement.
+1. detector latency on the selected local or hosted environment;
+2. PostgreSQL full-text retrieval baseline;
+3. pgvector semantic-retrieval baseline;
+4. hybrid-fusion comparison;
+5. reranking comparison;
+6. retrieval evaluation using a versioned question set;
+7. generation evaluation using supported-claim and citation checks; and
+8. Azure token, latency and cost measurement.
 
 Planned work remains in this section until it has been executed and measured.

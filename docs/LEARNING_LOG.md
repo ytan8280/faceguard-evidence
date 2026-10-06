@@ -128,8 +128,6 @@ The RAG layer should not reinterpret the probability as certainty.
 ### Questions still open
 
 - Which decision threshold should FaceGuard Evidence adopt?
-- Should the first detector adapter call an external service or load the
-  checkpoint locally?
 - Which exact documents will form the first approved retrieval corpus?
 - Which embedding and reranking models meet the project's Azure cost and
   reproducibility requirements?
@@ -138,6 +136,41 @@ The RAG layer should not reinterpret the probability as certainty.
 
 ### Current boundary
 
-Phase 0 is documentation and audit work only. No RAG ingestion, chunking,
-retrieval, prompting or evaluation implementation has started. The original
-website history has not yet been imported.
+Phase 0 is complete, and the original website history is preserved in this
+repository. The imported application baseline, checkpoint loading, Atlas
+connection and one controlled still-image inference have been verified. No RAG
+ingestion, chunking, retrieval, prompting or evaluation implementation has
+started.
+
+## 2026-10-06 - Versioned Detector Boundary
+
+### What I learned
+
+The original `/api/analyze` endpoint directly coordinated preprocessing,
+checkpoint inference and Grad-CAM generation. If future RAG code called that
+model service directly, detector implementation details would spread into the
+new personal code and make the original team component harder to identify or
+replace.
+
+A detector adapter creates a narrow boundary:
+
+1. the API supplies a cleaned image;
+2. the adapter applies the inherited crop and normalization configuration;
+3. the imported inference service runs the checkpoint and Grad-CAM; and
+4. the adapter maps the result into a stable detector-output structure.
+
+The adapter does not decide whether the prediction is correct. It reports the
+model output and identifies the adapter and preprocessing versions so later
+evidence-generation code can preserve provenance.
+
+### Decision made
+
+The first release will load the checkpoint locally behind
+`faceguard-detector-adapter-v1`. Keeping the current local execution path
+minimizes behavior changes while the application baseline is being preserved.
+An external detector service can be evaluated later if deployment constraints
+justify the additional network and versioning boundary.
+
+The endpoint response remains unchanged. Adapter-specific provenance fields are
+available internally for future evidence records rather than being added to the
+historical frontend contract immediately.
