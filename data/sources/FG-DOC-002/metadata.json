@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "source_id": "FG-DOC-002",
+  "title": "FaceGuard Evidence Experiment Log",
+  "source_category": "measured_evaluation_evidence",
+  "publisher": "FaceGuard Evidence",
+  "authors": [
+    "Tan Yan Yi"
+  ],
+  "version": "1e9cd4c22e147c2f25e848b6456ed315c15fc625",
+  "published_at": "2026-10-06",
+  "canonical_url": "repo:///docs/EXPERIMENTS.md",
+  "content_path": "docs/EXPERIMENTS.md",
+  "retrieved_at": "2026-10-06T16:20:49+00:00",
+  "license": {
+    "name": "FaceGuard Evidence project documentation",
+    "url": "repo:///ATTRIBUTION.md",
+    "rights_basis": "Tan-authored measured experiment records with restricted inputs and secrets excluded."
+  },
+  "original": {
+    "media_type": "text/markdown",
+    "bytes": 19296,
+    "sha256": "198F44A7267919B8CC12B1D272E4E9217334BE94C8539F99CBF3239CCB0F918C"
+  },
+  "normalized": {
+    "format": "markdown",
+    "bytes": 19296,
+    "lines": 502,
+    "sha256": "198F44A7267919B8CC12B1D272E4E9217334BE94C8539F99CBF3239CCB0F918C"
+  },
+  "normalization": {
+    "tool": "none",
+    "tool_version": "1",
+    "dependencies": {},
+    "steps": [
+      "Load the canonical committed UTF-8 Markdown file without transformation."
+    ]
+  }
+}

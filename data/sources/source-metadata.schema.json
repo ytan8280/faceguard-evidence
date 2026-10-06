@@ -60,6 +60,10 @@
       "type": "string",
       "format": "uri"
     },
+    "content_path": {
+      "type": "string",
+      "minLength": 1
+    },
     "retrieved_at": {
       "type": "string",
       "format": "date-time"
