@@ -269,18 +269,35 @@ was healthy on `127.0.0.1:55432`, and the recorded migration remained after a
 container restart. The separate PDPA database remained healthy and unchanged
 on `127.0.0.1:5432`.
 
-## Idempotent Ingestion Concept
+## Idempotent Corpus Ingestion
 
-The future ingestion command will:
+`tools/ingest_rag_corpus.py`:
 
 1. load and verify approved sources;
 2. produce deterministic chunks;
-3. create a canonical manifest from source hashes and chunker settings;
+3. create a canonical manifest from source hashes, chunker settings and every
+   ordered chunk identity;
 4. calculate `corpus_sha256`;
-5. reuse an existing corpus revision when that hash already exists;
+5. acquire a PostgreSQL advisory lock for corpus ingestion;
 6. insert missing immutable source versions;
-7. link them through `corpus_sources`;
-8. insert chunks inside one transaction; and
-9. mark the ingestion run completed only after the transaction succeeds.
+7. create and populate a new corpus revision inside one transaction, or verify
+   every source and chunk before reusing an existing revision; and
+8. mark the ingestion run completed only after the transaction succeeds.
 
-This prevents partial or duplicate corpus states.
+The operational `running` record is created separately. If corpus insertion or
+verification fails, the content transaction rolls back and the run is updated
+to `failed` in a new transaction. This preserves failure evidence without
+leaving a partially populated corpus.
+
+Source conflicts are not silently ignored. When a `(source_id,
+content_sha256)` already exists, its stored content, provenance metadata and
+document fields must match the verified snapshot exactly.
+
+Run ingestion from the repository root:
+
+```bash
+python tools/ingest_rag_corpus.py
+```
+
+The first measured ingestion and controlled rollback test are recorded as
+`FG-EXP-009` in [`EXPERIMENTS.md`](EXPERIMENTS.md).

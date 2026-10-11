@@ -383,3 +383,80 @@ matched the migration on disk, and the history remained after a container
 restart. This proves local deployment, volume persistence and migration
 idempotency; it does not prove retrieval quality because no corpus content has
 been ingested yet.
+
+## 2026-10-11 - Idempotent Corpus Ingestion
+
+### What I learned
+
+Deterministic chunking is not sufficient by itself. The database also needs a
+deterministic identity for the exact retrieval collection.
+
+The corpus manifest therefore includes:
+
+- the ordered source IDs, versions and content hashes;
+- the chunker version, maximum size and overlap configuration; and
+- every ordered chunk ID, source, content hash, heading path, page number,
+  character count and oversized flag.
+
+Canonical JSON serialization produces one `corpus_sha256`. A change to a
+source, chunk or chunking configuration therefore produces a different corpus
+revision instead of overwriting the previous one.
+
+### Preparation and persistence are separate
+
+`prepare_corpus()` performs deterministic validation without touching the
+database. It checks document identities, chunk ownership, contiguous
+ordinals, content hashes, character counts and chunk IDs.
+
+`ingest_prepared_corpus()` owns the database boundary. It uses an advisory lock
+and an autocommit connection, then opens an explicit content transaction.
+Source versions, corpus membership, chunks and the completed run state succeed
+or roll back together.
+
+### Idempotency means verified reuse
+
+`ON CONFLICT DO NOTHING` alone would be too weak. It could hide a conflict
+whose stored metadata or content differs from the current verified source.
+
+When a source or corpus already exists, the ingestion code reads it back and
+compares the stored values with the prepared corpus. Reuse occurs only after
+the source membership and all chunk records match. Otherwise ingestion fails
+explicitly.
+
+### Failure records use a separate transaction
+
+If the `running` record were created inside the same transaction as all
+evidence content, a rollback would also erase the evidence that ingestion
+failed.
+
+The run record is therefore created first. The corpus transaction either marks
+it completed or rolls back. A separate transaction then marks a failure with
+its error message. A controlled inconsistency confirmed that no source,
+corpus or chunk was added while the failed run remained auditable.
+
+### What the first measurement proves
+
+The first approved corpus revision stored six source versions and `871`
+chunks, including `23` explicitly oversized technical blocks. A repeated
+command reused the same corpus revision without duplicating content.
+
+A PostgreSQL full-text query for `decision threshold` ranked the model card's
+matching section first. This confirms that ingestion populated the generated
+search vectors, but it is not a retrieval-quality evaluation. Relevance still
+requires a versioned question set and judgments.
+
+### Version evolution observed
+
+Revision `1` contains the six source versions used by `FG-EXP-009` and `871`
+chunks. Recording that experiment changed only the living experiment-log
+source, so the next ingestion created revision `2` with `879` chunks while
+preserving revision `1`.
+
+The current revision is:
+
+```text
+842CBBEFA28D2B8389FF2694420F771A12DFAEBF9F9DDFA5A214BF258F596CEB
+```
+
+This is the intended behavior: historical retrieval experiments keep their
+original corpus, while new work uses a new immutable revision.

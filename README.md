@@ -288,6 +288,16 @@ Validate migration files and history without changing the database:
 python tools/migrate_rag_database.py --check
 ```
 
+Load the verified sources, build the deterministic corpus manifest and ingest
+the current chunks:
+
+```bash
+python tools/ingest_rag_corpus.py
+```
+
+Running the ingestion command again verifies and reuses the same corpus
+revision. It does not duplicate source versions or chunks.
+
 The default host binding is `127.0.0.1:55432`, avoiding the separate PDPA
 project's PostgreSQL service on `127.0.0.1:5432`.
 

@@ -7,7 +7,7 @@
   "authors": [
     "Tan Yan Yi"
   ],
-  "version": "sha256:4B59BE658F1C759FD76BBA2EC87F8DCD1DD49D5EF08BED8249793EA16F18B711",
+  "version": "sha256:CCFBD0291ECB58039F9DD5F26C3FA5E96967C5E65429EB5953C37972F73FD88F",
   "published_at": "2026-10-06",
   "canonical_url": "repo:///docs/EXPERIMENTS.md",
   "content_path": "docs/EXPERIMENTS.md",
@@ -19,14 +19,14 @@
   },
   "original": {
     "media_type": "text/markdown",
-    "bytes": 32546,
-    "sha256": "4B59BE658F1C759FD76BBA2EC87F8DCD1DD49D5EF08BED8249793EA16F18B711"
+    "bytes": 38024,
+    "sha256": "CCFBD0291ECB58039F9DD5F26C3FA5E96967C5E65429EB5953C37972F73FD88F"
   },
   "normalized": {
     "format": "markdown",
-    "bytes": 32546,
-    "lines": 829,
-    "sha256": "4B59BE658F1C759FD76BBA2EC87F8DCD1DD49D5EF08BED8249793EA16F18B711"
+    "bytes": 38024,
+    "lines": 969,
+    "sha256": "CCFBD0291ECB58039F9DD5F26C3FA5E96967C5E65429EB5953C37972F73FD88F"
   },
   "normalization": {
     "tool": "none",

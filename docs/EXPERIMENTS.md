@@ -813,6 +813,146 @@ Implement idempotent ingestion of the six verified source versions and the
 current deterministic chunks, then measure PostgreSQL full-text retrieval
 against a versioned question set.
 
+## FG-EXP-009: Verified Corpus Ingestion and Reuse
+
+### Question
+
+Can the six approved source versions and their deterministic chunks be stored
+as one auditable PostgreSQL corpus revision, reused without duplication and
+rolled back without partial evidence when verification fails?
+
+### Revision and Artifacts
+
+- Working tree base revision:
+  `b27e27aaecbc785f61d3ef01ac05c90f2049602f`
+- Ingestion implementation:
+  `dev/backend/app/rag/ingestion.py`
+- Command: `tools/ingest_rag_corpus.py`
+- Chunker version: `markdown-structure-v1`
+- Maximum chunk characters: `2,000`
+- Overlap characters: `0`
+- Application revision recorded for successful runs:
+  `b27e27aaecbc785f61d3ef01ac05c90f2049602f-dirty`
+
+The implementation and experiment record were uncommitted when the
+measurements were taken.
+
+Input source identities:
+
+| Source ID | Input SHA-256 |
+|---|---|
+| `EXT-GUIDE-001` | `EA688ECCEC74CB763FBDEA8814D6A52BF7626AB9FE104FF67C50926479540049` |
+| `EXT-REPORT-001` | `3FDE169446464461B89279CF8019D249EA2FCA7E4AA41F90949F3EC9F3F2915D` |
+| `EXT-STD-001` | `921DFD0AFF4C55278C57FDD823A236DAECED9336DE450156B5B02BC3C94C240F` |
+| `FG-DOC-001` | `CEE91EECD3C36A07535D217806A5DC8E1562BBF889CAA962039AF1BE8A109507` |
+| `FG-DOC-002` | `4B59BE658F1C759FD76BBA2EC87F8DCD1DD49D5EF08BED8249793EA16F18B711` |
+| `FG-DOC-003` | `3F25A9210DDC29B14D5B8F90761456C881E2B33258A0221EC0A7CEAB301277C3` |
+
+### Procedure
+
+1. Confirmed that the RAG evidence tables contained no source documents,
+   corpus revisions, chunks or ingestion runs.
+2. Loaded and integrity-verified all six registered sources.
+3. Produced and validated `871` deterministic chunks.
+4. Built canonical JSON containing the ordered source, chunking and chunk
+   identities.
+5. Calculated the corpus SHA-256.
+6. Created a `running` ingestion record.
+7. Inserted source versions, the corpus revision, corpus membership and all
+   chunks in one transaction.
+8. Ran the same command again and verified the complete existing corpus before
+   reuse.
+9. Queried table counts, per-source chunk counts, manifest membership and
+   generated full-text vectors.
+10. Queried `decision threshold` using PostgreSQL web-search syntax.
+11. Submitted a controlled prepared corpus whose name conflicted with the
+    existing corpus identity.
+12. Verified that the content transaction rolled back while a failed
+    ingestion-run record persisted.
+
+### Measured Results
+
+| Measurement | Result |
+|---|---|
+| Corpus SHA-256 | `9EC048DA899DC093F829F2FA4FDEABAF0A69FEAD37D30FA4731314E11CA0C1E8` |
+| First command behavior | Created corpus revision ID `1` |
+| Repeated command behavior | Reused corpus revision ID `1` |
+| Source versions | `6` |
+| Corpus revisions | `1` |
+| Corpus memberships | `6` |
+| Evidence chunks | `871` |
+| Search vectors populated | `871` |
+| Oversized chunks | `23` |
+| Manifest stored size | `96,659` bytes |
+| First command end-to-end time | `0.794378 s` |
+| First database ingestion duration | `0.325730 s` |
+| Reuse command end-to-end time | `0.476503 s` |
+| Reuse database verification duration | `0.088510 s` |
+| Controlled failure duration | `0.074672 s` |
+| Content counts after controlled failure | `6` sources, `1` corpus, `871` chunks |
+| Failed operational records | `1` |
+| Ingestion preparation tests | `4 passed` |
+
+Per-source chunk counts:
+
+| Source ID | Chunks |
+|---|---:|
+| `EXT-GUIDE-001` | `36` |
+| `EXT-REPORT-001` | `141` |
+| `EXT-STD-001` | `609` |
+| `FG-DOC-001` | `14` |
+| `FG-DOC-002` | `66` |
+| `FG-DOC-003` | `5` |
+
+The highest-ranked result for `decision threshold` was:
+
+- chunk `FG-DOC-001:0007:C1010E17492A`;
+- source `FG-DOC-001`;
+- heading `FaceGuard vit3 Model Card > Input and Inference Behavior >
+  Decision Threshold`; and
+- full-text rank `1.0`.
+
+### Interpretation
+
+The corpus identity is content-sensitive and reproducible. Repeating the
+command does not duplicate evidence; it verifies the existing source
+snapshots, membership and chunks before reuse.
+
+The controlled inconsistency produced an explicit failed run while the
+evidence counts remained unchanged. This demonstrates that evidence content
+is transactional while operational failures remain auditable.
+
+The full-text result confirms that generated search vectors were populated and
+that title and heading weighting affected ranking as designed. One known-term
+query does not establish retrieval relevance.
+
+### Limitations
+
+- The timings are single local runs and are not performance benchmarks.
+- End-to-end command time includes source loading, chunking, connection setup
+  and database work.
+- Database ingestion duration uses timestamps around the database ingestion
+  boundary and excludes source loading and chunking.
+- Concurrent ingestion was protected by an advisory lock but not load tested
+  with multiple simultaneous processes.
+- Only one controlled failure condition was tested.
+- PostgreSQL full-text retrieval has not been evaluated against a versioned
+  question set.
+- pgvector was not enabled or queried.
+
+### Corpus Evolution Note
+
+This experiment log is itself source `FG-DOC-002`. Recording `FG-EXP-009`
+changes that document's content hash and therefore produces a new corpus
+revision on the next ingestion. Revision `1` remains reproducible through the
+six exact source identities recorded above.
+
+### Next Decision
+
+Create a versioned retrieval question set with relevance judgments, implement
+the PostgreSQL lexical retriever and measure retrieval quality independently
+from answer generation.
+
 ## Planned Experiment Areas
 
 These are plans, not results:
