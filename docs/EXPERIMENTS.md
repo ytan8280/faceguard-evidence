@@ -953,6 +953,159 @@ Create a versioned retrieval question set with relevance judgments, implement
 the PostgreSQL lexical retriever and measure retrieval quality independently
 from answer generation.
 
+## FG-EXP-010: PostgreSQL Lexical Retrieval Baseline
+
+### Question
+
+How effectively does the first PostgreSQL full-text retriever rank manually
+judged relevant chunks for a versioned 12-question evidence set?
+
+### Revision and Artifacts
+
+- Working tree base revision:
+  `55c57466b3cb2f090b9fb1318fcf05aeaab26e34`
+- Application revision recorded by the evaluator:
+  `55c57466b3cb2f090b9fb1318fcf05aeaab26e34-dirty`
+- Corpus revision ID: `2`
+- Corpus SHA-256:
+  `842CBBEFA28D2B8389FF2694420F771A12DFAEBF9F9DDFA5A214BF258F596CEB`
+- Question set:
+  `data/evaluation/retrieval_questions_v1.json`
+- Question-set SHA-256:
+  `AFCCB3E4F06CA53BA704592549AC478E1437159CB030BE1853B65753EC87FA2F`
+- Result artifact:
+  `data/evaluation/results/lexical_baseline_v1.json`
+- Result SHA-256:
+  `0D6A1652EC1F607B1D78FC13BD509AA1A7815A7254033F7C307EC9541BB39F33`
+- Retriever version: `postgresql-fts-v1`
+
+The question set and relevance judgments were completed before running the
+retriever. They were not modified in response to measured rankings.
+
+### Question-Set Coverage
+
+The `12` questions include two questions for each approved source:
+
+| Source ID | Topics |
+|---|---|
+| `FG-DOC-001` | Detector threshold and preprocessing |
+| `FG-DOC-002` | Controlled inference limitations and PostgreSQL schema failure |
+| `FG-DOC-003` | Team/personal project boundary and Tan's reported contributions |
+| `EXT-GUIDE-001` | Provenance truth limits and absent Content Credentials |
+| `EXT-REPORT-001` | TPR at fixed FPR and watermarking tradeoffs |
+| `EXT-STD-001` | Assertion/claim/manifest structure and hard bindings |
+
+Questions may have more than one relevant chunk when the required evidence is
+split across adjacent sections.
+
+### Retriever Configuration
+
+1. Used the English PostgreSQL full-text configuration.
+2. Converted normalized question terms into an OR query for candidate recall.
+3. Built a stricter query with `WEBSEARCH_TO_TSQUERY`.
+4. Ranked the broad match with `TS_RANK_CD`.
+5. Added twice the strict-query rank when a chunk matched the strict query.
+6. Used the existing source-title and heading weight `A` and content weight
+   `B`.
+7. Returned the top `5` chunks with deterministic chunk-ID tie-breaking.
+
+An initial implementation also sorted all strict matches before broad matches.
+That duplicated the strict-query preference already present in the score and
+was removed before the recorded measurement. The question set and judgments
+were unchanged.
+
+### Procedure
+
+1. Manually inspected the exact content of candidate chunks in corpus revision
+   `2`.
+2. Wrote `12` questions and explicit relevant-chunk judgments.
+3. Hashed and loaded the question-set JSON.
+4. Verified that every judged chunk existed in the pinned corpus and matched
+   an expected source.
+5. Executed each question sequentially against the local PostgreSQL service.
+6. Retrieved the top five chunks and retained their scores and strict-match
+   flags.
+7. Calculated Recall@1, Recall@3, Recall@5 and reciprocal rank per question.
+8. Averaged the per-question metrics.
+9. Preserved all rankings and latencies in the result artifact.
+
+### Aggregate Results
+
+| Measurement | Result |
+|---|---:|
+| Questions | `12` |
+| Mean Recall@1 | `0.291667` |
+| Mean Recall@3 | `0.625000` |
+| Mean Recall@5 | `0.750000` |
+| Mean Reciprocal Rank | `0.548611` |
+| Questions returning zero candidates | `0` |
+| Mean query latency | `14.469 ms` |
+| Median query latency | `8.280 ms` |
+| Minimum query latency | `3.980 ms` |
+| Maximum query latency | `33.719 ms` |
+
+Recall is calculated per question as the fraction of judged relevant chunks
+retrieved. For questions with two relevant chunks, retrieving one at rank one
+produces Recall@1 of `0.5`.
+
+### Per-Question Results
+
+| Question | First relevant rank | Recall@1 | Recall@3 | Recall@5 |
+|---|---:|---:|---:|---:|
+| `FG-RET-001` | `2` | `0.0` | `1.0` | `1.0` |
+| `FG-RET-002` | Not in top 5 | `0.0` | `0.0` | `0.0` |
+| `FG-RET-003` | `1` | `0.5` | `1.0` | `1.0` |
+| `FG-RET-004` | `4` | `0.0` | `0.0` | `1.0` |
+| `FG-RET-005` | `1` | `0.5` | `1.0` | `1.0` |
+| `FG-RET-006` | `1` | `1.0` | `1.0` | `1.0` |
+| `FG-RET-007` | `3` | `0.0` | `1.0` | `1.0` |
+| `FG-RET-008` | `1` | `1.0` | `1.0` | `1.0` |
+| `FG-RET-009` | `2` | `0.0` | `1.0` | `1.0` |
+| `FG-RET-010` | `1` | `0.5` | `0.5` | `1.0` |
+| `FG-RET-011` | Not in top 5 | `0.0` | `0.0` | `0.0` |
+| `FG-RET-012` | Not in top 5 | `0.0` | `0.0` | `0.0` |
+
+### Interpretation
+
+The OR candidate query prevented zero-result questions, and the retriever
+placed at least one relevant chunk in the top five for `9` of `12` questions.
+It performed strongly on measured FaceGuard experiments, attribution,
+provenance truth limits, absent credentials and watermarking tradeoffs.
+
+Three questions exposed clear lexical weaknesses:
+
+- `FG-RET-002`: general detector terminology in the long NIST report outranked
+  the concise FaceGuard preprocessing section;
+- `FG-RET-011`: repeated assertion, claim and manifest terminology in detailed
+  C2PA sections outranked the introductory relationship explanation; and
+- `FG-RET-012`: repeated hard-binding terminology in long technical chunks
+  outranked the short glossary definition.
+
+Term frequency and document length can therefore dominate semantic directness.
+The failures remain in the versioned baseline for comparison with later
+retrieval methods.
+
+### Limitations
+
+- The set contains only `12` questions and was authored by the project
+  developer rather than independent assessors.
+- Relevance judgments are binary rather than graded.
+- Only the first five results were evaluated.
+- Latencies are single sequential local measurements against a warm local
+  PostgreSQL service.
+- No confidence intervals or repeated latency trials were calculated.
+- The question set contains known project topics and does not represent all
+  possible user language.
+- The experiment evaluates retrieval only; it does not evaluate generated
+  answers or citations.
+- pgvector, hybrid fusion and reranking were not used.
+
+### Next Decision
+
+Select and verify the Azure embedding deployment, add a dimension-specific
+pgvector migration and compare semantic retrieval against this unchanged
+question set before implementing hybrid fusion.
+
 ## Planned Experiment Areas
 
 These are plans, not results:

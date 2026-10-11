@@ -298,6 +298,17 @@ python tools/ingest_rag_corpus.py
 Running the ingestion command again verifies and reuses the same corpus
 revision. It does not duplicate source versions or chunks.
 
+Evaluate the versioned PostgreSQL lexical-retrieval baseline separately from
+answer generation:
+
+```bash
+python tools/evaluate_lexical_retrieval.py \
+  --output data/evaluation/results/lexical_baseline_v1.json
+```
+
+The question set, relevance judgments and complete per-question rankings are
+versioned under `data/evaluation/`.
+
 The default host binding is `127.0.0.1:55432`, avoiding the separate PDPA
 project's PostgreSQL service on `127.0.0.1:5432`.
 

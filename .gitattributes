@@ -1,4 +1,5 @@
 data/sources/** text eol=lf
+data/evaluation/** text eol=lf
 ATTRIBUTION.md text eol=lf
 docs/MODEL_CARD.md text eol=lf
 docs/EXPERIMENTS.md text eol=lf

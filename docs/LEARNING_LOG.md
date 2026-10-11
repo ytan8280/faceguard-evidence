@@ -460,3 +460,69 @@ The current revision is:
 
 This is the intended behavior: historical retrieval experiments keep their
 original corpus, while new work uses a new immutable revision.
+
+## 2026-10-11 - Lexical Retrieval Evaluation
+
+### What I learned
+
+Showing that PostgreSQL returns search results is not the same as showing that
+it retrieves relevant evidence. Retrieval requires a question set with
+relevance judgments fixed before measuring the system.
+
+The first set contains `12` questions spanning all six sources. Each question
+points to exact relevant chunk IDs and includes a written rationale. The set is
+pinned to corpus revision `2`, so future corpus changes cannot silently alter
+the evaluation target.
+
+### Metrics are complementary
+
+Recall@K measures how much of the judged evidence appears in the first K
+results. A question with two relevant chunks receives Recall@1 of `0.5` when
+one is ranked first.
+
+Mean Reciprocal Rank measures how early the first relevant chunk appears. It
+does not require every relevant chunk to be returned.
+
+Using both metrics avoids describing a result with one relevant chunk at rank
+one and a missing second chunk as perfect retrieval.
+
+### Lexical baseline design
+
+The first retriever converts the normalized question terms into an OR query to
+generate candidates. This avoids making every question term mandatory.
+
+PostgreSQL also produces a stricter web-search query. A strict match receives
+an additional score contribution, but strictness is not an absolute sorting
+tier. The weighted chunk vector already gives source titles and headings more
+importance than body text.
+
+This design is intentionally simple and explainable. It is the baseline that
+semantic, hybrid and reranked retrieval must beat.
+
+### Measured weaknesses
+
+The baseline returned candidates for all questions but achieved:
+
+- mean Recall@1 of `0.291667`;
+- mean Recall@3 of `0.625000`;
+- mean Recall@5 of `0.750000`; and
+- MRR of `0.548611`.
+
+The preprocessing question and two C2PA definition questions had no relevant
+chunk in the first five results. General detector language in the NIST report
+overwhelmed the short FaceGuard preprocessing section. Repeated technical
+terms in long C2PA chunks overwhelmed concise glossary and overview chunks.
+
+These are useful failures. The question wording and judgments remain fixed so
+later retrieval methods can be compared against the same target.
+
+Recording `FG-EXP-010` and its final canonical artifact hashes evolved the
+living experiment-log source again. The current development corpus is revision
+`4` with `889` chunks:
+
+```text
+44F1574EB9B174571D9A751FD127CBB2A10CE1FBEFB4ED3739CCF8E1BE421AD0
+```
+
+The lexical result remains pinned to revision `2`; retaining that older corpus
+is what makes the measurement reproducible after documentation changes.

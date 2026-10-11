@@ -1,11 +1,8 @@
 from __future__ import annotations
 
-import os
 from pathlib import Path
-import subprocess
 import sys
 
-from dotenv import load_dotenv
 import psycopg
 from psycopg.rows import dict_row
 
@@ -28,39 +25,11 @@ from dev.backend.app.rag.ingestion import (  # noqa: E402
 from dev.backend.app.rag.source_loader import (  # noqa: E402
     load_source_documents,
 )
-
-
-def _database_url() -> str:
-    load_dotenv(REPO_ROOT / ".env", override=False)
-    database_url = os.getenv("RAG_DATABASE_URL", "").strip()
-    if not database_url:
-        raise CorpusIngestionError("RAG_DATABASE_URL is not configured.")
-    return database_url
-
-
-def _application_revision() -> str:
-    try:
-        revision = subprocess.run(
-            ["git", "rev-parse", "HEAD"],
-            cwd=REPO_ROOT,
-            check=True,
-            capture_output=True,
-            text=True,
-        ).stdout.strip()
-        status = subprocess.run(
-            ["git", "status", "--porcelain"],
-            cwd=REPO_ROOT,
-            check=True,
-            capture_output=True,
-            text=True,
-        ).stdout
-    except (OSError, subprocess.CalledProcessError) as exc:
-        raise CorpusIngestionError(
-            "Unable to determine the application Git revision."
-        ) from exc
-    if not revision:
-        raise CorpusIngestionError("Application Git revision is blank.")
-    return f"{revision}-dirty" if status.strip() else revision
+from tools.project_runtime import (  # noqa: E402
+    ProjectRuntimeError,
+    application_revision,
+    database_url,
+)
 
 
 def main() -> None:
@@ -80,14 +49,14 @@ def main() -> None:
     )
 
     with psycopg.connect(
-        _database_url(),
+        database_url(REPO_ROOT),
         autocommit=True,
         row_factory=dict_row,
     ) as connection:
         result = ingest_prepared_corpus(
             connection,
             prepared=prepared,
-            application_revision=_application_revision(),
+            application_revision=application_revision(REPO_ROOT),
         )
 
     action = "reused" if result.reused else "created"
@@ -101,5 +70,5 @@ def main() -> None:
 if __name__ == "__main__":
     try:
         main()
-    except CorpusIngestionError as exc:
+    except (CorpusIngestionError, ProjectRuntimeError) as exc:
         raise SystemExit(f"Corpus ingestion failed: {exc}") from exc
