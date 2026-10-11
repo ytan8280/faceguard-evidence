@@ -1,1 +1,5 @@
 data/sources/** text eol=lf
+ATTRIBUTION.md text eol=lf
+docs/MODEL_CARD.md text eol=lf
+docs/EXPERIMENTS.md text eol=lf
+database/migrations/*.sql text eol=lf

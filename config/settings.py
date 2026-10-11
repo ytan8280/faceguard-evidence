@@ -94,6 +94,9 @@ class FaceGuardSettings:
     upload_collection: str = os.getenv("FACEGUARD_UPLOAD_COLLECTION", "uploads")
     users_collection: str = os.getenv("FACEGUARD_USERS_COLLECTION", "users")
 
+    # PostgreSQL evidence retrieval
+    rag_database_url: str = os.getenv("RAG_DATABASE_URL", "")
+
     @property
     def max_upload_bytes(self) -> int:
         return self.max_upload_mb * 1024 * 1024

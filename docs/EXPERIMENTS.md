@@ -705,6 +705,114 @@ Choose the local PostgreSQL development deployment, add the Python driver and
 implement an idempotent migration and ingestion command for the verified
 corpus.
 
+## FG-EXP-008: Persistent PostgreSQL Migration Validation
+
+### Question
+
+Can FaceGuard Evidence run an isolated persistent local PostgreSQL service and
+apply the committed schema through a checksum-tracked Python migration runner
+without affecting the separate PDPA database?
+
+### Revision and Artifacts
+
+- Working tree base revision:
+  `1b10ed8284f50f7286fb0a1792e2292e40bcb030`
+- Compose definition: `compose.yaml`
+- Migration runner: `tools/migrate_rag_database.py`
+- Migration: `database/migrations/001_create_rag_core.sql`
+- Migration SHA-256:
+  `059219A4437325B5AD5017C1C81143772EC8FF13210EFA9C0E0C36C80DC0681D`
+- Python driver: `psycopg[binary]==3.3.6`
+
+The PostgreSQL password and database URL were generated locally, stored only
+in the ignored `.env` and not printed or committed.
+
+### Environment
+
+| Component | Measured value |
+|---|---|
+| Operating system | Windows |
+| Docker Compose | `5.5.1` |
+| Container image | `pgvector/pgvector:pg16` |
+| Image digest | `sha256:7b822b0aac60967beb1ea5e576b8602c94c300a157d187f385ae3e0da199b90a` |
+| PostgreSQL | `16.15 (Debian 16.15-1.pgdg12+2)` |
+| Available pgvector version | `0.8.7` |
+| FaceGuard host binding | `127.0.0.1:55432` |
+| Separate PDPA host binding | `127.0.0.1:5432` |
+
+### Procedure
+
+1. Added the pinned PostgreSQL service, health check and named volume to
+   `compose.yaml`.
+2. Installed the approved psycopg 3 dependency.
+3. Enforced LF line endings for migrations and canonical internal evidence
+   documents so their SHA-256 identities are stable across operating systems.
+4. Generated a URL-safe random local password and updated only the RAG
+   variables in the ignored `.env`.
+5. Validated Compose interpolation without rendering the resolved secrets.
+6. Started `rag-postgres` and waited for Docker to report it healthy.
+7. Applied migration `001` through the Python runner.
+8. Ran the same migration command a second time.
+9. Ran the migration runner in `--check` mode.
+10. Restarted only the FaceGuard PostgreSQL container and reran check mode.
+11. Compared the recorded migration checksum with the file on disk.
+12. Inspected the non-secret table list, server version and pgvector
+    availability.
+13. Verified that `pdpa-db` remained healthy on its original port.
+14. Ran the migration-runner unit tests and Python dependency check.
+
+### Measured Results
+
+| Check | Result |
+|---|---|
+| Compose configuration validation | Passed |
+| RAG PostgreSQL health | `healthy` |
+| FaceGuard host binding | `127.0.0.1:55432` |
+| First migration run | `1` applied, `0` previously applied |
+| Second migration run | `0` applied, `1` skipped |
+| Check mode | `1` valid, `1` applied, `0` pending |
+| State after container restart | `1` applied, `0` pending |
+| Recorded migrations | `1` |
+| Migration checksum match | Yes |
+| Hash-sensitive file line endings | LF enforced through `.gitattributes` |
+| Tables in `rag` schema | `6` including `schema_migrations` |
+| pgvector available | Yes, version `0.8.7` |
+| Migration-runner tests | `4 passed` |
+| Python dependency check | No broken requirements |
+| Separate `pdpa-db` state | Healthy on `127.0.0.1:5432` |
+
+### Interpretation
+
+The local database deployment is reproducible and isolated from the PDPA
+project. The migration runner applies pending schema changes once, records the
+exact committed file identity and refuses to treat a changed applied migration
+as equivalent. The migration record survived a container restart through the
+named volume.
+
+Preserving the existing outer transaction wrapper while stripping it only for
+execution keeps the committed migration immutable. The runner's own
+transaction makes the schema change and migration-history insert atomic.
+
+This experiment establishes database and migration readiness only. It does
+not measure lexical retrieval, semantic retrieval or corpus-ingestion
+correctness.
+
+### Limitations
+
+- No approved corpus documents or chunks were inserted.
+- pgvector was available but not enabled or queried.
+- Concurrent migration attempts were not load tested.
+- Backup, restore and container-host recovery were not tested.
+- Database authentication was local development configuration, not a
+  production secret-management design.
+- The named volume currently contains only the schema and migration history.
+
+### Next Decision
+
+Implement idempotent ingestion of the six verified source versions and the
+current deterministic chunks, then measure PostgreSQL full-text retrieval
+against a versioned question set.
+
 ## Planned Experiment Areas
 
 These are plans, not results:

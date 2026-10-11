@@ -23,8 +23,25 @@ database/migrations/001_create_rag_core.sql
 ```
 
 Plain SQL is used first so PostgreSQL types, constraints, generated columns
-and indexes remain visible and explainable. A Python database access layer can
-be added after the schema is validated.
+and indexes remain visible and explainable.
+
+`tools/migrate_rag_database.py` applies these files through psycopg 3. The
+runner:
+
+- discovers files named `NNN_description.sql` in lexical order;
+- records each original file's SHA-256 in `rag.schema_migrations`;
+- rejects a changed checksum for an already-applied migration;
+- uses a PostgreSQL advisory lock to prevent concurrent migration runs;
+- applies each pending migration and its history record atomically; and
+- supports `--check` for non-mutating file and history validation.
+
+Migration `001` predates the Python runner and contains one outer
+`BEGIN`/`COMMIT` wrapper. The runner removes only that wrapper in memory so it
+can own the transaction while retaining the committed migration bytes and
+checksum. Nested or incomplete transaction control is rejected.
+
+`.gitattributes` enforces LF line endings for migration files. Without that
+rule, Windows and Linux checkouts could hash equivalent SQL differently.
 
 ## Schema Boundary
 
@@ -36,6 +53,7 @@ rag.corpus_revisions
 rag.corpus_sources
 rag.evidence_chunks
 rag.ingestion_runs
+rag.schema_migrations
 ```
 
 This avoids mixing RAG tables with unrelated application tables.
@@ -191,6 +209,37 @@ A later migration will add:
 This separates the PostgreSQL full-text baseline from the semantic-retrieval
 experiment.
 
+## Persistent Local Development
+
+`compose.yaml` defines a dedicated pgvector-enabled PostgreSQL service:
+
+| Setting | Value |
+|---|---|
+| Compose service | `rag-postgres` |
+| Container database | `faceguard_evidence` by default |
+| Host binding | `127.0.0.1:55432` by default |
+| Container port | `5432` |
+| Persistent volume | `faceguard-evidence_faceguard_rag_pgdata` |
+| Health check | `pg_isready` |
+
+The image is pinned by digest rather than relying only on a moving tag.
+Migration files are not mounted into `docker-entrypoint-initdb.d`; schema
+changes are always explicit and checksum-tracked.
+
+Configure the `RAG_POSTGRES_*` values and `RAG_DATABASE_URL` in the ignored
+root `.env`. Never commit the real password or database URL.
+
+Start the service and apply migrations from the repository root:
+
+```bash
+docker compose up -d rag-postgres
+python tools/migrate_rag_database.py
+python tools/migrate_rag_database.py --check
+```
+
+Running the apply command again is safe: migrations whose names and checksums
+already match are skipped.
+
 ## Runtime Validation
 
 Migration `001` was validated on:
@@ -212,6 +261,13 @@ The validated design stores both:
 A check constraint requires `heading_text` to match the structured path.
 Validation details are recorded as `FG-EXP-007` in
 [`EXPERIMENTS.md`](EXPERIMENTS.md).
+
+The persistent Compose service and Python migration runner were subsequently
+validated in `FG-EXP-008`. The first run applied migration `001`, the second
+run skipped it, and check mode reported zero pending migrations. The service
+was healthy on `127.0.0.1:55432`, and the recorded migration remained after a
+container restart. The separate PDPA database remained healthy and unchanged
+on `127.0.0.1:5432`.
 
 ## Idempotent Ingestion Concept
 

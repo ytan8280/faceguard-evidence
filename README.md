@@ -9,9 +9,10 @@ analysis, authentication, profile and history capabilities while adding file
 metadata, versioned model documentation, measured evaluation evidence,
 authoritative research and media-verification guidance.
 
-> **Project status:** Phase 1 evidence-corpus preparation. Provenance,
-> baseline reproducibility and the versioned detector adapter are complete;
-> RAG ingestion and retrieval implementation have not started.
+> **Project status:** Phase 2 retrieval foundation. Provenance, detector
+> reproducibility, the approved evidence corpus, verified loading,
+> structure-aware chunking and the persistent PostgreSQL schema are complete.
+> Real-corpus ingestion and retrieval evaluation are next.
 
 ## Why This Project Exists
 
@@ -220,6 +221,7 @@ FaceGuard-AI-Detector/
 - Python 3.9+
 - Node.js 18+
 - npm 9+
+- Docker Desktop with Docker Compose
 - A compatible model checkpoint file (eg. `models/pretrained/vit.pth`)
 
 ## Quick Start
@@ -262,7 +264,34 @@ cd dev/frontend
 npm install
 ```
 
-### 3. Start backend
+### 3. Configure and start the RAG database
+
+Copy the PostgreSQL entries from `.env.example` into the ignored `.env` and
+replace `RAG_POSTGRES_PASSWORD` with a local password. Keep
+`RAG_DATABASE_URL` consistent with the same database, user, password and port.
+
+Start the pgvector-enabled PostgreSQL service:
+
+```bash
+docker compose up -d rag-postgres
+```
+
+Apply all pending schema migrations:
+
+```bash
+python tools/migrate_rag_database.py
+```
+
+Validate migration files and history without changing the database:
+
+```bash
+python tools/migrate_rag_database.py --check
+```
+
+The default host binding is `127.0.0.1:55432`, avoiding the separate PDPA
+project's PostgreSQL service on `127.0.0.1:5432`.
+
+### 4. Start backend
 
 In a terminal from the repository root:
 
@@ -271,7 +300,7 @@ cd dev/backend
 python -m uvicorn app.main:app --reload --host 127.0.0.1 --port 8001
 ```
 
-### 4. Start frontend
+### 5. Start frontend
 
 In a second terminal:
 

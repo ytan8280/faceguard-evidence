@@ -323,3 +323,63 @@ valid and indexable while preserving structured provenance.
 This reinforced the difference between a plausible SQL design and a verified
 schema. The migration was not considered complete until it applied on
 PostgreSQL 16 and its retrieval and rejection behavior were measured.
+
+## 2026-10-11 - Persistent PostgreSQL and Migration History
+
+### What I learned
+
+A Docker image, a database schema and a migration runner solve different
+problems:
+
+- Compose makes the local database reproducible and keeps its data in a named
+  volume.
+- SQL migrations describe each schema change in reviewable database language.
+- The Python runner decides which migrations are pending, applies them safely
+  and records exactly which file bytes were used.
+
+The database URL is configuration, not source code. Its password belongs only
+in the ignored `.env`; `.env.example` documents the required variable names
+with a non-secret placeholder.
+
+### Decisions made
+
+FaceGuard PostgreSQL binds to `127.0.0.1:55432`. Port `5432` was already owned
+by the separate Malaysian PDPA project, so reusing or stopping that database
+would have violated the project boundary.
+
+The Compose service uses a pgvector-enabled PostgreSQL 16 image pinned by
+digest and a named FaceGuard-specific volume. pgvector is available but is not
+enabled or used by migration `001`; the embedding model and vector dimension
+must be selected first.
+
+The migration runner uses psycopg 3, an advisory lock and SHA-256 migration
+history. A second run skips a migration only when both its filename and
+checksum match. A changed applied file is an error rather than an implicit
+rewrite of database history.
+
+### Migration immutability lesson
+
+Migration `001` was committed before the Python runner existed and already had
+an outer `BEGIN`/`COMMIT` wrapper. Removing those lines would have changed a
+versioned migration merely to fit new tooling.
+
+The runner instead preserves and hashes the original file, strips only that
+single outer wrapper in memory and executes the body inside its own
+transaction. This keeps schema changes and their history record atomic without
+rewriting the committed migration. Nested or incomplete transaction control
+is rejected.
+
+Migration and internal evidence-document hashes must also be independent of
+the developer's operating system. Git normally stores LF but may check files
+out as CRLF on Windows. Explicit LF rules were therefore added for the SQL
+migrations and the three canonical internal corpus documents before their
+hashes were recorded.
+
+### What the validation proves
+
+The persistent service became healthy, migration `001` applied once, a second
+run skipped it and check mode reported zero pending files. The stored checksum
+matched the migration on disk, and the history remained after a container
+restart. This proves local deployment, volume persistence and migration
+idempotency; it does not prove retrieval quality because no corpus content has
+been ingested yet.

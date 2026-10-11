@@ -1,0 +1,25 @@
+name: faceguard-evidence
+
+services:
+  rag-postgres:
+    image: pgvector/pgvector:pg16@sha256:7b822b0aac60967beb1ea5e576b8602c94c300a157d187f385ae3e0da199b90a
+    environment:
+      POSTGRES_DB: ${RAG_POSTGRES_DB:-faceguard_evidence}
+      POSTGRES_USER: ${RAG_POSTGRES_USER:-faceguard}
+      POSTGRES_PASSWORD: ${RAG_POSTGRES_PASSWORD:?Set RAG_POSTGRES_PASSWORD in the ignored .env file}
+    ports:
+      - "127.0.0.1:${RAG_POSTGRES_PORT:-55432}:5432"
+    volumes:
+      - faceguard_rag_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - pg_isready -U "$${POSTGRES_USER}" -d "$${POSTGRES_DB}"
+      interval: 5s
+      timeout: 5s
+      retries: 12
+      start_period: 10s
+    restart: unless-stopped
+
+volumes:
+  faceguard_rag_pgdata:

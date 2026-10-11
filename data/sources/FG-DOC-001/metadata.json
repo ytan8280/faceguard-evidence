@@ -7,7 +7,7 @@
   "authors": [
     "Tan Yan Yi"
   ],
-  "version": "sha256:5284318A3A8403ECBED991D78BC87039CE63FB09E995FB036FAE79D412C58862",
+  "version": "sha256:CEE91EECD3C36A07535D217806A5DC8E1562BBF889CAA962039AF1BE8A109507",
   "published_at": "2026-10-06",
   "canonical_url": "repo:///docs/MODEL_CARD.md",
   "content_path": "docs/MODEL_CARD.md",
@@ -19,14 +19,14 @@
   },
   "original": {
     "media_type": "text/markdown",
-    "bytes": 8994,
-    "sha256": "5284318A3A8403ECBED991D78BC87039CE63FB09E995FB036FAE79D412C58862"
+    "bytes": 8752,
+    "sha256": "CEE91EECD3C36A07535D217806A5DC8E1562BBF889CAA962039AF1BE8A109507"
   },
   "normalized": {
     "format": "markdown",
-    "bytes": 8994,
+    "bytes": 8752,
     "lines": 242,
-    "sha256": "5284318A3A8403ECBED991D78BC87039CE63FB09E995FB036FAE79D412C58862"
+    "sha256": "CEE91EECD3C36A07535D217806A5DC8E1562BBF889CAA962039AF1BE8A109507"
   },
   "normalization": {
     "tool": "none",
