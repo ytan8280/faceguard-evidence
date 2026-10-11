@@ -268,3 +268,58 @@ The `847`-chunk baseline remains reproducible because `FG-EXP-006` records the
 six exact input hashes used for the measurement. Future ingestion runs may
 produce a different chunk count after the living internal documentation
 changes; that is versioned corpus evolution, not an unexplained inconsistency.
+
+## 2026-10-11 - PostgreSQL Retrieval Schema
+
+### What I learned
+
+PostgreSQL and MongoDB have different responsibilities in FaceGuard Evidence.
+The inherited website continues to use MongoDB for authentication, profiles
+and analysis history. PostgreSQL is introduced specifically for versioned
+evidence and retrieval.
+
+The database must distinguish:
+
+- a stable source identity such as `FG-DOC-002`;
+- an immutable version of that source identified by its content hash;
+- a corpus revision containing an exact ordered set of source versions;
+- chunks produced by one chunker configuration; and
+- an operational attempt to ingest that corpus.
+
+Storing only a flat `chunks` table would lose these relationships and make it
+hard to explain which document version or corpus produced a retrieved result.
+
+### Decisions made
+
+The first schema uses versioned plain SQL migrations so PostgreSQL behavior is
+visible before adding a Python abstraction.
+
+Migration `001` creates the core relational and full-text-search schema but
+does not add pgvector embeddings. Vector dimensions depend on the selected
+embedding model. The embedding registry, vector column and vector index will
+be introduced only after an Azure embedding deployment is selected and its
+input limits and dimensions are verified.
+
+Full-text retrieval weights source titles and heading paths above ordinary
+body content. This makes document structure useful during lexical retrieval
+instead of storing headings only for display.
+
+### Runtime validation lesson
+
+The first migration draft failed on a real PostgreSQL server because generated
+columns allow only immutable expressions. PostgreSQL does not classify
+`ARRAY_TO_STRING` as immutable, so a generated `tsvector` could not derive
+searchable text directly from the heading array.
+
+The corrected schema stores:
+
+- `heading_path` as a structured text array for citation and display; and
+- `heading_text` as a deterministic ` > `-joined value for full-text search.
+
+A check constraint requires the two forms to agree. This is intentional
+denormalization: a small amount of duplicate data makes the full-text column
+valid and indexable while preserving structured provenance.
+
+This reinforced the difference between a plausible SQL design and a verified
+schema. The migration was not considered complete until it applied on
+PostgreSQL 16 and its retrieval and rejection behavior were measured.

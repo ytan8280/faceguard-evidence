@@ -38,6 +38,7 @@ Do not record estimated, expected or invented values as results.
 | `FG-EXP-004` | 2026-10-06 | Controlled still-image inference | Completed | `/api/analyze` returned a `vit3` prediction, valid Grad-CAM PNG and baseline report in `12.357403 s` |
 | `FG-EXP-005` | 2026-10-06 | Detector-adapter regression and equivalence | Completed | Two regression tests passed and the real checkpoint preserved the recorded `/api/analyze` output contract |
 | `FG-EXP-006` | 2026-10-07 | Structure-aware chunking baseline | Completed | Six verified documents produced 847 deterministic chunks; 23 preserved technical blocks were marked oversized |
+| `FG-EXP-007` | 2026-10-11 | PostgreSQL core-schema validation | Completed | Corrected migration applied on PostgreSQL 16.15; full-text retrieval and integrity constraints behaved as designed |
 
 ## FG-EXP-001: Imported Website Baseline Verification
 
@@ -598,6 +599,111 @@ retrieval experiment rather than assumed to help.
 Define how chunk content and provenance metadata map into PostgreSQL full-text
 and pgvector records, including how oversized technical blocks will be handled
 for the selected embedding model.
+
+## FG-EXP-007: PostgreSQL Core-Schema Validation
+
+### Question
+
+Does the first versioned RAG migration apply successfully on a real PostgreSQL
+server, support weighted full-text retrieval and reject inconsistent evidence
+records?
+
+### Revision and Migration
+
+- Working tree base revision:
+  `fcf26bbd1321f3e9290705dce6df91199935c131`
+- Migration: `database/migrations/001_create_rag_core.sql`
+- Database role: RAG evidence only
+- Existing MongoDB role: authentication, profiles and analysis history
+
+The migration and documentation were uncommitted when this validation was run.
+
+### Environment
+
+| Component | Measured value |
+|---|---|
+| Operating system | Windows |
+| Docker Engine | `29.8.1` |
+| Container image | `pgvector/pgvector:pg16` |
+| Image digest | `sha256:7b822b0aac60967beb1ea5e576b8602c94c300a157d187f385ae3e0da199b90a` |
+| PostgreSQL | `16.15 (Debian 16.15-1.pgdg12+2)` |
+| Available pgvector version | `0.8.7` |
+| Host port for migration test | `55432` |
+
+The database password was a disposable test-only value. No project
+credentials, MongoDB data or local `.env` values were supplied to the
+container.
+
+### Procedure
+
+1. Confirmed Docker was installed and started its existing Linux engine.
+2. Downloaded the pgvector-enabled PostgreSQL 16 image.
+3. Started a temporary database named `faceguard_schema_test`.
+4. Applied migration `001` with `ON_ERROR_STOP`.
+5. Observed PostgreSQL reject the first design because its generated
+   full-text column called non-immutable `ARRAY_TO_STRING`.
+6. Added deterministic `heading_text` storage while retaining structured
+   `heading_path`.
+7. Added a constraint requiring `heading_text` to equal the ` > `-joined
+   heading path.
+8. Reapplied the corrected migration.
+9. Inserted one source version, corpus revision, corpus membership and
+   evidence chunk.
+10. Queried for `decision threshold` using PostgreSQL web-search syntax and
+    ranked the generated `tsvector`.
+11. Attempted invalid duplicate and inconsistent records inside handled test
+    blocks.
+12. Checked the available pgvector version.
+13. Stopped and removed the test containers and anonymous data volumes.
+
+### Measured Results
+
+| Check | Result |
+|---|---|
+| Initial migration attempt | Rejected: generated expression was not immutable |
+| Corrected migration | Applied successfully |
+| Tables created | `5` |
+| Explicit indexes created | `4` |
+| Weighted full-text query | Returned the expected chunk |
+| Full-text rank for test chunk | `1` |
+| Duplicate corpus SHA-256 | Rejected |
+| Inconsistent heading path/text | Rejected |
+| Incorrect chunk character count | Rejected |
+| pgvector available | Yes, version `0.8.7` |
+| Persistent test database retained | No |
+
+### Interpretation
+
+The corrected schema is valid on PostgreSQL 16 and enforces the intended
+provenance relationships. Source versions are immutable, corpus membership is
+explicit, chunks cannot reference a source outside their corpus, and generated
+full-text search weights titles and headings above body text.
+
+The failed first migration was useful evidence. PostgreSQL generated columns
+permit only immutable expressions, and `ARRAY_TO_STRING` is not classified as
+immutable. Persisting `heading_text` gives full-text generation a valid input
+while the structured heading array remains available for citations.
+
+The database also confirmed that pgvector is available, but migration `001`
+does not enable or use it. The vector schema remains intentionally deferred
+until an embedding deployment and dimension are selected.
+
+### Limitations
+
+- The test used one synthetic source and one synthetic chunk.
+- No real corpus ingestion was performed.
+- No persistent local PostgreSQL service was configured.
+- No Python PostgreSQL driver or migration runner exists yet.
+- Full-text relevance was not evaluated against a question set.
+- Transactions, concurrent ingestion and database recovery were not load
+  tested.
+- pgvector similarity search was not tested.
+
+### Next Decision
+
+Choose the local PostgreSQL development deployment, add the Python driver and
+implement an idempotent migration and ingestion command for the verified
+corpus.
 
 ## Planned Experiment Areas
 
