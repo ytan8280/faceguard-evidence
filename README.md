@@ -9,7 +9,7 @@ analysis, authentication, profile and history capabilities while adding file
 metadata, versioned model documentation, measured evaluation evidence,
 authoritative research and media-verification guidance.
 
-> **Project status:** FaceGuard Evidence v0.1.0 MVP. The still-image
+> **Project status:** FaceGuard Evidence v0.1.1 MVP. The still-image
 > upload-to-report workflow, versioned detector adapter, metadata extraction,
 > PostgreSQL lexical and vector retrieval, local reranking, structured cited
 > generation, held-out evaluation, frontend report and measured cost tracking

@@ -1,5 +1,16 @@
 # Changelog
 
+## v0.1.1 - 2026-10-12
+
+### Fixed
+
+- allow the detector API container to honor `FACEGUARD_ENABLE_DATABASE` from
+  the ignored `.env` instead of always forcing database mode off;
+- include the MongoDB and bcrypt dependencies required by email and Google
+  authentication when database mode is enabled;
+- document the optional MongoDB, collection and Google client environment
+  variables in `.env.example`.
+
 ## v0.1.0 - 2026-10-12
 
 FaceGuard Evidence v0.1.0 is the first complete still-image MVP.
