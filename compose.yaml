@@ -115,7 +115,7 @@ services:
     environment:
       FACEGUARD_MODEL_NAME: vit3
       FACEGUARD_MODEL_PATH: /models/vit3.pth
-      FACEGUARD_ENABLE_DATABASE: "false"
+      FACEGUARD_ENABLE_DATABASE: ${FACEGUARD_ENABLE_DATABASE:-false}
       FACEGUARD_ENABLE_DETECTION_REPORT: "false"
       RAG_API_URL: http://rag-api:8002
     depends_on:
