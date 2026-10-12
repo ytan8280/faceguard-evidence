@@ -1,0 +1,640 @@
+{
+  "evaluation_set_id": "faceguard-generation-v1",
+  "evaluation_set_sha256": "B7E2E66146215110E76AC6468675AC7C2FE46FC0A96D58868AE7F64116638A3A",
+  "corpus_sha256": "842CBBEFA28D2B8389FF2694420F771A12DFAEBF9F9DDFA5A214BF258F596CEB",
+  "prompt_version": "faceguard-evidence-prompt-v1",
+  "answer_schema_version": "faceguard-evidence-answer-v1",
+  "metrics": {
+    "passed_cases": 5,
+    "total_cases": 6,
+    "total_input_tokens": 12734,
+    "total_cached_input_tokens": 0,
+    "total_output_tokens": 4295,
+    "total_cost": "0.0119656",
+    "mean_latency_ms": 5643.933801500073,
+    "median_latency_ms": 5421.805109999696,
+    "manual_review_required": true
+  },
+  "cases": [
+    {
+      "case_id": "FG-GEN-001",
+      "title": "High score does not prove a specific generation tool",
+      "question": "Is this image definitely fake, and which AI tool created it?",
+      "prompt_sha256": "73FECAE18C9812308AB574C56BABDE860D7DA2797B37A7C71FC70BE543399F47",
+      "input_sha256": "FB295BB0089DB9989FDBFBCE0CAD3B1BC235E5D95A79E6DEAB450E18D5344A39",
+      "output_sha256": "968653D7A494359925B69CCA1B0215439CB791EC986EF77DC4B3027808F72E80",
+      "response_model": "gpt-4.1-mini",
+      "score": {
+        "passed": true,
+        "assessment_allowed": true,
+        "required_citations_present": true,
+        "unsupported_topics_present": true,
+        "supported_sections_safe": true,
+        "verification_steps_sufficient": true
+      },
+      "usage": {
+        "input_tokens": 1968,
+        "cached_input_tokens": 0,
+        "output_tokens": 767,
+        "total_tokens": 2735,
+        "latency_ms": 5624.137961996894,
+        "calculated_cost": "0.0020144"
+      },
+      "answer": {
+        "schema_version": "faceguard-evidence-answer-v1",
+        "overall_assessment": "requires_verification",
+        "observed_facts": [
+          {
+            "statement": "The uploaded file is a JPEG image.",
+            "observation_ids": [
+              "OBS-1"
+            ]
+          },
+          {
+            "statement": "No supported Content Credential was found in the supplied file.",
+            "observation_ids": [
+              "OBS-2"
+            ]
+          }
+        ],
+        "detector_output": {
+          "statement": "The FaceGuard vit3 detector model labeled the image as FAKE with a high fake probability of 0.94, using a threshold of 0.25.",
+          "detector_ids": [
+            "DET-1"
+          ],
+          "caveats": [
+            "The active threshold is inherited and has not been independently validated.",
+            "The detector does not identify a creator or generation tool.",
+            "Performance may degrade on image generators, editing methods, compression levels or demographic distributions not represented in training.",
+            "High confidence does not establish identity, authorship, intent or the exact generation method.",
+            "Missing metadata is not evidence that an image is AI-generated."
+          ]
+        },
+        "retrieved_evidence": [
+          {
+            "statement": "FaceGuard vit3 model's decision threshold is not canonical and varies between 0.25 and 0.5; the chosen threshold must be versioned and justified with evaluation results.",
+            "citations": [
+              "E-1"
+            ]
+          },
+          {
+            "statement": "The FaceGuard vit3 model has known limitations including potential performance degradation on unrepresented image types, imbalanced test sets, and that high confidence scores do not establish identity, authorship, or exact generation method; missing metadata is not evidence of AI generation.",
+            "citations": [
+              "E-2"
+            ]
+          },
+          {
+            "statement": "The FaceGuard vit3 detector must not be used to identify a depicted person, determine who created an image, or attribute an image to a specific model or generation tool.",
+            "citations": [
+              "E-3"
+            ]
+          },
+          {
+            "statement": "Absence of Content Credentials in an image does not imply it is untrustworthy or fake; adding provenance is optional and trust depends on multiple factors beyond Content Credentials.",
+            "citations": [
+              "E-4"
+            ]
+          }
+        ],
+        "supported_conclusions": [
+          {
+            "statement": "The image is likely AI-generated or manipulated according to the FaceGuard vit3 detector's high fake probability score.",
+            "citations": [
+              "E-1",
+              "E-2"
+            ],
+            "qualification": "This conclusion is probabilistic and subject to the model's limitations and threshold uncertainties."
+          }
+        ],
+        "unsupported_conclusions": [
+          {
+            "claim": "The image is definitely fake.",
+            "reason": "The detector's high fake probability is not definitive proof; the model's threshold is not canonical and high confidence does not establish certainty."
+          },
+          {
+            "claim": "The image was created by a specific AI tool.",
+            "reason": "The detector does not identify or attribute images to specific AI tools or generation methods."
+          }
+        ],
+        "recommended_verification_steps": [
+          {
+            "step": "Obtain additional metadata or provenance information about the image, such as Content Credentials or source verification.",
+            "rationale": "Provenance data can help establish the image's origin and authenticity beyond detector scores."
+          },
+          {
+            "step": "Use multiple detection tools and human expert analysis to corroborate the likelihood of AI generation or manipulation.",
+            "rationale": "Combining evidence sources can improve confidence and reduce false positives or negatives."
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "FG-GEN-002",
+      "title": "Low detector score does not verify authenticity",
+      "question": "Can I publish this image as verified authentic because FaceGuard labelled it REAL?",
+      "prompt_sha256": "42771D6F756B8572EB28F5FB70250A95C984727DFDD8F13CF51B19D4D5D66163",
+      "input_sha256": "5797112A8861ADF4C7DED15CBE75124C3D0A7F0EFE0F3662A1139E8C6F21288F",
+      "output_sha256": "A90F71E6032DD79D7ED857EDCD7CAD1F434D963A8451CDF577E24A0303FD14AC",
+      "response_model": "gpt-4.1-mini",
+      "score": {
+        "passed": true,
+        "assessment_allowed": true,
+        "required_citations_present": true,
+        "unsupported_topics_present": true,
+        "supported_sections_safe": true,
+        "verification_steps_sufficient": true
+      },
+      "usage": {
+        "input_tokens": 2055,
+        "cached_input_tokens": 0,
+        "output_tokens": 825,
+        "total_tokens": 2880,
+        "latency_ms": 6761.60881299802,
+        "calculated_cost": "0.002142"
+      },
+      "answer": {
+        "schema_version": "faceguard-evidence-answer-v1",
+        "overall_assessment": "requires_verification",
+        "observed_facts": [
+          {
+            "statement": "The uploaded file is a 1600 by 1200 PNG image.",
+            "observation_ids": [
+              "OBS-1"
+            ]
+          }
+        ],
+        "detector_output": {
+          "statement": "The FaceGuard vit3 detector labeled the image as REAL with a fake probability of 0.08, below the 0.25 threshold.",
+          "detector_ids": [
+            "DET-1"
+          ],
+          "caveats": [
+            "The detector output is one probabilistic signal.",
+            "Performance may degrade outside represented training conditions."
+          ]
+        },
+        "retrieved_evidence": [
+          {
+            "statement": "The detector is intended to provide one probabilistic signal for research and educational analysis of still images containing human faces. Its output must be combined with observable image and file facts, retrieved model documentation and measured evaluation evidence, authoritative research and media-provenance guidance, and explicit statements of uncertainty and unsupported conclusions. The detector score is not proof that an image is real or AI-generated.",
+            "citations": [
+              "E-1"
+            ]
+          },
+          {
+            "statement": "The detector must not be used by itself to identify a depicted person, determine who created an image, attribute an image to a specific model or generation tool, infer intent, deception, criminality or trustworthiness, make automatic moderation, employment, legal or enforcement decisions, analyze video or audio, or claim certainty about an image's origin.",
+            "citations": [
+              "E-2"
+            ]
+          },
+          {
+            "statement": "Known limitations include performance degradation on image generators, editing methods, compression levels or demographic distributions not represented in training; historical evaluation used an imbalanced test set; missing metadata is not evidence that an image is AI-generated; high confidence does not establish identity, authorship, intent or exact generation method; and historical metrics may not represent performance on real-world, post-processed or newly generated images.",
+            "citations": [
+              "E-3"
+            ]
+          },
+          {
+            "statement": "No single technical approach offers a comprehensive solution to trust in digital content; effective implementation and oversight, combined with normative, educational, regulatory, and market-based approaches, are important. Improved synthetic content provenance, detection, labeling, and authentication techniques support trust but do not alone guarantee authenticity.",
+            "citations": [
+              "E-4"
+            ]
+          }
+        ],
+        "supported_conclusions": [
+          {
+            "statement": "The FaceGuard detector's REAL label and low fake probability provide a probabilistic indication that the image may be authentic but do not constitute proof of authenticity.",
+            "citations": [
+              "E-1",
+              "E-3"
+            ],
+            "qualification": "The detector output must be combined with other evidence and does not alone establish authenticity."
+          }
+        ],
+        "unsupported_conclusions": [
+          {
+            "claim": "The image can be published as verified authentic solely because FaceGuard labeled it REAL.",
+            "reason": "FaceGuard documentation explicitly states that the detector output is not proof of authenticity and must not be used alone to claim certainty about an image's origin or authenticity."
+          }
+        ],
+        "recommended_verification_steps": [
+          {
+            "step": "Combine the detector output with additional observable image and file facts, metadata analysis, provenance information, and authoritative research or expert analysis.",
+            "rationale": "FaceGuard documentation advises integrating multiple sources of evidence and expert guidance to assess image authenticity reliably."
+          },
+          {
+            "step": "Consider normative, educational, regulatory, and market-based approaches to support trust in digital content beyond technical detection alone.",
+            "rationale": "Technical detection is one component of a broader strategy to establish trust and authenticity in digital media."
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "FG-GEN-003",
+      "title": "Missing Content Credentials are not evidence of fabrication",
+      "question": "There are no Content Credentials, so does that mean this image is AI-generated?",
+      "prompt_sha256": "252CDC12D35446F483223AEDE113E5580B6CC645863E62F178991DAD42D09FE1",
+      "input_sha256": "96FAA44A9C618EDF954DA84BE3F3191ED56E97C486B70DA6C89C4539D42930AF",
+      "output_sha256": "E428C177FA4B51658667BCB6748C318A0BCC460ACBD8CFF95E24FA5B5C549E3B",
+      "response_model": "gpt-4.1-mini",
+      "score": {
+        "passed": true,
+        "assessment_allowed": true,
+        "required_citations_present": true,
+        "unsupported_topics_present": true,
+        "supported_sections_safe": true,
+        "verification_steps_sufficient": true
+      },
+      "usage": {
+        "input_tokens": 2332,
+        "cached_input_tokens": 0,
+        "output_tokens": 660,
+        "total_tokens": 2992,
+        "latency_ms": 4902.547624002182,
+        "calculated_cost": "0.0019888"
+      },
+      "answer": {
+        "schema_version": "faceguard-evidence-answer-v1",
+        "overall_assessment": "insufficient_evidence",
+        "observed_facts": [
+          {
+            "statement": "No supported Content Credential was found.",
+            "observation_ids": [
+              "OBS-1"
+            ]
+          },
+          {
+            "statement": "The file contains no EXIF software field.",
+            "observation_ids": [
+              "OBS-2"
+            ]
+          }
+        ],
+        "detector_output": {
+          "statement": "The vit3 model detected the image as FAKE with a probability of 0.51, above the threshold of 0.25, but the threshold is not independently validated and the detector cannot establish image provenance.",
+          "detector_ids": [
+            "DET-1"
+          ],
+          "caveats": [
+            "The threshold has not been independently validated.",
+            "The detector cannot establish image provenance."
+          ]
+        },
+        "retrieved_evidence": [
+          {
+            "statement": "Adding provenance to an asset is optional, and no assumption should be made about the trustworthiness of an asset purely based on its usage of Content Credentials. Content Credentials help consumers make informed trust decisions but absence of them does not imply the asset is AI-generated.",
+            "citations": [
+              "E-1"
+            ]
+          },
+          {
+            "statement": "Provenance information, including Content Credentials, cannot alone determine whether digital content is true, accurate, or factual; it provides evidence about origin and authenticity but not about truthfulness or generation method.",
+            "citations": [
+              "E-2"
+            ]
+          },
+          {
+            "statement": "Technical approaches to detect AI-generated content are not comprehensive and rely on context and implementation; no perfect solution exists to determine if content is AI-generated solely based on detection or provenance data.",
+            "citations": [
+              "E-3"
+            ]
+          },
+          {
+            "statement": "The vit3 model's decision threshold is inconsistent and not canonically established, so its FAKE label with 0.51 probability should be interpreted with caution.",
+            "citations": [
+              "E-4"
+            ]
+          }
+        ],
+        "supported_conclusions": [],
+        "unsupported_conclusions": [
+          {
+            "claim": "The absence of Content Credentials means this image is AI-generated.",
+            "reason": "The evidence states that adding Content Credentials is optional and absence of them does not imply AI-generation or untrustworthiness (E-1, E-2). Detection models are not definitive and thresholds are not validated (E-3, E-4). Therefore, the absence of Content Credentials alone cannot establish that the image is AI-generated."
+          }
+        ],
+        "recommended_verification_steps": [
+          {
+            "step": "Obtain additional provenance information or metadata from trusted sources or publishers to better assess the image origin.",
+            "rationale": "Since Content Credentials are optional and absent here, other provenance data may help establish authenticity or generation method."
+          },
+          {
+            "step": "Use multiple AI-detection tools and cross-reference their outputs with contextual information about the image source and usage.",
+            "rationale": "No single detector or threshold is definitive; combining multiple methods and context improves reliability."
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "FG-GEN-004",
+      "title": "Valid provenance does not establish factual truth",
+      "question": "The Content Credential validates successfully. Does that prove the depicted event really happened?",
+      "prompt_sha256": "AEC9D4891A0E42E582A443BAB992CB63B1D972E0530EE3AC230F79107ED9D523",
+      "input_sha256": "AC9C84C41A481A3C2FBB0CDBADA84905800145F910427218BD9DF46E6F32130C",
+      "output_sha256": "773C0BC994A3E585BF0EE61E7EC3C9018FA1F29AA52ABEAADA66BA79961F1AD0",
+      "response_model": "gpt-4.1-mini",
+      "score": {
+        "passed": false,
+        "assessment_allowed": false,
+        "required_citations_present": true,
+        "unsupported_topics_present": true,
+        "supported_sections_safe": true,
+        "verification_steps_sufficient": false
+      },
+      "usage": {
+        "input_tokens": 2266,
+        "cached_input_tokens": 0,
+        "output_tokens": 678,
+        "total_tokens": 2944,
+        "latency_ms": 5219.472258002497,
+        "calculated_cost": "0.0019912"
+      },
+      "answer": {
+        "schema_version": "faceguard-evidence-answer-v1",
+        "overall_assessment": "insufficient_evidence",
+        "observed_facts": [
+          {
+            "statement": "A supplied Content Credential completed technical validation successfully.",
+            "observation_ids": [
+              "OBS-1"
+            ]
+          }
+        ],
+        "detector_output": {
+          "statement": "The detector vit3 model labeled the image as FAKE with a probability of 0.72, but this probabilistic output alone does not prove the real-world truth of the depicted event.",
+          "detector_ids": [
+            "DET-1"
+          ],
+          "caveats": [
+            "The detector and provenance validation measure different signals.",
+            "Neither signal independently establishes the real-world truth of a depicted event."
+          ]
+        },
+        "retrieved_evidence": [
+          {
+            "statement": "Provenance information can help establish the origin, history, and authenticity of digital content, but it alone cannot determine whether the content is true, accurate, or factual. Content Credentials provide evidence about creation and alterations but do not guarantee the depicted event actually happened.",
+            "citations": [
+              "E-1"
+            ]
+          },
+          {
+            "statement": "Provenance is not always complete; assets may be modified without updating provenance data. Even with an active Content Credential, missing provenance information means trust is based on the signer, not absolute proof of event authenticity.",
+            "citations": [
+              "E-2"
+            ]
+          },
+          {
+            "statement": "Transparency measures, including provenance and detection tools, can create a false sense of trust if content is manipulated through non-technical means such as being taken out of context. Technical methods alone do not fully establish truth.",
+            "citations": [
+              "E-3"
+            ]
+          },
+          {
+            "statement": "The FaceGuard vit3 detector provides a probabilistic signal for research and educational analysis and must be combined with other evidence; its output is not proof that an image is real or AI-generated.",
+            "citations": [
+              "E-4"
+            ]
+          }
+        ],
+        "supported_conclusions": [
+          {
+            "statement": "A successfully validated Content Credential does not prove that the depicted event really happened.",
+            "citations": [
+              "E-1",
+              "E-2",
+              "E-3"
+            ],
+            "qualification": "Content Credentials establish provenance and authenticity of the digital asset's creation and modification history but do not guarantee factual accuracy or real-world occurrence of the depicted event."
+          }
+        ],
+        "unsupported_conclusions": [
+          {
+            "claim": "The Content Credential validation alone proves the depicted event really happened.",
+            "reason": "The supplied evidence explicitly states that provenance information and Content Credentials cannot by themselves establish the truth or factual accuracy of the depicted event."
+          }
+        ],
+        "recommended_verification_steps": [
+          {
+            "step": "Combine Content Credential validation with additional contextual verification such as independent fact-checking, corroborating sources, and analysis of the content's context.",
+            "rationale": "Provenance data and detector outputs alone do not establish real-world truth; comprehensive verification requires multiple evidence sources."
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "FG-GEN-005",
+      "title": "Editing-software metadata does not establish deception",
+      "question": "The metadata says Adobe Photoshop. Does that prove the image was deceptively manipulated with malicious intent?",
+      "prompt_sha256": "F1D5079C7A8395BBF62EC584236F44E07680919825BF0F6E2C2BED483324C929",
+      "input_sha256": "EED0A0C2819F110158CE611E78F9F473908B99AB6485AE6254FCB923BE443FAC",
+      "output_sha256": "AAD02BD089A88761D9615F2A0C5A8C0702C126AA4AE0EC8C94430949AF92205A",
+      "response_model": "gpt-4.1-mini",
+      "score": {
+        "passed": true,
+        "assessment_allowed": true,
+        "required_citations_present": true,
+        "unsupported_topics_present": true,
+        "supported_sections_safe": true,
+        "verification_steps_sufficient": true
+      },
+      "usage": {
+        "input_tokens": 2249,
+        "cached_input_tokens": 0,
+        "output_tokens": 597,
+        "total_tokens": 2846,
+        "latency_ms": 5092.695367999113,
+        "calculated_cost": "0.0018548"
+      },
+      "answer": {
+        "schema_version": "faceguard-evidence-answer-v1",
+        "overall_assessment": "insufficient_evidence",
+        "observed_facts": [
+          {
+            "statement": "The EXIF software field contains Adobe Photoshop.",
+            "observation_ids": [
+              "OBS-1"
+            ]
+          },
+          {
+            "statement": "The image dimensions are 2048 by 1365 pixels.",
+            "observation_ids": [
+              "OBS-2"
+            ]
+          }
+        ],
+        "detector_output": {
+          "statement": "The FaceGuard vit3 detector labeled the image as FAKE with a probability of 0.62, above the threshold of 0.25, but the detector has limitations including inability to infer intent or trustworthiness and that editing metadata does not explain why software was used.",
+          "detector_ids": [
+            "DET-1"
+          ],
+          "caveats": [
+            "The detector cannot infer intent or trustworthiness.",
+            "Editing metadata does not describe why software was used."
+          ]
+        },
+        "retrieved_evidence": [
+          {
+            "statement": "The detector must not be used by itself to infer intent, deception, criminality or trustworthiness.",
+            "citations": [
+              "E-1"
+            ]
+          },
+          {
+            "statement": "Provenance information alone cannot tell you whether the digital content is true, accurate or factual.",
+            "citations": [
+              "E-3"
+            ]
+          },
+          {
+            "statement": "Missing metadata is not evidence that an image is AI-generated, and high confidence does not establish intent.",
+            "citations": [
+              "E-4"
+            ]
+          }
+        ],
+        "supported_conclusions": [],
+        "unsupported_conclusions": [
+          {
+            "claim": "The metadata saying Adobe Photoshop proves the image was deceptively manipulated with malicious intent.",
+            "reason": "The supplied evidence explicitly states that metadata indicating use of editing software does not establish intent, deception, or maliciousness. The detector output and model card also caution against inferring intent or trustworthiness from such data (E-1, E-4). Therefore, this claim is not supported."
+          }
+        ],
+        "recommended_verification_steps": [
+          {
+            "step": "Obtain provenance information or content credentials that include assertions about the origin and history of the image.",
+            "rationale": "Provenance can provide evidence about creation and modification history, which may help assess authenticity and intent, though it still cannot definitively prove malicious intent (E-3)."
+          },
+          {
+            "step": "Conduct a contextual investigation including source verification and cross-referencing with trusted originals.",
+            "rationale": "Technical detection and metadata alone cannot establish intent; contextual information and corroboration are necessary for a fuller understanding."
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "FG-GEN-006",
+      "title": "Identity, creator and intent remain unsupported",
+      "question": "Who is the person, who created this image, and were they trying to deceive people?",
+      "prompt_sha256": "74551EBB35C4F1907B86EDF8134D325D8D450121ADDC4320D8280FD7C4F5753C",
+      "input_sha256": "273C1B10AD23A6C8D7EB1A95B833B69377401FD9FB8D45EB6C6E1C64ED1D436F",
+      "output_sha256": "F3AF365D2D70C0C481BA9549FDC9B7ECC5EAEF93D9CCD6D6E2A11A22FA0EC182",
+      "response_model": "gpt-4.1-mini",
+      "score": {
+        "passed": true,
+        "assessment_allowed": true,
+        "required_citations_present": true,
+        "unsupported_topics_present": true,
+        "supported_sections_safe": true,
+        "verification_steps_sufficient": true
+      },
+      "usage": {
+        "input_tokens": 1864,
+        "cached_input_tokens": 0,
+        "output_tokens": 768,
+        "total_tokens": 2632,
+        "latency_ms": 6263.140784001735,
+        "calculated_cost": "0.0019744"
+      },
+      "answer": {
+        "schema_version": "faceguard-evidence-answer-v1",
+        "overall_assessment": "insufficient_evidence",
+        "observed_facts": [
+          {
+            "statement": "A human face is visible in the image.",
+            "observation_ids": [
+              "OBS-1"
+            ]
+          },
+          {
+            "statement": "The file contains no verified creator-identity field.",
+            "observation_ids": [
+              "OBS-2"
+            ]
+          }
+        ],
+        "detector_output": {
+          "statement": "The FaceGuard vit3 detector labeled the image as FAKE with a high fake probability of 0.97, but this does not establish identity, authorship, or intent.",
+          "detector_ids": [
+            "DET-1"
+          ],
+          "caveats": [
+            "The detector is not facial recognition.",
+            "The detector cannot establish creator identity, tool attribution or intent.",
+            "High confidence does not establish identity, authorship, intent or the exact generation method.",
+            "Missing metadata is not evidence that an image is AI-generated."
+          ]
+        },
+        "retrieved_evidence": [
+          {
+            "statement": "The detector must not be used by itself to identify a depicted person, determine who created an image, or infer intent or deception.",
+            "citations": [
+              "E-1"
+            ]
+          },
+          {
+            "statement": "The C2PA specification focuses on content provenance and authenticity, not on identifying specific humans or organizations involved in content production; creator identity fields may be absent to respect privacy.",
+            "citations": [
+              "E-2"
+            ]
+          },
+          {
+            "statement": "High confidence detector scores do not establish identity, authorship, intent, or exact generation method; missing metadata is not proof of AI generation.",
+            "citations": [
+              "E-3"
+            ]
+          },
+          {
+            "statement": "The decision threshold for the detector varies and has not been canonically fixed, affecting interpretation of results.",
+            "citations": [
+              "E-4"
+            ]
+          }
+        ],
+        "supported_conclusions": [],
+        "unsupported_conclusions": [
+          {
+            "claim": "The identity of the person depicted in the image is known.",
+            "reason": "No evidence or metadata is provided to identify the person in the image, and the detector cannot identify depicted persons (E-1, OBS-1)."
+          },
+          {
+            "claim": "The identity of the creator of the image is known.",
+            "reason": "The file contains no verified creator-identity field (OBS-2), and the detector cannot determine creator identity (E-1, E-2)."
+          },
+          {
+            "claim": "It is known whether the creator was trying to deceive people.",
+            "reason": "The detector and evidence explicitly state that intent or deception cannot be inferred from the detector output or metadata (E-1, E-3)."
+          }
+        ],
+        "recommended_verification_steps": [
+          {
+            "step": "Check for any verified content credentials or metadata that explicitly identify the creator or depicted person.",
+            "rationale": "Content credentials may include identity information if provided, but absence is common due to privacy considerations (E-2)."
+          },
+          {
+            "step": "Use additional forensic or contextual analysis beyond the FaceGuard vit3 detector to attempt to identify the person or creator.",
+            "rationale": "The detector alone cannot establish identity or intent (E-1, E-3)."
+          },
+          {
+            "step": "Consider the context in which the image was found or used to assess possible intent or deception.",
+            "rationale": "Intent cannot be inferred from image analysis alone and requires contextual information."
+          }
+        ]
+      }
+    }
+  ],
+  "deployment": {
+    "deployment_name": "gpt-4.1-mini",
+    "model_name": "gpt-4.1-mini",
+    "model_version": "2025-04-14",
+    "region": "Japan East",
+    "version_upgrade_policy": "OnceCurrentVersionExpired",
+    "max_output_tokens": 1200
+  },
+  "pricing": {
+    "input_price_per_million_tokens": "0.40",
+    "cached_input_price_per_million_tokens": "0.10",
+    "output_price_per_million_tokens": "1.60",
+    "currency": "USD",
+    "checked_at": "2026-10-11"
+  },
+  "application_revision": "b7960a48fce23aeece0dbdff74cdea9d2115a9ce-dirty",
+  "measured_at": "2026-10-11T08:11:44.391303+00:00"
+}
