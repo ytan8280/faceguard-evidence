@@ -1,0 +1,8 @@
+**
+!requirements-rag-tools.txt
+!requirements-detector-api.txt
+!deploy/
+!deploy/rag-tools/
+!deploy/rag-tools/Dockerfile
+!deploy/detector-api/
+!deploy/detector-api/Dockerfile

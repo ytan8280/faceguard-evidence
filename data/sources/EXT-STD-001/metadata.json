@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "source_id": "EXT-STD-001",
+  "title": "Content Credentials: C2PA Technical Specification",
+  "source_category": "media_provenance_standard",
+  "publisher": "Coalition for Content Provenance and Authenticity",
+  "authors": [
+    "Coalition for Content Provenance and Authenticity"
+  ],
+  "version": "2.3 (tag commit 6998a277b4519fc652550686861f0b97a64e5c19)",
+  "published_at": "2026-01-11",
+  "canonical_url": "https://spec.c2pa.org/specifications/specifications/2.3/specs/C2PA_Specification.html",
+  "retrieved_at": "2026-10-06T16:15:38+00:00",
+  "license": {
+    "name": "Creative Commons Attribution 4.0 International",
+    "url": "https://creativecommons.org/licenses/by/4.0/",
+    "rights_basis": "CC BY 4.0 with attribution retained."
+  },
+  "original": {
+    "media_type": "text/html",
+    "bytes": 971357,
+    "sha256": "C8C3DD79C68DF36042D1DA1719BBF7662493D53C7410D5F50C32010131D2ECA0"
+  },
+  "normalized": {
+    "format": "markdown",
+    "bytes": 687864,
+    "lines": 8987,
+    "sha256": "921DFD0AFF4C55278C57FDD823A236DAECED9336DE450156B5B02BC3C94C240F"
+  },
+  "normalization": {
+    "tool": "tools/capture_sources.py",
+    "tool_version": "1",
+    "dependencies": {
+      "beautifulsoup4": "4.15.0",
+      "markdownify": "1.2.3",
+      "pypdf": "6.19.0"
+    },
+    "steps": [
+      "Decoded official HTML as UTF-8.",
+      "Selected the article.doc content node.",
+      "Removed scripts, styles, navigation, generated table of contents, and controls.",
+      "Replaced images with available alt text and resolved links to absolute URLs.",
+      "Converted structural HTML to ATX-heading Markdown.",
+      "Applied Unicode NFC and deterministic blank-line normalization."
+    ]
+  }
+}

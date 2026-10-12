@@ -1,0 +1,142 @@
+name: faceguard-evidence
+
+services:
+  rag-postgres:
+    image: pgvector/pgvector:pg16@sha256:7b822b0aac60967beb1ea5e576b8602c94c300a157d187f385ae3e0da199b90a
+    environment:
+      POSTGRES_DB: ${RAG_POSTGRES_DB:-faceguard_evidence}
+      POSTGRES_USER: ${RAG_POSTGRES_USER:-faceguard}
+      POSTGRES_PASSWORD: ${RAG_POSTGRES_PASSWORD:?Set RAG_POSTGRES_PASSWORD in the ignored .env file}
+    ports:
+      - "127.0.0.1:${RAG_POSTGRES_PORT:-55432}:5432"
+    volumes:
+      - faceguard_rag_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - pg_isready -U "$${POSTGRES_USER}" -d "$${POSTGRES_DB}"
+      interval: 5s
+      timeout: 5s
+      retries: 12
+      start_period: 10s
+    restart: unless-stopped
+
+  rag-tools:
+    build:
+      context: .
+      dockerfile: deploy/rag-tools/Dockerfile
+    image: faceguard-evidence-rag-tools:local
+    working_dir: /workspace
+    volumes:
+      - .:/workspace
+      - faceguard_hf_cache:/root/.cache/huggingface
+    env_file:
+      - .env
+    environment:
+      HF_HOME: /root/.cache/huggingface
+      RAG_DATABASE_URL: postgresql://${RAG_POSTGRES_USER:-faceguard}:${RAG_POSTGRES_PASSWORD:?Set RAG_POSTGRES_PASSWORD in the ignored .env file}@rag-postgres:5432/${RAG_POSTGRES_DB:-faceguard_evidence}
+    depends_on:
+      rag-postgres:
+        condition: service_healthy
+    profiles:
+      - tools
+
+  rag-api:
+    build:
+      context: .
+      dockerfile: deploy/rag-tools/Dockerfile
+    image: faceguard-evidence-rag-tools:local
+    working_dir: /workspace
+    entrypoint:
+      - python
+    command:
+      - -m
+      - uvicorn
+      - dev.backend.app.rag_api:app
+      - --host
+      - 0.0.0.0
+      - --port
+      - "8002"
+    ports:
+      - "127.0.0.1:${RAG_API_PORT:-8002}:8002"
+    volumes:
+      - .:/workspace
+      - faceguard_hf_cache:/root/.cache/huggingface
+    env_file:
+      - .env
+    environment:
+      HF_HOME: /root/.cache/huggingface
+      RAG_DATABASE_URL: postgresql://${RAG_POSTGRES_USER:-faceguard}:${RAG_POSTGRES_PASSWORD:?Set RAG_POSTGRES_PASSWORD in the ignored .env file}@rag-postgres:5432/${RAG_POSTGRES_DB:-faceguard_evidence}
+    depends_on:
+      rag-postgres:
+        condition: service_healthy
+    healthcheck:
+      test:
+        - CMD
+        - python
+        - -c
+        - >-
+          import urllib.request;
+          urllib.request.urlopen('http://127.0.0.1:8002/health', timeout=2)
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 20s
+    profiles:
+      - evidence
+    restart: unless-stopped
+
+  detector-api:
+    build:
+      context: .
+      dockerfile: deploy/detector-api/Dockerfile
+    image: faceguard-evidence-detector-api:local
+    working_dir: /workspace
+    entrypoint:
+      - python
+    command:
+      - -m
+      - uvicorn
+      - dev.backend.app.main:app
+      - --host
+      - 0.0.0.0
+      - --port
+      - "8001"
+    ports:
+      - "127.0.0.1:${FACEGUARD_BACKEND_PORT:-8001}:8001"
+    volumes:
+      - .:/workspace
+      - type: bind
+        source: ${FACEGUARD_MODEL_PATH:?Set FACEGUARD_MODEL_PATH in the ignored .env file}
+        target: /models/vit3.pth
+        read_only: true
+    env_file:
+      - .env
+    environment:
+      FACEGUARD_MODEL_NAME: vit3
+      FACEGUARD_MODEL_PATH: /models/vit3.pth
+      FACEGUARD_ENABLE_DATABASE: "false"
+      FACEGUARD_ENABLE_DETECTION_REPORT: "false"
+      RAG_API_URL: http://rag-api:8002
+    depends_on:
+      rag-api:
+        condition: service_healthy
+    healthcheck:
+      test:
+        - CMD
+        - python
+        - -c
+        - >-
+          import urllib.request;
+          urllib.request.urlopen('http://127.0.0.1:8001/api/health', timeout=5)
+      interval: 15s
+      timeout: 10s
+      retries: 20
+      start_period: 120s
+    profiles:
+      - evidence
+    restart: unless-stopped
+
+volumes:
+  faceguard_rag_pgdata:
+  faceguard_hf_cache:

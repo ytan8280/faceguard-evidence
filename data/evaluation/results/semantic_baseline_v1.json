@@ -1,0 +1,734 @@
+{
+  "question_set_id": "faceguard-retrieval-v1",
+  "question_set_sha256": "AFCCB3E4F06CA53BA704592549AC478E1437159CB030BE1853B65753EC87FA2F",
+  "corpus_sha256": "842CBBEFA28D2B8389FF2694420F771A12DFAEBF9F9DDFA5A214BF258F596CEB",
+  "corpus_revision_id": 2,
+  "embedding_model_id": 1,
+  "retriever_version": "pgvector-exact-cosine-v1",
+  "k_values": [
+    1,
+    3,
+    5
+  ],
+  "metrics": {
+    "mean_reciprocal_rank": 0.8472222222222222,
+    "mean_recall_at_k": {
+      "1": 0.625,
+      "3": 0.9166666666666666,
+      "5": 0.9583333333333334
+    },
+    "zero_result_questions": 0,
+    "total_query_tokens": 177,
+    "total_query_cost": "0.000004425",
+    "mean_query_embedding_latency_ms": 745.7824257501974,
+    "median_query_embedding_latency_ms": 727.4905824997404,
+    "mean_database_latency_ms": 11.415920749792955,
+    "median_database_latency_ms": 11.715611999534303
+  },
+  "questions": [
+    {
+      "question_id": "FG-RET-001",
+      "question": "What decision threshold is recorded for the FaceGuard detector, and has a canonical threshold been selected?",
+      "relevant_chunk_ids": [
+        "FG-DOC-001:0007:C1010E17492A"
+      ],
+      "first_relevant_rank": 1,
+      "reciprocal_rank": 1.0,
+      "recall_at_k": {
+        "1": 1.0,
+        "3": 1.0,
+        "5": 1.0
+      },
+      "query_input_sha256": "39E63AF243315D24B1D88E892A33CF5EB5EF07506EA54010742A6D91CF769231",
+      "query_vector_sha256": "F1716769E7EA863A9265A709DB71F1B29E2E0923AD9AF6415B677A46D584B31A",
+      "query_prompt_tokens": 19,
+      "query_embedding_latency_ms": 677.056361000723,
+      "query_cost": "4.75E-7",
+      "database_latency_ms": 11.556833000213373,
+      "retrieved": [
+        {
+          "rank": 1,
+          "chunk_id": "FG-DOC-001:0007:C1010E17492A",
+          "source_id": "FG-DOC-001",
+          "score": 0.7138905029518238,
+          "cosine_distance": 0.28610949704817623
+        },
+        {
+          "rank": 2,
+          "chunk_id": "FG-DOC-001:0013:38A34C25BCAD",
+          "source_id": "FG-DOC-001",
+          "score": 0.5929292768752594,
+          "cosine_distance": 0.4070707231247406
+        },
+        {
+          "rank": 3,
+          "chunk_id": "FG-DOC-002:0017:6FA3B2A54C12",
+          "source_id": "FG-DOC-002",
+          "score": 0.5839330123475653,
+          "cosine_distance": 0.41606698765243466
+        },
+        {
+          "rank": 4,
+          "chunk_id": "FG-DOC-002:0019:842FCBD25129",
+          "source_id": "FG-DOC-002",
+          "score": 0.5678449316638744,
+          "cosine_distance": 0.4321550683361256
+        },
+        {
+          "rank": 5,
+          "chunk_id": "FG-DOC-001:0004:4F47CFCD1552",
+          "source_id": "FG-DOC-001",
+          "score": 0.550195750177214,
+          "cosine_distance": 0.449804249822786
+        }
+      ]
+    },
+    {
+      "question_id": "FG-RET-002",
+      "question": "How is an uploaded image preprocessed before the vit3 detector runs?",
+      "relevant_chunk_ids": [
+        "FG-DOC-001:0006:6AEBD9307939"
+      ],
+      "first_relevant_rank": 1,
+      "reciprocal_rank": 1.0,
+      "recall_at_k": {
+        "1": 1.0,
+        "3": 1.0,
+        "5": 1.0
+      },
+      "query_input_sha256": "D25CFFD8387F3CB93631A3D010D91EA115EBEBA2C60CD63FA8DFFA021FAD8DC2",
+      "query_vector_sha256": "A724E1DF087CE06411820F0B811D6339E55AA44932857D555C3B2015D3F2820C",
+      "query_prompt_tokens": 14,
+      "query_embedding_latency_ms": 705.0344810013485,
+      "query_cost": "3.5E-7",
+      "database_latency_ms": 9.422965998965083,
+      "retrieved": [
+        {
+          "rank": 1,
+          "chunk_id": "FG-DOC-001:0006:6AEBD9307939",
+          "source_id": "FG-DOC-001",
+          "score": 0.5384172710677368,
+          "cosine_distance": 0.46158272893226315
+        },
+        {
+          "rank": 2,
+          "chunk_id": "FG-DOC-002:0027:DDD0E656228C",
+          "source_id": "FG-DOC-002",
+          "score": 0.5197867325172867,
+          "cosine_distance": 0.4802132674827133
+        },
+        {
+          "rank": 3,
+          "chunk_id": "FG-DOC-002:0019:842FCBD25129",
+          "source_id": "FG-DOC-002",
+          "score": 0.5177844998178978,
+          "cosine_distance": 0.48221550018210224
+        },
+        {
+          "rank": 4,
+          "chunk_id": "FG-DOC-001:0004:4F47CFCD1552",
+          "source_id": "FG-DOC-001",
+          "score": 0.5074657112093903,
+          "cosine_distance": 0.4925342887906097
+        },
+        {
+          "rank": 5,
+          "chunk_id": "FG-DOC-002:0029:029A0DD74044",
+          "source_id": "FG-DOC-002",
+          "score": 0.48084957306327314,
+          "cosine_distance": 0.5191504269367269
+        }
+      ]
+    },
+    {
+      "question_id": "FG-RET-003",
+      "question": "What did the controlled still-image inference experiment prove, and what could it not prove?",
+      "relevant_chunk_ids": [
+        "FG-DOC-002:0032:84B6F92F8C91",
+        "FG-DOC-002:0033:038A260580ED"
+      ],
+      "first_relevant_rank": 1,
+      "reciprocal_rank": 1.0,
+      "recall_at_k": {
+        "1": 0.5,
+        "3": 1.0,
+        "5": 1.0
+      },
+      "query_input_sha256": "2738D55C1BF267E9BA040F06FFD3A7B535868F710DCDA1E10D1A1F37249DD4C8",
+      "query_vector_sha256": "DD57952AB89AC6794EDD25E91518B75D7DC8DB9961BF7DA089C02EEFA72546AD",
+      "query_prompt_tokens": 17,
+      "query_embedding_latency_ms": 1065.310458001477,
+      "query_cost": "4.25E-7",
+      "database_latency_ms": 12.169662999440334,
+      "retrieved": [
+        {
+          "rank": 1,
+          "chunk_id": "FG-DOC-002:0033:038A260580ED",
+          "source_id": "FG-DOC-002",
+          "score": 0.5802611531758601,
+          "cosine_distance": 0.41973884682413987
+        },
+        {
+          "rank": 2,
+          "chunk_id": "FG-DOC-002:0032:84B6F92F8C91",
+          "source_id": "FG-DOC-002",
+          "score": 0.5237635489602182,
+          "cosine_distance": 0.47623645103978185
+        },
+        {
+          "rank": 3,
+          "chunk_id": "FG-DOC-002:0027:DDD0E656228C",
+          "source_id": "FG-DOC-002",
+          "score": 0.5127005093110644,
+          "cosine_distance": 0.48729949068893563
+        },
+        {
+          "rank": 4,
+          "chunk_id": "FG-DOC-002:0019:842FCBD25129",
+          "source_id": "FG-DOC-002",
+          "score": 0.4872481110160495,
+          "cosine_distance": 0.5127518889839505
+        },
+        {
+          "rank": 5,
+          "chunk_id": "FG-DOC-002:0031:2327CE814BAC",
+          "source_id": "FG-DOC-002",
+          "score": 0.4814433845060526,
+          "cosine_distance": 0.5185566154939474
+        }
+      ]
+    },
+    {
+      "question_id": "FG-RET-004",
+      "question": "Why did PostgreSQL reject the first generated full-text column design using ARRAY_TO_STRING?",
+      "relevant_chunk_ids": [
+        "FG-DOC-002:0055:B97BF57FFB48"
+      ],
+      "first_relevant_rank": 1,
+      "reciprocal_rank": 1.0,
+      "recall_at_k": {
+        "1": 1.0,
+        "3": 1.0,
+        "5": 1.0
+      },
+      "query_input_sha256": "D3883867EDA5B2E92CE12A883546C9FD4218386CE99F7754EAA7124595FB26DC",
+      "query_vector_sha256": "FAFD27B2569F8F05375FB12BB01941B6D64EFE8679344AE8D1AD70E41E0CDEC7",
+      "query_prompt_tokens": 16,
+      "query_embedding_latency_ms": 697.5469789995259,
+      "query_cost": "4E-7",
+      "database_latency_ms": 13.058989999990445,
+      "retrieved": [
+        {
+          "rank": 1,
+          "chunk_id": "FG-DOC-002:0055:B97BF57FFB48",
+          "source_id": "FG-DOC-002",
+          "score": 0.5262153006859684,
+          "cosine_distance": 0.47378469931403155
+        },
+        {
+          "rank": 2,
+          "chunk_id": "FG-DOC-002:0056:DCE4B763C6A9",
+          "source_id": "FG-DOC-002",
+          "score": 0.4856874685777147,
+          "cosine_distance": 0.5143125314222853
+        },
+        {
+          "rank": 3,
+          "chunk_id": "FG-DOC-002:0054:CE34889DCCC9",
+          "source_id": "FG-DOC-002",
+          "score": 0.47820634379139093,
+          "cosine_distance": 0.5217936562086091
+        },
+        {
+          "rank": 4,
+          "chunk_id": "FG-DOC-002:0053:2E4B3AEE856C",
+          "source_id": "FG-DOC-002",
+          "score": 0.460333261592228,
+          "cosine_distance": 0.539666738407772
+        },
+        {
+          "rank": 5,
+          "chunk_id": "FG-DOC-002:0050:52A395BF9BC6",
+          "source_id": "FG-DOC-002",
+          "score": 0.45638410321110023,
+          "cosine_distance": 0.5436158967888998
+        }
+      ]
+    },
+    {
+      "question_id": "FG-RET-005",
+      "question": "How is Tan Yan Yi's personal FaceGuard Evidence work separated from the original MCS24 team project?",
+      "relevant_chunk_ids": [
+        "FG-DOC-003:0001:F321DD9A0B93",
+        "FG-DOC-003:0002:A780CC7455DF"
+      ],
+      "first_relevant_rank": 1,
+      "reciprocal_rank": 1.0,
+      "recall_at_k": {
+        "1": 0.5,
+        "3": 0.5,
+        "5": 1.0
+      },
+      "query_input_sha256": "C503B4BF8270FD2B30464ACD0F2C674DBB77BB1D14D372B1D2D25B484B9A5366",
+      "query_vector_sha256": "8CDB39A8D096E2565AD955E212FBE77307409B8F4F221CBC55F2E79E9F14004C",
+      "query_prompt_tokens": 20,
+      "query_embedding_latency_ms": 907.552336999288,
+      "query_cost": "5E-7",
+      "database_latency_ms": 11.413903999709873,
+      "retrieved": [
+        {
+          "rank": 1,
+          "chunk_id": "FG-DOC-003:0001:F321DD9A0B93",
+          "source_id": "FG-DOC-003",
+          "score": 0.6621000597802389,
+          "cosine_distance": 0.3378999402197611
+        },
+        {
+          "rank": 2,
+          "chunk_id": "FG-DOC-001:0003:BDE868BE477E",
+          "source_id": "FG-DOC-001",
+          "score": 0.6319797248185272,
+          "cosine_distance": 0.36802027518147284
+        },
+        {
+          "rank": 3,
+          "chunk_id": "FG-DOC-003:0003:C3FBF0D5BE68",
+          "source_id": "FG-DOC-003",
+          "score": 0.617588607237395,
+          "cosine_distance": 0.38241139276260505
+        },
+        {
+          "rank": 4,
+          "chunk_id": "FG-DOC-003:0002:A780CC7455DF",
+          "source_id": "FG-DOC-003",
+          "score": 0.6094270128508552,
+          "cosine_distance": 0.3905729871491448
+        },
+        {
+          "rank": 5,
+          "chunk_id": "FG-DOC-001:0013:38A34C25BCAD",
+          "source_id": "FG-DOC-001",
+          "score": 0.5309823073359603,
+          "cosine_distance": 0.4690176926640397
+        }
+      ]
+    },
+    {
+      "question_id": "FG-RET-006",
+      "question": "What were Tan Yan Yi's reported contributions to the original FaceGuard project?",
+      "relevant_chunk_ids": [
+        "FG-DOC-003:0003:C3FBF0D5BE68"
+      ],
+      "first_relevant_rank": 1,
+      "reciprocal_rank": 1.0,
+      "recall_at_k": {
+        "1": 1.0,
+        "3": 1.0,
+        "5": 1.0
+      },
+      "query_input_sha256": "3AF1FF83E1A0D6A60FCF28C2CFF37E50A39808B41C8EE4CB8E1567C0C9B2569A",
+      "query_vector_sha256": "18F9012F18F475BBF848E09A5B986124A1565390AE821FE64C9488A420E76F89",
+      "query_prompt_tokens": 15,
+      "query_embedding_latency_ms": 763.367259000006,
+      "query_cost": "3.75E-7",
+      "database_latency_ms": 14.354269000250497,
+      "retrieved": [
+        {
+          "rank": 1,
+          "chunk_id": "FG-DOC-003:0003:C3FBF0D5BE68",
+          "source_id": "FG-DOC-003",
+          "score": 0.7738288070314642,
+          "cosine_distance": 0.22617119296853583
+        },
+        {
+          "rank": 2,
+          "chunk_id": "FG-DOC-001:0003:BDE868BE477E",
+          "source_id": "FG-DOC-001",
+          "score": 0.651397983758542,
+          "cosine_distance": 0.34860201624145803
+        },
+        {
+          "rank": 3,
+          "chunk_id": "FG-DOC-003:0001:F321DD9A0B93",
+          "source_id": "FG-DOC-003",
+          "score": 0.6503764930924226,
+          "cosine_distance": 0.3496235069075774
+        },
+        {
+          "rank": 4,
+          "chunk_id": "FG-DOC-003:0002:A780CC7455DF",
+          "source_id": "FG-DOC-003",
+          "score": 0.6451817833756748,
+          "cosine_distance": 0.3548182166243252
+        },
+        {
+          "rank": 5,
+          "chunk_id": "FG-DOC-002:0005:21DB78365DA2",
+          "source_id": "FG-DOC-002",
+          "score": 0.5101829430232067,
+          "cosine_distance": 0.48981705697679334
+        }
+      ]
+    },
+    {
+      "question_id": "FG-RET-007",
+      "question": "Can provenance information prove that the content of an image is true or factual?",
+      "relevant_chunk_ids": [
+        "EXT-GUIDE-001:0024:D80C02EF84A8"
+      ],
+      "first_relevant_rank": 1,
+      "reciprocal_rank": 1.0,
+      "recall_at_k": {
+        "1": 1.0,
+        "3": 1.0,
+        "5": 1.0
+      },
+      "query_input_sha256": "F2DAE007302C959D4AFEE170271905B4934C50A053E3951621358F813EE8B13F",
+      "query_vector_sha256": "E23B78E5619A7AE4D0DF672457192C0888D24F630A9386C79A4518290F49D45D",
+      "query_prompt_tokens": 16,
+      "query_embedding_latency_ms": 731.4482269994187,
+      "query_cost": "4E-7",
+      "database_latency_ms": 12.969780000275932,
+      "retrieved": [
+        {
+          "rank": 1,
+          "chunk_id": "EXT-GUIDE-001:0024:D80C02EF84A8",
+          "source_id": "EXT-GUIDE-001",
+          "score": 0.7236637440027005,
+          "cosine_distance": 0.2763362559972995
+        },
+        {
+          "rank": 2,
+          "chunk_id": "EXT-REPORT-001:0087:9B7FB0C38CAE",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.616222777452119,
+          "cosine_distance": 0.38377722254788105
+        },
+        {
+          "rank": 3,
+          "chunk_id": "EXT-REPORT-001:0016:2BE73D3C11B3",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.6157780011991771,
+          "cosine_distance": 0.38422199880082286
+        },
+        {
+          "rank": 4,
+          "chunk_id": "EXT-REPORT-001:0037:0D2978BB0902",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.6116291446091793,
+          "cosine_distance": 0.3883708553908207
+        },
+        {
+          "rank": 5,
+          "chunk_id": "EXT-STD-001:0002:9937B2E14462",
+          "source_id": "EXT-STD-001",
+          "score": 0.6080128302835084,
+          "cosine_distance": 0.3919871697164916
+        }
+      ]
+    },
+    {
+      "question_id": "FG-RET-008",
+      "question": "Should media without Content Credentials automatically be distrusted?",
+      "relevant_chunk_ids": [
+        "EXT-GUIDE-001:0020:16AB3B7CE802"
+      ],
+      "first_relevant_rank": 1,
+      "reciprocal_rank": 1.0,
+      "recall_at_k": {
+        "1": 1.0,
+        "3": 1.0,
+        "5": 1.0
+      },
+      "query_input_sha256": "BA0DD9FD43E0F08B0E265CA825C947CCF5E1C1D5BEF1A8FA377722EE3B5B463D",
+      "query_vector_sha256": "F3E0EF1ADC53069941D6D44B06B453C95361C29F3A501A12DA96A1B73205EE24",
+      "query_prompt_tokens": 10,
+      "query_embedding_latency_ms": 808.6977279999701,
+      "query_cost": "2.5E-7",
+      "database_latency_ms": 11.264610000580433,
+      "retrieved": [
+        {
+          "rank": 1,
+          "chunk_id": "EXT-GUIDE-001:0020:16AB3B7CE802",
+          "source_id": "EXT-GUIDE-001",
+          "score": 0.7074324115758012,
+          "cosine_distance": 0.29256758842419883
+        },
+        {
+          "rank": 2,
+          "chunk_id": "EXT-GUIDE-001:0013:5149C3B0AA4E",
+          "source_id": "EXT-GUIDE-001",
+          "score": 0.5990860121563121,
+          "cosine_distance": 0.4009139878436879
+        },
+        {
+          "rank": 3,
+          "chunk_id": "EXT-GUIDE-001:0009:12202258D0BC",
+          "source_id": "EXT-GUIDE-001",
+          "score": 0.583676560220709,
+          "cosine_distance": 0.416323439779291
+        },
+        {
+          "rank": 4,
+          "chunk_id": "EXT-GUIDE-001:0019:7506ECE057F5",
+          "source_id": "EXT-GUIDE-001",
+          "score": 0.5601479672511985,
+          "cosine_distance": 0.43985203274880147
+        },
+        {
+          "rank": 5,
+          "chunk_id": "EXT-STD-001:0002:9937B2E14462",
+          "source_id": "EXT-STD-001",
+          "score": 0.5498370208214493,
+          "cosine_distance": 0.45016297917855075
+        }
+      ]
+    },
+    {
+      "question_id": "FG-RET-009",
+      "question": "Which detector metric measures true positive rate while limiting false positives to a fixed rate?",
+      "relevant_chunk_ids": [
+        "EXT-REPORT-001:0076:23981DA22651"
+      ],
+      "first_relevant_rank": 2,
+      "reciprocal_rank": 0.5,
+      "recall_at_k": {
+        "1": 0.0,
+        "3": 1.0,
+        "5": 1.0
+      },
+      "query_input_sha256": "13B3555244780F907AD5EB254BC41A2EE7B35852CE7FDF82C586926946650F7E",
+      "query_vector_sha256": "5E941DBB53AE99898331EAA6AEB7C7F26B7D076966140355C2C39BFD69C3B806",
+      "query_prompt_tokens": 16,
+      "query_embedding_latency_ms": 740.9667640004045,
+      "query_cost": "4E-7",
+      "database_latency_ms": 7.706675000008545,
+      "retrieved": [
+        {
+          "rank": 1,
+          "chunk_id": "EXT-REPORT-001:0134:256D1F186B6F",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.6193128454293493,
+          "cosine_distance": 0.3806871545706507
+        },
+        {
+          "rank": 2,
+          "chunk_id": "EXT-REPORT-001:0076:23981DA22651",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.5484997914479506,
+          "cosine_distance": 0.4515002085520494
+        },
+        {
+          "rank": 3,
+          "chunk_id": "EXT-REPORT-001:0135:8330787A328B",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.472595134929238,
+          "cosine_distance": 0.527404865070762
+        },
+        {
+          "rank": 4,
+          "chunk_id": "EXT-REPORT-001:0133:DD099791EE9F",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.4631261752565774,
+          "cosine_distance": 0.5368738247434226
+        },
+        {
+          "rank": 5,
+          "chunk_id": "EXT-REPORT-001:0061:84610738F95B",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.45020385368143945,
+          "cosine_distance": 0.5497961463185606
+        }
+      ]
+    },
+    {
+      "question_id": "FG-RET-010",
+      "question": "What tradeoff exists between watermark robustness and watermark capacity?",
+      "relevant_chunk_ids": [
+        "EXT-REPORT-001:0027:786D1CEA953F",
+        "EXT-REPORT-001:0028:D8EDCB5281EB"
+      ],
+      "first_relevant_rank": 1,
+      "reciprocal_rank": 1.0,
+      "recall_at_k": {
+        "1": 0.5,
+        "3": 0.5,
+        "5": 0.5
+      },
+      "query_input_sha256": "F1F2CB33EF184CA16BF6A2FD48E4421D6D713F72992760C362B8F72F7573541E",
+      "query_vector_sha256": "AAC5AB4DFAD324A7C4B20AA9E187BD22BAEEB80B8BC3A3ECD6CF6C65C2F8BC7A",
+      "query_prompt_tokens": 12,
+      "query_embedding_latency_ms": 552.8345050006465,
+      "query_cost": "3E-7",
+      "database_latency_ms": 11.874390998855233,
+      "retrieved": [
+        {
+          "rank": 1,
+          "chunk_id": "EXT-REPORT-001:0028:D8EDCB5281EB",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.6999331175941972,
+          "cosine_distance": 0.3000668824058028
+        },
+        {
+          "rank": 2,
+          "chunk_id": "EXT-REPORT-001:0034:BBE9E3F01AB4",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.5737848711335045,
+          "cosine_distance": 0.4262151288664955
+        },
+        {
+          "rank": 3,
+          "chunk_id": "EXT-REPORT-001:0025:AF1C9A9AEFCE",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.5661077886737245,
+          "cosine_distance": 0.43389221132627553
+        },
+        {
+          "rank": 4,
+          "chunk_id": "EXT-REPORT-001:0019:3353E40AB236",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.5614045207737203,
+          "cosine_distance": 0.4385954792262797
+        },
+        {
+          "rank": 5,
+          "chunk_id": "EXT-REPORT-001:0073:75140C71191A",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.5554317090559601,
+          "cosine_distance": 0.44456829094403993
+        }
+      ]
+    },
+    {
+      "question_id": "FG-RET-011",
+      "question": "How are assertions, claims and a C2PA Manifest related?",
+      "relevant_chunk_ids": [
+        "EXT-STD-001:0005:13F20BB283A4"
+      ],
+      "first_relevant_rank": 3,
+      "reciprocal_rank": 0.3333333333333333,
+      "recall_at_k": {
+        "1": 0.0,
+        "3": 1.0,
+        "5": 1.0
+      },
+      "query_input_sha256": "4E40F88035BE1CF1A7CB0C8F612054118C5878620394F8EBFCCE9345CF4335EB",
+      "query_vector_sha256": "07E14CAA04223AA0E09DE8A390507205A2D7B6C55D28636EF624C0FE22E56990",
+      "query_prompt_tokens": 13,
+      "query_embedding_latency_ms": 576.041071999498,
+      "query_cost": "3.25E-7",
+      "database_latency_ms": 13.969313999041333,
+      "retrieved": [
+        {
+          "rank": 1,
+          "chunk_id": "EXT-STD-001:0143:2F1A7D3D6493",
+          "source_id": "EXT-STD-001",
+          "score": 0.7234314148241304,
+          "cosine_distance": 0.2765685851758696
+        },
+        {
+          "rank": 2,
+          "chunk_id": "EXT-STD-001:0026:B60DF6F81E79",
+          "source_id": "EXT-STD-001",
+          "score": 0.7160310936218354,
+          "cosine_distance": 0.28396890637816463
+        },
+        {
+          "rank": 3,
+          "chunk_id": "EXT-STD-001:0005:13F20BB283A4",
+          "source_id": "EXT-STD-001",
+          "score": 0.7130103094035588,
+          "cosine_distance": 0.2869896905964412
+        },
+        {
+          "rank": 4,
+          "chunk_id": "EXT-STD-001:0072:35DC03DEC196",
+          "source_id": "EXT-STD-001",
+          "score": 0.6961961666035174,
+          "cosine_distance": 0.30380383339648265
+        },
+        {
+          "rank": 5,
+          "chunk_id": "EXT-STD-001:0227:9036E613D3D7",
+          "source_id": "EXT-STD-001",
+          "score": 0.6808229060105259,
+          "cosine_distance": 0.31917709398947414
+        }
+      ]
+    },
+    {
+      "question_id": "FG-RET-012",
+      "question": "What is a C2PA hard binding?",
+      "relevant_chunk_ids": [
+        "EXT-STD-001:0034:888C1A64966A"
+      ],
+      "first_relevant_rank": 3,
+      "reciprocal_rank": 0.3333333333333333,
+      "recall_at_k": {
+        "1": 0.0,
+        "3": 1.0,
+        "5": 1.0
+      },
+      "query_input_sha256": "F5E4923E74AF6EF037DACDA117531706C3337CF81ECEE62912E9D0751BA28453",
+      "query_vector_sha256": "0D779533B8762CB86E9B6C078D15BDDAF1D3BC86BA6989A53178CAED15DA5737",
+      "query_prompt_tokens": 9,
+      "query_embedding_latency_ms": 723.5329380000621,
+      "query_cost": "2.25E-7",
+      "database_latency_ms": 7.229654000184382,
+      "retrieved": [
+        {
+          "rank": 1,
+          "chunk_id": "EXT-STD-001:0098:47CA90221675",
+          "source_id": "EXT-STD-001",
+          "score": 0.6301205706006198,
+          "cosine_distance": 0.36987942939938023
+        },
+        {
+          "rank": 2,
+          "chunk_id": "EXT-STD-001:0091:0F8E758F1CB6",
+          "source_id": "EXT-STD-001",
+          "score": 0.6264519009142904,
+          "cosine_distance": 0.37354809908570963
+        },
+        {
+          "rank": 3,
+          "chunk_id": "EXT-STD-001:0034:888C1A64966A",
+          "source_id": "EXT-STD-001",
+          "score": 0.6168058354223448,
+          "cosine_distance": 0.3831941645776552
+        },
+        {
+          "rank": 4,
+          "chunk_id": "EXT-STD-001:0033:BDE69FA4856F",
+          "source_id": "EXT-STD-001",
+          "score": 0.6124253449673291,
+          "cosine_distance": 0.38757465503267086
+        },
+        {
+          "rank": 5,
+          "chunk_id": "EXT-STD-001:0396:87AF227E816D",
+          "source_id": "EXT-STD-001",
+          "score": 0.6036794263728837,
+          "cosine_distance": 0.39632057362711626
+        }
+      ]
+    }
+  ],
+  "embedding_configuration": {
+    "deployment_name": "faceguard-embedding-3-small",
+    "model_name": "text-embedding-3-small",
+    "model_version": "1",
+    "dimensions": 1536,
+    "region": "Japan East",
+    "document_input_version": "source-heading-content-v1",
+    "query_input_version": "raw-question-v1",
+    "ranking": "exact cosine; index and bitmap scans disabled"
+  },
+  "pricing": {
+    "price_per_million_input_tokens": "0.025",
+    "currency": "USD",
+    "checked_at": "2026-10-11"
+  },
+  "application_revision": "b7960a48fce23aeece0dbdff74cdea9d2115a9ce-dirty",
+  "measured_at": "2026-10-11T06:53:12.341358+00:00"
+}

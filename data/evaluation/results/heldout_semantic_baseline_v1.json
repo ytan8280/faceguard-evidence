@@ -1,0 +1,735 @@
+{
+  "question_set_id": "faceguard-retrieval-heldout-v1",
+  "question_set_sha256": "1E106EFC4F172A1C7D6E8470EACF5C043EE892461BAAE58034226208B1A41B1D",
+  "corpus_sha256": "842CBBEFA28D2B8389FF2694420F771A12DFAEBF9F9DDFA5A214BF258F596CEB",
+  "corpus_revision_id": 2,
+  "embedding_model_id": 1,
+  "retriever_version": "pgvector-exact-cosine-v1",
+  "source_artifact_sha256": "A513B1600BF924472D8176FD88274F8381C7CFBC14D434638CAC871D02D0804F",
+  "k_values": [
+    1,
+    3,
+    5
+  ],
+  "metrics": {
+    "mean_reciprocal_rank": 0.75,
+    "mean_recall_at_k": {
+      "1": 0.5833333333333334,
+      "3": 0.75,
+      "5": 0.75
+    },
+    "zero_result_questions": 0,
+    "total_query_tokens": 217,
+    "total_query_cost": "0.000005425",
+    "mean_query_embedding_latency_ms": 684.8139614166939,
+    "median_query_embedding_latency_ms": 672.3402474981413,
+    "mean_database_latency_ms": 9.91454791619617,
+    "median_database_latency_ms": 10.535957000683993
+  },
+  "questions": [
+    {
+      "question_id": "FG-HOLD-001",
+      "question": "Which conclusions and decisions must the FaceGuard detector not make by itself?",
+      "relevant_chunk_ids": [
+        "FG-DOC-001:0005:857AC7053ACC"
+      ],
+      "first_relevant_rank": 1,
+      "reciprocal_rank": 1.0,
+      "recall_at_k": {
+        "1": 1.0,
+        "3": 1.0,
+        "5": 1.0
+      },
+      "query_input_sha256": "CBAECB6A9963D500808607DA00FE3D8E0BD70821D2C26552F33C41D34E0E87DC",
+      "query_vector_sha256": "6F306FC1FA49788D369C5538FC1CF704DC8113F612B2191DF4B0BB53C3D05E3C",
+      "query_prompt_tokens": 14,
+      "query_embedding_latency_ms": 856.9550620013615,
+      "query_cost": "3.5E-7",
+      "database_latency_ms": 11.335868999594823,
+      "retrieved": [
+        {
+          "rank": 1,
+          "chunk_id": "FG-DOC-001:0005:857AC7053ACC",
+          "source_id": "FG-DOC-001",
+          "score": 0.5971352016607802,
+          "cosine_distance": 0.40286479833921984
+        },
+        {
+          "rank": 2,
+          "chunk_id": "FG-DOC-001:0004:4F47CFCD1552",
+          "source_id": "FG-DOC-001",
+          "score": 0.5877103894300719,
+          "cosine_distance": 0.4122896105699281
+        },
+        {
+          "rank": 3,
+          "chunk_id": "FG-DOC-002:0019:842FCBD25129",
+          "source_id": "FG-DOC-002",
+          "score": 0.5707446748483029,
+          "cosine_distance": 0.42925532515169706
+        },
+        {
+          "rank": 4,
+          "chunk_id": "FG-DOC-002:0034:C31C5693670E",
+          "source_id": "FG-DOC-002",
+          "score": 0.5585350798099167,
+          "cosine_distance": 0.4414649201900833
+        },
+        {
+          "rank": 5,
+          "chunk_id": "FG-DOC-001:0013:38A34C25BCAD",
+          "source_id": "FG-DOC-001",
+          "score": 0.5565947319464352,
+          "cosine_distance": 0.44340526805356484
+        }
+      ]
+    },
+    {
+      "question_id": "FG-HOLD-002",
+      "question": "Why should the historical FaceGuard evaluation numbers not be treated as independently validated performance?",
+      "relevant_chunk_ids": [
+        "FG-DOC-001:0012:27DD2BFFFC10"
+      ],
+      "first_relevant_rank": 2,
+      "reciprocal_rank": 0.5,
+      "recall_at_k": {
+        "1": 0.0,
+        "3": 1.0,
+        "5": 1.0
+      },
+      "query_input_sha256": "CD47D60DDE35E0A0FD31560DDFE2287036C57753AA657D32821DE1A937C17E7F",
+      "query_vector_sha256": "68173B8852B173D1C56B7C7B2EA6C51F39B858488CC03A6BE34A590010DF1E58",
+      "query_prompt_tokens": 16,
+      "query_embedding_latency_ms": 573.8333499975852,
+      "query_cost": "4E-7",
+      "database_latency_ms": 10.693317999539431,
+      "retrieved": [
+        {
+          "rank": 1,
+          "chunk_id": "FG-DOC-001:0013:38A34C25BCAD",
+          "source_id": "FG-DOC-001",
+          "score": 0.6088766585848207,
+          "cosine_distance": 0.39112334141517935
+        },
+        {
+          "rank": 2,
+          "chunk_id": "FG-DOC-001:0012:27DD2BFFFC10",
+          "source_id": "FG-DOC-001",
+          "score": 0.5997826159211854,
+          "cosine_distance": 0.4002173840788146
+        },
+        {
+          "rank": 3,
+          "chunk_id": "FG-DOC-001:0011:A4E978A8466C",
+          "source_id": "FG-DOC-001",
+          "score": 0.5690821553334202,
+          "cosine_distance": 0.4309178446665798
+        },
+        {
+          "rank": 4,
+          "chunk_id": "FG-DOC-002:0001:2CB5CE850EB2",
+          "source_id": "FG-DOC-002",
+          "score": 0.5681594073098827,
+          "cosine_distance": 0.4318405926901173
+        },
+        {
+          "rank": 5,
+          "chunk_id": "FG-DOC-001:0004:4F47CFCD1552",
+          "source_id": "FG-DOC-001",
+          "score": 0.5453220912949933,
+          "cosine_distance": 0.4546779087050067
+        }
+      ]
+    },
+    {
+      "question_id": "FG-HOLD-003",
+      "question": "What did successful CPU loading of the selected checkpoint establish, and what detector behavior remained untested?",
+      "relevant_chunk_ids": [
+        "FG-DOC-002:0017:6FA3B2A54C12",
+        "FG-DOC-002:0018:549C8C1D9305"
+      ],
+      "first_relevant_rank": 1,
+      "reciprocal_rank": 1.0,
+      "recall_at_k": {
+        "1": 0.5,
+        "3": 0.5,
+        "5": 0.5
+      },
+      "query_input_sha256": "5EFD39AC36C135FA4F2A5DEF98EFEF7E95674565C8189A96872788CF4C19EC3B",
+      "query_vector_sha256": "2E1726F74F6298A0A6BC23ED7F7A6A1370147F866E55310DF7BAA4726A16523E",
+      "query_prompt_tokens": 19,
+      "query_embedding_latency_ms": 721.6424010002811,
+      "query_cost": "4.75E-7",
+      "database_latency_ms": 11.00872799725039,
+      "retrieved": [
+        {
+          "rank": 1,
+          "chunk_id": "FG-DOC-002:0018:549C8C1D9305",
+          "source_id": "FG-DOC-002",
+          "score": 0.6106857688021599,
+          "cosine_distance": 0.38931423119784014
+        },
+        {
+          "rank": 2,
+          "chunk_id": "FG-DOC-002:0012:D98824F3E7A4",
+          "source_id": "FG-DOC-002",
+          "score": 0.5903202078201198,
+          "cosine_distance": 0.40967979217988015
+        },
+        {
+          "rank": 3,
+          "chunk_id": "FG-DOC-002:0003:E298715D3E42",
+          "source_id": "FG-DOC-002",
+          "score": 0.5539780991961667,
+          "cosine_distance": 0.4460219008038333
+        },
+        {
+          "rank": 4,
+          "chunk_id": "FG-DOC-002:0016:5A7A14116CEE",
+          "source_id": "FG-DOC-002",
+          "score": 0.5505748422240528,
+          "cosine_distance": 0.44942515777594716
+        },
+        {
+          "rank": 5,
+          "chunk_id": "FG-DOC-002:0019:842FCBD25129",
+          "source_id": "FG-DOC-002",
+          "score": 0.534198292662333,
+          "cosine_distance": 0.465801707337667
+        }
+      ]
+    },
+    {
+      "question_id": "FG-HOLD-004",
+      "question": "Why was the faster request observed after adding the detector adapter not claimed as a performance improvement?",
+      "relevant_chunk_ids": [
+        "FG-DOC-002:0039:2BC9F89A99D3"
+      ],
+      "first_relevant_rank": 1,
+      "reciprocal_rank": 1.0,
+      "recall_at_k": {
+        "1": 1.0,
+        "3": 1.0,
+        "5": 1.0
+      },
+      "query_input_sha256": "EC0772BFE72E096F98E2E9A912A650422F2975B320D12AEE3107E7D54D5A5339",
+      "query_vector_sha256": "DE355005447A5DDBE20BB9A3DAA49CBE287AECD8EB2CB453B45816AE2564CE45",
+      "query_prompt_tokens": 18,
+      "query_embedding_latency_ms": 664.9370819977776,
+      "query_cost": "4.5E-7",
+      "database_latency_ms": 10.994914999173488,
+      "retrieved": [
+        {
+          "rank": 1,
+          "chunk_id": "FG-DOC-002:0039:2BC9F89A99D3",
+          "source_id": "FG-DOC-002",
+          "score": 0.656394196886066,
+          "cosine_distance": 0.34360580311393396
+        },
+        {
+          "rank": 2,
+          "chunk_id": "FG-DOC-002:0035:2FDBAB990B83",
+          "source_id": "FG-DOC-002",
+          "score": 0.5634991985372622,
+          "cosine_distance": 0.43650080146273784
+        },
+        {
+          "rank": 3,
+          "chunk_id": "FG-DOC-002:0038:F0053477C6FD",
+          "source_id": "FG-DOC-002",
+          "score": 0.5130480942397596,
+          "cosine_distance": 0.4869519057602404
+        },
+        {
+          "rank": 4,
+          "chunk_id": "FG-DOC-002:0040:433B3A0CCF28",
+          "source_id": "FG-DOC-002",
+          "score": 0.49926381685718935,
+          "cosine_distance": 0.5007361831428107
+        },
+        {
+          "rank": 5,
+          "chunk_id": "FG-DOC-002:0037:8FB12D920C07",
+          "source_id": "FG-DOC-002",
+          "score": 0.49477921831060945,
+          "cosine_distance": 0.5052207816893906
+        }
+      ]
+    },
+    {
+      "question_id": "FG-HOLD-005",
+      "question": "What identifies the exact FaceGuard detector checkpoint, and why is it kept outside Git?",
+      "relevant_chunk_ids": [
+        "FG-DOC-003:0004:E565DA2639BA"
+      ],
+      "first_relevant_rank": 2,
+      "reciprocal_rank": 0.5,
+      "recall_at_k": {
+        "1": 0.0,
+        "3": 1.0,
+        "5": 1.0
+      },
+      "query_input_sha256": "7CAB3207960FA4DB4B7595BB6E696B55397F88D8AA0ECA7513E5113071D5C6C4",
+      "query_vector_sha256": "E92753DA71B7995E14A3788BABACC9B3D8BB2633ACD100F33E864BC210AA8F67",
+      "query_prompt_tokens": 17,
+      "query_embedding_latency_ms": 590.4942710003525,
+      "query_cost": "4.25E-7",
+      "database_latency_ms": 7.081204999849433,
+      "retrieved": [
+        {
+          "rank": 1,
+          "chunk_id": "FG-DOC-002:0013:FB8E5B0BE5D6",
+          "source_id": "FG-DOC-002",
+          "score": 0.6692285324357446,
+          "cosine_distance": 0.33077146756425535
+        },
+        {
+          "rank": 2,
+          "chunk_id": "FG-DOC-003:0004:E565DA2639BA",
+          "source_id": "FG-DOC-003",
+          "score": 0.6669064426050378,
+          "cosine_distance": 0.33309355739496216
+        },
+        {
+          "rank": 3,
+          "chunk_id": "FG-DOC-001:0002:FF3C5D865D6C",
+          "source_id": "FG-DOC-001",
+          "score": 0.6640295245571813,
+          "cosine_distance": 0.33597047544281866
+        },
+        {
+          "rank": 4,
+          "chunk_id": "FG-DOC-002:0012:D98824F3E7A4",
+          "source_id": "FG-DOC-002",
+          "score": 0.6203149807587817,
+          "cosine_distance": 0.37968501924121834
+        },
+        {
+          "rank": 5,
+          "chunk_id": "FG-DOC-001:0013:38A34C25BCAD",
+          "source_id": "FG-DOC-001",
+          "score": 0.6065416024407075,
+          "cosine_distance": 0.39345839755929246
+        }
+      ]
+    },
+    {
+      "question_id": "FG-HOLD-006",
+      "question": "How does FaceGuard Evidence treat the rights and licences of third-party datasets, weights and libraries?",
+      "relevant_chunk_ids": [
+        "FG-DOC-003:0005:2A9E9B20BA57"
+      ],
+      "first_relevant_rank": 1,
+      "reciprocal_rank": 1.0,
+      "recall_at_k": {
+        "1": 1.0,
+        "3": 1.0,
+        "5": 1.0
+      },
+      "query_input_sha256": "E3892C817947A7BD69C6E3A8BC7227010176E7EE572F764E2B03FEFB46FCE829",
+      "query_vector_sha256": "86F5C2C0A138070E802C74404C14B8934FE6CFFC7DC2ABB17809906F4E4B6678",
+      "query_prompt_tokens": 19,
+      "query_embedding_latency_ms": 553.6054220028745,
+      "query_cost": "4.75E-7",
+      "database_latency_ms": 11.49861199883162,
+      "retrieved": [
+        {
+          "rank": 1,
+          "chunk_id": "FG-DOC-003:0005:2A9E9B20BA57",
+          "source_id": "FG-DOC-003",
+          "score": 0.7862664988282464,
+          "cosine_distance": 0.2137335011717536
+        },
+        {
+          "rank": 2,
+          "chunk_id": "FG-DOC-001:0008:96B4D0A6C5EA",
+          "source_id": "FG-DOC-001",
+          "score": 0.613464481555727,
+          "cosine_distance": 0.38653551844427303
+        },
+        {
+          "rank": 3,
+          "chunk_id": "FG-DOC-001:0013:38A34C25BCAD",
+          "source_id": "FG-DOC-001",
+          "score": 0.5895229560538267,
+          "cosine_distance": 0.41047704394617335
+        },
+        {
+          "rank": 4,
+          "chunk_id": "FG-DOC-003:0001:F321DD9A0B93",
+          "source_id": "FG-DOC-003",
+          "score": 0.587731474146357,
+          "cosine_distance": 0.41226852585364304
+        },
+        {
+          "rank": 5,
+          "chunk_id": "FG-DOC-003:0002:A780CC7455DF",
+          "source_id": "FG-DOC-003",
+          "score": 0.582643324149576,
+          "cosine_distance": 0.417356675850424
+        }
+      ]
+    },
+    {
+      "question_id": "FG-HOLD-007",
+      "question": "Why can a Content Credential's provenance history be incomplete after an asset is edited?",
+      "relevant_chunk_ids": [
+        "EXT-GUIDE-001:0023:DD49CC13284F"
+      ],
+      "first_relevant_rank": 1,
+      "reciprocal_rank": 1.0,
+      "recall_at_k": {
+        "1": 1.0,
+        "3": 1.0,
+        "5": 1.0
+      },
+      "query_input_sha256": "2577F1C6020AEBCEB0CFD0B15FC0D92A6E505E2F9D8C0894B3C9F52786F49565",
+      "query_vector_sha256": "DF0CAB07D6AE33806BF30F538EE1A7D104F08173A55AB87A2613AF2D73785F5F",
+      "query_prompt_tokens": 17,
+      "query_embedding_latency_ms": 702.2508810005093,
+      "query_cost": "4.25E-7",
+      "database_latency_ms": 10.378596001828555,
+      "retrieved": [
+        {
+          "rank": 1,
+          "chunk_id": "EXT-GUIDE-001:0023:DD49CC13284F",
+          "source_id": "EXT-GUIDE-001",
+          "score": 0.7614726754998886,
+          "cosine_distance": 0.23852732450011138
+        },
+        {
+          "rank": 2,
+          "chunk_id": "EXT-GUIDE-001:0025:197ABB876E29",
+          "source_id": "EXT-GUIDE-001",
+          "score": 0.6564958894617979,
+          "cosine_distance": 0.34350411053820207
+        },
+        {
+          "rank": 3,
+          "chunk_id": "EXT-GUIDE-001:0029:46C27914C1D7",
+          "source_id": "EXT-GUIDE-001",
+          "score": 0.6538887529335117,
+          "cosine_distance": 0.3461112470664883
+        },
+        {
+          "rank": 4,
+          "chunk_id": "EXT-STD-001:0030:8C272A6A1B3D",
+          "source_id": "EXT-STD-001",
+          "score": 0.6506566395975909,
+          "cosine_distance": 0.3493433604024091
+        },
+        {
+          "rank": 5,
+          "chunk_id": "EXT-STD-001:0002:9937B2E14462",
+          "source_id": "EXT-STD-001",
+          "score": 0.6504643939381576,
+          "cosine_distance": 0.3495356060618424
+        }
+      ]
+    },
+    {
+      "question_id": "FG-HOLD-008",
+      "question": "Does the core C2PA specification require a Content Credential to identify the human creator?",
+      "relevant_chunk_ids": [
+        "EXT-GUIDE-001:0026:B91E16C08ADE"
+      ],
+      "first_relevant_rank": 1,
+      "reciprocal_rank": 1.0,
+      "recall_at_k": {
+        "1": 1.0,
+        "3": 1.0,
+        "5": 1.0
+      },
+      "query_input_sha256": "BA16E418BFE05F3804BAAE3DD242695BB3900B442D6C0EED44FDE86A68B5B61C",
+      "query_vector_sha256": "14C4CEE2D090571604C979068AFD60BDE62FB1A83B7C9912BF5F4B3179AF6144",
+      "query_prompt_tokens": 17,
+      "query_embedding_latency_ms": 657.3196680001274,
+      "query_cost": "4.25E-7",
+      "database_latency_ms": 9.525073000986595,
+      "retrieved": [
+        {
+          "rank": 1,
+          "chunk_id": "EXT-GUIDE-001:0026:B91E16C08ADE",
+          "source_id": "EXT-GUIDE-001",
+          "score": 0.7698467762013611,
+          "cosine_distance": 0.2301532237986389
+        },
+        {
+          "rank": 2,
+          "chunk_id": "EXT-GUIDE-001:0027:02DEAC08F2B4",
+          "source_id": "EXT-GUIDE-001",
+          "score": 0.7410572610070246,
+          "cosine_distance": 0.2589427389929754
+        },
+        {
+          "rank": 3,
+          "chunk_id": "EXT-GUIDE-001:0016:E8463597FD1D",
+          "source_id": "EXT-GUIDE-001",
+          "score": 0.6915205934989382,
+          "cosine_distance": 0.30847940650106176
+        },
+        {
+          "rank": 4,
+          "chunk_id": "EXT-GUIDE-001:0005:1F2561C75466",
+          "source_id": "EXT-GUIDE-001",
+          "score": 0.6898550430720943,
+          "cosine_distance": 0.31014495692790567
+        },
+        {
+          "rank": 5,
+          "chunk_id": "EXT-STD-001:0004:15FE805C493D",
+          "source_id": "EXT-STD-001",
+          "score": 0.681896168213481,
+          "cosine_distance": 0.318103831786519
+        }
+      ]
+    },
+    {
+      "question_id": "FG-HOLD-009",
+      "question": "Why does NIST say digital-content transparency techniques should not be treated as comprehensive solutions on their own?",
+      "relevant_chunk_ids": [
+        "EXT-REPORT-001:0010:67CB01722BD3"
+      ],
+      "first_relevant_rank": null,
+      "reciprocal_rank": 0.0,
+      "recall_at_k": {
+        "1": 0.0,
+        "3": 0.0,
+        "5": 0.0
+      },
+      "query_input_sha256": "B476ABF3C89E46887645D3FCB56AFE4958498D7DC5351D3AEEEBF443384FF49E",
+      "query_vector_sha256": "D5FAF97E9347BBE9A46D54AF5BEAB2E8E40C4F680B073CE59883BB277F17C1CF",
+      "query_prompt_tokens": 20,
+      "query_embedding_latency_ms": 679.7434129985049,
+      "query_cost": "5E-7",
+      "database_latency_ms": 8.519824001268717,
+      "retrieved": [
+        {
+          "rank": 1,
+          "chunk_id": "EXT-REPORT-001:0003:B27732DF554D",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.6556877218120729,
+          "cosine_distance": 0.3443122781879271
+        },
+        {
+          "rank": 2,
+          "chunk_id": "EXT-REPORT-001:0093:B16DA9684279",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.6350675037443474,
+          "cosine_distance": 0.3649324962556526
+        },
+        {
+          "rank": 3,
+          "chunk_id": "EXT-REPORT-001:0004:E4218F0FE592",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.6304172286258478,
+          "cosine_distance": 0.3695827713741522
+        },
+        {
+          "rank": 4,
+          "chunk_id": "EXT-REPORT-001:0001:5F2447BCAABC",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.6212741415701033,
+          "cosine_distance": 0.3787258584298967
+        },
+        {
+          "rank": 5,
+          "chunk_id": "EXT-REPORT-001:0002:DFE966CEBAEB",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.6186720314219035,
+          "cosine_distance": 0.3813279685780965
+        }
+      ]
+    },
+    {
+      "question_id": "FG-HOLD-010",
+      "question": "What privacy harms can provenance metadata create, and what kinds of mitigations does NIST identify?",
+      "relevant_chunk_ids": [
+        "EXT-REPORT-001:0043:ACAE91051EE9",
+        "EXT-REPORT-001:0044:8E563C36D74C"
+      ],
+      "first_relevant_rank": 1,
+      "reciprocal_rank": 1.0,
+      "recall_at_k": {
+        "1": 0.5,
+        "3": 0.5,
+        "5": 0.5
+      },
+      "query_input_sha256": "F474CBB9B7C571B65F8946F2C1E275BF224A90CBCA864D685F4B4D94C0B7D529",
+      "query_vector_sha256": "502304EB3BE3210A2CD1D76B6B159B416EE0CF0B57ACCD4BE770C8798FB2DE01",
+      "query_prompt_tokens": 20,
+      "query_embedding_latency_ms": 812.6995589991566,
+      "query_cost": "5E-7",
+      "database_latency_ms": 10.897592997935135,
+      "retrieved": [
+        {
+          "rank": 1,
+          "chunk_id": "EXT-REPORT-001:0043:ACAE91051EE9",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.6020978310874477,
+          "cosine_distance": 0.39790216891255226
+        },
+        {
+          "rank": 2,
+          "chunk_id": "EXT-REPORT-001:0139:E78B6D3BEF2C",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.5813634402448418,
+          "cosine_distance": 0.41863655975515823
+        },
+        {
+          "rank": 3,
+          "chunk_id": "EXT-REPORT-001:0123:781E37352742",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.5709204204246452,
+          "cosine_distance": 0.4290795795753548
+        },
+        {
+          "rank": 4,
+          "chunk_id": "EXT-REPORT-001:0041:B6019DAD8521",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.5680119190168835,
+          "cosine_distance": 0.4319880809831165
+        },
+        {
+          "rank": 5,
+          "chunk_id": "EXT-REPORT-001:0115:31426F4342F9",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.5525099590237997,
+          "cosine_distance": 0.44749004097620027
+        }
+      ]
+    },
+    {
+      "question_id": "FG-HOLD-011",
+      "question": "In C2PA, what is an ingredient and how is its use represented in an asset's provenance?",
+      "relevant_chunk_ids": [
+        "EXT-STD-001:0112:AE6CBC7BF249"
+      ],
+      "first_relevant_rank": null,
+      "reciprocal_rank": 0.0,
+      "recall_at_k": {
+        "1": 0.0,
+        "3": 0.0,
+        "5": 0.0
+      },
+      "query_input_sha256": "FC74CC23E20E8E7B0B837775613038FF8FB37D6AFF560F53B6BEE5F16608DFD5",
+      "query_vector_sha256": "ECFC8B9D8E9BC0BE66D6196FEF85AD5D0D2795E4CF053A6D156716EB3C45631F",
+      "query_prompt_tokens": 22,
+      "query_embedding_latency_ms": 805.6722930014075,
+      "query_cost": "5.5E-7",
+      "database_latency_ms": 7.662923999305349,
+      "retrieved": [
+        {
+          "rank": 1,
+          "chunk_id": "EXT-STD-001:0031:967641493137",
+          "source_id": "EXT-STD-001",
+          "score": 0.7163523915905972,
+          "cosine_distance": 0.28364760840940284
+        },
+        {
+          "rank": 2,
+          "chunk_id": "EXT-GUIDE-001:0029:46C27914C1D7",
+          "source_id": "EXT-GUIDE-001",
+          "score": 0.704756340563796,
+          "cosine_distance": 0.295243659436204
+        },
+        {
+          "rank": 3,
+          "chunk_id": "EXT-GUIDE-001:0028:AF66FA53E897",
+          "source_id": "EXT-GUIDE-001",
+          "score": 0.7025533542546302,
+          "cosine_distance": 0.29744664574536983
+        },
+        {
+          "rank": 4,
+          "chunk_id": "EXT-STD-001:0442:1EBC3B5FB4CB",
+          "source_id": "EXT-STD-001",
+          "score": 0.6986667161842565,
+          "cosine_distance": 0.30133328381574354
+        },
+        {
+          "rank": 5,
+          "chunk_id": "EXT-STD-001:0030:8C272A6A1B3D",
+          "source_id": "EXT-STD-001",
+          "score": 0.6697538429344314,
+          "cosine_distance": 0.3302461570655686
+        }
+      ]
+    },
+    {
+      "question_id": "FG-HOLD-012",
+      "question": "What problem do C2PA soft bindings solve when an asset's underlying bytes have changed?",
+      "relevant_chunk_ids": [
+        "EXT-STD-001:0098:47CA90221675"
+      ],
+      "first_relevant_rank": 1,
+      "reciprocal_rank": 1.0,
+      "recall_at_k": {
+        "1": 1.0,
+        "3": 1.0,
+        "5": 1.0
+      },
+      "query_input_sha256": "E0E05022E9535EF23D8D34981E85D034319998DF134608A1B1F70BE4A7E32D36",
+      "query_vector_sha256": "12495B59DF21F071210BEC86CAA174161F3FC2BB40BF4AA4D4AB885CFD5EA6B4",
+      "query_prompt_tokens": 18,
+      "query_embedding_latency_ms": 598.6141350003891,
+      "query_cost": "4.5E-7",
+      "database_latency_ms": 9.377917998790508,
+      "retrieved": [
+        {
+          "rank": 1,
+          "chunk_id": "EXT-STD-001:0098:47CA90221675",
+          "source_id": "EXT-STD-001",
+          "score": 0.636488900194846,
+          "cosine_distance": 0.36351109980515395
+        },
+        {
+          "rank": 2,
+          "chunk_id": "EXT-STD-001:0092:6EE22A9DB120",
+          "source_id": "EXT-STD-001",
+          "score": 0.6226502037131847,
+          "cosine_distance": 0.3773497962868153
+        },
+        {
+          "rank": 3,
+          "chunk_id": "EXT-STD-001:0091:0F8E758F1CB6",
+          "source_id": "EXT-STD-001",
+          "score": 0.5958110416925094,
+          "cosine_distance": 0.4041889583074906
+        },
+        {
+          "rank": 4,
+          "chunk_id": "EXT-STD-001:0034:888C1A64966A",
+          "source_id": "EXT-STD-001",
+          "score": 0.5892597774485674,
+          "cosine_distance": 0.4107402225514326
+        },
+        {
+          "rank": 5,
+          "chunk_id": "EXT-STD-001:0389:58678E3308F4",
+          "source_id": "EXT-STD-001",
+          "score": 0.5668964568804361,
+          "cosine_distance": 0.4331035431195639
+        }
+      ]
+    }
+  ],
+  "embedding_configuration": {
+    "deployment_name": "faceguard-embedding-3-small",
+    "model_name": "text-embedding-3-small",
+    "model_version": "1",
+    "dimensions": 1536,
+    "region": "Japan East",
+    "document_input_version": "source-heading-content-v1",
+    "query_input_version": "raw-question-v1",
+    "semantic_ranking": "exact cosine; index and bitmap scans disabled"
+  },
+  "pricing": {
+    "price_per_million_input_tokens": "0.025",
+    "currency": "USD",
+    "checked_at": "2026-10-11"
+  },
+  "application_revision": "b7960a48fce23aeece0dbdff74cdea9d2115a9ce-dirty",
+  "measured_at": "2026-10-11T07:45:29.461939+00:00",
+  "derived_at": "2026-10-11T07:46:39.794155+00:00"
+}

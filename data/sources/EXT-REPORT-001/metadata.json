@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "source_id": "EXT-REPORT-001",
+  "title": "Reducing Risks Posed by Synthetic Content: An Overview of Technical Approaches to Digital Content Transparency",
+  "source_category": "government_technical_report",
+  "publisher": "National Institute of Standards and Technology",
+  "authors": [
+    "Bilva Chandra",
+    "Jesse Dunietz",
+    "Kamie Roberts",
+    "Yooyoung Lee",
+    "Peter Fontana",
+    "George Awad"
+  ],
+  "version": "NIST AI 100-4",
+  "published_at": "2024-11-20",
+  "canonical_url": "https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-4.pdf",
+  "retrieved_at": "2026-10-06T16:15:36+00:00",
+  "license": {
+    "name": "NIST Technical Series reuse terms",
+    "url": "https://www.nist.gov/open/copyright-fair-use-and-licensing-statements-srd-data-software-and-technical-series-publications",
+    "rights_basis": "NIST grants worldwide royalty-free reuse rights for employee-authored technical publications with acknowledgment."
+  },
+  "original": {
+    "media_type": "application/pdf",
+    "bytes": 4306208,
+    "sha256": "A387A4977DB70D65CDBC178C8B0CB8AA5DEDB85FA80D6F473C244E2767A4FD54"
+  },
+  "normalized": {
+    "format": "markdown",
+    "bytes": 208086,
+    "lines": 3582,
+    "sha256": "3FDE169446464461B89279CF8019D249EA2FCA7E4AA41F90949F3EC9F3F2915D"
+  },
+  "normalization": {
+    "tool": "tools/capture_sources.py",
+    "tool_version": "1",
+    "dependencies": {
+      "beautifulsoup4": "4.15.0",
+      "markdownify": "1.2.3",
+      "pypdf": "6.19.0"
+    },
+    "steps": [
+      "Extracted text from each PDF page in order with pypdf.",
+      "Inserted HTML comments recording one-based source page numbers.",
+      "Added a Markdown document title from verified source metadata.",
+      "Applied Unicode NFC and deterministic blank-line normalization."
+    ]
+  }
+}

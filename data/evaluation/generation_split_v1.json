@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "split_id": "faceguard-generation-split-v1",
+  "created_at": "2026-10-11",
+  "corpus_sha256": "842CBBEFA28D2B8389FF2694420F771A12DFAEBF9F9DDFA5A214BF258F596CEB",
+  "prompt_version": "faceguard-evidence-prompt-v1",
+  "answer_schema_version": "faceguard-evidence-answer-v1",
+  "policy": {
+    "development": "The first six generation cases were inspected during evaluation-rubric development. They may be used for diagnostics but are not held-out.",
+    "heldout": "The second six cases were frozen after development-rubric review and before generation. After their first measurement, prompt, schema and rubric changes require another independent test set."
+  },
+  "development": {
+    "path": "data/evaluation/generation_cases_v1.json",
+    "evaluation_set_id": "faceguard-generation-v1",
+    "sha256": "B7E2E66146215110E76AC6468675AC7C2FE46FC0A96D58868AE7F64116638A3A",
+    "case_count": 6
+  },
+  "heldout": {
+    "path": "data/evaluation/generation_cases_heldout_v1.json",
+    "evaluation_set_id": "faceguard-generation-heldout-v1",
+    "sha256": "92065459E7D1D564211092539A95F83DECB5629F8C94F5C9CEE16864563EE229",
+    "case_count": 6,
+    "status": "sealed-before-first-measurement"
+  }
+}

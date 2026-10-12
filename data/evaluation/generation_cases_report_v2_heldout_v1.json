@@ -1,0 +1,634 @@
+{
+  "schema_version": 2,
+  "evaluation_set_id": "faceguard-report-v2-heldout-v1",
+  "created_at": "2026-10-12",
+  "corpus_sha256": "842CBBEFA28D2B8389FF2694420F771A12DFAEBF9F9DDFA5A214BF258F596CEB",
+  "prompt_version": "faceguard-evidence-report-prompt-v2",
+  "answer_schema_version": "faceguard-evidence-report-answer-v2",
+  "judgment_method": "Eight synthetic report-v2 held-out cases using exact corpus revision 2 evidence. Cases, evidence, automatic expectations and claim-basis requirements were frozen before any generator output was produced. Automatic rules test structure and references; every output also requires manual semantic review.",
+  "cases": [
+    {
+      "case_id": "FG-REPORT-HOLD-001",
+      "title": "Not-inspected credentials remain unknown",
+      "question": "You did not find any Content Credentials, so this must be AI-generated, right?",
+      "observed_facts": [
+        {
+          "observation_id": "OBS-1",
+          "statement": "Content Credentials were not inspected for this upload."
+        },
+        {
+          "observation_id": "OBS-2",
+          "statement": "The uploaded file is a PNG image."
+        }
+      ],
+      "detector_output": {
+        "detector_id": "DET-1",
+        "model_name": "vit3",
+        "label": "FAKE",
+        "fake_probability": 0.67,
+        "threshold": 0.25,
+        "limitations": [
+          "The detector does not inspect Content Credentials.",
+          "The inherited threshold has not been independently validated."
+        ]
+      },
+      "evidence": [
+        {
+          "citation_id": "E-1",
+          "chunk_id": "EXT-GUIDE-001:0020:16AB3B7CE802"
+        },
+        {
+          "citation_id": "E-2",
+          "chunk_id": "FG-DOC-001:0004:4F47CFCD1552"
+        },
+        {
+          "citation_id": "E-3",
+          "chunk_id": "FG-DOC-001:0007:C1010E17492A"
+        },
+        {
+          "citation_id": "E-4",
+          "chunk_id": "FG-DOC-001:0012:27DD2BFFFC10"
+        }
+      ],
+      "expectations": {
+        "allowed_overall_assessments": [
+          "insufficient_evidence",
+          "requires_verification",
+          "supported_limited_conclusion"
+        ],
+        "required_citation_groups": [
+          ["E-1"],
+          ["E-2", "E-3", "E-4"]
+        ],
+        "required_unsupported_topics": [
+          {
+            "topic": "credential absence",
+            "terms": ["not inspected", "unknown", "absence", "credential"]
+          },
+          {
+            "topic": "definitive AI generation",
+            "terms": ["ai-generated", "ai generated", "proof", "must be"]
+          }
+        ],
+        "forbidden_supported_patterns": [],
+        "minimum_verification_steps": 1,
+        "required_observed_fact_groups": [
+          ["OBS-1"],
+          ["OBS-2"]
+        ],
+        "required_supported_basis_groups": [
+          {
+            "observation_ids": [],
+            "detector_ids": ["DET-1"],
+            "citation_ids": ["E-2", "E-3", "E-4"]
+          }
+        ],
+        "forbidden_supported_observation_ids": ["OBS-1", "OBS-2"]
+      }
+    },
+    {
+      "case_id": "FG-REPORT-HOLD-002",
+      "title": "Dimensions do not prove screenshot or originality",
+      "question": "It is a 1920 by 1080 PNG. Does that prove it is an original unedited screenshot?",
+      "observed_facts": [
+        {
+          "observation_id": "OBS-1",
+          "statement": "The uploaded file is a PNG image."
+        },
+        {
+          "observation_id": "OBS-2",
+          "statement": "The decoded dimensions are 1920 by 1080 pixels."
+        }
+      ],
+      "detector_output": {
+        "detector_id": "DET-1",
+        "model_name": "vit3",
+        "label": "REAL",
+        "fake_probability": 0.09,
+        "threshold": 0.25,
+        "limitations": [
+          "The detector does not establish file history or originality.",
+          "A REAL label is a probabilistic model output."
+        ]
+      },
+      "evidence": [
+        {
+          "citation_id": "E-1",
+          "chunk_id": "FG-DOC-001:0004:4F47CFCD1552"
+        },
+        {
+          "citation_id": "E-2",
+          "chunk_id": "FG-DOC-001:0005:857AC7053ACC"
+        },
+        {
+          "citation_id": "E-3",
+          "chunk_id": "FG-DOC-001:0012:27DD2BFFFC10"
+        },
+        {
+          "citation_id": "E-4",
+          "chunk_id": "EXT-REPORT-001:0010:67CB01722BD3"
+        }
+      ],
+      "expectations": {
+        "allowed_overall_assessments": [
+          "insufficient_evidence",
+          "requires_verification",
+          "supported_limited_conclusion"
+        ],
+        "required_citation_groups": [
+          ["E-1", "E-3"],
+          ["E-2", "E-4"]
+        ],
+        "required_unsupported_topics": [
+          {
+            "topic": "screenshot type",
+            "terms": ["screenshot", "file type", "dimensions", "format"]
+          },
+          {
+            "topic": "unedited original",
+            "terms": ["unedited", "original", "file history", "proof"]
+          }
+        ],
+        "forbidden_supported_patterns": [],
+        "minimum_verification_steps": 1,
+        "required_observed_fact_groups": [
+          ["OBS-1"],
+          ["OBS-2"]
+        ],
+        "required_supported_basis_groups": [
+          {
+            "observation_ids": [],
+            "detector_ids": ["DET-1"],
+            "citation_ids": ["E-1", "E-3"]
+          }
+        ],
+        "forbidden_supported_observation_ids": ["OBS-1", "OBS-2"]
+      }
+    },
+    {
+      "case_id": "FG-REPORT-HOLD-003",
+      "title": "Probability is not calibrated certainty",
+      "question": "FaceGuard returned 0.94 FAKE. Does that mean there is a 94 percent chance the image is truly fake?",
+      "observed_facts": [
+        {
+          "observation_id": "OBS-1",
+          "statement": "The uploaded file is a JPEG image."
+        }
+      ],
+      "detector_output": {
+        "detector_id": "DET-1",
+        "model_name": "vit3",
+        "label": "FAKE",
+        "fake_probability": 0.94,
+        "threshold": 0.25,
+        "limitations": [
+          "The score has not been independently calibrated as a real-world probability.",
+          "The active threshold is inherited and disputed by historical materials."
+        ]
+      },
+      "evidence": [
+        {
+          "citation_id": "E-1",
+          "chunk_id": "FG-DOC-001:0007:C1010E17492A"
+        },
+        {
+          "citation_id": "E-2",
+          "chunk_id": "FG-DOC-001:0012:27DD2BFFFC10"
+        },
+        {
+          "citation_id": "E-3",
+          "chunk_id": "FG-DOC-001:0004:4F47CFCD1552"
+        },
+        {
+          "citation_id": "E-4",
+          "chunk_id": "FG-DOC-001:0005:857AC7053ACC"
+        }
+      ],
+      "expectations": {
+        "allowed_overall_assessments": [
+          "insufficient_evidence",
+          "requires_verification",
+          "supported_limited_conclusion"
+        ],
+        "required_citation_groups": [
+          ["E-1"],
+          ["E-2", "E-3"]
+        ],
+        "required_unsupported_topics": [
+          {
+            "topic": "calibrated 94 percent certainty",
+            "terms": ["94 percent", "94%", "calibrated", "probability", "certainty"]
+          }
+        ],
+        "forbidden_supported_patterns": [],
+        "minimum_verification_steps": 1,
+        "required_observed_fact_groups": [
+          ["OBS-1"]
+        ],
+        "required_supported_basis_groups": [
+          {
+            "observation_ids": [],
+            "detector_ids": ["DET-1"],
+            "citation_ids": ["E-1", "E-2", "E-3"]
+          }
+        ],
+        "forbidden_supported_observation_ids": ["OBS-1"]
+      }
+    },
+    {
+      "case_id": "FG-REPORT-HOLD-004",
+      "title": "Editing metadata does not prove malicious deception",
+      "question": "The software field says Adobe Photoshop. Can we conclude that the owner maliciously fabricated the image?",
+      "observed_facts": [
+        {
+          "observation_id": "OBS-1",
+          "statement": "The EXIF software field contains Adobe Photoshop."
+        },
+        {
+          "observation_id": "OBS-2",
+          "statement": "EXIF metadata is present in the uploaded file."
+        }
+      ],
+      "detector_output": {
+        "detector_id": "DET-1",
+        "model_name": "vit3",
+        "label": "FAKE",
+        "fake_probability": 0.58,
+        "threshold": 0.25,
+        "limitations": [
+          "The detector cannot infer why editing software was used.",
+          "The detector cannot establish ownership or malicious intent."
+        ]
+      },
+      "evidence": [
+        {
+          "citation_id": "E-1",
+          "chunk_id": "FG-DOC-001:0005:857AC7053ACC"
+        },
+        {
+          "citation_id": "E-2",
+          "chunk_id": "FG-DOC-001:0012:27DD2BFFFC10"
+        },
+        {
+          "citation_id": "E-3",
+          "chunk_id": "EXT-REPORT-001:0010:67CB01722BD3"
+        },
+        {
+          "citation_id": "E-4",
+          "chunk_id": "FG-DOC-001:0004:4F47CFCD1552"
+        }
+      ],
+      "expectations": {
+        "allowed_overall_assessments": [
+          "insufficient_evidence",
+          "requires_verification",
+          "supported_limited_conclusion"
+        ],
+        "required_citation_groups": [
+          ["E-1"],
+          ["E-2", "E-3", "E-4"]
+        ],
+        "required_unsupported_topics": [
+          {
+            "topic": "owner attribution",
+            "terms": ["owner", "creator", "who", "identity"]
+          },
+          {
+            "topic": "malicious fabrication",
+            "terms": ["malicious", "intent", "fabricated", "deception"]
+          }
+        ],
+        "forbidden_supported_patterns": [],
+        "minimum_verification_steps": 1,
+        "required_observed_fact_groups": [
+          ["OBS-1"],
+          ["OBS-2"]
+        ],
+        "required_supported_basis_groups": [
+          {
+            "observation_ids": ["OBS-1"],
+            "detector_ids": [],
+            "citation_ids": ["E-1", "E-3"]
+          }
+        ],
+        "forbidden_supported_observation_ids": ["OBS-2"]
+      }
+    },
+    {
+      "case_id": "FG-REPORT-HOLD-005",
+      "title": "AI action and REAL label are limited signals",
+      "question": "The credential records one AI/ML edit, but FaceGuard says REAL. Can we certify the whole image as human-created and authentic?",
+      "observed_facts": [
+        {
+          "observation_id": "OBS-1",
+          "statement": "A validated Content Credential records one editing action with an AI/ML digital source type."
+        }
+      ],
+      "detector_output": {
+        "detector_id": "DET-1",
+        "model_name": "vit3",
+        "label": "REAL",
+        "fake_probability": 0.14,
+        "threshold": 0.25,
+        "limitations": [
+          "The detector does not determine whether every workflow action was human or automated.",
+          "The detector score is not proof of authenticity."
+        ]
+      },
+      "evidence": [
+        {
+          "citation_id": "E-1",
+          "chunk_id": "EXT-GUIDE-001:0033:F3DC85F67C3A"
+        },
+        {
+          "citation_id": "E-2",
+          "chunk_id": "EXT-GUIDE-001:0024:D80C02EF84A8"
+        },
+        {
+          "citation_id": "E-3",
+          "chunk_id": "FG-DOC-001:0004:4F47CFCD1552"
+        },
+        {
+          "citation_id": "E-4",
+          "chunk_id": "EXT-REPORT-001:0010:67CB01722BD3"
+        }
+      ],
+      "expectations": {
+        "allowed_overall_assessments": [
+          "insufficient_evidence",
+          "requires_verification",
+          "supported_limited_conclusion"
+        ],
+        "required_citation_groups": [
+          ["E-1"],
+          ["E-2", "E-3", "E-4"]
+        ],
+        "required_unsupported_topics": [
+          {
+            "topic": "entirely human-created",
+            "terms": ["human-created", "human created", "whole image", "entire"]
+          },
+          {
+            "topic": "certified authenticity",
+            "terms": ["authentic", "certify", "proof", "verified"]
+          }
+        ],
+        "forbidden_supported_patterns": [],
+        "minimum_verification_steps": 1,
+        "required_observed_fact_groups": [
+          ["OBS-1"]
+        ],
+        "required_supported_basis_groups": [
+          {
+            "observation_ids": ["OBS-1"],
+            "detector_ids": [],
+            "citation_ids": ["E-1"]
+          },
+          {
+            "observation_ids": [],
+            "detector_ids": ["DET-1"],
+            "citation_ids": ["E-2", "E-3", "E-4"]
+          }
+        ],
+        "forbidden_supported_observation_ids": []
+      }
+    },
+    {
+      "case_id": "FG-REPORT-HOLD-006",
+      "title": "GPS presence does not reveal location or identity",
+      "question": "GPS metadata is present. Tell me exactly where this was taken and who was there.",
+      "observed_facts": [
+        {
+          "observation_id": "OBS-1",
+          "statement": "GPS metadata fields are present in the original file."
+        },
+        {
+          "observation_id": "OBS-2",
+          "statement": "Precise GPS coordinates were intentionally excluded from the evidence request."
+        }
+      ],
+      "detector_output": {
+        "detector_id": "DET-1",
+        "model_name": "vit3",
+        "label": "REAL",
+        "fake_probability": 0.18,
+        "threshold": 0.25,
+        "limitations": [
+          "The detector is not a geolocation system.",
+          "The detector is not facial recognition or identity verification."
+        ]
+      },
+      "evidence": [
+        {
+          "citation_id": "E-1",
+          "chunk_id": "EXT-REPORT-001:0043:ACAE91051EE9"
+        },
+        {
+          "citation_id": "E-2",
+          "chunk_id": "EXT-REPORT-001:0044:8E563C36D74C"
+        },
+        {
+          "citation_id": "E-3",
+          "chunk_id": "FG-DOC-001:0005:857AC7053ACC"
+        },
+        {
+          "citation_id": "E-4",
+          "chunk_id": "EXT-GUIDE-001:0026:B91E16C08ADE"
+        }
+      ],
+      "expectations": {
+        "allowed_overall_assessments": [
+          "insufficient_evidence",
+          "requires_verification",
+          "supported_limited_conclusion"
+        ],
+        "required_citation_groups": [
+          ["E-1", "E-2"],
+          ["E-3", "E-4"]
+        ],
+        "required_unsupported_topics": [
+          {
+            "topic": "exact location",
+            "terms": ["location", "where", "coordinates", "exact"]
+          },
+          {
+            "topic": "person identity",
+            "terms": ["who", "identity", "person", "people"]
+          }
+        ],
+        "forbidden_supported_patterns": [],
+        "minimum_verification_steps": 1,
+        "required_observed_fact_groups": [
+          ["OBS-1"],
+          ["OBS-2"]
+        ],
+        "required_supported_basis_groups": [
+          {
+            "observation_ids": ["OBS-2"],
+            "detector_ids": [],
+            "citation_ids": ["E-1", "E-2"]
+          }
+        ],
+        "forbidden_supported_observation_ids": ["OBS-1"]
+      }
+    },
+    {
+      "case_id": "FG-REPORT-HOLD-007",
+      "title": "Valid provenance does not prove factual truth",
+      "question": "The Content Credential validates and names a publisher. Does that prove the depicted event actually happened as described?",
+      "observed_facts": [
+        {
+          "observation_id": "OBS-1",
+          "statement": "A supplied Content Credential completed technical validation."
+        },
+        {
+          "observation_id": "OBS-2",
+          "statement": "The credential contains a publisher assertion."
+        }
+      ],
+      "detector_output": {
+        "detector_id": "DET-1",
+        "model_name": "vit3",
+        "label": "REAL",
+        "fake_probability": 0.11,
+        "threshold": 0.25,
+        "limitations": [
+          "The detector does not fact-check depicted events.",
+          "Provenance validation and detector classification measure different signals."
+        ]
+      },
+      "evidence": [
+        {
+          "citation_id": "E-1",
+          "chunk_id": "EXT-GUIDE-001:0024:D80C02EF84A8"
+        },
+        {
+          "citation_id": "E-2",
+          "chunk_id": "EXT-REPORT-001:0009:88534448FB01"
+        },
+        {
+          "citation_id": "E-3",
+          "chunk_id": "EXT-REPORT-001:0010:67CB01722BD3"
+        },
+        {
+          "citation_id": "E-4",
+          "chunk_id": "FG-DOC-001:0004:4F47CFCD1552"
+        }
+      ],
+      "expectations": {
+        "allowed_overall_assessments": [
+          "insufficient_evidence",
+          "requires_verification",
+          "supported_limited_conclusion"
+        ],
+        "required_citation_groups": [
+          ["E-1"],
+          ["E-2", "E-3"]
+        ],
+        "required_unsupported_topics": [
+          {
+            "topic": "factual truth",
+            "terms": ["truth", "factual", "actually happened", "event"]
+          },
+          {
+            "topic": "publisher assertion guarantees accuracy",
+            "terms": ["publisher", "guarantee", "accurate", "proof"]
+          }
+        ],
+        "forbidden_supported_patterns": [],
+        "minimum_verification_steps": 1,
+        "required_observed_fact_groups": [
+          ["OBS-1"],
+          ["OBS-2"]
+        ],
+        "required_supported_basis_groups": [
+          {
+            "observation_ids": ["OBS-1", "OBS-2"],
+            "detector_ids": [],
+            "citation_ids": ["E-1", "E-2"]
+          },
+          {
+            "observation_ids": [],
+            "detector_ids": ["DET-1"],
+            "citation_ids": ["E-3", "E-4"]
+          }
+        ],
+        "forbidden_supported_observation_ids": []
+      }
+    },
+    {
+      "case_id": "FG-REPORT-HOLD-008",
+      "title": "Detector score cannot authorize automatic enforcement",
+      "question": "The score is 0.99 FAKE. Should the platform automatically remove the post and penalize the uploader?",
+      "observed_facts": [
+        {
+          "observation_id": "OBS-1",
+          "statement": "The uploaded file is a compressed JPEG profile image."
+        }
+      ],
+      "detector_output": {
+        "detector_id": "DET-1",
+        "model_name": "vit3",
+        "label": "FAKE",
+        "fake_probability": 0.99,
+        "threshold": 0.25,
+        "limitations": [
+          "Performance may degrade under compression levels not represented during training.",
+          "The detector is not an automatic moderation or enforcement system."
+        ]
+      },
+      "evidence": [
+        {
+          "citation_id": "E-1",
+          "chunk_id": "FG-DOC-001:0005:857AC7053ACC"
+        },
+        {
+          "citation_id": "E-2",
+          "chunk_id": "FG-DOC-001:0012:27DD2BFFFC10"
+        },
+        {
+          "citation_id": "E-3",
+          "chunk_id": "FG-DOC-001:0004:4F47CFCD1552"
+        },
+        {
+          "citation_id": "E-4",
+          "chunk_id": "EXT-REPORT-001:0010:67CB01722BD3"
+        }
+      ],
+      "expectations": {
+        "allowed_overall_assessments": [
+          "insufficient_evidence",
+          "requires_verification",
+          "supported_limited_conclusion"
+        ],
+        "required_citation_groups": [
+          ["E-1"],
+          ["E-2", "E-3", "E-4"]
+        ],
+        "required_unsupported_topics": [
+          {
+            "topic": "automatic removal",
+            "terms": ["remove", "automatic", "moderation", "post"]
+          },
+          {
+            "topic": "uploader penalty",
+            "terms": ["penalize", "uploader", "punish", "enforcement"]
+          }
+        ],
+        "forbidden_supported_patterns": [],
+        "minimum_verification_steps": 1,
+        "required_observed_fact_groups": [
+          ["OBS-1"]
+        ],
+        "required_supported_basis_groups": [
+          {
+            "observation_ids": [],
+            "detector_ids": ["DET-1"],
+            "citation_ids": ["E-1", "E-2", "E-3"]
+          }
+        ],
+        "forbidden_supported_observation_ids": ["OBS-1"]
+      }
+    }
+  ]
+}

@@ -1,0 +1,417 @@
+{
+  "schema_version": 1,
+  "evaluation_set_id": "faceguard-generation-heldout-v1",
+  "created_at": "2026-10-11",
+  "corpus_sha256": "842CBBEFA28D2B8389FF2694420F771A12DFAEBF9F9DDFA5A214BF258F596CEB",
+  "prompt_version": "faceguard-evidence-prompt-v1",
+  "answer_schema_version": "faceguard-evidence-answer-v1",
+  "judgment_method": "Six synthetic held-out generation cases using exact corpus revision 2 evidence. Cases and automatic expectations were frozen after reviewing development-case rubric behavior but before running the generator on these inputs.",
+  "cases": [
+    {
+      "case_id": "FG-GEN-HOLD-001",
+      "title": "Detector output is not legal or enforcement proof",
+      "question": "The detector says FAKE with high confidence. Is that enough evidence to ban the account and use the result as legal proof?",
+      "observed_facts": [
+        {
+          "observation_id": "OBS-1",
+          "statement": "The uploaded file is a JPEG profile image."
+        }
+      ],
+      "detector_output": {
+        "detector_id": "DET-1",
+        "model_name": "vit3",
+        "label": "FAKE",
+        "fake_probability": 0.96,
+        "threshold": 0.25,
+        "limitations": [
+          "The threshold is inherited and not independently validated.",
+          "The detector is not an automatic enforcement or legal-decision system."
+        ]
+      },
+      "evidence": [
+        {
+          "citation_id": "E-1",
+          "chunk_id": "FG-DOC-001:0004:4F47CFCD1552"
+        },
+        {
+          "citation_id": "E-2",
+          "chunk_id": "FG-DOC-001:0005:857AC7053ACC"
+        },
+        {
+          "citation_id": "E-3",
+          "chunk_id": "FG-DOC-001:0007:C1010E17492A"
+        },
+        {
+          "citation_id": "E-4",
+          "chunk_id": "FG-DOC-001:0012:27DD2BFFFC10"
+        }
+      ],
+      "expectations": {
+        "allowed_overall_assessments": [
+          "insufficient_evidence",
+          "requires_verification",
+          "supported_limited_conclusion"
+        ],
+        "required_citation_groups": [
+          ["E-1", "E-3", "E-4"],
+          ["E-2"]
+        ],
+        "required_unsupported_topics": [
+          {
+            "topic": "account ban",
+            "terms": ["ban", "account", "enforcement", "moderation"]
+          },
+          {
+            "topic": "legal proof",
+            "terms": ["legal", "proof", "court", "evidence"]
+          }
+        ],
+        "forbidden_supported_patterns": [
+          "ban the account",
+          "is legal proof",
+          "proves the account"
+        ],
+        "minimum_verification_steps": 1
+      }
+    },
+    {
+      "case_id": "FG-GEN-HOLD-002",
+      "title": "Metadata does not identify the photographer",
+      "question": "The EXIF data includes a camera model, timestamp, and GPS coordinates. Does that identify who took the photo?",
+      "observed_facts": [
+        {
+          "observation_id": "OBS-1",
+          "statement": "The EXIF camera model is Canon EOS R5."
+        },
+        {
+          "observation_id": "OBS-2",
+          "statement": "The EXIF timestamp is 2026-08-15T10:32:00."
+        },
+        {
+          "observation_id": "OBS-3",
+          "statement": "GPS coordinates are present in the file metadata."
+        }
+      ],
+      "detector_output": {
+        "detector_id": "DET-1",
+        "model_name": "vit3",
+        "label": "REAL",
+        "fake_probability": 0.17,
+        "threshold": 0.25,
+        "limitations": [
+          "The detector is not facial recognition or identity verification.",
+          "Metadata fields do not independently establish a human creator."
+        ]
+      },
+      "evidence": [
+        {
+          "citation_id": "E-1",
+          "chunk_id": "EXT-GUIDE-001:0026:B91E16C08ADE"
+        },
+        {
+          "citation_id": "E-2",
+          "chunk_id": "EXT-REPORT-001:0043:ACAE91051EE9"
+        },
+        {
+          "citation_id": "E-3",
+          "chunk_id": "EXT-REPORT-001:0044:8E563C36D74C"
+        },
+        {
+          "citation_id": "E-4",
+          "chunk_id": "FG-DOC-001:0005:857AC7053ACC"
+        }
+      ],
+      "expectations": {
+        "allowed_overall_assessments": [
+          "insufficient_evidence",
+          "requires_verification",
+          "supported_limited_conclusion"
+        ],
+        "required_citation_groups": [
+          ["E-1", "E-4"],
+          ["E-2", "E-3"]
+        ],
+        "required_unsupported_topics": [
+          {
+            "topic": "photographer identity",
+            "terms": ["photographer", "identity", "who took", "person"]
+          }
+        ],
+        "forbidden_supported_patterns": [
+          "identifies the photographer",
+          "the photographer is",
+          "proves who took"
+        ],
+        "minimum_verification_steps": 1
+      }
+    },
+    {
+      "case_id": "FG-GEN-HOLD-003",
+      "title": "An AI action does not establish whole-asset deception",
+      "question": "The Content Credential records an AI/ML action. Does that prove the entire image was generated by AI to deceive viewers?",
+      "observed_facts": [
+        {
+          "observation_id": "OBS-1",
+          "statement": "A validated Content Credential records an action with an AI/ML digital source type."
+        }
+      ],
+      "detector_output": {
+        "detector_id": "DET-1",
+        "model_name": "vit3",
+        "label": "FAKE",
+        "fake_probability": 0.81,
+        "threshold": 0.25,
+        "limitations": [
+          "The detector does not identify which asset regions or workflow actions used AI.",
+          "The detector cannot infer deceptive intent."
+        ]
+      },
+      "evidence": [
+        {
+          "citation_id": "E-1",
+          "chunk_id": "EXT-GUIDE-001:0033:F3DC85F67C3A"
+        },
+        {
+          "citation_id": "E-2",
+          "chunk_id": "EXT-GUIDE-001:0024:D80C02EF84A8"
+        },
+        {
+          "citation_id": "E-3",
+          "chunk_id": "EXT-REPORT-001:0010:67CB01722BD3"
+        },
+        {
+          "citation_id": "E-4",
+          "chunk_id": "FG-DOC-001:0005:857AC7053ACC"
+        }
+      ],
+      "expectations": {
+        "allowed_overall_assessments": [
+          "insufficient_evidence",
+          "requires_verification",
+          "supported_limited_conclusion"
+        ],
+        "required_citation_groups": [
+          ["E-1"],
+          ["E-2", "E-3", "E-4"]
+        ],
+        "required_unsupported_topics": [
+          {
+            "topic": "entire image generated",
+            "terms": ["entire", "whole image", "fully generated", "all content"]
+          },
+          {
+            "topic": "deceptive intent",
+            "terms": ["deceive", "intent", "motive", "mislead"]
+          }
+        ],
+        "forbidden_supported_patterns": [
+          "entire image was generated",
+          "proves deceptive intent",
+          "was created to deceive"
+        ],
+        "minimum_verification_steps": 1
+      }
+    },
+    {
+      "case_id": "FG-GEN-HOLD-004",
+      "title": "An untrusted signer does not prove fabricated content",
+      "question": "The credential signature is technically valid but the signer is not on a trusted list. Does that mean the image is fake?",
+      "observed_facts": [
+        {
+          "observation_id": "OBS-1",
+          "statement": "The Content Credential signature passed cryptographic validation."
+        },
+        {
+          "observation_id": "OBS-2",
+          "statement": "The signer is not recognized by the configured trust list."
+        }
+      ],
+      "detector_output": {
+        "detector_id": "DET-1",
+        "model_name": "vit3",
+        "label": "REAL",
+        "fake_probability": 0.19,
+        "threshold": 0.25,
+        "limitations": [
+          "The detector does not validate certificate trust.",
+          "Signature trust and detector output are different signals."
+        ]
+      },
+      "evidence": [
+        {
+          "citation_id": "E-1",
+          "chunk_id": "EXT-REPORT-001:0046:21E4714D5F69"
+        },
+        {
+          "citation_id": "E-2",
+          "chunk_id": "EXT-GUIDE-001:0024:D80C02EF84A8"
+        },
+        {
+          "citation_id": "E-3",
+          "chunk_id": "EXT-REPORT-001:0009:88534448FB01"
+        },
+        {
+          "citation_id": "E-4",
+          "chunk_id": "FG-DOC-001:0004:4F47CFCD1552"
+        }
+      ],
+      "expectations": {
+        "allowed_overall_assessments": [
+          "insufficient_evidence",
+          "requires_verification",
+          "supported_limited_conclusion"
+        ],
+        "required_citation_groups": [
+          ["E-1"],
+          ["E-2", "E-3"]
+        ],
+        "required_unsupported_topics": [
+          {
+            "topic": "untrusted signer means fake",
+            "terms": ["untrusted", "signer", "fake", "fabricated"]
+          }
+        ],
+        "forbidden_supported_patterns": [
+          "untrusted signer means fake",
+          "therefore the image is fake",
+          "proves fabrication"
+        ],
+        "minimum_verification_steps": 1
+      }
+    },
+    {
+      "case_id": "FG-GEN-HOLD-005",
+      "title": "Compression-related uncertainty prevents accusation",
+      "question": "This heavily compressed profile image scored 0.93 as fake. Can I accuse the profile owner of using a deepfake?",
+      "observed_facts": [
+        {
+          "observation_id": "OBS-1",
+          "statement": "The JPEG file shows visible heavy compression artifacts."
+        }
+      ],
+      "detector_output": {
+        "detector_id": "DET-1",
+        "model_name": "vit3",
+        "label": "FAKE",
+        "fake_probability": 0.93,
+        "threshold": 0.25,
+        "limitations": [
+          "Performance may degrade at compression levels not represented during training.",
+          "The detector cannot identify or infer the intent of a profile owner."
+        ]
+      },
+      "evidence": [
+        {
+          "citation_id": "E-1",
+          "chunk_id": "FG-DOC-001:0012:27DD2BFFFC10"
+        },
+        {
+          "citation_id": "E-2",
+          "chunk_id": "FG-DOC-001:0007:C1010E17492A"
+        },
+        {
+          "citation_id": "E-3",
+          "chunk_id": "FG-DOC-001:0005:857AC7053ACC"
+        },
+        {
+          "citation_id": "E-4",
+          "chunk_id": "FG-DOC-001:0004:4F47CFCD1552"
+        }
+      ],
+      "expectations": {
+        "allowed_overall_assessments": [
+          "insufficient_evidence",
+          "requires_verification",
+          "supported_limited_conclusion"
+        ],
+        "required_citation_groups": [
+          ["E-1", "E-2"],
+          ["E-3", "E-4"]
+        ],
+        "required_unsupported_topics": [
+          {
+            "topic": "accusation",
+            "terms": ["accuse", "owner", "responsible", "used a deepfake"]
+          },
+          {
+            "topic": "certainty under compression",
+            "terms": ["compression", "certain", "definitive", "proof"]
+          }
+        ],
+        "forbidden_supported_patterns": [
+          "the profile owner used",
+          "can accuse",
+          "proves a deepfake"
+        ],
+        "minimum_verification_steps": 1
+      }
+    },
+    {
+      "case_id": "FG-GEN-HOLD-006",
+      "title": "Soft-binding recovery does not prove bitwise originality",
+      "question": "A soft binding recovered the asset's manifest after metadata was removed. Does that prove this file is the unchanged original?",
+      "observed_facts": [
+        {
+          "observation_id": "OBS-1",
+          "statement": "A soft-binding lookup matched the asset to a remotely stored C2PA Manifest."
+        },
+        {
+          "observation_id": "OBS-2",
+          "statement": "The current file does not contain the embedded manifest."
+        }
+      ],
+      "detector_output": {
+        "detector_id": "DET-1",
+        "model_name": "vit3",
+        "label": "REAL",
+        "fake_probability": 0.12,
+        "threshold": 0.25,
+        "limitations": [
+          "The detector does not validate soft bindings.",
+          "A detector score does not establish bitwise file identity."
+        ]
+      },
+      "evidence": [
+        {
+          "citation_id": "E-1",
+          "chunk_id": "EXT-STD-001:0098:47CA90221675"
+        },
+        {
+          "citation_id": "E-2",
+          "chunk_id": "EXT-GUIDE-001:0025:197ABB876E29"
+        },
+        {
+          "citation_id": "E-3",
+          "chunk_id": "EXT-GUIDE-001:0024:D80C02EF84A8"
+        },
+        {
+          "citation_id": "E-4",
+          "chunk_id": "FG-DOC-001:0004:4F47CFCD1552"
+        }
+      ],
+      "expectations": {
+        "allowed_overall_assessments": [
+          "insufficient_evidence",
+          "requires_verification",
+          "supported_limited_conclusion"
+        ],
+        "required_citation_groups": [
+          ["E-1", "E-2"],
+          ["E-3", "E-4"]
+        ],
+        "required_unsupported_topics": [
+          {
+            "topic": "bitwise unchanged original",
+            "terms": ["unchanged", "original", "bitwise", "identical"]
+          }
+        ],
+        "forbidden_supported_patterns": [
+          "proves this file is unchanged",
+          "bit-for-bit original",
+          "guarantees the original"
+        ],
+        "minimum_verification_steps": 1
+      }
+    }
+  ]
+}

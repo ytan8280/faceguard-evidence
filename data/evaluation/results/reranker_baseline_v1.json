@@ -1,0 +1,5155 @@
+{
+  "reranker_version": "msmarco-minilm-l6-v2-cross-encoder-v1",
+  "source_artifact_sha256": "163F90ADA3B57738E9993E2E940DFFCDC076A55ED3080368FBA481141C853876",
+  "corpus_sha256": "842CBBEFA28D2B8389FF2694420F771A12DFAEBF9F9DDFA5A214BF258F596CEB",
+  "corpus_revision_id": 2,
+  "question_set_id": "faceguard-retrieval-v1",
+  "question_set_sha256": "AFCCB3E4F06CA53BA704592549AC478E1437159CB030BE1853B65753EC87FA2F",
+  "model": {
+    "model_id": "cross-encoder/ms-marco-MiniLM-L6-v2",
+    "model_revision": "233902d25c440f23af6f7d6e94d2946bac0bee0a",
+    "model_sha256": "821D1AA69520101D6E0737F78A042AE25B19E5CB9160701909D10434F4AEB0AE",
+    "max_length": 512,
+    "batch_size": 16
+  },
+  "metrics": {
+    "semantic_top20": {
+      "mean_reciprocal_rank": 0.8611111111111112,
+      "mean_recall_at_k": {
+        "1": 0.625,
+        "3": 1.0,
+        "5": 1.0
+      },
+      "mean_candidate_recall": 1.0,
+      "zero_result_questions": 0
+    },
+    "lexical_semantic_union_top20": {
+      "mean_reciprocal_rank": 0.8611111111111112,
+      "mean_recall_at_k": {
+        "1": 0.625,
+        "3": 1.0,
+        "5": 1.0
+      },
+      "mean_candidate_recall": 1.0,
+      "zero_result_questions": 0
+    },
+    "model_load_latency_ms": 640.8918399993127,
+    "total_scored_pairs": 386,
+    "truncated_pairs": 42,
+    "mean_inference_latency_ms": 4973.689477833735,
+    "median_inference_latency_ms": 4792.511436000495
+  },
+  "questions": [
+    {
+      "question_id": "FG-RET-001",
+      "question": "What decision threshold is recorded for the FaceGuard detector, and has a canonical threshold been selected?",
+      "relevant_chunk_ids": [
+        "FG-DOC-001:0007:C1010E17492A"
+      ],
+      "inference_latency_ms": 4651.04276800048,
+      "scored_candidates": [
+        {
+          "chunk_id": "FG-DOC-001:0013:38A34C25BCAD",
+          "source_id": "FG-DOC-001",
+          "reranker_score": 3.325392007827759,
+          "lexical_rank": 1,
+          "semantic_rank": 2,
+          "original_token_count": 174,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-001:0007:C1010E17492A",
+          "source_id": "FG-DOC-001",
+          "reranker_score": 6.926229953765869,
+          "lexical_rank": 2,
+          "semantic_rank": 1,
+          "original_token_count": 126,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-003:0002:A780CC7455DF",
+          "source_id": "FG-DOC-003",
+          "reranker_score": -4.451715469360352,
+          "lexical_rank": 3,
+          "semantic_rank": 16,
+          "original_token_count": 250,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0064:E7D0C3453BF9",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -10.417713165283203,
+          "lexical_rank": 4,
+          "semantic_rank": null,
+          "original_token_count": 443,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-003:0004:E565DA2639BA",
+          "source_id": "FG-DOC-003",
+          "reranker_score": -1.8779844045639038,
+          "lexical_rank": 5,
+          "semantic_rank": 13,
+          "original_token_count": 215,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-001:0001:99120F622068",
+          "source_id": "FG-DOC-001",
+          "reranker_score": -1.2172327041625977,
+          "lexical_rank": 6,
+          "semantic_rank": 10,
+          "original_token_count": 93,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-001:0008:96B4D0A6C5EA",
+          "source_id": "FG-DOC-001",
+          "reranker_score": -6.291741847991943,
+          "lexical_rank": 7,
+          "semantic_rank": 17,
+          "original_token_count": 241,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-003:0001:F321DD9A0B93",
+          "source_id": "FG-DOC-003",
+          "reranker_score": -5.206967830657959,
+          "lexical_rank": 8,
+          "semantic_rank": null,
+          "original_token_count": 83,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-001:0010:5688C99CDF90",
+          "source_id": "FG-DOC-001",
+          "reranker_score": -8.347890853881836,
+          "lexical_rank": 9,
+          "semantic_rank": null,
+          "original_token_count": 295,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-001:0011:A4E978A8466C",
+          "source_id": "FG-DOC-001",
+          "reranker_score": -5.427496910095215,
+          "lexical_rank": 10,
+          "semantic_rank": null,
+          "original_token_count": 442,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-003:0003:C3FBF0D5BE68",
+          "source_id": "FG-DOC-003",
+          "reranker_score": -4.6406731605529785,
+          "lexical_rank": 11,
+          "semantic_rank": null,
+          "original_token_count": 153,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-002:0017:6FA3B2A54C12",
+          "source_id": "FG-DOC-002",
+          "reranker_score": 3.5136899948120117,
+          "lexical_rank": 12,
+          "semantic_rank": 3,
+          "original_token_count": 127,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-001:0004:4F47CFCD1552",
+          "source_id": "FG-DOC-001",
+          "reranker_score": -3.3059933185577393,
+          "lexical_rank": 13,
+          "semantic_rank": 5,
+          "original_token_count": 138,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-001:0006:6AEBD9307939",
+          "source_id": "FG-DOC-001",
+          "reranker_score": -4.779669761657715,
+          "lexical_rank": 14,
+          "semantic_rank": 12,
+          "original_token_count": 191,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-001:0009:9565877ADBA3",
+          "source_id": "FG-DOC-001",
+          "reranker_score": -7.428386211395264,
+          "lexical_rank": 15,
+          "semantic_rank": null,
+          "original_token_count": 223,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-002:0036:35933C158656",
+          "source_id": "FG-DOC-002",
+          "reranker_score": -6.163301467895508,
+          "lexical_rank": 16,
+          "semantic_rank": null,
+          "original_token_count": 308,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-002:0037:8FB12D920C07",
+          "source_id": "FG-DOC-002",
+          "reranker_score": -5.059673309326172,
+          "lexical_rank": 17,
+          "semantic_rank": null,
+          "original_token_count": 241,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-002:0039:2BC9F89A99D3",
+          "source_id": "FG-DOC-002",
+          "reranker_score": -2.4254682064056396,
+          "lexical_rank": 18,
+          "semantic_rank": null,
+          "original_token_count": 154,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0060:7A8BEDD43CF7",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -10.037679672241211,
+          "lexical_rank": 19,
+          "semantic_rank": null,
+          "original_token_count": 436,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0074:4CB207093F74",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -9.999760627746582,
+          "lexical_rank": 20,
+          "semantic_rank": null,
+          "original_token_count": 436,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-002:0019:842FCBD25129",
+          "source_id": "FG-DOC-002",
+          "reranker_score": -2.041936159133911,
+          "lexical_rank": null,
+          "semantic_rank": 4,
+          "original_token_count": 87,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-002:0034:C31C5693670E",
+          "source_id": "FG-DOC-002",
+          "reranker_score": -1.9074352979660034,
+          "lexical_rank": null,
+          "semantic_rank": 6,
+          "original_token_count": 84,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-002:0029:029A0DD74044",
+          "source_id": "FG-DOC-002",
+          "reranker_score": -1.4289906024932861,
+          "lexical_rank": null,
+          "semantic_rank": 7,
+          "original_token_count": 132,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-002:0012:D98824F3E7A4",
+          "source_id": "FG-DOC-002",
+          "reranker_score": -3.7905383110046387,
+          "lexical_rank": null,
+          "semantic_rank": 8,
+          "original_token_count": 76,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-002:0069:84392876BA4B",
+          "source_id": "FG-DOC-002",
+          "reranker_score": -1.6623945236206055,
+          "lexical_rank": null,
+          "semantic_rank": 9,
+          "original_token_count": 533,
+          "truncated": true
+        },
+        {
+          "chunk_id": "FG-DOC-002:0018:549C8C1D9305",
+          "source_id": "FG-DOC-002",
+          "reranker_score": -0.6348588466644287,
+          "lexical_rank": null,
+          "semantic_rank": 11,
+          "original_token_count": 129,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-002:0001:2CB5CE850EB2",
+          "source_id": "FG-DOC-002",
+          "reranker_score": -5.2751240730285645,
+          "lexical_rank": null,
+          "semantic_rank": 14,
+          "original_token_count": 105,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-002:0040:433B3A0CCF28",
+          "source_id": "FG-DOC-002",
+          "reranker_score": -0.2228054404258728,
+          "lexical_rank": null,
+          "semantic_rank": 15,
+          "original_token_count": 163,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-002:0032:84B6F92F8C91",
+          "source_id": "FG-DOC-002",
+          "reranker_score": -4.532630443572998,
+          "lexical_rank": null,
+          "semantic_rank": 18,
+          "original_token_count": 195,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-001:0002:FF3C5D865D6C",
+          "source_id": "FG-DOC-001",
+          "reranker_score": -7.570282459259033,
+          "lexical_rank": null,
+          "semantic_rank": 19,
+          "original_token_count": 278,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-002:0033:038A260580ED",
+          "source_id": "FG-DOC-002",
+          "reranker_score": -1.4786818027496338,
+          "lexical_rank": null,
+          "semantic_rank": 20,
+          "original_token_count": 183,
+          "truncated": false
+        }
+      ],
+      "semantic_top20": {
+        "candidate_count": 20,
+        "candidate_recall": 1.0,
+        "first_relevant_rank": 1,
+        "reciprocal_rank": 1.0,
+        "recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0
+        },
+        "retrieved": [
+          {
+            "rank": 1,
+            "chunk_id": "FG-DOC-001:0007:C1010E17492A",
+            "source_id": "FG-DOC-001",
+            "reranker_score": 6.926229953765869,
+            "lexical_rank": 2,
+            "semantic_rank": 1,
+            "original_token_count": 126,
+            "truncated": false
+          },
+          {
+            "rank": 2,
+            "chunk_id": "FG-DOC-002:0017:6FA3B2A54C12",
+            "source_id": "FG-DOC-002",
+            "reranker_score": 3.5136899948120117,
+            "lexical_rank": 12,
+            "semantic_rank": 3,
+            "original_token_count": 127,
+            "truncated": false
+          },
+          {
+            "rank": 3,
+            "chunk_id": "FG-DOC-001:0013:38A34C25BCAD",
+            "source_id": "FG-DOC-001",
+            "reranker_score": 3.325392007827759,
+            "lexical_rank": 1,
+            "semantic_rank": 2,
+            "original_token_count": 174,
+            "truncated": false
+          },
+          {
+            "rank": 4,
+            "chunk_id": "FG-DOC-002:0040:433B3A0CCF28",
+            "source_id": "FG-DOC-002",
+            "reranker_score": -0.2228054404258728,
+            "lexical_rank": null,
+            "semantic_rank": 15,
+            "original_token_count": 163,
+            "truncated": false
+          },
+          {
+            "rank": 5,
+            "chunk_id": "FG-DOC-002:0018:549C8C1D9305",
+            "source_id": "FG-DOC-002",
+            "reranker_score": -0.6348588466644287,
+            "lexical_rank": null,
+            "semantic_rank": 11,
+            "original_token_count": 129,
+            "truncated": false
+          }
+        ]
+      },
+      "lexical_semantic_union_top20": {
+        "candidate_count": 31,
+        "candidate_recall": 1.0,
+        "first_relevant_rank": 1,
+        "reciprocal_rank": 1.0,
+        "recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0
+        },
+        "retrieved": [
+          {
+            "rank": 1,
+            "chunk_id": "FG-DOC-001:0007:C1010E17492A",
+            "source_id": "FG-DOC-001",
+            "reranker_score": 6.926229953765869,
+            "lexical_rank": 2,
+            "semantic_rank": 1,
+            "original_token_count": 126,
+            "truncated": false
+          },
+          {
+            "rank": 2,
+            "chunk_id": "FG-DOC-002:0017:6FA3B2A54C12",
+            "source_id": "FG-DOC-002",
+            "reranker_score": 3.5136899948120117,
+            "lexical_rank": 12,
+            "semantic_rank": 3,
+            "original_token_count": 127,
+            "truncated": false
+          },
+          {
+            "rank": 3,
+            "chunk_id": "FG-DOC-001:0013:38A34C25BCAD",
+            "source_id": "FG-DOC-001",
+            "reranker_score": 3.325392007827759,
+            "lexical_rank": 1,
+            "semantic_rank": 2,
+            "original_token_count": 174,
+            "truncated": false
+          },
+          {
+            "rank": 4,
+            "chunk_id": "FG-DOC-002:0040:433B3A0CCF28",
+            "source_id": "FG-DOC-002",
+            "reranker_score": -0.2228054404258728,
+            "lexical_rank": null,
+            "semantic_rank": 15,
+            "original_token_count": 163,
+            "truncated": false
+          },
+          {
+            "rank": 5,
+            "chunk_id": "FG-DOC-002:0018:549C8C1D9305",
+            "source_id": "FG-DOC-002",
+            "reranker_score": -0.6348588466644287,
+            "lexical_rank": null,
+            "semantic_rank": 11,
+            "original_token_count": 129,
+            "truncated": false
+          }
+        ]
+      }
+    },
+    {
+      "question_id": "FG-RET-002",
+      "question": "How is an uploaded image preprocessed before the vit3 detector runs?",
+      "relevant_chunk_ids": [
+        "FG-DOC-001:0006:6AEBD9307939"
+      ],
+      "inference_latency_ms": 4419.367457001499,
+      "scored_candidates": [
+        {
+          "chunk_id": "EXT-REPORT-001:0059:9F7988DF95FF",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -9.987356185913086,
+          "lexical_rank": 1,
+          "semantic_rank": null,
+          "original_token_count": 421,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0029:2210F83DDD21",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -10.675217628479004,
+          "lexical_rank": 2,
+          "semantic_rank": null,
+          "original_token_count": 433,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0054:A9513F3E3FB3",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -9.789819717407227,
+          "lexical_rank": 3,
+          "semantic_rank": null,
+          "original_token_count": 419,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0057:907C0627DE5C",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -9.921186447143555,
+          "lexical_rank": 4,
+          "semantic_rank": null,
+          "original_token_count": 456,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0120:0CBD3697048C",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -11.156496047973633,
+          "lexical_rank": 5,
+          "semantic_rank": null,
+          "original_token_count": 237,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-STD-001:0408:0E24F2037B24",
+          "source_id": "EXT-STD-001",
+          "reranker_score": -10.743830680847168,
+          "lexical_rank": 6,
+          "semantic_rank": null,
+          "original_token_count": 465,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-STD-001:0493:15E163970756",
+          "source_id": "EXT-STD-001",
+          "reranker_score": -11.086677551269531,
+          "lexical_rank": 7,
+          "semantic_rank": null,
+          "original_token_count": 982,
+          "truncated": true
+        },
+        {
+          "chunk_id": "EXT-STD-001:0410:5FD2A066E14D",
+          "source_id": "EXT-STD-001",
+          "reranker_score": -11.01950454711914,
+          "lexical_rank": 8,
+          "semantic_rank": null,
+          "original_token_count": 424,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-002:0032:84B6F92F8C91",
+          "source_id": "FG-DOC-002",
+          "reranker_score": -3.6821742057800293,
+          "lexical_rank": 9,
+          "semantic_rank": null,
+          "original_token_count": 193,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-001:0004:4F47CFCD1552",
+          "source_id": "FG-DOC-001",
+          "reranker_score": -0.7302504777908325,
+          "lexical_rank": 10,
+          "semantic_rank": 4,
+          "original_token_count": 136,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0055:61805D52C782",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -7.9285807609558105,
+          "lexical_rank": 11,
+          "semantic_rank": null,
+          "original_token_count": 415,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0060:7A8BEDD43CF7",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -8.742626190185547,
+          "lexical_rank": 12,
+          "semantic_rank": null,
+          "original_token_count": 434,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0064:E7D0C3453BF9",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -10.397176742553711,
+          "lexical_rank": 13,
+          "semantic_rank": null,
+          "original_token_count": 441,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0081:2BE8366910AB",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -11.096200942993164,
+          "lexical_rank": 14,
+          "semantic_rank": null,
+          "original_token_count": 445,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0086:216D73904EE0",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -11.036758422851562,
+          "lexical_rank": 15,
+          "semantic_rank": null,
+          "original_token_count": 474,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0121:948D4F62FB7A",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -10.994889259338379,
+          "lexical_rank": 16,
+          "semantic_rank": null,
+          "original_token_count": 221,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-001:0005:857AC7053ACC",
+          "source_id": "FG-DOC-001",
+          "reranker_score": -1.5278409719467163,
+          "lexical_rank": 17,
+          "semantic_rank": 8,
+          "original_token_count": 126,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-001:0006:6AEBD9307939",
+          "source_id": "FG-DOC-001",
+          "reranker_score": 2.7979750633239746,
+          "lexical_rank": 18,
+          "semantic_rank": 1,
+          "original_token_count": 189,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-001:0012:27DD2BFFFC10",
+          "source_id": "FG-DOC-001",
+          "reranker_score": -4.253567695617676,
+          "lexical_rank": 19,
+          "semantic_rank": 7,
+          "original_token_count": 188,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-001:0008:96B4D0A6C5EA",
+          "source_id": "FG-DOC-001",
+          "reranker_score": -5.024418830871582,
+          "lexical_rank": 20,
+          "semantic_rank": 13,
+          "original_token_count": 239,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-002:0027:DDD0E656228C",
+          "source_id": "FG-DOC-002",
+          "reranker_score": -2.0132784843444824,
+          "lexical_rank": null,
+          "semantic_rank": 2,
+          "original_token_count": 87,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-002:0019:842FCBD25129",
+          "source_id": "FG-DOC-002",
+          "reranker_score": 2.177232027053833,
+          "lexical_rank": null,
+          "semantic_rank": 3,
+          "original_token_count": 85,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-002:0029:029A0DD74044",
+          "source_id": "FG-DOC-002",
+          "reranker_score": -9.62751579284668,
+          "lexical_rank": null,
+          "semantic_rank": 5,
+          "original_token_count": 130,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-001:0013:38A34C25BCAD",
+          "source_id": "FG-DOC-001",
+          "reranker_score": 2.3359375,
+          "lexical_rank": null,
+          "semantic_rank": 6,
+          "original_token_count": 172,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-002:0028:3CC198C4F4EF",
+          "source_id": "FG-DOC-002",
+          "reranker_score": -4.357026100158691,
+          "lexical_rank": null,
+          "semantic_rank": 9,
+          "original_token_count": 280,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-002:0018:549C8C1D9305",
+          "source_id": "FG-DOC-002",
+          "reranker_score": -2.0113115310668945,
+          "lexical_rank": null,
+          "semantic_rank": 10,
+          "original_token_count": 127,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-001:0002:FF3C5D865D6C",
+          "source_id": "FG-DOC-001",
+          "reranker_score": -4.326550483703613,
+          "lexical_rank": null,
+          "semantic_rank": 11,
+          "original_token_count": 276,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-002:0033:038A260580ED",
+          "source_id": "FG-DOC-002",
+          "reranker_score": -8.563337326049805,
+          "lexical_rank": null,
+          "semantic_rank": 12,
+          "original_token_count": 181,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-002:0011:CC822229C59B",
+          "source_id": "FG-DOC-002",
+          "reranker_score": -3.4798107147216797,
+          "lexical_rank": null,
+          "semantic_rank": 14,
+          "original_token_count": 68,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-002:0031:2327CE814BAC",
+          "source_id": "FG-DOC-002",
+          "reranker_score": -5.138471603393555,
+          "lexical_rank": null,
+          "semantic_rank": 15,
+          "original_token_count": 324,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-002:0016:5A7A14116CEE",
+          "source_id": "FG-DOC-002",
+          "reranker_score": -3.9194819927215576,
+          "lexical_rank": null,
+          "semantic_rank": 16,
+          "original_token_count": 182,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-002:0035:2FDBAB990B83",
+          "source_id": "FG-DOC-002",
+          "reranker_score": -8.832443237304688,
+          "lexical_rank": null,
+          "semantic_rank": 17,
+          "original_token_count": 93,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-001:0003:BDE868BE477E",
+          "source_id": "FG-DOC-001",
+          "reranker_score": -3.8191938400268555,
+          "lexical_rank": null,
+          "semantic_rank": 18,
+          "original_token_count": 145,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-003:0004:E565DA2639BA",
+          "source_id": "FG-DOC-003",
+          "reranker_score": -3.2636184692382812,
+          "lexical_rank": null,
+          "semantic_rank": 19,
+          "original_token_count": 213,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-002:0030:5B59C4E21693",
+          "source_id": "FG-DOC-002",
+          "reranker_score": -8.901799201965332,
+          "lexical_rank": null,
+          "semantic_rank": 20,
+          "original_token_count": 185,
+          "truncated": false
+        }
+      ],
+      "semantic_top20": {
+        "candidate_count": 20,
+        "candidate_recall": 1.0,
+        "first_relevant_rank": 1,
+        "reciprocal_rank": 1.0,
+        "recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0
+        },
+        "retrieved": [
+          {
+            "rank": 1,
+            "chunk_id": "FG-DOC-001:0006:6AEBD9307939",
+            "source_id": "FG-DOC-001",
+            "reranker_score": 2.7979750633239746,
+            "lexical_rank": 18,
+            "semantic_rank": 1,
+            "original_token_count": 189,
+            "truncated": false
+          },
+          {
+            "rank": 2,
+            "chunk_id": "FG-DOC-001:0013:38A34C25BCAD",
+            "source_id": "FG-DOC-001",
+            "reranker_score": 2.3359375,
+            "lexical_rank": null,
+            "semantic_rank": 6,
+            "original_token_count": 172,
+            "truncated": false
+          },
+          {
+            "rank": 3,
+            "chunk_id": "FG-DOC-002:0019:842FCBD25129",
+            "source_id": "FG-DOC-002",
+            "reranker_score": 2.177232027053833,
+            "lexical_rank": null,
+            "semantic_rank": 3,
+            "original_token_count": 85,
+            "truncated": false
+          },
+          {
+            "rank": 4,
+            "chunk_id": "FG-DOC-001:0004:4F47CFCD1552",
+            "source_id": "FG-DOC-001",
+            "reranker_score": -0.7302504777908325,
+            "lexical_rank": 10,
+            "semantic_rank": 4,
+            "original_token_count": 136,
+            "truncated": false
+          },
+          {
+            "rank": 5,
+            "chunk_id": "FG-DOC-001:0005:857AC7053ACC",
+            "source_id": "FG-DOC-001",
+            "reranker_score": -1.5278409719467163,
+            "lexical_rank": 17,
+            "semantic_rank": 8,
+            "original_token_count": 126,
+            "truncated": false
+          }
+        ]
+      },
+      "lexical_semantic_union_top20": {
+        "candidate_count": 35,
+        "candidate_recall": 1.0,
+        "first_relevant_rank": 1,
+        "reciprocal_rank": 1.0,
+        "recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0
+        },
+        "retrieved": [
+          {
+            "rank": 1,
+            "chunk_id": "FG-DOC-001:0006:6AEBD9307939",
+            "source_id": "FG-DOC-001",
+            "reranker_score": 2.7979750633239746,
+            "lexical_rank": 18,
+            "semantic_rank": 1,
+            "original_token_count": 189,
+            "truncated": false
+          },
+          {
+            "rank": 2,
+            "chunk_id": "FG-DOC-001:0013:38A34C25BCAD",
+            "source_id": "FG-DOC-001",
+            "reranker_score": 2.3359375,
+            "lexical_rank": null,
+            "semantic_rank": 6,
+            "original_token_count": 172,
+            "truncated": false
+          },
+          {
+            "rank": 3,
+            "chunk_id": "FG-DOC-002:0019:842FCBD25129",
+            "source_id": "FG-DOC-002",
+            "reranker_score": 2.177232027053833,
+            "lexical_rank": null,
+            "semantic_rank": 3,
+            "original_token_count": 85,
+            "truncated": false
+          },
+          {
+            "rank": 4,
+            "chunk_id": "FG-DOC-001:0004:4F47CFCD1552",
+            "source_id": "FG-DOC-001",
+            "reranker_score": -0.7302504777908325,
+            "lexical_rank": 10,
+            "semantic_rank": 4,
+            "original_token_count": 136,
+            "truncated": false
+          },
+          {
+            "rank": 5,
+            "chunk_id": "FG-DOC-001:0005:857AC7053ACC",
+            "source_id": "FG-DOC-001",
+            "reranker_score": -1.5278409719467163,
+            "lexical_rank": 17,
+            "semantic_rank": 8,
+            "original_token_count": 126,
+            "truncated": false
+          }
+        ]
+      }
+    },
+    {
+      "question_id": "FG-RET-003",
+      "question": "What did the controlled still-image inference experiment prove, and what could it not prove?",
+      "relevant_chunk_ids": [
+        "FG-DOC-002:0032:84B6F92F8C91",
+        "FG-DOC-002:0033:038A260580ED"
+      ],
+      "inference_latency_ms": 4672.386959000505,
+      "scored_candidates": [
+        {
+          "chunk_id": "FG-DOC-002:0032:84B6F92F8C91",
+          "source_id": "FG-DOC-002",
+          "reranker_score": 6.764406204223633,
+          "lexical_rank": 1,
+          "semantic_rank": 2,
+          "original_token_count": 194,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-002:0033:038A260580ED",
+          "source_id": "FG-DOC-002",
+          "reranker_score": 5.800798416137695,
+          "lexical_rank": 2,
+          "semantic_rank": 1,
+          "original_token_count": 182,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-002:0027:DDD0E656228C",
+          "source_id": "FG-DOC-002",
+          "reranker_score": 3.327251434326172,
+          "lexical_rank": 3,
+          "semantic_rank": 3,
+          "original_token_count": 88,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-002:0031:2327CE814BAC",
+          "source_id": "FG-DOC-002",
+          "reranker_score": 2.8802096843719482,
+          "lexical_rank": 4,
+          "semantic_rank": 5,
+          "original_token_count": 325,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-002:0028:3CC198C4F4EF",
+          "source_id": "FG-DOC-002",
+          "reranker_score": 2.634035587310791,
+          "lexical_rank": 5,
+          "semantic_rank": 10,
+          "original_token_count": 281,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-002:0029:029A0DD74044",
+          "source_id": "FG-DOC-002",
+          "reranker_score": 2.0673184394836426,
+          "lexical_rank": 6,
+          "semantic_rank": 8,
+          "original_token_count": 131,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-002:0030:5B59C4E21693",
+          "source_id": "FG-DOC-002",
+          "reranker_score": 4.310156345367432,
+          "lexical_rank": 7,
+          "semantic_rank": 11,
+          "original_token_count": 186,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-002:0034:C31C5693670E",
+          "source_id": "FG-DOC-002",
+          "reranker_score": 3.578256130218506,
+          "lexical_rank": 8,
+          "semantic_rank": 7,
+          "original_token_count": 83,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0037:0D2978BB0902",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -8.090350151062012,
+          "lexical_rank": 9,
+          "semantic_rank": null,
+          "original_token_count": 452,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0086:216D73904EE0",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -8.860787391662598,
+          "lexical_rank": 10,
+          "semantic_rank": null,
+          "original_token_count": 475,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-002:0003:E298715D3E42",
+          "source_id": "FG-DOC-002",
+          "reranker_score": -6.416989803314209,
+          "lexical_rank": 11,
+          "semantic_rank": 19,
+          "original_token_count": 409,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0029:2210F83DDD21",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -8.788290023803711,
+          "lexical_rank": 12,
+          "semantic_rank": null,
+          "original_token_count": 434,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0059:9F7988DF95FF",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -9.415964126586914,
+          "lexical_rank": 13,
+          "semantic_rank": null,
+          "original_token_count": 422,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0081:2BE8366910AB",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -9.77051830291748,
+          "lexical_rank": 14,
+          "semantic_rank": null,
+          "original_token_count": 446,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0120:0CBD3697048C",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -10.796714782714844,
+          "lexical_rank": 15,
+          "semantic_rank": null,
+          "original_token_count": 238,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-STD-001:0493:15E163970756",
+          "source_id": "EXT-STD-001",
+          "reranker_score": -11.024116516113281,
+          "lexical_rank": 16,
+          "semantic_rank": null,
+          "original_token_count": 983,
+          "truncated": true
+        },
+        {
+          "chunk_id": "EXT-STD-001:0408:0E24F2037B24",
+          "source_id": "EXT-STD-001",
+          "reranker_score": -9.904388427734375,
+          "lexical_rank": 17,
+          "semantic_rank": null,
+          "original_token_count": 466,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0054:A9513F3E3FB3",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -9.74793815612793,
+          "lexical_rank": 18,
+          "semantic_rank": null,
+          "original_token_count": 420,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-STD-001:0410:5FD2A066E14D",
+          "source_id": "EXT-STD-001",
+          "reranker_score": -10.454673767089844,
+          "lexical_rank": 19,
+          "semantic_rank": null,
+          "original_token_count": 425,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-002:0037:8FB12D920C07",
+          "source_id": "FG-DOC-002",
+          "reranker_score": -4.2137346267700195,
+          "lexical_rank": 20,
+          "semantic_rank": 18,
+          "original_token_count": 240,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-002:0019:842FCBD25129",
+          "source_id": "FG-DOC-002",
+          "reranker_score": 2.4673054218292236,
+          "lexical_rank": null,
+          "semantic_rank": 4,
+          "original_token_count": 86,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-002:0018:549C8C1D9305",
+          "source_id": "FG-DOC-002",
+          "reranker_score": 3.18605899810791,
+          "lexical_rank": null,
+          "semantic_rank": 6,
+          "original_token_count": 128,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-002:0040:433B3A0CCF28",
+          "source_id": "FG-DOC-002",
+          "reranker_score": 0.3270716667175293,
+          "lexical_rank": null,
+          "semantic_rank": 9,
+          "original_token_count": 162,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-001:0006:6AEBD9307939",
+          "source_id": "FG-DOC-001",
+          "reranker_score": -1.7956748008728027,
+          "lexical_rank": null,
+          "semantic_rank": 12,
+          "original_token_count": 190,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-001:0012:27DD2BFFFC10",
+          "source_id": "FG-DOC-001",
+          "reranker_score": -6.570309162139893,
+          "lexical_rank": null,
+          "semantic_rank": 13,
+          "original_token_count": 189,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-002:0070:DBF20B7B17B4",
+          "source_id": "FG-DOC-002",
+          "reranker_score": -0.18382853269577026,
+          "lexical_rank": null,
+          "semantic_rank": 14,
+          "original_token_count": 157,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-001:0004:4F47CFCD1552",
+          "source_id": "FG-DOC-001",
+          "reranker_score": -3.243661642074585,
+          "lexical_rank": null,
+          "semantic_rank": 15,
+          "original_token_count": 137,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-002:0035:2FDBAB990B83",
+          "source_id": "FG-DOC-002",
+          "reranker_score": -4.718045711517334,
+          "lexical_rank": null,
+          "semantic_rank": 16,
+          "original_token_count": 94,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-002:0017:6FA3B2A54C12",
+          "source_id": "FG-DOC-002",
+          "reranker_score": -4.997067451477051,
+          "lexical_rank": null,
+          "semantic_rank": 17,
+          "original_token_count": 126,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-GUIDE-001:0024:D80C02EF84A8",
+          "source_id": "EXT-GUIDE-001",
+          "reranker_score": -8.491291999816895,
+          "lexical_rank": null,
+          "semantic_rank": 20,
+          "original_token_count": 306,
+          "truncated": false
+        }
+      ],
+      "semantic_top20": {
+        "candidate_count": 20,
+        "candidate_recall": 1.0,
+        "first_relevant_rank": 1,
+        "reciprocal_rank": 1.0,
+        "recall_at_k": {
+          "1": 0.5,
+          "3": 1.0,
+          "5": 1.0
+        },
+        "retrieved": [
+          {
+            "rank": 1,
+            "chunk_id": "FG-DOC-002:0032:84B6F92F8C91",
+            "source_id": "FG-DOC-002",
+            "reranker_score": 6.764406204223633,
+            "lexical_rank": 1,
+            "semantic_rank": 2,
+            "original_token_count": 194,
+            "truncated": false
+          },
+          {
+            "rank": 2,
+            "chunk_id": "FG-DOC-002:0033:038A260580ED",
+            "source_id": "FG-DOC-002",
+            "reranker_score": 5.800798416137695,
+            "lexical_rank": 2,
+            "semantic_rank": 1,
+            "original_token_count": 182,
+            "truncated": false
+          },
+          {
+            "rank": 3,
+            "chunk_id": "FG-DOC-002:0030:5B59C4E21693",
+            "source_id": "FG-DOC-002",
+            "reranker_score": 4.310156345367432,
+            "lexical_rank": 7,
+            "semantic_rank": 11,
+            "original_token_count": 186,
+            "truncated": false
+          },
+          {
+            "rank": 4,
+            "chunk_id": "FG-DOC-002:0034:C31C5693670E",
+            "source_id": "FG-DOC-002",
+            "reranker_score": 3.578256130218506,
+            "lexical_rank": 8,
+            "semantic_rank": 7,
+            "original_token_count": 83,
+            "truncated": false
+          },
+          {
+            "rank": 5,
+            "chunk_id": "FG-DOC-002:0027:DDD0E656228C",
+            "source_id": "FG-DOC-002",
+            "reranker_score": 3.327251434326172,
+            "lexical_rank": 3,
+            "semantic_rank": 3,
+            "original_token_count": 88,
+            "truncated": false
+          }
+        ]
+      },
+      "lexical_semantic_union_top20": {
+        "candidate_count": 30,
+        "candidate_recall": 1.0,
+        "first_relevant_rank": 1,
+        "reciprocal_rank": 1.0,
+        "recall_at_k": {
+          "1": 0.5,
+          "3": 1.0,
+          "5": 1.0
+        },
+        "retrieved": [
+          {
+            "rank": 1,
+            "chunk_id": "FG-DOC-002:0032:84B6F92F8C91",
+            "source_id": "FG-DOC-002",
+            "reranker_score": 6.764406204223633,
+            "lexical_rank": 1,
+            "semantic_rank": 2,
+            "original_token_count": 194,
+            "truncated": false
+          },
+          {
+            "rank": 2,
+            "chunk_id": "FG-DOC-002:0033:038A260580ED",
+            "source_id": "FG-DOC-002",
+            "reranker_score": 5.800798416137695,
+            "lexical_rank": 2,
+            "semantic_rank": 1,
+            "original_token_count": 182,
+            "truncated": false
+          },
+          {
+            "rank": 3,
+            "chunk_id": "FG-DOC-002:0030:5B59C4E21693",
+            "source_id": "FG-DOC-002",
+            "reranker_score": 4.310156345367432,
+            "lexical_rank": 7,
+            "semantic_rank": 11,
+            "original_token_count": 186,
+            "truncated": false
+          },
+          {
+            "rank": 4,
+            "chunk_id": "FG-DOC-002:0034:C31C5693670E",
+            "source_id": "FG-DOC-002",
+            "reranker_score": 3.578256130218506,
+            "lexical_rank": 8,
+            "semantic_rank": 7,
+            "original_token_count": 83,
+            "truncated": false
+          },
+          {
+            "rank": 5,
+            "chunk_id": "FG-DOC-002:0027:DDD0E656228C",
+            "source_id": "FG-DOC-002",
+            "reranker_score": 3.327251434326172,
+            "lexical_rank": 3,
+            "semantic_rank": 3,
+            "original_token_count": 88,
+            "truncated": false
+          }
+        ]
+      }
+    },
+    {
+      "question_id": "FG-RET-004",
+      "question": "Why did PostgreSQL reject the first generated full-text column design using ARRAY_TO_STRING?",
+      "relevant_chunk_ids": [
+        "FG-DOC-002:0055:B97BF57FFB48"
+      ],
+      "inference_latency_ms": 5784.124408000935,
+      "scored_candidates": [
+        {
+          "chunk_id": "EXT-STD-001:0102:3DF3F24D77B4",
+          "source_id": "EXT-STD-001",
+          "reranker_score": -10.653687477111816,
+          "lexical_rank": 1,
+          "semantic_rank": null,
+          "original_token_count": 1038,
+          "truncated": true
+        },
+        {
+          "chunk_id": "EXT-STD-001:0311:8B70E20E6E6B",
+          "source_id": "EXT-STD-001",
+          "reranker_score": -11.009917259216309,
+          "lexical_rank": 2,
+          "semantic_rank": null,
+          "original_token_count": 2001,
+          "truncated": true
+        },
+        {
+          "chunk_id": "EXT-STD-001:0347:D03400156B6F",
+          "source_id": "EXT-STD-001",
+          "reranker_score": -9.962828636169434,
+          "lexical_rank": 3,
+          "semantic_rank": null,
+          "original_token_count": 1484,
+          "truncated": true
+        },
+        {
+          "chunk_id": "FG-DOC-002:0055:B97BF57FFB48",
+          "source_id": "FG-DOC-002",
+          "reranker_score": 4.994307518005371,
+          "lexical_rank": 4,
+          "semantic_rank": 1,
+          "original_token_count": 222,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0129:ADA74A77821C",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -10.810310363769531,
+          "lexical_rank": 5,
+          "semantic_rank": null,
+          "original_token_count": 325,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-STD-001:0350:436F00CF7357",
+          "source_id": "EXT-STD-001",
+          "reranker_score": -8.241296768188477,
+          "lexical_rank": 6,
+          "semantic_rank": null,
+          "original_token_count": 551,
+          "truncated": true
+        },
+        {
+          "chunk_id": "FG-DOC-002:0053:2E4B3AEE856C",
+          "source_id": "FG-DOC-002",
+          "reranker_score": 6.9417524337768555,
+          "lexical_rank": 7,
+          "semantic_rank": 4,
+          "original_token_count": 289,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0063:AAF89020CABE",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -10.339644432067871,
+          "lexical_rank": 8,
+          "semantic_rank": null,
+          "original_token_count": 390,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-STD-001:0392:A7B6CFB49F32",
+          "source_id": "EXT-STD-001",
+          "reranker_score": -10.110586166381836,
+          "lexical_rank": 9,
+          "semantic_rank": null,
+          "original_token_count": 1283,
+          "truncated": true
+        },
+        {
+          "chunk_id": "EXT-STD-001:0497:C2C3A803AF88",
+          "source_id": "EXT-STD-001",
+          "reranker_score": -10.064346313476562,
+          "lexical_rank": 10,
+          "semantic_rank": null,
+          "original_token_count": 1192,
+          "truncated": true
+        },
+        {
+          "chunk_id": "EXT-STD-001:0108:8A416099C7D1",
+          "source_id": "EXT-STD-001",
+          "reranker_score": -10.555109024047852,
+          "lexical_rank": 11,
+          "semantic_rank": null,
+          "original_token_count": 589,
+          "truncated": true
+        },
+        {
+          "chunk_id": "EXT-STD-001:0371:843A9F5F5AD5",
+          "source_id": "EXT-STD-001",
+          "reranker_score": -9.59488296508789,
+          "lexical_rank": 12,
+          "semantic_rank": null,
+          "original_token_count": 609,
+          "truncated": true
+        },
+        {
+          "chunk_id": "EXT-STD-001:0267:2350FB1F1DDC",
+          "source_id": "EXT-STD-001",
+          "reranker_score": -9.105864524841309,
+          "lexical_rank": 13,
+          "semantic_rank": null,
+          "original_token_count": 556,
+          "truncated": true
+        },
+        {
+          "chunk_id": "EXT-STD-001:0488:F54928180282",
+          "source_id": "EXT-STD-001",
+          "reranker_score": -11.171937942504883,
+          "lexical_rank": 14,
+          "semantic_rank": null,
+          "original_token_count": 555,
+          "truncated": true
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0023:A9C0149CC551",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -10.23818302154541,
+          "lexical_rank": 15,
+          "semantic_rank": null,
+          "original_token_count": 406,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0030:5AA6232DFC75",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -9.788196563720703,
+          "lexical_rank": 16,
+          "semantic_rank": null,
+          "original_token_count": 459,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0062:23C088F6A6A6",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -10.983663558959961,
+          "lexical_rank": 17,
+          "semantic_rank": null,
+          "original_token_count": 442,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-STD-001:0387:451885E94CAC",
+          "source_id": "EXT-STD-001",
+          "reranker_score": -10.670568466186523,
+          "lexical_rank": 18,
+          "semantic_rank": null,
+          "original_token_count": 746,
+          "truncated": true
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0107:93A62E026DF0",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -10.652318000793457,
+          "lexical_rank": 19,
+          "semantic_rank": null,
+          "original_token_count": 703,
+          "truncated": true
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0122:6612B4D02E41",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -10.996246337890625,
+          "lexical_rank": 20,
+          "semantic_rank": null,
+          "original_token_count": 253,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-002:0056:DCE4B763C6A9",
+          "source_id": "FG-DOC-002",
+          "reranker_score": -3.4991869926452637,
+          "lexical_rank": null,
+          "semantic_rank": 2,
+          "original_token_count": 146,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-002:0054:CE34889DCCC9",
+          "source_id": "FG-DOC-002",
+          "reranker_score": -0.2465209811925888,
+          "lexical_rank": null,
+          "semantic_rank": 3,
+          "original_token_count": 189,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-002:0050:52A395BF9BC6",
+          "source_id": "FG-DOC-002",
+          "reranker_score": -1.0497194528579712,
+          "lexical_rank": null,
+          "semantic_rank": 5,
+          "original_token_count": 89,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-002:0049:F4C97C86B0F7",
+          "source_id": "FG-DOC-002",
+          "reranker_score": -6.115081310272217,
+          "lexical_rank": null,
+          "semantic_rank": 6,
+          "original_token_count": 95,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-002:0065:E5E0253EDBD9",
+          "source_id": "FG-DOC-002",
+          "reranker_score": -4.563684463500977,
+          "lexical_rank": null,
+          "semantic_rank": 7,
+          "original_token_count": 97,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-002:0071:9F7FFCFFC831",
+          "source_id": "FG-DOC-002",
+          "reranker_score": -5.080572128295898,
+          "lexical_rank": null,
+          "semantic_rank": 8,
+          "original_token_count": 179,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-002:0064:DFCC42A9997D",
+          "source_id": "FG-DOC-002",
+          "reranker_score": -6.493983745574951,
+          "lexical_rank": null,
+          "semantic_rank": 9,
+          "original_token_count": 131,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-002:0048:FE61EB3082F4",
+          "source_id": "FG-DOC-002",
+          "reranker_score": -4.6559929847717285,
+          "lexical_rank": null,
+          "semantic_rank": 10,
+          "original_token_count": 161,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-002:0057:AE5E007D35F4",
+          "source_id": "FG-DOC-002",
+          "reranker_score": -7.313364028930664,
+          "lexical_rank": null,
+          "semantic_rank": 11,
+          "original_token_count": 92,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-002:0073:EC457CAF7337",
+          "source_id": "FG-DOC-002",
+          "reranker_score": -6.630181312561035,
+          "lexical_rank": null,
+          "semantic_rank": 12,
+          "original_token_count": 88,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-002:0052:9733D9EDB99E",
+          "source_id": "FG-DOC-002",
+          "reranker_score": -7.303348541259766,
+          "lexical_rank": null,
+          "semantic_rank": 13,
+          "original_token_count": 261,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-002:0063:DFB778A02BEB",
+          "source_id": "FG-DOC-002",
+          "reranker_score": -7.464865684509277,
+          "lexical_rank": null,
+          "semantic_rank": 14,
+          "original_token_count": 178,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-002:0074:D9D0A5A51567",
+          "source_id": "FG-DOC-002",
+          "reranker_score": -6.609825611114502,
+          "lexical_rank": null,
+          "semantic_rank": 15,
+          "original_token_count": 146,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-002:0060:BBA7302E8E2C",
+          "source_id": "FG-DOC-002",
+          "reranker_score": -7.571354389190674,
+          "lexical_rank": null,
+          "semantic_rank": 16,
+          "original_token_count": 250,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-002:0051:EA307CF15E9F",
+          "source_id": "FG-DOC-002",
+          "reranker_score": -7.760101318359375,
+          "lexical_rank": null,
+          "semantic_rank": 17,
+          "original_token_count": 150,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-002:0059:32EB5057BA2A",
+          "source_id": "FG-DOC-002",
+          "reranker_score": -7.890052318572998,
+          "lexical_rank": null,
+          "semantic_rank": 18,
+          "original_token_count": 244,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-002:0070:DBF20B7B17B4",
+          "source_id": "FG-DOC-002",
+          "reranker_score": -9.688682556152344,
+          "lexical_rank": null,
+          "semantic_rank": 19,
+          "original_token_count": 162,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-002:0066:9A959E61E3AE",
+          "source_id": "FG-DOC-002",
+          "reranker_score": -7.622748374938965,
+          "lexical_rank": null,
+          "semantic_rank": 20,
+          "original_token_count": 96,
+          "truncated": false
+        }
+      ],
+      "semantic_top20": {
+        "candidate_count": 20,
+        "candidate_recall": 1.0,
+        "first_relevant_rank": 2,
+        "reciprocal_rank": 0.5,
+        "recall_at_k": {
+          "1": 0.0,
+          "3": 1.0,
+          "5": 1.0
+        },
+        "retrieved": [
+          {
+            "rank": 1,
+            "chunk_id": "FG-DOC-002:0053:2E4B3AEE856C",
+            "source_id": "FG-DOC-002",
+            "reranker_score": 6.9417524337768555,
+            "lexical_rank": 7,
+            "semantic_rank": 4,
+            "original_token_count": 289,
+            "truncated": false
+          },
+          {
+            "rank": 2,
+            "chunk_id": "FG-DOC-002:0055:B97BF57FFB48",
+            "source_id": "FG-DOC-002",
+            "reranker_score": 4.994307518005371,
+            "lexical_rank": 4,
+            "semantic_rank": 1,
+            "original_token_count": 222,
+            "truncated": false
+          },
+          {
+            "rank": 3,
+            "chunk_id": "FG-DOC-002:0054:CE34889DCCC9",
+            "source_id": "FG-DOC-002",
+            "reranker_score": -0.2465209811925888,
+            "lexical_rank": null,
+            "semantic_rank": 3,
+            "original_token_count": 189,
+            "truncated": false
+          },
+          {
+            "rank": 4,
+            "chunk_id": "FG-DOC-002:0050:52A395BF9BC6",
+            "source_id": "FG-DOC-002",
+            "reranker_score": -1.0497194528579712,
+            "lexical_rank": null,
+            "semantic_rank": 5,
+            "original_token_count": 89,
+            "truncated": false
+          },
+          {
+            "rank": 5,
+            "chunk_id": "FG-DOC-002:0056:DCE4B763C6A9",
+            "source_id": "FG-DOC-002",
+            "reranker_score": -3.4991869926452637,
+            "lexical_rank": null,
+            "semantic_rank": 2,
+            "original_token_count": 146,
+            "truncated": false
+          }
+        ]
+      },
+      "lexical_semantic_union_top20": {
+        "candidate_count": 38,
+        "candidate_recall": 1.0,
+        "first_relevant_rank": 2,
+        "reciprocal_rank": 0.5,
+        "recall_at_k": {
+          "1": 0.0,
+          "3": 1.0,
+          "5": 1.0
+        },
+        "retrieved": [
+          {
+            "rank": 1,
+            "chunk_id": "FG-DOC-002:0053:2E4B3AEE856C",
+            "source_id": "FG-DOC-002",
+            "reranker_score": 6.9417524337768555,
+            "lexical_rank": 7,
+            "semantic_rank": 4,
+            "original_token_count": 289,
+            "truncated": false
+          },
+          {
+            "rank": 2,
+            "chunk_id": "FG-DOC-002:0055:B97BF57FFB48",
+            "source_id": "FG-DOC-002",
+            "reranker_score": 4.994307518005371,
+            "lexical_rank": 4,
+            "semantic_rank": 1,
+            "original_token_count": 222,
+            "truncated": false
+          },
+          {
+            "rank": 3,
+            "chunk_id": "FG-DOC-002:0054:CE34889DCCC9",
+            "source_id": "FG-DOC-002",
+            "reranker_score": -0.2465209811925888,
+            "lexical_rank": null,
+            "semantic_rank": 3,
+            "original_token_count": 189,
+            "truncated": false
+          },
+          {
+            "rank": 4,
+            "chunk_id": "FG-DOC-002:0050:52A395BF9BC6",
+            "source_id": "FG-DOC-002",
+            "reranker_score": -1.0497194528579712,
+            "lexical_rank": null,
+            "semantic_rank": 5,
+            "original_token_count": 89,
+            "truncated": false
+          },
+          {
+            "rank": 5,
+            "chunk_id": "FG-DOC-002:0056:DCE4B763C6A9",
+            "source_id": "FG-DOC-002",
+            "reranker_score": -3.4991869926452637,
+            "lexical_rank": null,
+            "semantic_rank": 2,
+            "original_token_count": 146,
+            "truncated": false
+          }
+        ]
+      }
+    },
+    {
+      "question_id": "FG-RET-005",
+      "question": "How is Tan Yan Yi's personal FaceGuard Evidence work separated from the original MCS24 team project?",
+      "relevant_chunk_ids": [
+        "FG-DOC-003:0001:F321DD9A0B93",
+        "FG-DOC-003:0002:A780CC7455DF"
+      ],
+      "inference_latency_ms": 3655.8156709998,
+      "scored_candidates": [
+        {
+          "chunk_id": "FG-DOC-003:0002:A780CC7455DF",
+          "source_id": "FG-DOC-003",
+          "reranker_score": 4.472591400146484,
+          "lexical_rank": 1,
+          "semantic_rank": 4,
+          "original_token_count": 253,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-003:0003:C3FBF0D5BE68",
+          "source_id": "FG-DOC-003",
+          "reranker_score": 1.5166888236999512,
+          "lexical_rank": 2,
+          "semantic_rank": 3,
+          "original_token_count": 156,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-003:0001:F321DD9A0B93",
+          "source_id": "FG-DOC-003",
+          "reranker_score": 6.227472305297852,
+          "lexical_rank": 3,
+          "semantic_rank": 1,
+          "original_token_count": 86,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-001:0003:BDE868BE477E",
+          "source_id": "FG-DOC-001",
+          "reranker_score": 4.930330276489258,
+          "lexical_rank": 4,
+          "semantic_rank": 2,
+          "original_token_count": 150,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-001:0013:38A34C25BCAD",
+          "source_id": "FG-DOC-001",
+          "reranker_score": -6.961881160736084,
+          "lexical_rank": 5,
+          "semantic_rank": 5,
+          "original_token_count": 177,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-001:0002:FF3C5D865D6C",
+          "source_id": "FG-DOC-001",
+          "reranker_score": -3.3793797492980957,
+          "lexical_rank": 6,
+          "semantic_rank": 15,
+          "original_token_count": 281,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-002:0001:2CB5CE850EB2",
+          "source_id": "FG-DOC-002",
+          "reranker_score": -4.828916549682617,
+          "lexical_rank": 7,
+          "semantic_rank": 6,
+          "original_token_count": 108,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-STD-001:0410:5FD2A066E14D",
+          "source_id": "EXT-STD-001",
+          "reranker_score": -11.365829467773438,
+          "lexical_rank": 8,
+          "semantic_rank": null,
+          "original_token_count": 429,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-001:0011:A4E978A8466C",
+          "source_id": "FG-DOC-001",
+          "reranker_score": -7.331491947174072,
+          "lexical_rank": 9,
+          "semantic_rank": null,
+          "original_token_count": 445,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-001:0014:AFA4D03EE952",
+          "source_id": "FG-DOC-001",
+          "reranker_score": -7.954477310180664,
+          "lexical_rank": 10,
+          "semantic_rank": 11,
+          "original_token_count": 256,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0089:FE5040316128",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -11.306243896484375,
+          "lexical_rank": 11,
+          "semantic_rank": null,
+          "original_token_count": 469,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-001:0001:99120F622068",
+          "source_id": "FG-DOC-001",
+          "reranker_score": -5.9167561531066895,
+          "lexical_rank": 12,
+          "semantic_rank": 12,
+          "original_token_count": 96,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-002:0032:84B6F92F8C91",
+          "source_id": "FG-DOC-002",
+          "reranker_score": -5.475674629211426,
+          "lexical_rank": 13,
+          "semantic_rank": null,
+          "original_token_count": 198,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-001:0006:6AEBD9307939",
+          "source_id": "FG-DOC-001",
+          "reranker_score": -7.59621000289917,
+          "lexical_rank": 14,
+          "semantic_rank": null,
+          "original_token_count": 194,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-002:0004:2CAE1443B878",
+          "source_id": "FG-DOC-002",
+          "reranker_score": -6.272298336029053,
+          "lexical_rank": 15,
+          "semantic_rank": 9,
+          "original_token_count": 80,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-002:0005:21DB78365DA2",
+          "source_id": "FG-DOC-002",
+          "reranker_score": -6.159854412078857,
+          "lexical_rank": 16,
+          "semantic_rank": 7,
+          "original_token_count": 103,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-002:0017:6FA3B2A54C12",
+          "source_id": "FG-DOC-002",
+          "reranker_score": -7.007704257965088,
+          "lexical_rank": 17,
+          "semantic_rank": null,
+          "original_token_count": 130,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-001:0004:4F47CFCD1552",
+          "source_id": "FG-DOC-001",
+          "reranker_score": -7.278026580810547,
+          "lexical_rank": 18,
+          "semantic_rank": 13,
+          "original_token_count": 141,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-001:0007:C1010E17492A",
+          "source_id": "FG-DOC-001",
+          "reranker_score": -7.0485124588012695,
+          "lexical_rank": 19,
+          "semantic_rank": null,
+          "original_token_count": 129,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-002:0036:35933C158656",
+          "source_id": "FG-DOC-002",
+          "reranker_score": -7.2151031494140625,
+          "lexical_rank": 20,
+          "semantic_rank": null,
+          "original_token_count": 311,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-002:0021:3E2C54BB44F8",
+          "source_id": "FG-DOC-002",
+          "reranker_score": -7.227998733520508,
+          "lexical_rank": null,
+          "semantic_rank": 8,
+          "original_token_count": 81,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-001:0008:96B4D0A6C5EA",
+          "source_id": "FG-DOC-001",
+          "reranker_score": -10.214311599731445,
+          "lexical_rank": null,
+          "semantic_rank": 10,
+          "original_token_count": 244,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-002:0028:3CC198C4F4EF",
+          "source_id": "FG-DOC-002",
+          "reranker_score": -6.860716819763184,
+          "lexical_rank": null,
+          "semantic_rank": 14,
+          "original_token_count": 285,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-003:0005:2A9E9B20BA57",
+          "source_id": "FG-DOC-003",
+          "reranker_score": -5.412430763244629,
+          "lexical_rank": null,
+          "semantic_rank": 16,
+          "original_token_count": 116,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-002:0012:D98824F3E7A4",
+          "source_id": "FG-DOC-002",
+          "reranker_score": -7.547163486480713,
+          "lexical_rank": null,
+          "semantic_rank": 17,
+          "original_token_count": 79,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-003:0004:E565DA2639BA",
+          "source_id": "FG-DOC-003",
+          "reranker_score": -6.20114803314209,
+          "lexical_rank": null,
+          "semantic_rank": 18,
+          "original_token_count": 218,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-002:0013:FB8E5B0BE5D6",
+          "source_id": "FG-DOC-002",
+          "reranker_score": -7.167287826538086,
+          "lexical_rank": null,
+          "semantic_rank": 19,
+          "original_token_count": 168,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-002:0039:2BC9F89A99D3",
+          "source_id": "FG-DOC-002",
+          "reranker_score": -6.533632278442383,
+          "lexical_rank": null,
+          "semantic_rank": 20,
+          "original_token_count": 157,
+          "truncated": false
+        }
+      ],
+      "semantic_top20": {
+        "candidate_count": 20,
+        "candidate_recall": 1.0,
+        "first_relevant_rank": 1,
+        "reciprocal_rank": 1.0,
+        "recall_at_k": {
+          "1": 0.5,
+          "3": 1.0,
+          "5": 1.0
+        },
+        "retrieved": [
+          {
+            "rank": 1,
+            "chunk_id": "FG-DOC-003:0001:F321DD9A0B93",
+            "source_id": "FG-DOC-003",
+            "reranker_score": 6.227472305297852,
+            "lexical_rank": 3,
+            "semantic_rank": 1,
+            "original_token_count": 86,
+            "truncated": false
+          },
+          {
+            "rank": 2,
+            "chunk_id": "FG-DOC-001:0003:BDE868BE477E",
+            "source_id": "FG-DOC-001",
+            "reranker_score": 4.930330276489258,
+            "lexical_rank": 4,
+            "semantic_rank": 2,
+            "original_token_count": 150,
+            "truncated": false
+          },
+          {
+            "rank": 3,
+            "chunk_id": "FG-DOC-003:0002:A780CC7455DF",
+            "source_id": "FG-DOC-003",
+            "reranker_score": 4.472591400146484,
+            "lexical_rank": 1,
+            "semantic_rank": 4,
+            "original_token_count": 253,
+            "truncated": false
+          },
+          {
+            "rank": 4,
+            "chunk_id": "FG-DOC-003:0003:C3FBF0D5BE68",
+            "source_id": "FG-DOC-003",
+            "reranker_score": 1.5166888236999512,
+            "lexical_rank": 2,
+            "semantic_rank": 3,
+            "original_token_count": 156,
+            "truncated": false
+          },
+          {
+            "rank": 5,
+            "chunk_id": "FG-DOC-001:0002:FF3C5D865D6C",
+            "source_id": "FG-DOC-001",
+            "reranker_score": -3.3793797492980957,
+            "lexical_rank": 6,
+            "semantic_rank": 15,
+            "original_token_count": 281,
+            "truncated": false
+          }
+        ]
+      },
+      "lexical_semantic_union_top20": {
+        "candidate_count": 28,
+        "candidate_recall": 1.0,
+        "first_relevant_rank": 1,
+        "reciprocal_rank": 1.0,
+        "recall_at_k": {
+          "1": 0.5,
+          "3": 1.0,
+          "5": 1.0
+        },
+        "retrieved": [
+          {
+            "rank": 1,
+            "chunk_id": "FG-DOC-003:0001:F321DD9A0B93",
+            "source_id": "FG-DOC-003",
+            "reranker_score": 6.227472305297852,
+            "lexical_rank": 3,
+            "semantic_rank": 1,
+            "original_token_count": 86,
+            "truncated": false
+          },
+          {
+            "rank": 2,
+            "chunk_id": "FG-DOC-001:0003:BDE868BE477E",
+            "source_id": "FG-DOC-001",
+            "reranker_score": 4.930330276489258,
+            "lexical_rank": 4,
+            "semantic_rank": 2,
+            "original_token_count": 150,
+            "truncated": false
+          },
+          {
+            "rank": 3,
+            "chunk_id": "FG-DOC-003:0002:A780CC7455DF",
+            "source_id": "FG-DOC-003",
+            "reranker_score": 4.472591400146484,
+            "lexical_rank": 1,
+            "semantic_rank": 4,
+            "original_token_count": 253,
+            "truncated": false
+          },
+          {
+            "rank": 4,
+            "chunk_id": "FG-DOC-003:0003:C3FBF0D5BE68",
+            "source_id": "FG-DOC-003",
+            "reranker_score": 1.5166888236999512,
+            "lexical_rank": 2,
+            "semantic_rank": 3,
+            "original_token_count": 156,
+            "truncated": false
+          },
+          {
+            "rank": 5,
+            "chunk_id": "FG-DOC-001:0002:FF3C5D865D6C",
+            "source_id": "FG-DOC-001",
+            "reranker_score": -3.3793797492980957,
+            "lexical_rank": 6,
+            "semantic_rank": 15,
+            "original_token_count": 281,
+            "truncated": false
+          }
+        ]
+      }
+    },
+    {
+      "question_id": "FG-RET-006",
+      "question": "What were Tan Yan Yi's reported contributions to the original FaceGuard project?",
+      "relevant_chunk_ids": [
+        "FG-DOC-003:0003:C3FBF0D5BE68"
+      ],
+      "inference_latency_ms": 3969.6042310006305,
+      "scored_candidates": [
+        {
+          "chunk_id": "FG-DOC-003:0003:C3FBF0D5BE68",
+          "source_id": "FG-DOC-003",
+          "reranker_score": 8.356431007385254,
+          "lexical_rank": 1,
+          "semantic_rank": 1,
+          "original_token_count": 150,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-003:0002:A780CC7455DF",
+          "source_id": "FG-DOC-003",
+          "reranker_score": 5.266928672790527,
+          "lexical_rank": 2,
+          "semantic_rank": 4,
+          "original_token_count": 247,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-001:0003:BDE868BE477E",
+          "source_id": "FG-DOC-001",
+          "reranker_score": 6.667412757873535,
+          "lexical_rank": 3,
+          "semantic_rank": 2,
+          "original_token_count": 144,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-003:0001:F321DD9A0B93",
+          "source_id": "FG-DOC-003",
+          "reranker_score": 5.680697441101074,
+          "lexical_rank": 4,
+          "semantic_rank": 3,
+          "original_token_count": 80,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-STD-001:0410:5FD2A066E14D",
+          "source_id": "EXT-STD-001",
+          "reranker_score": -11.290191650390625,
+          "lexical_rank": 5,
+          "semantic_rank": null,
+          "original_token_count": 423,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-001:0002:FF3C5D865D6C",
+          "source_id": "FG-DOC-001",
+          "reranker_score": -5.830852508544922,
+          "lexical_rank": 6,
+          "semantic_rank": 10,
+          "original_token_count": 275,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-001:0013:38A34C25BCAD",
+          "source_id": "FG-DOC-001",
+          "reranker_score": -10.147809982299805,
+          "lexical_rank": 7,
+          "semantic_rank": 13,
+          "original_token_count": 171,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-002:0031:2327CE814BAC",
+          "source_id": "FG-DOC-002",
+          "reranker_score": -8.399587631225586,
+          "lexical_rank": 8,
+          "semantic_rank": null,
+          "original_token_count": 323,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-001:0001:99120F622068",
+          "source_id": "FG-DOC-001",
+          "reranker_score": -6.962660789489746,
+          "lexical_rank": 9,
+          "semantic_rank": 14,
+          "original_token_count": 90,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-001:0006:6AEBD9307939",
+          "source_id": "FG-DOC-001",
+          "reranker_score": -7.371420860290527,
+          "lexical_rank": 10,
+          "semantic_rank": null,
+          "original_token_count": 188,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-001:0007:C1010E17492A",
+          "source_id": "FG-DOC-001",
+          "reranker_score": -7.574319839477539,
+          "lexical_rank": 11,
+          "semantic_rank": null,
+          "original_token_count": 123,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-001:0011:A4E978A8466C",
+          "source_id": "FG-DOC-001",
+          "reranker_score": -7.091114044189453,
+          "lexical_rank": 12,
+          "semantic_rank": null,
+          "original_token_count": 439,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-STD-001:0411:E343A3B21186",
+          "source_id": "EXT-STD-001",
+          "reranker_score": -11.2616548538208,
+          "lexical_rank": 13,
+          "semantic_rank": null,
+          "original_token_count": 440,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-002:0001:2CB5CE850EB2",
+          "source_id": "FG-DOC-002",
+          "reranker_score": -6.187675476074219,
+          "lexical_rank": 14,
+          "semantic_rank": 7,
+          "original_token_count": 102,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-STD-001:0558:43F256A8A467",
+          "source_id": "EXT-STD-001",
+          "reranker_score": -11.356538772583008,
+          "lexical_rank": 15,
+          "semantic_rank": null,
+          "original_token_count": 536,
+          "truncated": true
+        },
+        {
+          "chunk_id": "FG-DOC-001:0004:4F47CFCD1552",
+          "source_id": "FG-DOC-001",
+          "reranker_score": -8.819782257080078,
+          "lexical_rank": 16,
+          "semantic_rank": 20,
+          "original_token_count": 135,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-001:0005:857AC7053ACC",
+          "source_id": "FG-DOC-001",
+          "reranker_score": -9.591939926147461,
+          "lexical_rank": 17,
+          "semantic_rank": null,
+          "original_token_count": 125,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-001:0008:96B4D0A6C5EA",
+          "source_id": "FG-DOC-001",
+          "reranker_score": -8.959179878234863,
+          "lexical_rank": 18,
+          "semantic_rank": 6,
+          "original_token_count": 238,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-001:0014:AFA4D03EE952",
+          "source_id": "FG-DOC-001",
+          "reranker_score": -9.758241653442383,
+          "lexical_rank": 19,
+          "semantic_rank": 12,
+          "original_token_count": 250,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-002:0004:2CAE1443B878",
+          "source_id": "FG-DOC-002",
+          "reranker_score": -6.0717878341674805,
+          "lexical_rank": 20,
+          "semantic_rank": 8,
+          "original_token_count": 74,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-002:0005:21DB78365DA2",
+          "source_id": "FG-DOC-002",
+          "reranker_score": -6.252099514007568,
+          "lexical_rank": null,
+          "semantic_rank": 5,
+          "original_token_count": 97,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-003:0005:2A9E9B20BA57",
+          "source_id": "FG-DOC-003",
+          "reranker_score": -6.376431941986084,
+          "lexical_rank": null,
+          "semantic_rank": 9,
+          "original_token_count": 110,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-002:0021:3E2C54BB44F8",
+          "source_id": "FG-DOC-002",
+          "reranker_score": -8.16615104675293,
+          "lexical_rank": null,
+          "semantic_rank": 11,
+          "original_token_count": 75,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-002:0028:3CC198C4F4EF",
+          "source_id": "FG-DOC-002",
+          "reranker_score": -9.12830924987793,
+          "lexical_rank": null,
+          "semantic_rank": 15,
+          "original_token_count": 279,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-003:0004:E565DA2639BA",
+          "source_id": "FG-DOC-003",
+          "reranker_score": -7.531789779663086,
+          "lexical_rank": null,
+          "semantic_rank": 16,
+          "original_token_count": 212,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-002:0036:35933C158656",
+          "source_id": "FG-DOC-002",
+          "reranker_score": -9.098892211914062,
+          "lexical_rank": null,
+          "semantic_rank": 17,
+          "original_token_count": 305,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-002:0037:8FB12D920C07",
+          "source_id": "FG-DOC-002",
+          "reranker_score": -9.52702808380127,
+          "lexical_rank": null,
+          "semantic_rank": 18,
+          "original_token_count": 238,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-002:0013:FB8E5B0BE5D6",
+          "source_id": "FG-DOC-002",
+          "reranker_score": -9.377912521362305,
+          "lexical_rank": null,
+          "semantic_rank": 19,
+          "original_token_count": 162,
+          "truncated": false
+        }
+      ],
+      "semantic_top20": {
+        "candidate_count": 20,
+        "candidate_recall": 1.0,
+        "first_relevant_rank": 1,
+        "reciprocal_rank": 1.0,
+        "recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0
+        },
+        "retrieved": [
+          {
+            "rank": 1,
+            "chunk_id": "FG-DOC-003:0003:C3FBF0D5BE68",
+            "source_id": "FG-DOC-003",
+            "reranker_score": 8.356431007385254,
+            "lexical_rank": 1,
+            "semantic_rank": 1,
+            "original_token_count": 150,
+            "truncated": false
+          },
+          {
+            "rank": 2,
+            "chunk_id": "FG-DOC-001:0003:BDE868BE477E",
+            "source_id": "FG-DOC-001",
+            "reranker_score": 6.667412757873535,
+            "lexical_rank": 3,
+            "semantic_rank": 2,
+            "original_token_count": 144,
+            "truncated": false
+          },
+          {
+            "rank": 3,
+            "chunk_id": "FG-DOC-003:0001:F321DD9A0B93",
+            "source_id": "FG-DOC-003",
+            "reranker_score": 5.680697441101074,
+            "lexical_rank": 4,
+            "semantic_rank": 3,
+            "original_token_count": 80,
+            "truncated": false
+          },
+          {
+            "rank": 4,
+            "chunk_id": "FG-DOC-003:0002:A780CC7455DF",
+            "source_id": "FG-DOC-003",
+            "reranker_score": 5.266928672790527,
+            "lexical_rank": 2,
+            "semantic_rank": 4,
+            "original_token_count": 247,
+            "truncated": false
+          },
+          {
+            "rank": 5,
+            "chunk_id": "FG-DOC-001:0002:FF3C5D865D6C",
+            "source_id": "FG-DOC-001",
+            "reranker_score": -5.830852508544922,
+            "lexical_rank": 6,
+            "semantic_rank": 10,
+            "original_token_count": 275,
+            "truncated": false
+          }
+        ]
+      },
+      "lexical_semantic_union_top20": {
+        "candidate_count": 28,
+        "candidate_recall": 1.0,
+        "first_relevant_rank": 1,
+        "reciprocal_rank": 1.0,
+        "recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0
+        },
+        "retrieved": [
+          {
+            "rank": 1,
+            "chunk_id": "FG-DOC-003:0003:C3FBF0D5BE68",
+            "source_id": "FG-DOC-003",
+            "reranker_score": 8.356431007385254,
+            "lexical_rank": 1,
+            "semantic_rank": 1,
+            "original_token_count": 150,
+            "truncated": false
+          },
+          {
+            "rank": 2,
+            "chunk_id": "FG-DOC-001:0003:BDE868BE477E",
+            "source_id": "FG-DOC-001",
+            "reranker_score": 6.667412757873535,
+            "lexical_rank": 3,
+            "semantic_rank": 2,
+            "original_token_count": 144,
+            "truncated": false
+          },
+          {
+            "rank": 3,
+            "chunk_id": "FG-DOC-003:0001:F321DD9A0B93",
+            "source_id": "FG-DOC-003",
+            "reranker_score": 5.680697441101074,
+            "lexical_rank": 4,
+            "semantic_rank": 3,
+            "original_token_count": 80,
+            "truncated": false
+          },
+          {
+            "rank": 4,
+            "chunk_id": "FG-DOC-003:0002:A780CC7455DF",
+            "source_id": "FG-DOC-003",
+            "reranker_score": 5.266928672790527,
+            "lexical_rank": 2,
+            "semantic_rank": 4,
+            "original_token_count": 247,
+            "truncated": false
+          },
+          {
+            "rank": 5,
+            "chunk_id": "FG-DOC-001:0002:FF3C5D865D6C",
+            "source_id": "FG-DOC-001",
+            "reranker_score": -5.830852508544922,
+            "lexical_rank": 6,
+            "semantic_rank": 10,
+            "original_token_count": 275,
+            "truncated": false
+          }
+        ]
+      }
+    },
+    {
+      "question_id": "FG-RET-007",
+      "question": "Can provenance information prove that the content of an image is true or factual?",
+      "relevant_chunk_ids": [
+        "EXT-GUIDE-001:0024:D80C02EF84A8"
+      ],
+      "inference_latency_ms": 5057.488403999741,
+      "scored_candidates": [
+        {
+          "chunk_id": "EXT-REPORT-001:0067:72CC098E7A8F",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": 2.5236566066741943,
+          "lexical_rank": 1,
+          "semantic_rank": 6,
+          "original_token_count": 369,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0015:ED4F4D88258A",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": 0.09021102637052536,
+          "lexical_rank": 2,
+          "semantic_rank": 9,
+          "original_token_count": 414,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-GUIDE-001:0024:D80C02EF84A8",
+          "source_id": "EXT-GUIDE-001",
+          "reranker_score": 9.23276138305664,
+          "lexical_rank": 3,
+          "semantic_rank": 1,
+          "original_token_count": 304,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0123:781E37352742",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -1.4416813850402832,
+          "lexical_rank": 4,
+          "semantic_rank": null,
+          "original_token_count": 409,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0008:B7DA79B794B1",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -1.0454100370407104,
+          "lexical_rank": 5,
+          "semantic_rank": null,
+          "original_token_count": 400,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0119:747DF6103F4D",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -3.99520206451416,
+          "lexical_rank": 6,
+          "semantic_rank": null,
+          "original_token_count": 226,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0014:834E8C4E1246",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -0.09456965327262878,
+          "lexical_rank": 7,
+          "semantic_rank": 17,
+          "original_token_count": 364,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0016:2BE73D3C11B3",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -0.5396279096603394,
+          "lexical_rank": 8,
+          "semantic_rank": 3,
+          "original_token_count": 444,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0009:88534448FB01",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -2.258136034011841,
+          "lexical_rank": 9,
+          "semantic_rank": null,
+          "original_token_count": 413,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0037:0D2978BB0902",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": 1.7074153423309326,
+          "lexical_rank": 10,
+          "semantic_rank": 4,
+          "original_token_count": 450,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0066:692B56118CFD",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -5.146297454833984,
+          "lexical_rank": 11,
+          "semantic_rank": null,
+          "original_token_count": 437,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0029:2210F83DDD21",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -5.286674499511719,
+          "lexical_rank": 12,
+          "semantic_rank": null,
+          "original_token_count": 432,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0054:A9513F3E3FB3",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -3.943617343902588,
+          "lexical_rank": 13,
+          "semantic_rank": null,
+          "original_token_count": 418,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0068:625EDF364E4C",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -3.1293864250183105,
+          "lexical_rank": 14,
+          "semantic_rank": null,
+          "original_token_count": 420,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0120:0CBD3697048C",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -8.748635292053223,
+          "lexical_rank": 15,
+          "semantic_rank": null,
+          "original_token_count": 236,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0018:88C0D0F8855E",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -1.0524287223815918,
+          "lexical_rank": 16,
+          "semantic_rank": null,
+          "original_token_count": 443,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0081:2BE8366910AB",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -6.6587419509887695,
+          "lexical_rank": 17,
+          "semantic_rank": null,
+          "original_token_count": 444,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-GUIDE-001:0003:DC127BC868D7",
+          "source_id": "EXT-GUIDE-001",
+          "reranker_score": 2.579341173171997,
+          "lexical_rank": 18,
+          "semantic_rank": 13,
+          "original_token_count": 437,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0057:907C0627DE5C",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -7.49525260925293,
+          "lexical_rank": 19,
+          "semantic_rank": null,
+          "original_token_count": 455,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0059:9F7988DF95FF",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -6.012963771820068,
+          "lexical_rank": 20,
+          "semantic_rank": null,
+          "original_token_count": 420,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0087:9B7FB0C38CAE",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": 3.6017165184020996,
+          "lexical_rank": null,
+          "semantic_rank": 2,
+          "original_token_count": 151,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-STD-001:0002:9937B2E14462",
+          "source_id": "EXT-STD-001",
+          "reranker_score": 0.305249959230423,
+          "lexical_rank": null,
+          "semantic_rank": 5,
+          "original_token_count": 332,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0041:B6019DAD8521",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": 0.12749463319778442,
+          "lexical_rank": null,
+          "semantic_rank": 7,
+          "original_token_count": 412,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-GUIDE-001:0023:DD49CC13284F",
+          "source_id": "EXT-GUIDE-001",
+          "reranker_score": 1.419106125831604,
+          "lexical_rank": null,
+          "semantic_rank": 8,
+          "original_token_count": 232,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-GUIDE-001:0009:12202258D0BC",
+          "source_id": "EXT-GUIDE-001",
+          "reranker_score": -2.8568344116210938,
+          "lexical_rank": null,
+          "semantic_rank": 10,
+          "original_token_count": 186,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-GUIDE-001:0020:16AB3B7CE802",
+          "source_id": "EXT-GUIDE-001",
+          "reranker_score": -2.2933340072631836,
+          "lexical_rank": null,
+          "semantic_rank": 11,
+          "original_token_count": 286,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-GUIDE-001:0026:B91E16C08ADE",
+          "source_id": "EXT-GUIDE-001",
+          "reranker_score": 0.7340467572212219,
+          "lexical_rank": null,
+          "semantic_rank": 12,
+          "original_token_count": 178,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0036:261242C95907",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -1.262115240097046,
+          "lexical_rank": null,
+          "semantic_rank": 14,
+          "original_token_count": 424,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0065:521BAF2A4AD8",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -0.5535323023796082,
+          "lexical_rank": null,
+          "semantic_rank": 15,
+          "original_token_count": 302,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-GUIDE-001:0012:3784CFC984D7",
+          "source_id": "EXT-GUIDE-001",
+          "reranker_score": -4.409395694732666,
+          "lexical_rank": null,
+          "semantic_rank": 16,
+          "original_token_count": 105,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-GUIDE-001:0013:5149C3B0AA4E",
+          "source_id": "EXT-GUIDE-001",
+          "reranker_score": -2.3411097526550293,
+          "lexical_rank": null,
+          "semantic_rank": 18,
+          "original_token_count": 128,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-STD-001:0032:A5EC8D254FC8",
+          "source_id": "EXT-STD-001",
+          "reranker_score": -1.464026689529419,
+          "lexical_rank": null,
+          "semantic_rank": 19,
+          "original_token_count": 211,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0086:216D73904EE0",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -1.9184881448745728,
+          "lexical_rank": null,
+          "semantic_rank": 20,
+          "original_token_count": 473,
+          "truncated": false
+        }
+      ],
+      "semantic_top20": {
+        "candidate_count": 20,
+        "candidate_recall": 1.0,
+        "first_relevant_rank": 1,
+        "reciprocal_rank": 1.0,
+        "recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0
+        },
+        "retrieved": [
+          {
+            "rank": 1,
+            "chunk_id": "EXT-GUIDE-001:0024:D80C02EF84A8",
+            "source_id": "EXT-GUIDE-001",
+            "reranker_score": 9.23276138305664,
+            "lexical_rank": 3,
+            "semantic_rank": 1,
+            "original_token_count": 304,
+            "truncated": false
+          },
+          {
+            "rank": 2,
+            "chunk_id": "EXT-REPORT-001:0087:9B7FB0C38CAE",
+            "source_id": "EXT-REPORT-001",
+            "reranker_score": 3.6017165184020996,
+            "lexical_rank": null,
+            "semantic_rank": 2,
+            "original_token_count": 151,
+            "truncated": false
+          },
+          {
+            "rank": 3,
+            "chunk_id": "EXT-GUIDE-001:0003:DC127BC868D7",
+            "source_id": "EXT-GUIDE-001",
+            "reranker_score": 2.579341173171997,
+            "lexical_rank": 18,
+            "semantic_rank": 13,
+            "original_token_count": 437,
+            "truncated": false
+          },
+          {
+            "rank": 4,
+            "chunk_id": "EXT-REPORT-001:0067:72CC098E7A8F",
+            "source_id": "EXT-REPORT-001",
+            "reranker_score": 2.5236566066741943,
+            "lexical_rank": 1,
+            "semantic_rank": 6,
+            "original_token_count": 369,
+            "truncated": false
+          },
+          {
+            "rank": 5,
+            "chunk_id": "EXT-REPORT-001:0037:0D2978BB0902",
+            "source_id": "EXT-REPORT-001",
+            "reranker_score": 1.7074153423309326,
+            "lexical_rank": 10,
+            "semantic_rank": 4,
+            "original_token_count": 450,
+            "truncated": false
+          }
+        ]
+      },
+      "lexical_semantic_union_top20": {
+        "candidate_count": 33,
+        "candidate_recall": 1.0,
+        "first_relevant_rank": 1,
+        "reciprocal_rank": 1.0,
+        "recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0
+        },
+        "retrieved": [
+          {
+            "rank": 1,
+            "chunk_id": "EXT-GUIDE-001:0024:D80C02EF84A8",
+            "source_id": "EXT-GUIDE-001",
+            "reranker_score": 9.23276138305664,
+            "lexical_rank": 3,
+            "semantic_rank": 1,
+            "original_token_count": 304,
+            "truncated": false
+          },
+          {
+            "rank": 2,
+            "chunk_id": "EXT-REPORT-001:0087:9B7FB0C38CAE",
+            "source_id": "EXT-REPORT-001",
+            "reranker_score": 3.6017165184020996,
+            "lexical_rank": null,
+            "semantic_rank": 2,
+            "original_token_count": 151,
+            "truncated": false
+          },
+          {
+            "rank": 3,
+            "chunk_id": "EXT-GUIDE-001:0003:DC127BC868D7",
+            "source_id": "EXT-GUIDE-001",
+            "reranker_score": 2.579341173171997,
+            "lexical_rank": 18,
+            "semantic_rank": 13,
+            "original_token_count": 437,
+            "truncated": false
+          },
+          {
+            "rank": 4,
+            "chunk_id": "EXT-REPORT-001:0067:72CC098E7A8F",
+            "source_id": "EXT-REPORT-001",
+            "reranker_score": 2.5236566066741943,
+            "lexical_rank": 1,
+            "semantic_rank": 6,
+            "original_token_count": 369,
+            "truncated": false
+          },
+          {
+            "rank": 5,
+            "chunk_id": "EXT-REPORT-001:0037:0D2978BB0902",
+            "source_id": "EXT-REPORT-001",
+            "reranker_score": 1.7074153423309326,
+            "lexical_rank": 10,
+            "semantic_rank": 4,
+            "original_token_count": 450,
+            "truncated": false
+          }
+        ]
+      }
+    },
+    {
+      "question_id": "FG-RET-008",
+      "question": "Should media without Content Credentials automatically be distrusted?",
+      "relevant_chunk_ids": [
+        "EXT-GUIDE-001:0020:16AB3B7CE802"
+      ],
+      "inference_latency_ms": 6317.393682000329,
+      "scored_candidates": [
+        {
+          "chunk_id": "EXT-GUIDE-001:0020:16AB3B7CE802",
+          "source_id": "EXT-GUIDE-001",
+          "reranker_score": 7.500104904174805,
+          "lexical_rank": 1,
+          "semantic_rank": 1,
+          "original_token_count": 280,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-STD-001:0413:90F3B0A95C6C",
+          "source_id": "EXT-STD-001",
+          "reranker_score": -7.828481197357178,
+          "lexical_rank": 2,
+          "semantic_rank": null,
+          "original_token_count": 1156,
+          "truncated": true
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0119:747DF6103F4D",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -6.50894832611084,
+          "lexical_rank": 3,
+          "semantic_rank": null,
+          "original_token_count": 220,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-STD-001:0176:7CFE933347B3",
+          "source_id": "EXT-STD-001",
+          "reranker_score": -4.487892150878906,
+          "lexical_rank": 4,
+          "semantic_rank": null,
+          "original_token_count": 254,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-GUIDE-001:0016:E8463597FD1D",
+          "source_id": "EXT-GUIDE-001",
+          "reranker_score": -6.573264122009277,
+          "lexical_rank": 5,
+          "semantic_rank": null,
+          "original_token_count": 207,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0039:9E99B2F84B42",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -8.122379302978516,
+          "lexical_rank": 6,
+          "semantic_rank": null,
+          "original_token_count": 448,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0067:72CC098E7A8F",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -2.568974018096924,
+          "lexical_rank": 7,
+          "semantic_rank": 8,
+          "original_token_count": 363,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0123:781E37352742",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -4.9014058113098145,
+          "lexical_rank": 8,
+          "semantic_rank": null,
+          "original_token_count": 403,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-GUIDE-001:0003:DC127BC868D7",
+          "source_id": "EXT-GUIDE-001",
+          "reranker_score": 1.8439534902572632,
+          "lexical_rank": 9,
+          "semantic_rank": null,
+          "original_token_count": 431,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-GUIDE-001:0018:2190575AE011",
+          "source_id": "EXT-GUIDE-001",
+          "reranker_score": -4.123193740844727,
+          "lexical_rank": 10,
+          "semantic_rank": null,
+          "original_token_count": 171,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-GUIDE-001:0029:46C27914C1D7",
+          "source_id": "EXT-GUIDE-001",
+          "reranker_score": -4.886902809143066,
+          "lexical_rank": 11,
+          "semantic_rank": null,
+          "original_token_count": 312,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0008:B7DA79B794B1",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -7.470550537109375,
+          "lexical_rank": 12,
+          "semantic_rank": null,
+          "original_token_count": 394,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-STD-001:0028:241FC4FB3E28",
+          "source_id": "EXT-STD-001",
+          "reranker_score": -7.865014553070068,
+          "lexical_rank": 13,
+          "semantic_rank": null,
+          "original_token_count": 287,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-GUIDE-001:0032:D0E85F7B98BC",
+          "source_id": "EXT-GUIDE-001",
+          "reranker_score": -1.8753342628479004,
+          "lexical_rank": 14,
+          "semantic_rank": null,
+          "original_token_count": 151,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0018:88C0D0F8855E",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -7.102901935577393,
+          "lexical_rank": 15,
+          "semantic_rank": null,
+          "original_token_count": 437,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0068:625EDF364E4C",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -8.405387878417969,
+          "lexical_rank": 16,
+          "semantic_rank": null,
+          "original_token_count": 414,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-STD-001:0272:4B24A452B94F",
+          "source_id": "EXT-STD-001",
+          "reranker_score": -1.8392534255981445,
+          "lexical_rank": 17,
+          "semantic_rank": null,
+          "original_token_count": 444,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-GUIDE-001:0007:CC9EACFFB7B7",
+          "source_id": "EXT-GUIDE-001",
+          "reranker_score": -7.688012599945068,
+          "lexical_rank": 18,
+          "semantic_rank": null,
+          "original_token_count": 487,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-GUIDE-001:0022:74B2F6541D23",
+          "source_id": "EXT-GUIDE-001",
+          "reranker_score": -4.343461513519287,
+          "lexical_rank": 19,
+          "semantic_rank": null,
+          "original_token_count": 148,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-GUIDE-001:0035:EC2EE7B73B41",
+          "source_id": "EXT-GUIDE-001",
+          "reranker_score": -2.880291223526001,
+          "lexical_rank": 20,
+          "semantic_rank": 11,
+          "original_token_count": 305,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-GUIDE-001:0013:5149C3B0AA4E",
+          "source_id": "EXT-GUIDE-001",
+          "reranker_score": -1.5132060050964355,
+          "lexical_rank": null,
+          "semantic_rank": 2,
+          "original_token_count": 122,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-GUIDE-001:0009:12202258D0BC",
+          "source_id": "EXT-GUIDE-001",
+          "reranker_score": -0.05640237778425217,
+          "lexical_rank": null,
+          "semantic_rank": 3,
+          "original_token_count": 180,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-GUIDE-001:0019:7506ECE057F5",
+          "source_id": "EXT-GUIDE-001",
+          "reranker_score": -1.9240412712097168,
+          "lexical_rank": null,
+          "semantic_rank": 4,
+          "original_token_count": 109,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-STD-001:0002:9937B2E14462",
+          "source_id": "EXT-STD-001",
+          "reranker_score": 2.518099784851074,
+          "lexical_rank": null,
+          "semantic_rank": 5,
+          "original_token_count": 326,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0046:21E4714D5F69",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -1.4955999851226807,
+          "lexical_rank": null,
+          "semantic_rank": 6,
+          "original_token_count": 416,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-GUIDE-001:0012:3784CFC984D7",
+          "source_id": "EXT-GUIDE-001",
+          "reranker_score": -4.418577194213867,
+          "lexical_rank": null,
+          "semantic_rank": 7,
+          "original_token_count": 99,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-GUIDE-001:0004:60FCEFE59477",
+          "source_id": "EXT-GUIDE-001",
+          "reranker_score": -2.268681526184082,
+          "lexical_rank": null,
+          "semantic_rank": 9,
+          "original_token_count": 113,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-STD-001:0036:8653656B7C56",
+          "source_id": "EXT-STD-001",
+          "reranker_score": -8.918752670288086,
+          "lexical_rank": null,
+          "semantic_rank": 10,
+          "original_token_count": 202,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-GUIDE-001:0014:EDE4FE8E6B71",
+          "source_id": "EXT-GUIDE-001",
+          "reranker_score": -4.947240829467773,
+          "lexical_rank": null,
+          "semantic_rank": 12,
+          "original_token_count": 163,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-GUIDE-001:0024:D80C02EF84A8",
+          "source_id": "EXT-GUIDE-001",
+          "reranker_score": -4.058269500732422,
+          "lexical_rank": null,
+          "semantic_rank": 13,
+          "original_token_count": 298,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-GUIDE-001:0011:DC0C6434AE11",
+          "source_id": "EXT-GUIDE-001",
+          "reranker_score": -4.254305839538574,
+          "lexical_rank": null,
+          "semantic_rank": 14,
+          "original_token_count": 138,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-GUIDE-001:0010:8389EB165CDA",
+          "source_id": "EXT-GUIDE-001",
+          "reranker_score": -4.9609150886535645,
+          "lexical_rank": null,
+          "semantic_rank": 15,
+          "original_token_count": 159,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0047:430254DB9350",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -8.326044082641602,
+          "lexical_rank": null,
+          "semantic_rank": 16,
+          "original_token_count": 110,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-STD-001:0169:BA78388E6CE7",
+          "source_id": "EXT-STD-001",
+          "reranker_score": -6.974923133850098,
+          "lexical_rank": null,
+          "semantic_rank": 17,
+          "original_token_count": 232,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0069:F781C4EB6489",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -5.4041523933410645,
+          "lexical_rank": null,
+          "semantic_rank": 18,
+          "original_token_count": 429,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-STD-001:0164:90403255DA97",
+          "source_id": "EXT-STD-001",
+          "reranker_score": -7.761026859283447,
+          "lexical_rank": null,
+          "semantic_rank": 19,
+          "original_token_count": 78,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-STD-001:0006:ABFA244C3D60",
+          "source_id": "EXT-STD-001",
+          "reranker_score": -6.801812171936035,
+          "lexical_rank": null,
+          "semantic_rank": 20,
+          "original_token_count": 166,
+          "truncated": false
+        }
+      ],
+      "semantic_top20": {
+        "candidate_count": 20,
+        "candidate_recall": 1.0,
+        "first_relevant_rank": 1,
+        "reciprocal_rank": 1.0,
+        "recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0
+        },
+        "retrieved": [
+          {
+            "rank": 1,
+            "chunk_id": "EXT-GUIDE-001:0020:16AB3B7CE802",
+            "source_id": "EXT-GUIDE-001",
+            "reranker_score": 7.500104904174805,
+            "lexical_rank": 1,
+            "semantic_rank": 1,
+            "original_token_count": 280,
+            "truncated": false
+          },
+          {
+            "rank": 2,
+            "chunk_id": "EXT-STD-001:0002:9937B2E14462",
+            "source_id": "EXT-STD-001",
+            "reranker_score": 2.518099784851074,
+            "lexical_rank": null,
+            "semantic_rank": 5,
+            "original_token_count": 326,
+            "truncated": false
+          },
+          {
+            "rank": 3,
+            "chunk_id": "EXT-GUIDE-001:0009:12202258D0BC",
+            "source_id": "EXT-GUIDE-001",
+            "reranker_score": -0.05640237778425217,
+            "lexical_rank": null,
+            "semantic_rank": 3,
+            "original_token_count": 180,
+            "truncated": false
+          },
+          {
+            "rank": 4,
+            "chunk_id": "EXT-REPORT-001:0046:21E4714D5F69",
+            "source_id": "EXT-REPORT-001",
+            "reranker_score": -1.4955999851226807,
+            "lexical_rank": null,
+            "semantic_rank": 6,
+            "original_token_count": 416,
+            "truncated": false
+          },
+          {
+            "rank": 5,
+            "chunk_id": "EXT-GUIDE-001:0013:5149C3B0AA4E",
+            "source_id": "EXT-GUIDE-001",
+            "reranker_score": -1.5132060050964355,
+            "lexical_rank": null,
+            "semantic_rank": 2,
+            "original_token_count": 122,
+            "truncated": false
+          }
+        ]
+      },
+      "lexical_semantic_union_top20": {
+        "candidate_count": 37,
+        "candidate_recall": 1.0,
+        "first_relevant_rank": 1,
+        "reciprocal_rank": 1.0,
+        "recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0
+        },
+        "retrieved": [
+          {
+            "rank": 1,
+            "chunk_id": "EXT-GUIDE-001:0020:16AB3B7CE802",
+            "source_id": "EXT-GUIDE-001",
+            "reranker_score": 7.500104904174805,
+            "lexical_rank": 1,
+            "semantic_rank": 1,
+            "original_token_count": 280,
+            "truncated": false
+          },
+          {
+            "rank": 2,
+            "chunk_id": "EXT-STD-001:0002:9937B2E14462",
+            "source_id": "EXT-STD-001",
+            "reranker_score": 2.518099784851074,
+            "lexical_rank": null,
+            "semantic_rank": 5,
+            "original_token_count": 326,
+            "truncated": false
+          },
+          {
+            "rank": 3,
+            "chunk_id": "EXT-GUIDE-001:0003:DC127BC868D7",
+            "source_id": "EXT-GUIDE-001",
+            "reranker_score": 1.8439534902572632,
+            "lexical_rank": 9,
+            "semantic_rank": null,
+            "original_token_count": 431,
+            "truncated": false
+          },
+          {
+            "rank": 4,
+            "chunk_id": "EXT-GUIDE-001:0009:12202258D0BC",
+            "source_id": "EXT-GUIDE-001",
+            "reranker_score": -0.05640237778425217,
+            "lexical_rank": null,
+            "semantic_rank": 3,
+            "original_token_count": 180,
+            "truncated": false
+          },
+          {
+            "rank": 5,
+            "chunk_id": "EXT-REPORT-001:0046:21E4714D5F69",
+            "source_id": "EXT-REPORT-001",
+            "reranker_score": -1.4955999851226807,
+            "lexical_rank": null,
+            "semantic_rank": 6,
+            "original_token_count": 416,
+            "truncated": false
+          }
+        ]
+      }
+    },
+    {
+      "question_id": "FG-RET-009",
+      "question": "Which detector metric measures true positive rate while limiting false positives to a fixed rate?",
+      "relevant_chunk_ids": [
+        "EXT-REPORT-001:0076:23981DA22651"
+      ],
+      "inference_latency_ms": 4912.635913000486,
+      "scored_candidates": [
+        {
+          "chunk_id": "EXT-REPORT-001:0135:8330787A328B",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": 4.460904121398926,
+          "lexical_rank": 1,
+          "semantic_rank": 3,
+          "original_token_count": 455,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0076:23981DA22651",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": 4.835216522216797,
+          "lexical_rank": 2,
+          "semantic_rank": 2,
+          "original_token_count": 456,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0134:256D1F186B6F",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -0.5170146822929382,
+          "lexical_rank": 3,
+          "semantic_rank": 1,
+          "original_token_count": 390,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0133:DD099791EE9F",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -4.690391540527344,
+          "lexical_rank": 4,
+          "semantic_rank": 4,
+          "original_token_count": 458,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0060:7A8BEDD43CF7",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -7.311305999755859,
+          "lexical_rank": 5,
+          "semantic_rank": 8,
+          "original_token_count": 434,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0064:E7D0C3453BF9",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -9.681940078735352,
+          "lexical_rank": 6,
+          "semantic_rank": 15,
+          "original_token_count": 441,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0075:DE3D67DCBE07",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -4.540220737457275,
+          "lexical_rank": 7,
+          "semantic_rank": 7,
+          "original_token_count": 422,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0057:907C0627DE5C",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -9.184513092041016,
+          "lexical_rank": 8,
+          "semantic_rank": 12,
+          "original_token_count": 456,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0059:9F7988DF95FF",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -8.22854995727539,
+          "lexical_rank": 9,
+          "semantic_rank": 6,
+          "original_token_count": 421,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0034:BBE9E3F01AB4",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -7.467223167419434,
+          "lexical_rank": 10,
+          "semantic_rank": null,
+          "original_token_count": 406,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0073:75140C71191A",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -10.076654434204102,
+          "lexical_rank": 11,
+          "semantic_rank": 20,
+          "original_token_count": 229,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0141:3D43AC01E699",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -5.399484634399414,
+          "lexical_rank": 12,
+          "semantic_rank": null,
+          "original_token_count": 296,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-STD-001:0315:F5B34855DC18",
+          "source_id": "EXT-STD-001",
+          "reranker_score": -11.443933486938477,
+          "lexical_rank": 13,
+          "semantic_rank": null,
+          "original_token_count": 986,
+          "truncated": true
+        },
+        {
+          "chunk_id": "FG-DOC-002:0038:F0053477C6FD",
+          "source_id": "FG-DOC-002",
+          "reranker_score": -7.415782928466797,
+          "lexical_rank": 14,
+          "semantic_rank": 16,
+          "original_token_count": 278,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-STD-001:0319:1B0EF5BF38CB",
+          "source_id": "EXT-STD-001",
+          "reranker_score": -11.359434127807617,
+          "lexical_rank": 15,
+          "semantic_rank": null,
+          "original_token_count": 417,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-001:0012:27DD2BFFFC10",
+          "source_id": "FG-DOC-001",
+          "reranker_score": -2.509230136871338,
+          "lexical_rank": 16,
+          "semantic_rank": null,
+          "original_token_count": 188,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0018:88C0D0F8855E",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -2.946117401123047,
+          "lexical_rank": 17,
+          "semantic_rank": null,
+          "original_token_count": 444,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0021:F55BC7AB73E1",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -10.862537384033203,
+          "lexical_rank": 18,
+          "semantic_rank": null,
+          "original_token_count": 341,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0077:0D723202D1B0",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -4.329543113708496,
+          "lexical_rank": 19,
+          "semantic_rank": null,
+          "original_token_count": 361,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0093:B16DA9684279",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -6.018506050109863,
+          "lexical_rank": 20,
+          "semantic_rank": null,
+          "original_token_count": 367,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0061:84610738F95B",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -9.533893585205078,
+          "lexical_rank": null,
+          "semantic_rank": 5,
+          "original_token_count": 117,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-002:0040:433B3A0CCF28",
+          "source_id": "FG-DOC-002",
+          "reranker_score": -6.828295707702637,
+          "lexical_rank": null,
+          "semantic_rank": 9,
+          "original_token_count": 161,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-002:0034:C31C5693670E",
+          "source_id": "FG-DOC-002",
+          "reranker_score": -8.307635307312012,
+          "lexical_rank": null,
+          "semantic_rank": 10,
+          "original_token_count": 82,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-002:0035:2FDBAB990B83",
+          "source_id": "FG-DOC-002",
+          "reranker_score": -8.624358177185059,
+          "lexical_rank": null,
+          "semantic_rank": 11,
+          "original_token_count": 93,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-001:0013:38A34C25BCAD",
+          "source_id": "FG-DOC-001",
+          "reranker_score": -9.055790901184082,
+          "lexical_rank": null,
+          "semantic_rank": 13,
+          "original_token_count": 172,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-001:0004:4F47CFCD1552",
+          "source_id": "FG-DOC-001",
+          "reranker_score": -9.11734676361084,
+          "lexical_rank": null,
+          "semantic_rank": 14,
+          "original_token_count": 136,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-002:0039:2BC9F89A99D3",
+          "source_id": "FG-DOC-002",
+          "reranker_score": -9.461651802062988,
+          "lexical_rank": null,
+          "semantic_rank": 17,
+          "original_token_count": 152,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0074:4CB207093F74",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -10.389543533325195,
+          "lexical_rank": null,
+          "semantic_rank": 18,
+          "original_token_count": 434,
+          "truncated": false
+        },
+        {
+          "chunk_id": "FG-DOC-001:0007:C1010E17492A",
+          "source_id": "FG-DOC-001",
+          "reranker_score": -11.200775146484375,
+          "lexical_rank": null,
+          "semantic_rank": 19,
+          "original_token_count": 124,
+          "truncated": false
+        }
+      ],
+      "semantic_top20": {
+        "candidate_count": 20,
+        "candidate_recall": 1.0,
+        "first_relevant_rank": 1,
+        "reciprocal_rank": 1.0,
+        "recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0
+        },
+        "retrieved": [
+          {
+            "rank": 1,
+            "chunk_id": "EXT-REPORT-001:0076:23981DA22651",
+            "source_id": "EXT-REPORT-001",
+            "reranker_score": 4.835216522216797,
+            "lexical_rank": 2,
+            "semantic_rank": 2,
+            "original_token_count": 456,
+            "truncated": false
+          },
+          {
+            "rank": 2,
+            "chunk_id": "EXT-REPORT-001:0135:8330787A328B",
+            "source_id": "EXT-REPORT-001",
+            "reranker_score": 4.460904121398926,
+            "lexical_rank": 1,
+            "semantic_rank": 3,
+            "original_token_count": 455,
+            "truncated": false
+          },
+          {
+            "rank": 3,
+            "chunk_id": "EXT-REPORT-001:0134:256D1F186B6F",
+            "source_id": "EXT-REPORT-001",
+            "reranker_score": -0.5170146822929382,
+            "lexical_rank": 3,
+            "semantic_rank": 1,
+            "original_token_count": 390,
+            "truncated": false
+          },
+          {
+            "rank": 4,
+            "chunk_id": "EXT-REPORT-001:0075:DE3D67DCBE07",
+            "source_id": "EXT-REPORT-001",
+            "reranker_score": -4.540220737457275,
+            "lexical_rank": 7,
+            "semantic_rank": 7,
+            "original_token_count": 422,
+            "truncated": false
+          },
+          {
+            "rank": 5,
+            "chunk_id": "EXT-REPORT-001:0133:DD099791EE9F",
+            "source_id": "EXT-REPORT-001",
+            "reranker_score": -4.690391540527344,
+            "lexical_rank": 4,
+            "semantic_rank": 4,
+            "original_token_count": 458,
+            "truncated": false
+          }
+        ]
+      },
+      "lexical_semantic_union_top20": {
+        "candidate_count": 29,
+        "candidate_recall": 1.0,
+        "first_relevant_rank": 1,
+        "reciprocal_rank": 1.0,
+        "recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0
+        },
+        "retrieved": [
+          {
+            "rank": 1,
+            "chunk_id": "EXT-REPORT-001:0076:23981DA22651",
+            "source_id": "EXT-REPORT-001",
+            "reranker_score": 4.835216522216797,
+            "lexical_rank": 2,
+            "semantic_rank": 2,
+            "original_token_count": 456,
+            "truncated": false
+          },
+          {
+            "rank": 2,
+            "chunk_id": "EXT-REPORT-001:0135:8330787A328B",
+            "source_id": "EXT-REPORT-001",
+            "reranker_score": 4.460904121398926,
+            "lexical_rank": 1,
+            "semantic_rank": 3,
+            "original_token_count": 455,
+            "truncated": false
+          },
+          {
+            "rank": 3,
+            "chunk_id": "EXT-REPORT-001:0134:256D1F186B6F",
+            "source_id": "EXT-REPORT-001",
+            "reranker_score": -0.5170146822929382,
+            "lexical_rank": 3,
+            "semantic_rank": 1,
+            "original_token_count": 390,
+            "truncated": false
+          },
+          {
+            "rank": 4,
+            "chunk_id": "FG-DOC-001:0012:27DD2BFFFC10",
+            "source_id": "FG-DOC-001",
+            "reranker_score": -2.509230136871338,
+            "lexical_rank": 16,
+            "semantic_rank": null,
+            "original_token_count": 188,
+            "truncated": false
+          },
+          {
+            "rank": 5,
+            "chunk_id": "EXT-REPORT-001:0018:88C0D0F8855E",
+            "source_id": "EXT-REPORT-001",
+            "reranker_score": -2.946117401123047,
+            "lexical_rank": 17,
+            "semantic_rank": null,
+            "original_token_count": 444,
+            "truncated": false
+          }
+        ]
+      }
+    },
+    {
+      "question_id": "FG-RET-010",
+      "question": "What tradeoff exists between watermark robustness and watermark capacity?",
+      "relevant_chunk_ids": [
+        "EXT-REPORT-001:0027:786D1CEA953F",
+        "EXT-REPORT-001:0028:D8EDCB5281EB"
+      ],
+      "inference_latency_ms": 4010.8733640008722,
+      "scored_candidates": [
+        {
+          "chunk_id": "EXT-REPORT-001:0028:D8EDCB5281EB",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": 3.8934788703918457,
+          "lexical_rank": 1,
+          "semantic_rank": 1,
+          "original_token_count": 461,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0032:CDC8FC8F3F35",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": 0.2151871919631958,
+          "lexical_rank": 2,
+          "semantic_rank": 14,
+          "original_token_count": 470,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0019:3353E40AB236",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": 1.7235267162322998,
+          "lexical_rank": 3,
+          "semantic_rank": 4,
+          "original_token_count": 417,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0018:88C0D0F8855E",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -5.716413497924805,
+          "lexical_rank": 4,
+          "semantic_rank": 17,
+          "original_token_count": 441,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0027:786D1CEA953F",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": 1.5997647047042847,
+          "lexical_rank": 5,
+          "semantic_rank": 7,
+          "original_token_count": 347,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0029:2210F83DDD21",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -4.317326545715332,
+          "lexical_rank": 6,
+          "semantic_rank": 8,
+          "original_token_count": 430,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0017:557587623590",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -6.340144157409668,
+          "lexical_rank": 7,
+          "semantic_rank": 11,
+          "original_token_count": 374,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0031:9B4A36F0D21F",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -5.036859512329102,
+          "lexical_rank": 8,
+          "semantic_rank": 19,
+          "original_token_count": 441,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0034:BBE9E3F01AB4",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -3.697645664215088,
+          "lexical_rank": 9,
+          "semantic_rank": 2,
+          "original_token_count": 403,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0033:76989234F9B0",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -4.9265007972717285,
+          "lexical_rank": 10,
+          "semantic_rank": 9,
+          "original_token_count": 406,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0072:1650EF6D2A3D",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -6.519146919250488,
+          "lexical_rank": 11,
+          "semantic_rank": null,
+          "original_token_count": 381,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0099:07FBD028866D",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -0.8406398296356201,
+          "lexical_rank": 12,
+          "semantic_rank": 13,
+          "original_token_count": 736,
+          "truncated": true
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0030:5AA6232DFC75",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -5.66103458404541,
+          "lexical_rank": 13,
+          "semantic_rank": 15,
+          "original_token_count": 450,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0035:A36649472E4E",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -5.10118293762207,
+          "lexical_rank": 14,
+          "semantic_rank": 10,
+          "original_token_count": 315,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0016:2BE73D3C11B3",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -5.2810444831848145,
+          "lexical_rank": 15,
+          "semantic_rank": null,
+          "original_token_count": 442,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0020:8D43FFDF9FCE",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -7.359704971313477,
+          "lexical_rank": 16,
+          "semantic_rank": 18,
+          "original_token_count": 324,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0114:A1C44CC5FCB1",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -8.621118545532227,
+          "lexical_rank": 17,
+          "semantic_rank": null,
+          "original_token_count": 328,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0014:834E8C4E1246",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -8.922121047973633,
+          "lexical_rank": 18,
+          "semantic_rank": null,
+          "original_token_count": 362,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0023:A9C0149CC551",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -5.995729446411133,
+          "lexical_rank": 19,
+          "semantic_rank": 16,
+          "original_token_count": 397,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0024:AC2523B98FC4",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -6.260710716247559,
+          "lexical_rank": 20,
+          "semantic_rank": 6,
+          "original_token_count": 432,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0025:AF1C9A9AEFCE",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -4.168892860412598,
+          "lexical_rank": null,
+          "semantic_rank": 3,
+          "original_token_count": 201,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0073:75140C71191A",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -4.794425010681152,
+          "lexical_rank": null,
+          "semantic_rank": 5,
+          "original_token_count": 226,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0021:F55BC7AB73E1",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -5.879547119140625,
+          "lexical_rank": null,
+          "semantic_rank": 12,
+          "original_token_count": 338,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-REPORT-001:0026:BBE35258DAFA",
+          "source_id": "EXT-REPORT-001",
+          "reranker_score": -8.435429573059082,
+          "lexical_rank": null,
+          "semantic_rank": 20,
+          "original_token_count": 249,
+          "truncated": false
+        }
+      ],
+      "semantic_top20": {
+        "candidate_count": 20,
+        "candidate_recall": 1.0,
+        "first_relevant_rank": 1,
+        "reciprocal_rank": 1.0,
+        "recall_at_k": {
+          "1": 0.5,
+          "3": 1.0,
+          "5": 1.0
+        },
+        "retrieved": [
+          {
+            "rank": 1,
+            "chunk_id": "EXT-REPORT-001:0028:D8EDCB5281EB",
+            "source_id": "EXT-REPORT-001",
+            "reranker_score": 3.8934788703918457,
+            "lexical_rank": 1,
+            "semantic_rank": 1,
+            "original_token_count": 461,
+            "truncated": false
+          },
+          {
+            "rank": 2,
+            "chunk_id": "EXT-REPORT-001:0019:3353E40AB236",
+            "source_id": "EXT-REPORT-001",
+            "reranker_score": 1.7235267162322998,
+            "lexical_rank": 3,
+            "semantic_rank": 4,
+            "original_token_count": 417,
+            "truncated": false
+          },
+          {
+            "rank": 3,
+            "chunk_id": "EXT-REPORT-001:0027:786D1CEA953F",
+            "source_id": "EXT-REPORT-001",
+            "reranker_score": 1.5997647047042847,
+            "lexical_rank": 5,
+            "semantic_rank": 7,
+            "original_token_count": 347,
+            "truncated": false
+          },
+          {
+            "rank": 4,
+            "chunk_id": "EXT-REPORT-001:0032:CDC8FC8F3F35",
+            "source_id": "EXT-REPORT-001",
+            "reranker_score": 0.2151871919631958,
+            "lexical_rank": 2,
+            "semantic_rank": 14,
+            "original_token_count": 470,
+            "truncated": false
+          },
+          {
+            "rank": 5,
+            "chunk_id": "EXT-REPORT-001:0099:07FBD028866D",
+            "source_id": "EXT-REPORT-001",
+            "reranker_score": -0.8406398296356201,
+            "lexical_rank": 12,
+            "semantic_rank": 13,
+            "original_token_count": 736,
+            "truncated": true
+          }
+        ]
+      },
+      "lexical_semantic_union_top20": {
+        "candidate_count": 24,
+        "candidate_recall": 1.0,
+        "first_relevant_rank": 1,
+        "reciprocal_rank": 1.0,
+        "recall_at_k": {
+          "1": 0.5,
+          "3": 1.0,
+          "5": 1.0
+        },
+        "retrieved": [
+          {
+            "rank": 1,
+            "chunk_id": "EXT-REPORT-001:0028:D8EDCB5281EB",
+            "source_id": "EXT-REPORT-001",
+            "reranker_score": 3.8934788703918457,
+            "lexical_rank": 1,
+            "semantic_rank": 1,
+            "original_token_count": 461,
+            "truncated": false
+          },
+          {
+            "rank": 2,
+            "chunk_id": "EXT-REPORT-001:0019:3353E40AB236",
+            "source_id": "EXT-REPORT-001",
+            "reranker_score": 1.7235267162322998,
+            "lexical_rank": 3,
+            "semantic_rank": 4,
+            "original_token_count": 417,
+            "truncated": false
+          },
+          {
+            "rank": 3,
+            "chunk_id": "EXT-REPORT-001:0027:786D1CEA953F",
+            "source_id": "EXT-REPORT-001",
+            "reranker_score": 1.5997647047042847,
+            "lexical_rank": 5,
+            "semantic_rank": 7,
+            "original_token_count": 347,
+            "truncated": false
+          },
+          {
+            "rank": 4,
+            "chunk_id": "EXT-REPORT-001:0032:CDC8FC8F3F35",
+            "source_id": "EXT-REPORT-001",
+            "reranker_score": 0.2151871919631958,
+            "lexical_rank": 2,
+            "semantic_rank": 14,
+            "original_token_count": 470,
+            "truncated": false
+          },
+          {
+            "rank": 5,
+            "chunk_id": "EXT-REPORT-001:0099:07FBD028866D",
+            "source_id": "EXT-REPORT-001",
+            "reranker_score": -0.8406398296356201,
+            "lexical_rank": 12,
+            "semantic_rank": 13,
+            "original_token_count": 736,
+            "truncated": true
+          }
+        ]
+      }
+    },
+    {
+      "question_id": "FG-RET-011",
+      "question": "How are assertions, claims and a C2PA Manifest related?",
+      "relevant_chunk_ids": [
+        "EXT-STD-001:0005:13F20BB283A4"
+      ],
+      "inference_latency_ms": 6647.224902999369,
+      "scored_candidates": [
+        {
+          "chunk_id": "EXT-STD-001:0196:A0CDA70AB163",
+          "source_id": "EXT-STD-001",
+          "reranker_score": 2.2979018688201904,
+          "lexical_rank": 1,
+          "semantic_rank": null,
+          "original_token_count": 2806,
+          "truncated": true
+        },
+        {
+          "chunk_id": "EXT-STD-001:0194:E3FD997542C6",
+          "source_id": "EXT-STD-001",
+          "reranker_score": 3.197509288787842,
+          "lexical_rank": 2,
+          "semantic_rank": null,
+          "original_token_count": 710,
+          "truncated": true
+        },
+        {
+          "chunk_id": "EXT-STD-001:0102:3DF3F24D77B4",
+          "source_id": "EXT-STD-001",
+          "reranker_score": 2.945608615875244,
+          "lexical_rank": 3,
+          "semantic_rank": null,
+          "original_token_count": 1028,
+          "truncated": true
+        },
+        {
+          "chunk_id": "EXT-STD-001:0137:3793507CDB88",
+          "source_id": "EXT-STD-001",
+          "reranker_score": 2.28014874458313,
+          "lexical_rank": 4,
+          "semantic_rank": null,
+          "original_token_count": 495,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-STD-001:0195:3323E5E6357A",
+          "source_id": "EXT-STD-001",
+          "reranker_score": 2.447331666946411,
+          "lexical_rank": 5,
+          "semantic_rank": null,
+          "original_token_count": 721,
+          "truncated": true
+        },
+        {
+          "chunk_id": "EXT-STD-001:0459:3F7B13ED33E6",
+          "source_id": "EXT-STD-001",
+          "reranker_score": 3.747999668121338,
+          "lexical_rank": 6,
+          "semantic_rank": null,
+          "original_token_count": 385,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-STD-001:0447:3DD4E693818C",
+          "source_id": "EXT-STD-001",
+          "reranker_score": 0.5259482860565186,
+          "lexical_rank": 7,
+          "semantic_rank": null,
+          "original_token_count": 1243,
+          "truncated": true
+        },
+        {
+          "chunk_id": "EXT-STD-001:0465:A620905CEE21",
+          "source_id": "EXT-STD-001",
+          "reranker_score": 4.062465190887451,
+          "lexical_rank": 8,
+          "semantic_rank": null,
+          "original_token_count": 464,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-STD-001:0549:04847E5C8B9A",
+          "source_id": "EXT-STD-001",
+          "reranker_score": -0.5064538717269897,
+          "lexical_rank": 9,
+          "semantic_rank": null,
+          "original_token_count": 468,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-STD-001:0458:21250983405E",
+          "source_id": "EXT-STD-001",
+          "reranker_score": 3.888451099395752,
+          "lexical_rank": 10,
+          "semantic_rank": null,
+          "original_token_count": 475,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-STD-001:0460:2687B1A6826C",
+          "source_id": "EXT-STD-001",
+          "reranker_score": 4.4346442222595215,
+          "lexical_rank": 11,
+          "semantic_rank": null,
+          "original_token_count": 397,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-STD-001:0328:C99715346BFA",
+          "source_id": "EXT-STD-001",
+          "reranker_score": 0.17728789150714874,
+          "lexical_rank": 12,
+          "semantic_rank": null,
+          "original_token_count": 1410,
+          "truncated": true
+        },
+        {
+          "chunk_id": "EXT-STD-001:0457:7D2C2DF3E50F",
+          "source_id": "EXT-STD-001",
+          "reranker_score": 3.690969467163086,
+          "lexical_rank": 13,
+          "semantic_rank": null,
+          "original_token_count": 313,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-STD-001:0609:06A3C4865BA3",
+          "source_id": "EXT-STD-001",
+          "reranker_score": 1.5604767799377441,
+          "lexical_rank": 14,
+          "semantic_rank": null,
+          "original_token_count": 1571,
+          "truncated": true
+        },
+        {
+          "chunk_id": "EXT-STD-001:0256:45B3D8CE255B",
+          "source_id": "EXT-STD-001",
+          "reranker_score": 2.841480255126953,
+          "lexical_rank": 15,
+          "semantic_rank": null,
+          "original_token_count": 521,
+          "truncated": true
+        },
+        {
+          "chunk_id": "EXT-STD-001:0558:43F256A8A467",
+          "source_id": "EXT-STD-001",
+          "reranker_score": -0.47919151186943054,
+          "lexical_rank": 16,
+          "semantic_rank": null,
+          "original_token_count": 533,
+          "truncated": true
+        },
+        {
+          "chunk_id": "EXT-STD-001:0257:AA22F7ABEBE8",
+          "source_id": "EXT-STD-001",
+          "reranker_score": 3.553359031677246,
+          "lexical_rank": 17,
+          "semantic_rank": null,
+          "original_token_count": 535,
+          "truncated": true
+        },
+        {
+          "chunk_id": "EXT-STD-001:0230:6588C1A943F0",
+          "source_id": "EXT-STD-001",
+          "reranker_score": 2.8430404663085938,
+          "lexical_rank": 18,
+          "semantic_rank": null,
+          "original_token_count": 561,
+          "truncated": true
+        },
+        {
+          "chunk_id": "EXT-STD-001:0461:5F3F85DF5877",
+          "source_id": "EXT-STD-001",
+          "reranker_score": 4.181036472320557,
+          "lexical_rank": 19,
+          "semantic_rank": null,
+          "original_token_count": 407,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-STD-001:0520:4420A94737D0",
+          "source_id": "EXT-STD-001",
+          "reranker_score": -0.8132278919219971,
+          "lexical_rank": 20,
+          "semantic_rank": null,
+          "original_token_count": 559,
+          "truncated": true
+        },
+        {
+          "chunk_id": "EXT-STD-001:0143:2F1A7D3D6493",
+          "source_id": "EXT-STD-001",
+          "reranker_score": 4.480277061462402,
+          "lexical_rank": null,
+          "semantic_rank": 1,
+          "original_token_count": 228,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-STD-001:0026:B60DF6F81E79",
+          "source_id": "EXT-STD-001",
+          "reranker_score": 2.8784122467041016,
+          "lexical_rank": null,
+          "semantic_rank": 2,
+          "original_token_count": 474,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-STD-001:0005:13F20BB283A4",
+          "source_id": "EXT-STD-001",
+          "reranker_score": 5.550397872924805,
+          "lexical_rank": null,
+          "semantic_rank": 3,
+          "original_token_count": 343,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-STD-001:0072:35DC03DEC196",
+          "source_id": "EXT-STD-001",
+          "reranker_score": 5.755891799926758,
+          "lexical_rank": null,
+          "semantic_rank": 4,
+          "original_token_count": 319,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-STD-001:0227:9036E613D3D7",
+          "source_id": "EXT-STD-001",
+          "reranker_score": 4.338309288024902,
+          "lexical_rank": null,
+          "semantic_rank": 5,
+          "original_token_count": 385,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-STD-001:0189:0EC376C2F856",
+          "source_id": "EXT-STD-001",
+          "reranker_score": 5.531505584716797,
+          "lexical_rank": null,
+          "semantic_rank": 6,
+          "original_token_count": 126,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-STD-001:0226:0ECC6592010C",
+          "source_id": "EXT-STD-001",
+          "reranker_score": 3.7940456867218018,
+          "lexical_rank": null,
+          "semantic_rank": 7,
+          "original_token_count": 148,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-STD-001:0110:23982F24E7EB",
+          "source_id": "EXT-STD-001",
+          "reranker_score": 4.012049198150635,
+          "lexical_rank": null,
+          "semantic_rank": 8,
+          "original_token_count": 288,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-STD-001:0171:0CA1B5588F23",
+          "source_id": "EXT-STD-001",
+          "reranker_score": 2.4935760498046875,
+          "lexical_rank": null,
+          "semantic_rank": 9,
+          "original_token_count": 544,
+          "truncated": true
+        },
+        {
+          "chunk_id": "EXT-STD-001:0105:7668EEF5D7DE",
+          "source_id": "EXT-STD-001",
+          "reranker_score": 4.0168962478637695,
+          "lexical_rank": null,
+          "semantic_rank": 10,
+          "original_token_count": 602,
+          "truncated": true
+        },
+        {
+          "chunk_id": "EXT-STD-001:0228:35839A0ACE74",
+          "source_id": "EXT-STD-001",
+          "reranker_score": 3.9002256393432617,
+          "lexical_rank": null,
+          "semantic_rank": 11,
+          "original_token_count": 503,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-GUIDE-001:0006:2B94FFD72ED2",
+          "source_id": "EXT-GUIDE-001",
+          "reranker_score": 3.5552496910095215,
+          "lexical_rank": null,
+          "semantic_rank": 12,
+          "original_token_count": 582,
+          "truncated": true
+        },
+        {
+          "chunk_id": "EXT-STD-001:0024:112154882BD8",
+          "source_id": "EXT-STD-001",
+          "reranker_score": 3.986039638519287,
+          "lexical_rank": null,
+          "semantic_rank": 13,
+          "original_token_count": 298,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-STD-001:0066:740790823089",
+          "source_id": "EXT-STD-001",
+          "reranker_score": 3.405930519104004,
+          "lexical_rank": null,
+          "semantic_rank": 14,
+          "original_token_count": 318,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-STD-001:0327:DA0C02A3F927",
+          "source_id": "EXT-STD-001",
+          "reranker_score": 1.2765549421310425,
+          "lexical_rank": null,
+          "semantic_rank": 15,
+          "original_token_count": 117,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-STD-001:0170:F4F6E93008C0",
+          "source_id": "EXT-STD-001",
+          "reranker_score": 2.9095304012298584,
+          "lexical_rank": null,
+          "semantic_rank": 16,
+          "original_token_count": 402,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-STD-001:0027:1428EE9E062E",
+          "source_id": "EXT-STD-001",
+          "reranker_score": -0.587056040763855,
+          "lexical_rank": null,
+          "semantic_rank": 17,
+          "original_token_count": 190,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-STD-001:0470:97DC5F67DF81",
+          "source_id": "EXT-STD-001",
+          "reranker_score": 4.686498641967773,
+          "lexical_rank": null,
+          "semantic_rank": 18,
+          "original_token_count": 211,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-STD-001:0023:4FF22EF0CBB2",
+          "source_id": "EXT-STD-001",
+          "reranker_score": 4.029882431030273,
+          "lexical_rank": null,
+          "semantic_rank": 19,
+          "original_token_count": 210,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-STD-001:0314:FCA50B4014FD",
+          "source_id": "EXT-STD-001",
+          "reranker_score": 3.353503704071045,
+          "lexical_rank": null,
+          "semantic_rank": 20,
+          "original_token_count": 272,
+          "truncated": false
+        }
+      ],
+      "semantic_top20": {
+        "candidate_count": 20,
+        "candidate_recall": 1.0,
+        "first_relevant_rank": 2,
+        "reciprocal_rank": 0.5,
+        "recall_at_k": {
+          "1": 0.0,
+          "3": 1.0,
+          "5": 1.0
+        },
+        "retrieved": [
+          {
+            "rank": 1,
+            "chunk_id": "EXT-STD-001:0072:35DC03DEC196",
+            "source_id": "EXT-STD-001",
+            "reranker_score": 5.755891799926758,
+            "lexical_rank": null,
+            "semantic_rank": 4,
+            "original_token_count": 319,
+            "truncated": false
+          },
+          {
+            "rank": 2,
+            "chunk_id": "EXT-STD-001:0005:13F20BB283A4",
+            "source_id": "EXT-STD-001",
+            "reranker_score": 5.550397872924805,
+            "lexical_rank": null,
+            "semantic_rank": 3,
+            "original_token_count": 343,
+            "truncated": false
+          },
+          {
+            "rank": 3,
+            "chunk_id": "EXT-STD-001:0189:0EC376C2F856",
+            "source_id": "EXT-STD-001",
+            "reranker_score": 5.531505584716797,
+            "lexical_rank": null,
+            "semantic_rank": 6,
+            "original_token_count": 126,
+            "truncated": false
+          },
+          {
+            "rank": 4,
+            "chunk_id": "EXT-STD-001:0470:97DC5F67DF81",
+            "source_id": "EXT-STD-001",
+            "reranker_score": 4.686498641967773,
+            "lexical_rank": null,
+            "semantic_rank": 18,
+            "original_token_count": 211,
+            "truncated": false
+          },
+          {
+            "rank": 5,
+            "chunk_id": "EXT-STD-001:0143:2F1A7D3D6493",
+            "source_id": "EXT-STD-001",
+            "reranker_score": 4.480277061462402,
+            "lexical_rank": null,
+            "semantic_rank": 1,
+            "original_token_count": 228,
+            "truncated": false
+          }
+        ]
+      },
+      "lexical_semantic_union_top20": {
+        "candidate_count": 40,
+        "candidate_recall": 1.0,
+        "first_relevant_rank": 2,
+        "reciprocal_rank": 0.5,
+        "recall_at_k": {
+          "1": 0.0,
+          "3": 1.0,
+          "5": 1.0
+        },
+        "retrieved": [
+          {
+            "rank": 1,
+            "chunk_id": "EXT-STD-001:0072:35DC03DEC196",
+            "source_id": "EXT-STD-001",
+            "reranker_score": 5.755891799926758,
+            "lexical_rank": null,
+            "semantic_rank": 4,
+            "original_token_count": 319,
+            "truncated": false
+          },
+          {
+            "rank": 2,
+            "chunk_id": "EXT-STD-001:0005:13F20BB283A4",
+            "source_id": "EXT-STD-001",
+            "reranker_score": 5.550397872924805,
+            "lexical_rank": null,
+            "semantic_rank": 3,
+            "original_token_count": 343,
+            "truncated": false
+          },
+          {
+            "rank": 3,
+            "chunk_id": "EXT-STD-001:0189:0EC376C2F856",
+            "source_id": "EXT-STD-001",
+            "reranker_score": 5.531505584716797,
+            "lexical_rank": null,
+            "semantic_rank": 6,
+            "original_token_count": 126,
+            "truncated": false
+          },
+          {
+            "rank": 4,
+            "chunk_id": "EXT-STD-001:0470:97DC5F67DF81",
+            "source_id": "EXT-STD-001",
+            "reranker_score": 4.686498641967773,
+            "lexical_rank": null,
+            "semantic_rank": 18,
+            "original_token_count": 211,
+            "truncated": false
+          },
+          {
+            "rank": 5,
+            "chunk_id": "EXT-STD-001:0143:2F1A7D3D6493",
+            "source_id": "EXT-STD-001",
+            "reranker_score": 4.480277061462402,
+            "lexical_rank": null,
+            "semantic_rank": 1,
+            "original_token_count": 228,
+            "truncated": false
+          }
+        ]
+      }
+    },
+    {
+      "question_id": "FG-RET-012",
+      "question": "What is a C2PA hard binding?",
+      "relevant_chunk_ids": [
+        "EXT-STD-001:0034:888C1A64966A"
+      ],
+      "inference_latency_ms": 5586.315974000172,
+      "scored_candidates": [
+        {
+          "chunk_id": "EXT-STD-001:0196:A0CDA70AB163",
+          "source_id": "EXT-STD-001",
+          "reranker_score": 2.247619867324829,
+          "lexical_rank": 1,
+          "semantic_rank": null,
+          "original_token_count": 2801,
+          "truncated": true
+        },
+        {
+          "chunk_id": "EXT-STD-001:0387:451885E94CAC",
+          "source_id": "EXT-STD-001",
+          "reranker_score": 2.9555699825286865,
+          "lexical_rank": 2,
+          "semantic_rank": 20,
+          "original_token_count": 731,
+          "truncated": true
+        },
+        {
+          "chunk_id": "EXT-STD-001:0328:C99715346BFA",
+          "source_id": "EXT-STD-001",
+          "reranker_score": -3.324491024017334,
+          "lexical_rank": 3,
+          "semantic_rank": null,
+          "original_token_count": 1405,
+          "truncated": true
+        },
+        {
+          "chunk_id": "EXT-STD-001:0097:2B608D4481CA",
+          "source_id": "EXT-STD-001",
+          "reranker_score": 6.18822717666626,
+          "lexical_rank": 4,
+          "semantic_rank": 11,
+          "original_token_count": 401,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-STD-001:0137:3793507CDB88",
+          "source_id": "EXT-STD-001",
+          "reranker_score": -1.6283667087554932,
+          "lexical_rank": 5,
+          "semantic_rank": null,
+          "original_token_count": 490,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-STD-001:0397:6562A7271CAD",
+          "source_id": "EXT-STD-001",
+          "reranker_score": 4.010607719421387,
+          "lexical_rank": 6,
+          "semantic_rank": 8,
+          "original_token_count": 299,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-STD-001:0195:3323E5E6357A",
+          "source_id": "EXT-STD-001",
+          "reranker_score": -2.6802494525909424,
+          "lexical_rank": 7,
+          "semantic_rank": null,
+          "original_token_count": 716,
+          "truncated": true
+        },
+        {
+          "chunk_id": "EXT-STD-001:0091:0F8E758F1CB6",
+          "source_id": "EXT-STD-001",
+          "reranker_score": 7.348023414611816,
+          "lexical_rank": 8,
+          "semantic_rank": 2,
+          "original_token_count": 261,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-STD-001:0194:E3FD997542C6",
+          "source_id": "EXT-STD-001",
+          "reranker_score": -2.9451446533203125,
+          "lexical_rank": 9,
+          "semantic_rank": null,
+          "original_token_count": 705,
+          "truncated": true
+        },
+        {
+          "chunk_id": "EXT-STD-001:0392:A7B6CFB49F32",
+          "source_id": "EXT-STD-001",
+          "reranker_score": 2.350620746612549,
+          "lexical_rank": 10,
+          "semantic_rank": 19,
+          "original_token_count": 1268,
+          "truncated": true
+        },
+        {
+          "chunk_id": "EXT-STD-001:0394:54AD58E23F2A",
+          "source_id": "EXT-STD-001",
+          "reranker_score": 2.8273487091064453,
+          "lexical_rank": 11,
+          "semantic_rank": null,
+          "original_token_count": 495,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-STD-001:0449:978905E0712E",
+          "source_id": "EXT-STD-001",
+          "reranker_score": -0.05622485652565956,
+          "lexical_rank": 12,
+          "semantic_rank": null,
+          "original_token_count": 1263,
+          "truncated": true
+        },
+        {
+          "chunk_id": "EXT-STD-001:0435:1D9FA5705AB0",
+          "source_id": "EXT-STD-001",
+          "reranker_score": 2.916475772857666,
+          "lexical_rank": 13,
+          "semantic_rank": null,
+          "original_token_count": 325,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-STD-001:0391:E1500961A55E",
+          "source_id": "EXT-STD-001",
+          "reranker_score": 3.8033759593963623,
+          "lexical_rank": 14,
+          "semantic_rank": null,
+          "original_token_count": 272,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-STD-001:0396:87AF227E816D",
+          "source_id": "EXT-STD-001",
+          "reranker_score": 4.91995906829834,
+          "lexical_rank": 15,
+          "semantic_rank": 5,
+          "original_token_count": 196,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-STD-001:0385:962096C75763",
+          "source_id": "EXT-STD-001",
+          "reranker_score": 3.5466318130493164,
+          "lexical_rank": 16,
+          "semantic_rank": null,
+          "original_token_count": 485,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-STD-001:0459:3F7B13ED33E6",
+          "source_id": "EXT-STD-001",
+          "reranker_score": -4.23099422454834,
+          "lexical_rank": 17,
+          "semantic_rank": null,
+          "original_token_count": 380,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-STD-001:0098:47CA90221675",
+          "source_id": "EXT-STD-001",
+          "reranker_score": 4.891858100891113,
+          "lexical_rank": 18,
+          "semantic_rank": 1,
+          "original_token_count": 225,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-STD-001:0549:04847E5C8B9A",
+          "source_id": "EXT-STD-001",
+          "reranker_score": -3.3514959812164307,
+          "lexical_rank": 19,
+          "semantic_rank": null,
+          "original_token_count": 463,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-STD-001:0095:BA4015B64E62",
+          "source_id": "EXT-STD-001",
+          "reranker_score": 5.529825210571289,
+          "lexical_rank": 20,
+          "semantic_rank": null,
+          "original_token_count": 255,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-STD-001:0034:888C1A64966A",
+          "source_id": "EXT-STD-001",
+          "reranker_score": 6.050777435302734,
+          "lexical_rank": null,
+          "semantic_rank": 3,
+          "original_token_count": 107,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-STD-001:0033:BDE69FA4856F",
+          "source_id": "EXT-STD-001",
+          "reranker_score": 3.178304672241211,
+          "lexical_rank": null,
+          "semantic_rank": 4,
+          "original_token_count": 265,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-STD-001:0099:AA6F38EAA776",
+          "source_id": "EXT-STD-001",
+          "reranker_score": 3.570950508117676,
+          "lexical_rank": null,
+          "semantic_rank": 6,
+          "original_token_count": 178,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-STD-001:0386:968269D3B014",
+          "source_id": "EXT-STD-001",
+          "reranker_score": 3.547769546508789,
+          "lexical_rank": null,
+          "semantic_rank": 7,
+          "original_token_count": 104,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-STD-001:0388:BD900AC07413",
+          "source_id": "EXT-STD-001",
+          "reranker_score": 2.1001012325286865,
+          "lexical_rank": null,
+          "semantic_rank": 9,
+          "original_token_count": 260,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-STD-001:0395:965C3B73BC03",
+          "source_id": "EXT-STD-001",
+          "reranker_score": 3.489715576171875,
+          "lexical_rank": null,
+          "semantic_rank": 10,
+          "original_token_count": 151,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-STD-001:0389:58678E3308F4",
+          "source_id": "EXT-STD-001",
+          "reranker_score": 2.670060634613037,
+          "lexical_rank": null,
+          "semantic_rank": 12,
+          "original_token_count": 276,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-STD-001:0393:C4CA955A8274",
+          "source_id": "EXT-STD-001",
+          "reranker_score": 1.6199331283569336,
+          "lexical_rank": null,
+          "semantic_rank": 13,
+          "original_token_count": 542,
+          "truncated": true
+        },
+        {
+          "chunk_id": "EXT-STD-001:0092:6EE22A9DB120",
+          "source_id": "EXT-STD-001",
+          "reranker_score": 5.905858039855957,
+          "lexical_rank": null,
+          "semantic_rank": 14,
+          "original_token_count": 273,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-STD-001:0469:9F3DD18EDBAF",
+          "source_id": "EXT-STD-001",
+          "reranker_score": 4.4771575927734375,
+          "lexical_rank": null,
+          "semantic_rank": 15,
+          "original_token_count": 178,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-STD-001:0096:634E6FA4462E",
+          "source_id": "EXT-STD-001",
+          "reranker_score": 5.483281135559082,
+          "lexical_rank": null,
+          "semantic_rank": 16,
+          "original_token_count": 182,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-STD-001:0035:37ADDE2C7AD6",
+          "source_id": "EXT-STD-001",
+          "reranker_score": 4.22743034362793,
+          "lexical_rank": null,
+          "semantic_rank": 17,
+          "original_token_count": 202,
+          "truncated": false
+        },
+        {
+          "chunk_id": "EXT-STD-001:0390:4C35FAA22FFF",
+          "source_id": "EXT-STD-001",
+          "reranker_score": 4.015541076660156,
+          "lexical_rank": null,
+          "semantic_rank": 18,
+          "original_token_count": 320,
+          "truncated": false
+        }
+      ],
+      "semantic_top20": {
+        "candidate_count": 20,
+        "candidate_recall": 1.0,
+        "first_relevant_rank": 3,
+        "reciprocal_rank": 0.3333333333333333,
+        "recall_at_k": {
+          "1": 0.0,
+          "3": 1.0,
+          "5": 1.0
+        },
+        "retrieved": [
+          {
+            "rank": 1,
+            "chunk_id": "EXT-STD-001:0091:0F8E758F1CB6",
+            "source_id": "EXT-STD-001",
+            "reranker_score": 7.348023414611816,
+            "lexical_rank": 8,
+            "semantic_rank": 2,
+            "original_token_count": 261,
+            "truncated": false
+          },
+          {
+            "rank": 2,
+            "chunk_id": "EXT-STD-001:0097:2B608D4481CA",
+            "source_id": "EXT-STD-001",
+            "reranker_score": 6.18822717666626,
+            "lexical_rank": 4,
+            "semantic_rank": 11,
+            "original_token_count": 401,
+            "truncated": false
+          },
+          {
+            "rank": 3,
+            "chunk_id": "EXT-STD-001:0034:888C1A64966A",
+            "source_id": "EXT-STD-001",
+            "reranker_score": 6.050777435302734,
+            "lexical_rank": null,
+            "semantic_rank": 3,
+            "original_token_count": 107,
+            "truncated": false
+          },
+          {
+            "rank": 4,
+            "chunk_id": "EXT-STD-001:0092:6EE22A9DB120",
+            "source_id": "EXT-STD-001",
+            "reranker_score": 5.905858039855957,
+            "lexical_rank": null,
+            "semantic_rank": 14,
+            "original_token_count": 273,
+            "truncated": false
+          },
+          {
+            "rank": 5,
+            "chunk_id": "EXT-STD-001:0096:634E6FA4462E",
+            "source_id": "EXT-STD-001",
+            "reranker_score": 5.483281135559082,
+            "lexical_rank": null,
+            "semantic_rank": 16,
+            "original_token_count": 182,
+            "truncated": false
+          }
+        ]
+      },
+      "lexical_semantic_union_top20": {
+        "candidate_count": 33,
+        "candidate_recall": 1.0,
+        "first_relevant_rank": 3,
+        "reciprocal_rank": 0.3333333333333333,
+        "recall_at_k": {
+          "1": 0.0,
+          "3": 1.0,
+          "5": 1.0
+        },
+        "retrieved": [
+          {
+            "rank": 1,
+            "chunk_id": "EXT-STD-001:0091:0F8E758F1CB6",
+            "source_id": "EXT-STD-001",
+            "reranker_score": 7.348023414611816,
+            "lexical_rank": 8,
+            "semantic_rank": 2,
+            "original_token_count": 261,
+            "truncated": false
+          },
+          {
+            "rank": 2,
+            "chunk_id": "EXT-STD-001:0097:2B608D4481CA",
+            "source_id": "EXT-STD-001",
+            "reranker_score": 6.18822717666626,
+            "lexical_rank": 4,
+            "semantic_rank": 11,
+            "original_token_count": 401,
+            "truncated": false
+          },
+          {
+            "rank": 3,
+            "chunk_id": "EXT-STD-001:0034:888C1A64966A",
+            "source_id": "EXT-STD-001",
+            "reranker_score": 6.050777435302734,
+            "lexical_rank": null,
+            "semantic_rank": 3,
+            "original_token_count": 107,
+            "truncated": false
+          },
+          {
+            "rank": 4,
+            "chunk_id": "EXT-STD-001:0092:6EE22A9DB120",
+            "source_id": "EXT-STD-001",
+            "reranker_score": 5.905858039855957,
+            "lexical_rank": null,
+            "semantic_rank": 14,
+            "original_token_count": 273,
+            "truncated": false
+          },
+          {
+            "rank": 5,
+            "chunk_id": "EXT-STD-001:0095:BA4015B64E62",
+            "source_id": "EXT-STD-001",
+            "reranker_score": 5.529825210571289,
+            "lexical_rank": 20,
+            "semantic_rank": null,
+            "original_token_count": 255,
+            "truncated": false
+          }
+        ]
+      }
+    }
+  ],
+  "application_revision": "b7960a48fce23aeece0dbdff74cdea9d2115a9ce-dirty",
+  "measured_at": "2026-10-11T07:13:13.793960+00:00"
+}
