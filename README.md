@@ -3,16 +3,19 @@
 FaceGuard Evidence is a personal, evidence-grounded multimodal
 retrieval-augmented generation (RAG) project by Tan Yan Yi.
 
-The planned system will upgrade the complete original FaceGuard website with
-an evidence-grounded RAG workflow. It will retain the website's image
+The system upgrades the complete original FaceGuard website with an
+evidence-grounded RAG workflow. It retains the website's image
 analysis, authentication, profile and history capabilities while adding file
 metadata, versioned model documentation, measured evaluation evidence,
 authoritative research and media-verification guidance.
 
-> **Project status:** Phase 2 retrieval foundation. Provenance, detector
-> reproducibility, the approved evidence corpus, verified loading,
-> structure-aware chunking and the persistent PostgreSQL schema are complete.
-> Real-corpus ingestion and retrieval evaluation are next.
+> **Project status:** FaceGuard Evidence v0.1.0 MVP. The still-image
+> upload-to-report workflow, versioned detector adapter, metadata extraction,
+> PostgreSQL lexical and vector retrieval, local reranking, structured cited
+> generation, held-out evaluation, frontend report and measured cost tracking
+> are complete. See the
+> [complete walkthrough](docs/FACEGUARD_EVIDENCE_WALKTHROUGH.md) and
+> [v0.1.0 release notes](CHANGELOG.md).
 
 ## Why This Project Exists
 
@@ -38,7 +41,7 @@ Uploaded still image
 The user may provide a focused question about the uploaded image. When no
 question is supplied, the system will generate a default evidence report.
 
-## Planned Response Structure
+## Report Structure
 
 Responses will distinguish:
 
@@ -52,7 +55,7 @@ Responses will distinguish:
 
 ## First-Release Scope
 
-The initial release is limited to:
+Version 0.1.0 is limited to:
 
 - one unified FaceGuard website;
 - the existing authentication, profile and analysis-history capabilities;
@@ -309,6 +312,210 @@ python tools/evaluate_lexical_retrieval.py \
 The question set, relevance judgments and complete per-question rankings are
 versioned under `data/evaluation/`.
 
+After corpus revision `2` has complete embeddings, evaluate the exact semantic
+baseline against the unchanged questions:
+
+```bash
+docker compose --profile tools run --rm rag-tools \
+  tools/evaluate_semantic_retrieval.py \
+  --output data/evaluation/results/semantic_baseline_v1.json \
+  --application-revision <git-revision-or-revision-dirty>
+```
+
+Use `--dry-run` first to verify question identities and complete vector
+coverage without calling Azure. The measured baseline disables PostgreSQL
+index and bitmap scans so the initial quality comparison uses exact cosine
+ranking rather than approximate HNSW candidates.
+
+Evaluate the frozen equal-weight Reciprocal Rank Fusion baseline:
+
+```bash
+docker compose --profile tools run --rm rag-tools \
+  tools/evaluate_hybrid_retrieval.py \
+  --output data/evaluation/results/hybrid_rrf_baseline_v1.json \
+  --application-revision <git-revision-or-revision-dirty>
+```
+
+This combines top-20 lexical and top-20 exact-semantic candidates with the
+preselected RRF constant `60`, then evaluates the fused top five. Do not tune
+the constant or weights merely to improve the same 12-question test set.
+
+Verify and evaluate the pinned local cross-encoder:
+
+```bash
+docker compose --profile tools run --rm rag-tools \
+  tools/verify_reranker.py
+
+docker compose --profile tools run --rm rag-tools \
+  tools/evaluate_reranker.py \
+  --output data/evaluation/results/reranker_baseline_v1.json \
+  --application-revision <git-revision-or-revision-dirty>
+```
+
+The model weights are pinned by Hugging Face revision and stored only in the
+Docker-managed cache volume. The evaluator compares reranking semantic top-20
+candidates with reranking the lexical/semantic top-20 union from the frozen
+hybrid artifact.
+
+The retrieval evaluation split is recorded in:
+
+```text
+data/evaluation/retrieval_split_v1.json
+```
+
+The original 12 questions are development data because their results were
+inspected during retriever design. The separate held-out file contains 12 new
+questions, two per source, frozen before its first measurement:
+
+```text
+data/evaluation/retrieval_questions_heldout_v1.json
+```
+
+After the recorded held-out comparison, do not tune retrieval configuration
+against those questions without creating another independent test set.
+
+Verify the configured Azure structured-generation deployment before building
+evidence prompts:
+
+```bash
+docker compose --profile tools run --rm rag-tools \
+  tools/verify_azure_generation.py
+```
+
+The smoke test uses the Responses API with `store: false`, a strict
+Pydantic-generated JSON Schema, local schema validation, explicit token
+accounting and verified input/output pricing.
+
+Validate or run the versioned generation-only evaluation:
+
+```bash
+docker compose --profile tools run --rm rag-tools \
+  tools/evaluate_generation.py --dry-run
+
+docker compose --profile tools run --rm rag-tools \
+  tools/evaluate_generation.py \
+  --output data/evaluation/results/generation_baseline_v1.json \
+  --application-revision <git-revision-or-revision-dirty>
+```
+
+The six synthetic cases use curated corpus evidence so generation behavior is
+measured independently from retrieval failures.
+
+The generation development/held-out split is recorded in:
+
+```text
+data/evaluation/generation_split_v1.json
+```
+
+After the held-out run, neither prompt wording nor automatic scoring rules
+should be tuned against those six cases without creating another independent
+test set.
+
+Report prompt/schema v2 has a separate consumed held-out set:
+
+```text
+data/evaluation/generation_cases_report_v2_heldout_v1.json
+```
+
+Its measured artifacts are:
+
+```text
+data/evaluation/results/generation_report_v2_heldout_v1.json
+data/evaluation/results/generation_report_v2_heldout_manual_review_v1.json
+```
+
+The eight cases safely refused all requested overclaims. Five passed strict
+manual report-quality review; the frozen automatic rubric passed one and
+produced four clear false negatives. Do not tune report v2 against this set
+and present a rerun as independent held-out evidence.
+
+Before adding vector storage, configure the Azure embedding variables from
+`.env.example` in the ignored `.env`. Keep the real API key only in `.env`.
+Verify the exact deployment, returned vector dimensions, token usage and
+request latency with one non-sensitive probe:
+
+```bash
+python tools/verify_azure_embedding.py
+```
+
+The command prints hashes and summary measurements, not the API key or the
+embedding vector. The current probe targets the Microsoft Foundry
+OpenAI-compatible `v1` embeddings endpoint.
+
+Windows Application Control can block psycopg's native DLL on the host. The
+profile-gated `rag-tools` service provides a pinned Linux Python environment
+for database-backed RAG commands without changing that security policy:
+
+```bash
+docker compose --profile tools build rag-tools
+docker compose --profile tools run --rm rag-tools \
+  tools/embed_rag_corpus.py --limit 3 --dry-run
+```
+
+The embedding command defaults to the corpus revision used by the lexical
+baseline. It requires either `--limit N` for a deliberate pilot or `--all` for
+an explicit full run. Container runs also require the current application
+revision because worktree Git metadata is outside the mounted directory:
+
+```bash
+docker compose --profile tools run --rm rag-tools \
+  tools/embed_rag_corpus.py \
+  --limit 3 \
+  --application-revision <git-revision-or-revision-dirty>
+```
+
+The document embedding format is versioned as
+`source-heading-content-v1`; query input remains `raw-question-v1`. Repeating
+the same command verifies and reuses matching vectors rather than calling
+Azure again.
+
+After verifying the official Azure input-token price, configure the three
+pricing fields in `.env` and apply that basis to completed unpriced rows:
+
+```bash
+docker compose --profile tools run --rm rag-tools \
+  tools/apply_embedding_pricing.py --yes
+```
+
+The command uses exact decimal arithmetic and is idempotent. It does not call
+Azure.
+
+Start the localhost-only evidence and detector services:
+
+```bash
+docker compose --profile evidence up -d rag-api detector-api
+```
+
+Verify readiness:
+
+```text
+GET http://127.0.0.1:8002/health
+GET http://127.0.0.1:8001/api/health
+```
+
+The inherited backend uses `RAG_API_URL=http://127.0.0.1:8002` and exposes an
+additive evidence endpoint:
+
+```text
+POST /api/evidence/analyze
+multipart fields:
+  file: still image
+  question: optional evidence question
+```
+
+The original `/api/analyze` response contract is unchanged. The new endpoint
+returns privacy-limited metadata, versioned detector output, top-five cited
+evidence, the structured evidence report, and measured pipeline cost/latency.
+
+The detector checkpoint is bind-mounted read-only from
+`FACEGUARD_MODEL_PATH`; it is not copied into the Docker image.
+
+Run a synthetic full-pipeline verification without a user image:
+
+```bash
+python tools/verify_evidence_report.py
+```
+
 The default host binding is `127.0.0.1:55432`, avoiding the separate PDPA
 project's PostgreSQL service on `127.0.0.1:5432`.
 
@@ -333,6 +540,21 @@ npm run dev
 Open the application at:
 
 - `http://localhost:5173`
+
+The Detector page now defaults to **Evidence Report** mode. It calls
+`/api/evidence/analyze` and presents:
+
+- the bounded overall assessment before the raw REAL/FAKE detector label;
+- direct metadata observations;
+- detector output and caveats;
+- top-five cited evidence sources;
+- supported conclusions with `OBS-*`, `DET-*`, and `E-*` bases;
+- unsupported conclusions;
+- verification steps; and
+- expandable cost and latency diagnostics.
+
+Switch to **Detector Only** to preserve the inherited `/api/analyze`
+experience.
 
 ## Health Endpoint
 
@@ -454,5 +676,8 @@ Supporting design and project materials are available in:
 - `docs/documents/`
 
 ## Additional Documentation
+
+For a simple end-to-end explanation of the complete system, read
+[**FaceGuard Evidence: Complete Project Walkthrough**](docs/FACEGUARD_EVIDENCE_WALKTHROUGH.md).
 
 For development operations and troubleshooting guidance, refer to [**Developer Guide**](DEVELOPER_GUIDE.md).

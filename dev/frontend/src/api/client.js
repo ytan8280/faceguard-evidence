@@ -49,6 +49,23 @@ export async function analyzeImage(file, email) {
   return payload;
 }
 
+export async function analyzeImageWithEvidence(file, question) {
+  const formData = new FormData();
+  formData.append("file", file);
+  formData.append("question", question);
+
+  const response = await fetch(`${API_BASE_URL}/api/evidence/analyze`, {
+    method: "POST",
+    body: formData
+  });
+
+  const payload = await readPayload(response, "Evidence analysis failed.");
+  if (!response.ok) {
+    throw new Error(payload.detail || "Evidence analysis failed.");
+  }
+  return payload;
+}
+
 export async function signIn(credentials) {
   const response = await fetch(`${API_BASE_URL}/api/auth/signin`, {
     method: "POST",
@@ -108,4 +125,3 @@ export async function googleAuth(credential) {
   }
   return payload;
 }
-

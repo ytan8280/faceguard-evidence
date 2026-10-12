@@ -1,9 +1,10 @@
 import { useEffect, useMemo, useState } from "react";
 import FileDropzone from "@/components/FileDropzone";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
+import EvidenceReportPanel from "@/components/EvidenceReportPanel";
 import RadarChart from "@/components/RadarChart";
 import useCountUp from "@/hooks/useCountUp";
-import { analyzeImage, fetchHealth } from "@/api/client";
+import { analyzeImage, analyzeImageWithEvidence, fetchHealth } from "@/api/client";
 import { APP_CONFIG, USER_EMAIL_STORAGE_KEY } from "@/constants";
 
 const LOADING_NARRATION = [
@@ -13,6 +14,15 @@ const LOADING_NARRATION = [
   "Running detection model…",
   "Computing Grad-CAM overlay…",
   "Building detection report…"
+];
+
+const EVIDENCE_LOADING_NARRATION = [
+  "Reading privacy-limited file metadata…",
+  "Running the FaceGuard detector…",
+  "Retrieving lexical evidence…",
+  "Comparing semantic evidence…",
+  "Reranking the candidate sources…",
+  "Building a cited evidence report…"
 ];
 
 function formatModelName(modelName = "") {
@@ -171,26 +181,35 @@ function ScoreGauge({ aiScore }) {
   );
 }
 
-function LoadingNarration() {
+function LoadingNarration({ evidenceMode = false }) {
   const [index, setIndex] = useState(0);
+  const messages = evidenceMode ? EVIDENCE_LOADING_NARRATION : LOADING_NARRATION;
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setIndex((current) => (current + 1) % LOADING_NARRATION.length);
+      setIndex((current) => (current + 1) % messages.length);
     }, 900);
     return () => clearInterval(interval);
-  }, []);
+  }, [messages.length]);
 
   return (
     <>
       <div className="analysis-spinner" />
-      <p className="loading-narration">{LOADING_NARRATION[index]}</p>
-      <p className="loading-subtle">This usually takes a few seconds on CPU.</p>
+      <p className="loading-narration">{messages[index]}</p>
+      <p className="loading-subtle">
+        {evidenceMode
+          ? "Retrieval, local reranking, and cited generation can take several seconds."
+          : "This usually takes a few seconds on CPU."}
+      </p>
     </>
   );
 }
 
 export default function UploadPage() {
+  const [analysisMode, setAnalysisMode] = useState("evidence");
+  const [question, setQuestion] = useState(
+    "What can be responsibly concluded from this image, and what cannot be established?"
+  );
   const [selectedFile, setSelectedFile] = useState(null);
   const [previewUrl, setPreviewUrl] = useState("");
   const [loading, setLoading] = useState(false);
@@ -225,22 +244,36 @@ export default function UploadPage() {
 
   const panelToneClass = useMemo(() => {
     if (!result) return "";
-    return result.label === "FAKE" ? "analysis-pane-fake" : "analysis-pane-real";
+    const detectorResult = result.detector || result;
+    return detectorResult.label === "FAKE" ? "analysis-pane-fake" : "analysis-pane-real";
   }, [result]);
 
   const displayProbability = useMemo(() => {
     if (!result) return 0;
-    return result.label === "FAKE" ? result.fake_probability : 1 - result.fake_probability;
+    const detectorResult = result.detector || result;
+    return detectorResult.label === "FAKE"
+      ? detectorResult.fake_probability
+      : 1 - detectorResult.fake_probability;
   }, [result]);
 
-  const aiScore = result?.fake_probability ?? 0;
+  const detectorResult = result?.detector || result;
+  const evidenceReport = result?.evidence_report;
+  const aiScore = detectorResult?.fake_probability ?? 0;
 
   const verdictSummary = useMemo(() => {
     if (!result) return "";
-    return result.label === "FAKE"
+    return detectorResult.label === "FAKE"
       ? "Likely AI-generated profile image"
       : "Likely real profile image";
-  }, [result]);
+  }, [detectorResult]);
+
+  const assessmentLabel = useMemo(() => {
+    const assessment = evidenceReport?.report?.overall_assessment;
+    if (assessment === "insufficient_evidence") return "Insufficient Evidence";
+    if (assessment === "supported_limited_conclusion") return "Supported, Limited Conclusion";
+    if (assessment === "requires_verification") return "Requires Verification";
+    return "";
+  }, [evidenceReport]);
 
   const clearSelection = () => {
     setSelectedFile(null);
@@ -259,7 +292,10 @@ export default function UploadPage() {
     setResult(null);
     try {
       const storedEmail = window.localStorage.getItem(USER_EMAIL_STORAGE_KEY);
-      const payload = await analyzeImage(selectedFile, storedEmail || "");
+      const payload =
+        analysisMode === "evidence"
+          ? await analyzeImageWithEvidence(selectedFile, question.trim())
+          : await analyzeImage(selectedFile, storedEmail || "");
       setResult(payload);
     } catch (requestError) {
       setError(requestError.message || "An unexpected error occurred during analysis.");
@@ -272,8 +308,38 @@ export default function UploadPage() {
     <main className="page upload-page">
       <section className="panel panel-upload">
         <div className="panel-header">
-          <h2>Deepfake Detector</h2>
+          <div>
+            <p className="report-kicker">Still-image analysis</p>
+            <h2>{analysisMode === "evidence" ? "FaceGuard Evidence" : "Deepfake Detector"}</h2>
+          </div>
           <span className={`status-pill ${healthMeta.cls}`.trim()}>{healthMeta.label}</span>
+        </div>
+
+        <div className="analysis-mode-switch" aria-label="Analysis mode">
+          <button
+            type="button"
+            className={analysisMode === "evidence" ? "mode-btn mode-btn-active" : "mode-btn"}
+            onClick={() => {
+              setAnalysisMode("evidence");
+              setResult(null);
+              setError("");
+            }}
+            disabled={loading}
+          >
+            Evidence Report
+          </button>
+          <button
+            type="button"
+            className={analysisMode === "detector" ? "mode-btn mode-btn-active" : "mode-btn"}
+            onClick={() => {
+              setAnalysisMode("detector");
+              setResult(null);
+              setError("");
+            }}
+            disabled={loading}
+          >
+            Detector Only
+          </button>
         </div>
 
         <div className="upload-workspace">
@@ -286,13 +352,33 @@ export default function UploadPage() {
               isAnalyzing={loading}
               onClear={clearSelection}
             />
+            {analysisMode === "evidence" ? (
+              <label className="evidence-question-field">
+                <span>What do you want to verify?</span>
+                <textarea
+                  value={question}
+                  onChange={(event) => setQuestion(event.target.value)}
+                  rows={3}
+                  maxLength={1000}
+                  disabled={loading}
+                />
+              </label>
+            ) : null}
             <button
               className="primary-btn analyze-btn"
               type="button"
               onClick={handleAnalyze}
-              disabled={loading || !selectedFile}
+              disabled={
+                loading ||
+                !selectedFile ||
+                (analysisMode === "evidence" && !question.trim())
+              }
             >
-              {loading ? "Analyzing Image…" : "Analyze Image"}
+              {loading
+                ? "Analyzing Image…"
+                : analysisMode === "evidence"
+                  ? "Build Evidence Report"
+                  : "Analyze Image"}
             </button>
             <p className="panel-note-small">
               Max upload size: {APP_CONFIG.maxUploadMb} MB. Images are processed in memory and not retained.
@@ -305,23 +391,23 @@ export default function UploadPage() {
             aria-busy={loading}
           >
             <div className="analysis-pane-header">
-              <h3>Analysis Result</h3>
+              <h3>{analysisMode === "evidence" ? "Assessment Preview" : "Analysis Result"}</h3>
               {result ? (
                 <span
                   className={
-                    result.label === "FAKE"
+                    detectorResult.label === "FAKE"
                       ? "classification-pill pill-fake"
                       : "classification-pill pill-real"
                   }
                 >
-                  {result.label}
+                  {detectorResult.label}
                 </span>
               ) : null}
             </div>
 
             {loading ? (
               <div className="analysis-state analysis-state-loading">
-                <LoadingNarration />
+                <LoadingNarration evidenceMode={analysisMode === "evidence"} />
               </div>
             ) : null}
 
@@ -330,8 +416,14 @@ export default function UploadPage() {
             {!loading && !error && !result ? (
               <div className="analysis-state">
                 <p>
-                  Upload an image and click <strong>Analyze Image</strong> to view the verdict,
-                  forensic breakdown, and Grad-CAM explanation.
+                  Upload an image and click{" "}
+                  <strong>
+                    {analysisMode === "evidence" ? "Build Evidence Report" : "Analyze Image"}
+                  </strong>{" "}
+                  to view
+                  {analysisMode === "evidence"
+                    ? " cited evidence, bounded conclusions, and verification steps."
+                    : " the verdict, forensic breakdown, and Grad-CAM explanation."}
                 </p>
               </div>
             ) : null}
@@ -340,36 +432,48 @@ export default function UploadPage() {
               <div className="analysis-content">
                 <div
                   className={
-                    result.label === "FAKE"
+                    analysisMode === "evidence"
+                      ? "verdict-banner evidence-preview-banner"
+                      : detectorResult.label === "FAKE"
                       ? "verdict-banner verdict-banner-fake"
                       : "verdict-banner verdict-banner-real"
                   }
                 >
-                  <p className="verdict-label">{result.label}</p>
-                  <p className="verdict-summary">{verdictSummary}</p>
+                  <p className="verdict-label">
+                    {analysisMode === "evidence" ? assessmentLabel : detectorResult.label}
+                  </p>
+                  <p className="verdict-summary">
+                    {analysisMode === "evidence"
+                      ? "The detector result is one signal within a cited evidence report."
+                      : verdictSummary}
+                  </p>
                 </div>
 
                 <AnalysisMetrics
-                  confidence={result.confidence}
+                  confidence={detectorResult.confidence}
                   probability={displayProbability}
-                  modelName={result.model_name}
+                  modelName={detectorResult.model_name}
                 />
 
                 <ScoreGauge aiScore={aiScore} />
 
-                <p className="result-explanation">{result.explanation}</p>
+                <p className="result-explanation">{detectorResult.explanation}</p>
               </div>
             ) : null}
           </aside>
         </div>
       </section>
 
-      {!loading && !error && result?.heatmap_overlay ? (
-        <HeatmapPanel previewUrl={previewUrl} heatmapSrc={result.heatmap_overlay} />
+      {!loading && !error && detectorResult?.heatmap_overlay ? (
+        <HeatmapPanel previewUrl={previewUrl} heatmapSrc={detectorResult.heatmap_overlay} />
       ) : null}
 
-      {!loading && !error && result?.report ? (
+      {!loading && !error && analysisMode === "detector" && result?.report ? (
         <DetectionReportPanel report={result.report} />
+      ) : null}
+
+      {!loading && !error && analysisMode === "evidence" && evidenceReport ? (
+        <EvidenceReportPanel payload={result} />
       ) : null}
     </main>
   );
