@@ -1,0 +1,4414 @@
+{
+  "question_set_id": "faceguard-retrieval-v1",
+  "question_set_sha256": "AFCCB3E4F06CA53BA704592549AC478E1437159CB030BE1853B65753EC87FA2F",
+  "corpus_sha256": "842CBBEFA28D2B8389FF2694420F771A12DFAEBF9F9DDFA5A214BF258F596CEB",
+  "corpus_revision_id": 2,
+  "embedding_model_id": 1,
+  "retriever_version": "rrf-lexical-semantic-v1",
+  "fusion": {
+    "method": "reciprocal_rank_fusion",
+    "candidate_limit_per_retriever": 20,
+    "rrf_constant": 60,
+    "lexical_weight": 1.0,
+    "semantic_weight": 1.0
+  },
+  "k_values": [
+    1,
+    3,
+    5
+  ],
+  "metrics": {
+    "mean_reciprocal_rank": 0.7527777777777778,
+    "mean_recall_at_k": {
+      "1": 0.5416666666666666,
+      "3": 0.7916666666666666,
+      "5": 0.9166666666666666
+    },
+    "zero_result_questions": 0,
+    "total_query_tokens": 177,
+    "total_query_cost": "0.000004425",
+    "mean_query_embedding_latency_ms": 847.9330499164158,
+    "median_query_embedding_latency_ms": 815.2894474997083,
+    "mean_lexical_latency_ms": 20.546828166970954,
+    "mean_semantic_latency_ms": 10.47626091682711,
+    "mean_fusion_latency_ms": 0.09913683319003515
+  },
+  "questions": [
+    {
+      "question_id": "FG-RET-001",
+      "question": "What decision threshold is recorded for the FaceGuard detector, and has a canonical threshold been selected?",
+      "relevant_chunk_ids": [
+        "FG-DOC-001:0007:C1010E17492A"
+      ],
+      "first_relevant_rank": 1,
+      "reciprocal_rank": 1.0,
+      "recall_at_k": {
+        "1": 1.0,
+        "3": 1.0,
+        "5": 1.0
+      },
+      "query_input_sha256": "39E63AF243315D24B1D88E892A33CF5EB5EF07506EA54010742A6D91CF769231",
+      "query_vector_sha256": "B7BC328BD1D6A025225918B4E54ECB3DBCD09249E8A39EAACDEA696454457541",
+      "query_prompt_tokens": 19,
+      "query_embedding_latency_ms": 731.7082169993228,
+      "query_cost": "4.75E-7",
+      "lexical_latency_ms": 20.381383999847458,
+      "semantic_latency_ms": 13.383449000684777,
+      "fusion_latency_ms": 0.1447140002710512,
+      "lexical_candidates": [
+        {
+          "rank": 1,
+          "chunk_id": "FG-DOC-001:0013:38A34C25BCAD",
+          "source_id": "FG-DOC-001",
+          "score": 5.800000190734863,
+          "strict_match": false
+        },
+        {
+          "rank": 2,
+          "chunk_id": "FG-DOC-001:0007:C1010E17492A",
+          "source_id": "FG-DOC-001",
+          "score": 5.400000095367432,
+          "strict_match": false
+        },
+        {
+          "rank": 3,
+          "chunk_id": "FG-DOC-003:0002:A780CC7455DF",
+          "source_id": "FG-DOC-003",
+          "score": 4.599999904632568,
+          "strict_match": false
+        },
+        {
+          "rank": 4,
+          "chunk_id": "EXT-REPORT-001:0064:E7D0C3453BF9",
+          "source_id": "EXT-REPORT-001",
+          "score": 4.400000095367432,
+          "strict_match": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "FG-DOC-003:0004:E565DA2639BA",
+          "source_id": "FG-DOC-003",
+          "score": 4.199999809265137,
+          "strict_match": false
+        },
+        {
+          "rank": 6,
+          "chunk_id": "FG-DOC-001:0001:99120F622068",
+          "source_id": "FG-DOC-001",
+          "score": 4.0,
+          "strict_match": false
+        },
+        {
+          "rank": 7,
+          "chunk_id": "FG-DOC-001:0008:96B4D0A6C5EA",
+          "source_id": "FG-DOC-001",
+          "score": 4.0,
+          "strict_match": false
+        },
+        {
+          "rank": 8,
+          "chunk_id": "FG-DOC-003:0001:F321DD9A0B93",
+          "source_id": "FG-DOC-003",
+          "score": 3.799999952316284,
+          "strict_match": false
+        },
+        {
+          "rank": 9,
+          "chunk_id": "FG-DOC-001:0010:5688C99CDF90",
+          "source_id": "FG-DOC-001",
+          "score": 3.5999999046325684,
+          "strict_match": false
+        },
+        {
+          "rank": 10,
+          "chunk_id": "FG-DOC-001:0011:A4E978A8466C",
+          "source_id": "FG-DOC-001",
+          "score": 3.5999999046325684,
+          "strict_match": false
+        },
+        {
+          "rank": 11,
+          "chunk_id": "FG-DOC-003:0003:C3FBF0D5BE68",
+          "source_id": "FG-DOC-003",
+          "score": 3.5999999046325684,
+          "strict_match": false
+        },
+        {
+          "rank": 12,
+          "chunk_id": "FG-DOC-002:0017:6FA3B2A54C12",
+          "source_id": "FG-DOC-002",
+          "score": 3.4000000953674316,
+          "strict_match": false
+        },
+        {
+          "rank": 13,
+          "chunk_id": "FG-DOC-001:0004:4F47CFCD1552",
+          "source_id": "FG-DOC-001",
+          "score": 3.200000047683716,
+          "strict_match": false
+        },
+        {
+          "rank": 14,
+          "chunk_id": "FG-DOC-001:0006:6AEBD9307939",
+          "source_id": "FG-DOC-001",
+          "score": 3.200000047683716,
+          "strict_match": false
+        },
+        {
+          "rank": 15,
+          "chunk_id": "FG-DOC-001:0009:9565877ADBA3",
+          "source_id": "FG-DOC-001",
+          "score": 3.200000047683716,
+          "strict_match": false
+        },
+        {
+          "rank": 16,
+          "chunk_id": "FG-DOC-002:0036:35933C158656",
+          "source_id": "FG-DOC-002",
+          "score": 3.200000047683716,
+          "strict_match": false
+        },
+        {
+          "rank": 17,
+          "chunk_id": "FG-DOC-002:0037:8FB12D920C07",
+          "source_id": "FG-DOC-002",
+          "score": 3.200000047683716,
+          "strict_match": false
+        },
+        {
+          "rank": 18,
+          "chunk_id": "FG-DOC-002:0039:2BC9F89A99D3",
+          "source_id": "FG-DOC-002",
+          "score": 3.200000047683716,
+          "strict_match": false
+        },
+        {
+          "rank": 19,
+          "chunk_id": "EXT-REPORT-001:0060:7A8BEDD43CF7",
+          "source_id": "EXT-REPORT-001",
+          "score": 2.799999952316284,
+          "strict_match": false
+        },
+        {
+          "rank": 20,
+          "chunk_id": "EXT-REPORT-001:0074:4CB207093F74",
+          "source_id": "EXT-REPORT-001",
+          "score": 2.799999952316284,
+          "strict_match": false
+        }
+      ],
+      "semantic_candidates": [
+        {
+          "rank": 1,
+          "chunk_id": "FG-DOC-001:0007:C1010E17492A",
+          "source_id": "FG-DOC-001",
+          "score": 0.7138458922151166,
+          "cosine_distance": 0.28615410778488337
+        },
+        {
+          "rank": 2,
+          "chunk_id": "FG-DOC-001:0013:38A34C25BCAD",
+          "source_id": "FG-DOC-001",
+          "score": 0.5928237679129315,
+          "cosine_distance": 0.40717623208706855
+        },
+        {
+          "rank": 3,
+          "chunk_id": "FG-DOC-002:0017:6FA3B2A54C12",
+          "source_id": "FG-DOC-002",
+          "score": 0.5838685340508277,
+          "cosine_distance": 0.4161314659491723
+        },
+        {
+          "rank": 4,
+          "chunk_id": "FG-DOC-002:0019:842FCBD25129",
+          "source_id": "FG-DOC-002",
+          "score": 0.567780678120501,
+          "cosine_distance": 0.43221932187949896
+        },
+        {
+          "rank": 5,
+          "chunk_id": "FG-DOC-001:0004:4F47CFCD1552",
+          "source_id": "FG-DOC-001",
+          "score": 0.5501137732357065,
+          "cosine_distance": 0.44988622676429346
+        },
+        {
+          "rank": 6,
+          "chunk_id": "FG-DOC-002:0034:C31C5693670E",
+          "source_id": "FG-DOC-002",
+          "score": 0.5484335461122558,
+          "cosine_distance": 0.4515664538877442
+        },
+        {
+          "rank": 7,
+          "chunk_id": "FG-DOC-002:0029:029A0DD74044",
+          "source_id": "FG-DOC-002",
+          "score": 0.5467563077100561,
+          "cosine_distance": 0.4532436922899439
+        },
+        {
+          "rank": 8,
+          "chunk_id": "FG-DOC-002:0012:D98824F3E7A4",
+          "source_id": "FG-DOC-002",
+          "score": 0.5249899312989934,
+          "cosine_distance": 0.4750100687010066
+        },
+        {
+          "rank": 9,
+          "chunk_id": "FG-DOC-002:0069:84392876BA4B",
+          "source_id": "FG-DOC-002",
+          "score": 0.5168356102474082,
+          "cosine_distance": 0.4831643897525918
+        },
+        {
+          "rank": 10,
+          "chunk_id": "FG-DOC-001:0001:99120F622068",
+          "source_id": "FG-DOC-001",
+          "score": 0.5104301522892992,
+          "cosine_distance": 0.4895698477107008
+        },
+        {
+          "rank": 11,
+          "chunk_id": "FG-DOC-002:0018:549C8C1D9305",
+          "source_id": "FG-DOC-002",
+          "score": 0.5088359015638013,
+          "cosine_distance": 0.4911640984361987
+        },
+        {
+          "rank": 12,
+          "chunk_id": "FG-DOC-001:0006:6AEBD9307939",
+          "source_id": "FG-DOC-001",
+          "score": 0.5030947060529872,
+          "cosine_distance": 0.49690529394701277
+        },
+        {
+          "rank": 13,
+          "chunk_id": "FG-DOC-003:0004:E565DA2639BA",
+          "source_id": "FG-DOC-003",
+          "score": 0.5019478665375775,
+          "cosine_distance": 0.4980521334624225
+        },
+        {
+          "rank": 14,
+          "chunk_id": "FG-DOC-002:0001:2CB5CE850EB2",
+          "source_id": "FG-DOC-002",
+          "score": 0.49347988112409724,
+          "cosine_distance": 0.5065201188759028
+        },
+        {
+          "rank": 15,
+          "chunk_id": "FG-DOC-002:0040:433B3A0CCF28",
+          "source_id": "FG-DOC-002",
+          "score": 0.4905588246473832,
+          "cosine_distance": 0.5094411753526168
+        },
+        {
+          "rank": 16,
+          "chunk_id": "FG-DOC-003:0002:A780CC7455DF",
+          "source_id": "FG-DOC-003",
+          "score": 0.4903432545049746,
+          "cosine_distance": 0.5096567454950254
+        },
+        {
+          "rank": 17,
+          "chunk_id": "FG-DOC-001:0008:96B4D0A6C5EA",
+          "source_id": "FG-DOC-001",
+          "score": 0.48396621068331624,
+          "cosine_distance": 0.5160337893166838
+        },
+        {
+          "rank": 18,
+          "chunk_id": "FG-DOC-002:0032:84B6F92F8C91",
+          "source_id": "FG-DOC-002",
+          "score": 0.4839392598733261,
+          "cosine_distance": 0.5160607401266739
+        },
+        {
+          "rank": 19,
+          "chunk_id": "FG-DOC-001:0002:FF3C5D865D6C",
+          "source_id": "FG-DOC-001",
+          "score": 0.4789958325932392,
+          "cosine_distance": 0.5210041674067608
+        },
+        {
+          "rank": 20,
+          "chunk_id": "FG-DOC-002:0033:038A260580ED",
+          "source_id": "FG-DOC-002",
+          "score": 0.4787949640482294,
+          "cosine_distance": 0.5212050359517706
+        }
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "chunk_id": "FG-DOC-001:0007:C1010E17492A",
+          "source_id": "FG-DOC-001",
+          "score": 0.03252247488101534,
+          "lexical_rank": 2,
+          "semantic_rank": 1,
+          "lexical_score": 5.400000095367432,
+          "semantic_score": 0.7138458922151166,
+          "cosine_distance": 0.28615410778488337
+        },
+        {
+          "rank": 2,
+          "chunk_id": "FG-DOC-001:0013:38A34C25BCAD",
+          "source_id": "FG-DOC-001",
+          "score": 0.03252247488101534,
+          "lexical_rank": 1,
+          "semantic_rank": 2,
+          "lexical_score": 5.800000190734863,
+          "semantic_score": 0.5928237679129315,
+          "cosine_distance": 0.40717623208706855
+        },
+        {
+          "rank": 3,
+          "chunk_id": "FG-DOC-002:0017:6FA3B2A54C12",
+          "source_id": "FG-DOC-002",
+          "score": 0.02976190476190476,
+          "lexical_rank": 12,
+          "semantic_rank": 3,
+          "lexical_score": 3.4000000953674316,
+          "semantic_score": 0.5838685340508277,
+          "cosine_distance": 0.4161314659491723
+        },
+        {
+          "rank": 4,
+          "chunk_id": "FG-DOC-001:0001:99120F622068",
+          "source_id": "FG-DOC-001",
+          "score": 0.029437229437229435,
+          "lexical_rank": 6,
+          "semantic_rank": 10,
+          "lexical_score": 4.0,
+          "semantic_score": 0.5104301522892992,
+          "cosine_distance": 0.4895698477107008
+        },
+        {
+          "rank": 5,
+          "chunk_id": "FG-DOC-001:0004:4F47CFCD1552",
+          "source_id": "FG-DOC-001",
+          "score": 0.029083245521601686,
+          "lexical_rank": 13,
+          "semantic_rank": 5,
+          "lexical_score": 3.200000047683716,
+          "semantic_score": 0.5501137732357065,
+          "cosine_distance": 0.44988622676429346
+        }
+      ]
+    },
+    {
+      "question_id": "FG-RET-002",
+      "question": "How is an uploaded image preprocessed before the vit3 detector runs?",
+      "relevant_chunk_ids": [
+        "FG-DOC-001:0006:6AEBD9307939"
+      ],
+      "first_relevant_rank": 2,
+      "reciprocal_rank": 0.5,
+      "recall_at_k": {
+        "1": 0.0,
+        "3": 1.0,
+        "5": 1.0
+      },
+      "query_input_sha256": "D25CFFD8387F3CB93631A3D010D91EA115EBEBA2C60CD63FA8DFFA021FAD8DC2",
+      "query_vector_sha256": "A724E1DF087CE06411820F0B811D6339E55AA44932857D555C3B2015D3F2820C",
+      "query_prompt_tokens": 14,
+      "query_embedding_latency_ms": 883.4247289996711,
+      "query_cost": "3.5E-7",
+      "lexical_latency_ms": 10.88695600083156,
+      "semantic_latency_ms": 11.671564001517254,
+      "fusion_latency_ms": 0.11997600086033344,
+      "lexical_candidates": [
+        {
+          "rank": 1,
+          "chunk_id": "EXT-REPORT-001:0059:9F7988DF95FF",
+          "source_id": "EXT-REPORT-001",
+          "score": 6.0,
+          "strict_match": false
+        },
+        {
+          "rank": 2,
+          "chunk_id": "EXT-REPORT-001:0029:2210F83DDD21",
+          "source_id": "EXT-REPORT-001",
+          "score": 5.200000286102295,
+          "strict_match": false
+        },
+        {
+          "rank": 3,
+          "chunk_id": "EXT-REPORT-001:0054:A9513F3E3FB3",
+          "source_id": "EXT-REPORT-001",
+          "score": 5.200000286102295,
+          "strict_match": false
+        },
+        {
+          "rank": 4,
+          "chunk_id": "EXT-REPORT-001:0057:907C0627DE5C",
+          "source_id": "EXT-REPORT-001",
+          "score": 4.800000190734863,
+          "strict_match": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "EXT-REPORT-001:0120:0CBD3697048C",
+          "source_id": "EXT-REPORT-001",
+          "score": 4.800000190734863,
+          "strict_match": false
+        },
+        {
+          "rank": 6,
+          "chunk_id": "EXT-STD-001:0408:0E24F2037B24",
+          "source_id": "EXT-STD-001",
+          "score": 4.599999904632568,
+          "strict_match": false
+        },
+        {
+          "rank": 7,
+          "chunk_id": "EXT-STD-001:0493:15E163970756",
+          "source_id": "EXT-STD-001",
+          "score": 4.400000095367432,
+          "strict_match": false
+        },
+        {
+          "rank": 8,
+          "chunk_id": "EXT-STD-001:0410:5FD2A066E14D",
+          "source_id": "EXT-STD-001",
+          "score": 4.199999809265137,
+          "strict_match": false
+        },
+        {
+          "rank": 9,
+          "chunk_id": "FG-DOC-002:0032:84B6F92F8C91",
+          "source_id": "FG-DOC-002",
+          "score": 4.199999809265137,
+          "strict_match": false
+        },
+        {
+          "rank": 10,
+          "chunk_id": "FG-DOC-001:0004:4F47CFCD1552",
+          "source_id": "FG-DOC-001",
+          "score": 4.0,
+          "strict_match": false
+        },
+        {
+          "rank": 11,
+          "chunk_id": "EXT-REPORT-001:0055:61805D52C782",
+          "source_id": "EXT-REPORT-001",
+          "score": 3.6000001430511475,
+          "strict_match": false
+        },
+        {
+          "rank": 12,
+          "chunk_id": "EXT-REPORT-001:0060:7A8BEDD43CF7",
+          "source_id": "EXT-REPORT-001",
+          "score": 3.6000001430511475,
+          "strict_match": false
+        },
+        {
+          "rank": 13,
+          "chunk_id": "EXT-REPORT-001:0064:E7D0C3453BF9",
+          "source_id": "EXT-REPORT-001",
+          "score": 3.6000001430511475,
+          "strict_match": false
+        },
+        {
+          "rank": 14,
+          "chunk_id": "EXT-REPORT-001:0081:2BE8366910AB",
+          "source_id": "EXT-REPORT-001",
+          "score": 3.6000001430511475,
+          "strict_match": false
+        },
+        {
+          "rank": 15,
+          "chunk_id": "EXT-REPORT-001:0086:216D73904EE0",
+          "source_id": "EXT-REPORT-001",
+          "score": 3.6000001430511475,
+          "strict_match": false
+        },
+        {
+          "rank": 16,
+          "chunk_id": "EXT-REPORT-001:0121:948D4F62FB7A",
+          "source_id": "EXT-REPORT-001",
+          "score": 3.6000001430511475,
+          "strict_match": false
+        },
+        {
+          "rank": 17,
+          "chunk_id": "FG-DOC-001:0005:857AC7053ACC",
+          "source_id": "FG-DOC-001",
+          "score": 3.5999999046325684,
+          "strict_match": false
+        },
+        {
+          "rank": 18,
+          "chunk_id": "FG-DOC-001:0006:6AEBD9307939",
+          "source_id": "FG-DOC-001",
+          "score": 3.5999999046325684,
+          "strict_match": false
+        },
+        {
+          "rank": 19,
+          "chunk_id": "FG-DOC-001:0012:27DD2BFFFC10",
+          "source_id": "FG-DOC-001",
+          "score": 3.5999999046325684,
+          "strict_match": false
+        },
+        {
+          "rank": 20,
+          "chunk_id": "FG-DOC-001:0008:96B4D0A6C5EA",
+          "source_id": "FG-DOC-001",
+          "score": 3.200000047683716,
+          "strict_match": false
+        }
+      ],
+      "semantic_candidates": [
+        {
+          "rank": 1,
+          "chunk_id": "FG-DOC-001:0006:6AEBD9307939",
+          "source_id": "FG-DOC-001",
+          "score": 0.5384172710677368,
+          "cosine_distance": 0.46158272893226315
+        },
+        {
+          "rank": 2,
+          "chunk_id": "FG-DOC-002:0027:DDD0E656228C",
+          "source_id": "FG-DOC-002",
+          "score": 0.5197867325172867,
+          "cosine_distance": 0.4802132674827133
+        },
+        {
+          "rank": 3,
+          "chunk_id": "FG-DOC-002:0019:842FCBD25129",
+          "source_id": "FG-DOC-002",
+          "score": 0.5177844998178978,
+          "cosine_distance": 0.48221550018210224
+        },
+        {
+          "rank": 4,
+          "chunk_id": "FG-DOC-001:0004:4F47CFCD1552",
+          "source_id": "FG-DOC-001",
+          "score": 0.5074657112093903,
+          "cosine_distance": 0.4925342887906097
+        },
+        {
+          "rank": 5,
+          "chunk_id": "FG-DOC-002:0029:029A0DD74044",
+          "source_id": "FG-DOC-002",
+          "score": 0.48084957306327314,
+          "cosine_distance": 0.5191504269367269
+        },
+        {
+          "rank": 6,
+          "chunk_id": "FG-DOC-001:0013:38A34C25BCAD",
+          "source_id": "FG-DOC-001",
+          "score": 0.47296583934424397,
+          "cosine_distance": 0.527034160655756
+        },
+        {
+          "rank": 7,
+          "chunk_id": "FG-DOC-001:0012:27DD2BFFFC10",
+          "source_id": "FG-DOC-001",
+          "score": 0.46901072022504375,
+          "cosine_distance": 0.5309892797749562
+        },
+        {
+          "rank": 8,
+          "chunk_id": "FG-DOC-001:0005:857AC7053ACC",
+          "source_id": "FG-DOC-001",
+          "score": 0.46714044365699703,
+          "cosine_distance": 0.532859556343003
+        },
+        {
+          "rank": 9,
+          "chunk_id": "FG-DOC-002:0028:3CC198C4F4EF",
+          "source_id": "FG-DOC-002",
+          "score": 0.46405969616814025,
+          "cosine_distance": 0.5359403038318598
+        },
+        {
+          "rank": 10,
+          "chunk_id": "FG-DOC-002:0018:549C8C1D9305",
+          "source_id": "FG-DOC-002",
+          "score": 0.4567789352174416,
+          "cosine_distance": 0.5432210647825584
+        },
+        {
+          "rank": 11,
+          "chunk_id": "FG-DOC-001:0002:FF3C5D865D6C",
+          "source_id": "FG-DOC-001",
+          "score": 0.45364787172499244,
+          "cosine_distance": 0.5463521282750076
+        },
+        {
+          "rank": 12,
+          "chunk_id": "FG-DOC-002:0033:038A260580ED",
+          "source_id": "FG-DOC-002",
+          "score": 0.43093488848682826,
+          "cosine_distance": 0.5690651115131717
+        },
+        {
+          "rank": 13,
+          "chunk_id": "FG-DOC-001:0008:96B4D0A6C5EA",
+          "source_id": "FG-DOC-001",
+          "score": 0.4307701208908661,
+          "cosine_distance": 0.5692298791091339
+        },
+        {
+          "rank": 14,
+          "chunk_id": "FG-DOC-002:0011:CC822229C59B",
+          "source_id": "FG-DOC-002",
+          "score": 0.4259514694084505,
+          "cosine_distance": 0.5740485305915495
+        },
+        {
+          "rank": 15,
+          "chunk_id": "FG-DOC-002:0031:2327CE814BAC",
+          "source_id": "FG-DOC-002",
+          "score": 0.42393801940101405,
+          "cosine_distance": 0.576061980598986
+        },
+        {
+          "rank": 16,
+          "chunk_id": "FG-DOC-002:0016:5A7A14116CEE",
+          "source_id": "FG-DOC-002",
+          "score": 0.41684822745292316,
+          "cosine_distance": 0.5831517725470768
+        },
+        {
+          "rank": 17,
+          "chunk_id": "FG-DOC-002:0035:2FDBAB990B83",
+          "source_id": "FG-DOC-002",
+          "score": 0.41671734720649867,
+          "cosine_distance": 0.5832826527935013
+        },
+        {
+          "rank": 18,
+          "chunk_id": "FG-DOC-001:0003:BDE868BE477E",
+          "source_id": "FG-DOC-001",
+          "score": 0.41635490319917823,
+          "cosine_distance": 0.5836450968008218
+        },
+        {
+          "rank": 19,
+          "chunk_id": "FG-DOC-003:0004:E565DA2639BA",
+          "source_id": "FG-DOC-003",
+          "score": 0.4143919730501797,
+          "cosine_distance": 0.5856080269498203
+        },
+        {
+          "rank": 20,
+          "chunk_id": "FG-DOC-002:0030:5B59C4E21693",
+          "source_id": "FG-DOC-002",
+          "score": 0.412315843849025,
+          "cosine_distance": 0.587684156150975
+        }
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "chunk_id": "FG-DOC-001:0004:4F47CFCD1552",
+          "source_id": "FG-DOC-001",
+          "score": 0.029910714285714284,
+          "lexical_rank": 10,
+          "semantic_rank": 4,
+          "lexical_score": 4.0,
+          "semantic_score": 0.5074657112093903,
+          "cosine_distance": 0.4925342887906097
+        },
+        {
+          "rank": 2,
+          "chunk_id": "FG-DOC-001:0006:6AEBD9307939",
+          "source_id": "FG-DOC-001",
+          "score": 0.02921395544346364,
+          "lexical_rank": 18,
+          "semantic_rank": 1,
+          "lexical_score": 3.5999999046325684,
+          "semantic_score": 0.5384172710677368,
+          "cosine_distance": 0.46158272893226315
+        },
+        {
+          "rank": 3,
+          "chunk_id": "FG-DOC-001:0005:857AC7053ACC",
+          "source_id": "FG-DOC-001",
+          "score": 0.027692895339954164,
+          "lexical_rank": 17,
+          "semantic_rank": 8,
+          "lexical_score": 3.5999999046325684,
+          "semantic_score": 0.46714044365699703,
+          "cosine_distance": 0.532859556343003
+        },
+        {
+          "rank": 4,
+          "chunk_id": "FG-DOC-001:0012:27DD2BFFFC10",
+          "source_id": "FG-DOC-001",
+          "score": 0.027583600982429624,
+          "lexical_rank": 19,
+          "semantic_rank": 7,
+          "lexical_score": 3.5999999046325684,
+          "semantic_score": 0.46901072022504375,
+          "cosine_distance": 0.5309892797749562
+        },
+        {
+          "rank": 5,
+          "chunk_id": "FG-DOC-001:0008:96B4D0A6C5EA",
+          "source_id": "FG-DOC-001",
+          "score": 0.0261986301369863,
+          "lexical_rank": 20,
+          "semantic_rank": 13,
+          "lexical_score": 3.200000047683716,
+          "semantic_score": 0.4307701208908661,
+          "cosine_distance": 0.5692298791091339
+        }
+      ]
+    },
+    {
+      "question_id": "FG-RET-003",
+      "question": "What did the controlled still-image inference experiment prove, and what could it not prove?",
+      "relevant_chunk_ids": [
+        "FG-DOC-002:0032:84B6F92F8C91",
+        "FG-DOC-002:0033:038A260580ED"
+      ],
+      "first_relevant_rank": 1,
+      "reciprocal_rank": 1.0,
+      "recall_at_k": {
+        "1": 0.5,
+        "3": 1.0,
+        "5": 1.0
+      },
+      "query_input_sha256": "2738D55C1BF267E9BA040F06FFD3A7B535868F710DCDA1E10D1A1F37249DD4C8",
+      "query_vector_sha256": "DD57952AB89AC6794EDD25E91518B75D7DC8DB9961BF7DA089C02EEFA72546AD",
+      "query_prompt_tokens": 17,
+      "query_embedding_latency_ms": 1405.6762550007988,
+      "query_cost": "4.25E-7",
+      "lexical_latency_ms": 19.716107999556698,
+      "semantic_latency_ms": 12.062716001310037,
+      "fusion_latency_ms": 0.10792000102810562,
+      "lexical_candidates": [
+        {
+          "rank": 1,
+          "chunk_id": "FG-DOC-002:0032:84B6F92F8C91",
+          "source_id": "FG-DOC-002",
+          "score": 9.199999809265137,
+          "strict_match": false
+        },
+        {
+          "rank": 2,
+          "chunk_id": "FG-DOC-002:0033:038A260580ED",
+          "source_id": "FG-DOC-002",
+          "score": 7.199999809265137,
+          "strict_match": false
+        },
+        {
+          "rank": 3,
+          "chunk_id": "FG-DOC-002:0027:DDD0E656228C",
+          "source_id": "FG-DOC-002",
+          "score": 6.800000190734863,
+          "strict_match": false
+        },
+        {
+          "rank": 4,
+          "chunk_id": "FG-DOC-002:0031:2327CE814BAC",
+          "source_id": "FG-DOC-002",
+          "score": 6.800000190734863,
+          "strict_match": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "FG-DOC-002:0028:3CC198C4F4EF",
+          "source_id": "FG-DOC-002",
+          "score": 6.400000095367432,
+          "strict_match": false
+        },
+        {
+          "rank": 6,
+          "chunk_id": "FG-DOC-002:0029:029A0DD74044",
+          "source_id": "FG-DOC-002",
+          "score": 6.400000095367432,
+          "strict_match": false
+        },
+        {
+          "rank": 7,
+          "chunk_id": "FG-DOC-002:0030:5B59C4E21693",
+          "source_id": "FG-DOC-002",
+          "score": 6.400000095367432,
+          "strict_match": false
+        },
+        {
+          "rank": 8,
+          "chunk_id": "FG-DOC-002:0034:C31C5693670E",
+          "source_id": "FG-DOC-002",
+          "score": 6.0,
+          "strict_match": false
+        },
+        {
+          "rank": 9,
+          "chunk_id": "EXT-REPORT-001:0037:0D2978BB0902",
+          "source_id": "EXT-REPORT-001",
+          "score": 5.200000286102295,
+          "strict_match": false
+        },
+        {
+          "rank": 10,
+          "chunk_id": "EXT-REPORT-001:0086:216D73904EE0",
+          "source_id": "EXT-REPORT-001",
+          "score": 5.200000286102295,
+          "strict_match": false
+        },
+        {
+          "rank": 11,
+          "chunk_id": "FG-DOC-002:0003:E298715D3E42",
+          "source_id": "FG-DOC-002",
+          "score": 5.0,
+          "strict_match": false
+        },
+        {
+          "rank": 12,
+          "chunk_id": "EXT-REPORT-001:0029:2210F83DDD21",
+          "source_id": "EXT-REPORT-001",
+          "score": 4.800000190734863,
+          "strict_match": false
+        },
+        {
+          "rank": 13,
+          "chunk_id": "EXT-REPORT-001:0059:9F7988DF95FF",
+          "source_id": "EXT-REPORT-001",
+          "score": 4.800000190734863,
+          "strict_match": false
+        },
+        {
+          "rank": 14,
+          "chunk_id": "EXT-REPORT-001:0081:2BE8366910AB",
+          "source_id": "EXT-REPORT-001",
+          "score": 4.800000190734863,
+          "strict_match": false
+        },
+        {
+          "rank": 15,
+          "chunk_id": "EXT-REPORT-001:0120:0CBD3697048C",
+          "source_id": "EXT-REPORT-001",
+          "score": 4.800000190734863,
+          "strict_match": false
+        },
+        {
+          "rank": 16,
+          "chunk_id": "EXT-STD-001:0493:15E163970756",
+          "source_id": "EXT-STD-001",
+          "score": 4.800000190734863,
+          "strict_match": false
+        },
+        {
+          "rank": 17,
+          "chunk_id": "EXT-STD-001:0408:0E24F2037B24",
+          "source_id": "EXT-STD-001",
+          "score": 4.599999904632568,
+          "strict_match": false
+        },
+        {
+          "rank": 18,
+          "chunk_id": "EXT-REPORT-001:0054:A9513F3E3FB3",
+          "source_id": "EXT-REPORT-001",
+          "score": 4.400000095367432,
+          "strict_match": false
+        },
+        {
+          "rank": 19,
+          "chunk_id": "EXT-STD-001:0410:5FD2A066E14D",
+          "source_id": "EXT-STD-001",
+          "score": 4.199999809265137,
+          "strict_match": false
+        },
+        {
+          "rank": 20,
+          "chunk_id": "FG-DOC-002:0037:8FB12D920C07",
+          "source_id": "FG-DOC-002",
+          "score": 4.0,
+          "strict_match": false
+        }
+      ],
+      "semantic_candidates": [
+        {
+          "rank": 1,
+          "chunk_id": "FG-DOC-002:0033:038A260580ED",
+          "source_id": "FG-DOC-002",
+          "score": 0.5802611531758601,
+          "cosine_distance": 0.41973884682413987
+        },
+        {
+          "rank": 2,
+          "chunk_id": "FG-DOC-002:0032:84B6F92F8C91",
+          "source_id": "FG-DOC-002",
+          "score": 0.5237635489602182,
+          "cosine_distance": 0.47623645103978185
+        },
+        {
+          "rank": 3,
+          "chunk_id": "FG-DOC-002:0027:DDD0E656228C",
+          "source_id": "FG-DOC-002",
+          "score": 0.5127005093110644,
+          "cosine_distance": 0.48729949068893563
+        },
+        {
+          "rank": 4,
+          "chunk_id": "FG-DOC-002:0019:842FCBD25129",
+          "source_id": "FG-DOC-002",
+          "score": 0.4872481110160495,
+          "cosine_distance": 0.5127518889839505
+        },
+        {
+          "rank": 5,
+          "chunk_id": "FG-DOC-002:0031:2327CE814BAC",
+          "source_id": "FG-DOC-002",
+          "score": 0.4814433845060526,
+          "cosine_distance": 0.5185566154939474
+        },
+        {
+          "rank": 6,
+          "chunk_id": "FG-DOC-002:0018:549C8C1D9305",
+          "source_id": "FG-DOC-002",
+          "score": 0.472499837696587,
+          "cosine_distance": 0.527500162303413
+        },
+        {
+          "rank": 7,
+          "chunk_id": "FG-DOC-002:0034:C31C5693670E",
+          "source_id": "FG-DOC-002",
+          "score": 0.47018188107615355,
+          "cosine_distance": 0.5298181189238464
+        },
+        {
+          "rank": 8,
+          "chunk_id": "FG-DOC-002:0029:029A0DD74044",
+          "source_id": "FG-DOC-002",
+          "score": 0.4584557753440719,
+          "cosine_distance": 0.5415442246559281
+        },
+        {
+          "rank": 9,
+          "chunk_id": "FG-DOC-002:0040:433B3A0CCF28",
+          "source_id": "FG-DOC-002",
+          "score": 0.4083161792116128,
+          "cosine_distance": 0.5916838207883872
+        },
+        {
+          "rank": 10,
+          "chunk_id": "FG-DOC-002:0028:3CC198C4F4EF",
+          "source_id": "FG-DOC-002",
+          "score": 0.3968584380876592,
+          "cosine_distance": 0.6031415619123408
+        },
+        {
+          "rank": 11,
+          "chunk_id": "FG-DOC-002:0030:5B59C4E21693",
+          "source_id": "FG-DOC-002",
+          "score": 0.38190557208407483,
+          "cosine_distance": 0.6180944279159252
+        },
+        {
+          "rank": 12,
+          "chunk_id": "FG-DOC-001:0006:6AEBD9307939",
+          "source_id": "FG-DOC-001",
+          "score": 0.37703258175788257,
+          "cosine_distance": 0.6229674182421174
+        },
+        {
+          "rank": 13,
+          "chunk_id": "FG-DOC-001:0012:27DD2BFFFC10",
+          "source_id": "FG-DOC-001",
+          "score": 0.37464750449310635,
+          "cosine_distance": 0.6253524955068936
+        },
+        {
+          "rank": 14,
+          "chunk_id": "FG-DOC-002:0070:DBF20B7B17B4",
+          "source_id": "FG-DOC-002",
+          "score": 0.367690994508979,
+          "cosine_distance": 0.632309005491021
+        },
+        {
+          "rank": 15,
+          "chunk_id": "FG-DOC-001:0004:4F47CFCD1552",
+          "source_id": "FG-DOC-001",
+          "score": 0.34368203611670556,
+          "cosine_distance": 0.6563179638832944
+        },
+        {
+          "rank": 16,
+          "chunk_id": "FG-DOC-002:0035:2FDBAB990B83",
+          "source_id": "FG-DOC-002",
+          "score": 0.3417884102304294,
+          "cosine_distance": 0.6582115897695706
+        },
+        {
+          "rank": 17,
+          "chunk_id": "FG-DOC-002:0017:6FA3B2A54C12",
+          "source_id": "FG-DOC-002",
+          "score": 0.33823395326988404,
+          "cosine_distance": 0.661766046730116
+        },
+        {
+          "rank": 18,
+          "chunk_id": "FG-DOC-002:0037:8FB12D920C07",
+          "source_id": "FG-DOC-002",
+          "score": 0.33268549090905997,
+          "cosine_distance": 0.66731450909094
+        },
+        {
+          "rank": 19,
+          "chunk_id": "FG-DOC-002:0003:E298715D3E42",
+          "source_id": "FG-DOC-002",
+          "score": 0.32847938636088947,
+          "cosine_distance": 0.6715206136391105
+        },
+        {
+          "rank": 20,
+          "chunk_id": "EXT-GUIDE-001:0024:D80C02EF84A8",
+          "source_id": "EXT-GUIDE-001",
+          "score": 0.3223152665714013,
+          "cosine_distance": 0.6776847334285987
+        }
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "chunk_id": "FG-DOC-002:0032:84B6F92F8C91",
+          "source_id": "FG-DOC-002",
+          "score": 0.03252247488101534,
+          "lexical_rank": 1,
+          "semantic_rank": 2,
+          "lexical_score": 9.199999809265137,
+          "semantic_score": 0.5237635489602182,
+          "cosine_distance": 0.47623645103978185
+        },
+        {
+          "rank": 2,
+          "chunk_id": "FG-DOC-002:0033:038A260580ED",
+          "source_id": "FG-DOC-002",
+          "score": 0.03252247488101534,
+          "lexical_rank": 2,
+          "semantic_rank": 1,
+          "lexical_score": 7.199999809265137,
+          "semantic_score": 0.5802611531758601,
+          "cosine_distance": 0.41973884682413987
+        },
+        {
+          "rank": 3,
+          "chunk_id": "FG-DOC-002:0027:DDD0E656228C",
+          "source_id": "FG-DOC-002",
+          "score": 0.031746031746031744,
+          "lexical_rank": 3,
+          "semantic_rank": 3,
+          "lexical_score": 6.800000190734863,
+          "semantic_score": 0.5127005093110644,
+          "cosine_distance": 0.48729949068893563
+        },
+        {
+          "rank": 4,
+          "chunk_id": "FG-DOC-002:0031:2327CE814BAC",
+          "source_id": "FG-DOC-002",
+          "score": 0.031009615384615385,
+          "lexical_rank": 4,
+          "semantic_rank": 5,
+          "lexical_score": 6.800000190734863,
+          "semantic_score": 0.4814433845060526,
+          "cosine_distance": 0.5185566154939474
+        },
+        {
+          "rank": 5,
+          "chunk_id": "FG-DOC-002:0029:029A0DD74044",
+          "source_id": "FG-DOC-002",
+          "score": 0.029857397504456328,
+          "lexical_rank": 6,
+          "semantic_rank": 8,
+          "lexical_score": 6.400000095367432,
+          "semantic_score": 0.4584557753440719,
+          "cosine_distance": 0.5415442246559281
+        }
+      ]
+    },
+    {
+      "question_id": "FG-RET-004",
+      "question": "Why did PostgreSQL reject the first generated full-text column design using ARRAY_TO_STRING?",
+      "relevant_chunk_ids": [
+        "FG-DOC-002:0055:B97BF57FFB48"
+      ],
+      "first_relevant_rank": 1,
+      "reciprocal_rank": 1.0,
+      "recall_at_k": {
+        "1": 1.0,
+        "3": 1.0,
+        "5": 1.0
+      },
+      "query_input_sha256": "D3883867EDA5B2E92CE12A883546C9FD4218386CE99F7754EAA7124595FB26DC",
+      "query_vector_sha256": "FAFD27B2569F8F05375FB12BB01941B6D64EFE8679344AE8D1AD70E41E0CDEC7",
+      "query_prompt_tokens": 16,
+      "query_embedding_latency_ms": 990.0099930000579,
+      "query_cost": "4E-7",
+      "lexical_latency_ms": 43.70363599991833,
+      "semantic_latency_ms": 7.51938499888638,
+      "fusion_latency_ms": 0.07318999996641651,
+      "lexical_candidates": [
+        {
+          "rank": 1,
+          "chunk_id": "EXT-STD-001:0102:3DF3F24D77B4",
+          "source_id": "EXT-STD-001",
+          "score": 9.600000381469727,
+          "strict_match": false
+        },
+        {
+          "rank": 2,
+          "chunk_id": "EXT-STD-001:0311:8B70E20E6E6B",
+          "source_id": "EXT-STD-001",
+          "score": 8.800000190734863,
+          "strict_match": false
+        },
+        {
+          "rank": 3,
+          "chunk_id": "EXT-STD-001:0347:D03400156B6F",
+          "source_id": "EXT-STD-001",
+          "score": 8.40000057220459,
+          "strict_match": false
+        },
+        {
+          "rank": 4,
+          "chunk_id": "FG-DOC-002:0055:B97BF57FFB48",
+          "source_id": "FG-DOC-002",
+          "score": 8.199999809265137,
+          "strict_match": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "EXT-REPORT-001:0129:ADA74A77821C",
+          "source_id": "EXT-REPORT-001",
+          "score": 7.599999904632568,
+          "strict_match": false
+        },
+        {
+          "rank": 6,
+          "chunk_id": "EXT-STD-001:0350:436F00CF7357",
+          "source_id": "EXT-STD-001",
+          "score": 7.599999904632568,
+          "strict_match": false
+        },
+        {
+          "rank": 7,
+          "chunk_id": "FG-DOC-002:0053:2E4B3AEE856C",
+          "source_id": "FG-DOC-002",
+          "score": 7.430188775062561,
+          "strict_match": true
+        },
+        {
+          "rank": 8,
+          "chunk_id": "EXT-REPORT-001:0063:AAF89020CABE",
+          "source_id": "EXT-REPORT-001",
+          "score": 7.200000286102295,
+          "strict_match": false
+        },
+        {
+          "rank": 9,
+          "chunk_id": "EXT-STD-001:0392:A7B6CFB49F32",
+          "source_id": "EXT-STD-001",
+          "score": 7.200000286102295,
+          "strict_match": false
+        },
+        {
+          "rank": 10,
+          "chunk_id": "EXT-STD-001:0497:C2C3A803AF88",
+          "source_id": "EXT-STD-001",
+          "score": 6.800000190734863,
+          "strict_match": false
+        },
+        {
+          "rank": 11,
+          "chunk_id": "EXT-STD-001:0108:8A416099C7D1",
+          "source_id": "EXT-STD-001",
+          "score": 6.0,
+          "strict_match": false
+        },
+        {
+          "rank": 12,
+          "chunk_id": "EXT-STD-001:0371:843A9F5F5AD5",
+          "source_id": "EXT-STD-001",
+          "score": 6.0,
+          "strict_match": false
+        },
+        {
+          "rank": 13,
+          "chunk_id": "EXT-STD-001:0267:2350FB1F1DDC",
+          "source_id": "EXT-STD-001",
+          "score": 5.599999904632568,
+          "strict_match": false
+        },
+        {
+          "rank": 14,
+          "chunk_id": "EXT-STD-001:0488:F54928180282",
+          "source_id": "EXT-STD-001",
+          "score": 5.599999904632568,
+          "strict_match": false
+        },
+        {
+          "rank": 15,
+          "chunk_id": "EXT-REPORT-001:0023:A9C0149CC551",
+          "source_id": "EXT-REPORT-001",
+          "score": 5.200000286102295,
+          "strict_match": false
+        },
+        {
+          "rank": 16,
+          "chunk_id": "EXT-REPORT-001:0030:5AA6232DFC75",
+          "source_id": "EXT-REPORT-001",
+          "score": 5.200000286102295,
+          "strict_match": false
+        },
+        {
+          "rank": 17,
+          "chunk_id": "EXT-REPORT-001:0062:23C088F6A6A6",
+          "source_id": "EXT-REPORT-001",
+          "score": 5.200000286102295,
+          "strict_match": false
+        },
+        {
+          "rank": 18,
+          "chunk_id": "EXT-STD-001:0387:451885E94CAC",
+          "source_id": "EXT-STD-001",
+          "score": 5.200000286102295,
+          "strict_match": false
+        },
+        {
+          "rank": 19,
+          "chunk_id": "EXT-REPORT-001:0107:93A62E026DF0",
+          "source_id": "EXT-REPORT-001",
+          "score": 4.800000190734863,
+          "strict_match": false
+        },
+        {
+          "rank": 20,
+          "chunk_id": "EXT-REPORT-001:0122:6612B4D02E41",
+          "source_id": "EXT-REPORT-001",
+          "score": 4.800000190734863,
+          "strict_match": false
+        }
+      ],
+      "semantic_candidates": [
+        {
+          "rank": 1,
+          "chunk_id": "FG-DOC-002:0055:B97BF57FFB48",
+          "source_id": "FG-DOC-002",
+          "score": 0.5262153006859684,
+          "cosine_distance": 0.47378469931403155
+        },
+        {
+          "rank": 2,
+          "chunk_id": "FG-DOC-002:0056:DCE4B763C6A9",
+          "source_id": "FG-DOC-002",
+          "score": 0.4856874685777147,
+          "cosine_distance": 0.5143125314222853
+        },
+        {
+          "rank": 3,
+          "chunk_id": "FG-DOC-002:0054:CE34889DCCC9",
+          "source_id": "FG-DOC-002",
+          "score": 0.47820634379139093,
+          "cosine_distance": 0.5217936562086091
+        },
+        {
+          "rank": 4,
+          "chunk_id": "FG-DOC-002:0053:2E4B3AEE856C",
+          "source_id": "FG-DOC-002",
+          "score": 0.460333261592228,
+          "cosine_distance": 0.539666738407772
+        },
+        {
+          "rank": 5,
+          "chunk_id": "FG-DOC-002:0050:52A395BF9BC6",
+          "source_id": "FG-DOC-002",
+          "score": 0.45638410321110023,
+          "cosine_distance": 0.5436158967888998
+        },
+        {
+          "rank": 6,
+          "chunk_id": "FG-DOC-002:0049:F4C97C86B0F7",
+          "source_id": "FG-DOC-002",
+          "score": 0.44434683448618717,
+          "cosine_distance": 0.5556531655138128
+        },
+        {
+          "rank": 7,
+          "chunk_id": "FG-DOC-002:0065:E5E0253EDBD9",
+          "source_id": "FG-DOC-002",
+          "score": 0.42103298165307756,
+          "cosine_distance": 0.5789670183469224
+        },
+        {
+          "rank": 8,
+          "chunk_id": "FG-DOC-002:0071:9F7FFCFFC831",
+          "source_id": "FG-DOC-002",
+          "score": 0.40446331483073905,
+          "cosine_distance": 0.595536685169261
+        },
+        {
+          "rank": 9,
+          "chunk_id": "FG-DOC-002:0064:DFCC42A9997D",
+          "source_id": "FG-DOC-002",
+          "score": 0.3929330309671675,
+          "cosine_distance": 0.6070669690328325
+        },
+        {
+          "rank": 10,
+          "chunk_id": "FG-DOC-002:0048:FE61EB3082F4",
+          "source_id": "FG-DOC-002",
+          "score": 0.38897848643414024,
+          "cosine_distance": 0.6110215135658598
+        },
+        {
+          "rank": 11,
+          "chunk_id": "FG-DOC-002:0057:AE5E007D35F4",
+          "source_id": "FG-DOC-002",
+          "score": 0.3755786572156483,
+          "cosine_distance": 0.6244213427843517
+        },
+        {
+          "rank": 12,
+          "chunk_id": "FG-DOC-002:0073:EC457CAF7337",
+          "source_id": "FG-DOC-002",
+          "score": 0.3715058304751536,
+          "cosine_distance": 0.6284941695248464
+        },
+        {
+          "rank": 13,
+          "chunk_id": "FG-DOC-002:0052:9733D9EDB99E",
+          "source_id": "FG-DOC-002",
+          "score": 0.3714905483652893,
+          "cosine_distance": 0.6285094516347107
+        },
+        {
+          "rank": 14,
+          "chunk_id": "FG-DOC-002:0063:DFB778A02BEB",
+          "source_id": "FG-DOC-002",
+          "score": 0.338061392698091,
+          "cosine_distance": 0.661938607301909
+        },
+        {
+          "rank": 15,
+          "chunk_id": "FG-DOC-002:0074:D9D0A5A51567",
+          "source_id": "FG-DOC-002",
+          "score": 0.3316902654878807,
+          "cosine_distance": 0.6683097345121193
+        },
+        {
+          "rank": 16,
+          "chunk_id": "FG-DOC-002:0060:BBA7302E8E2C",
+          "source_id": "FG-DOC-002",
+          "score": 0.3255928122236873,
+          "cosine_distance": 0.6744071877763127
+        },
+        {
+          "rank": 17,
+          "chunk_id": "FG-DOC-002:0051:EA307CF15E9F",
+          "source_id": "FG-DOC-002",
+          "score": 0.32137337277104616,
+          "cosine_distance": 0.6786266272289538
+        },
+        {
+          "rank": 18,
+          "chunk_id": "FG-DOC-002:0059:32EB5057BA2A",
+          "source_id": "FG-DOC-002",
+          "score": 0.30568752801391086,
+          "cosine_distance": 0.6943124719860891
+        },
+        {
+          "rank": 19,
+          "chunk_id": "FG-DOC-002:0070:DBF20B7B17B4",
+          "source_id": "FG-DOC-002",
+          "score": 0.29865092651196323,
+          "cosine_distance": 0.7013490734880368
+        },
+        {
+          "rank": 20,
+          "chunk_id": "FG-DOC-002:0066:9A959E61E3AE",
+          "source_id": "FG-DOC-002",
+          "score": 0.2983549363429805,
+          "cosine_distance": 0.7016450636570195
+        }
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "chunk_id": "FG-DOC-002:0055:B97BF57FFB48",
+          "source_id": "FG-DOC-002",
+          "score": 0.032018442622950824,
+          "lexical_rank": 4,
+          "semantic_rank": 1,
+          "lexical_score": 8.199999809265137,
+          "semantic_score": 0.5262153006859684,
+          "cosine_distance": 0.47378469931403155
+        },
+        {
+          "rank": 2,
+          "chunk_id": "FG-DOC-002:0053:2E4B3AEE856C",
+          "source_id": "FG-DOC-002",
+          "score": 0.03055037313432836,
+          "lexical_rank": 7,
+          "semantic_rank": 4,
+          "lexical_score": 7.430188775062561,
+          "semantic_score": 0.460333261592228,
+          "cosine_distance": 0.539666738407772
+        },
+        {
+          "rank": 3,
+          "chunk_id": "EXT-STD-001:0102:3DF3F24D77B4",
+          "source_id": "EXT-STD-001",
+          "score": 0.01639344262295082,
+          "lexical_rank": 1,
+          "semantic_rank": null,
+          "lexical_score": 9.600000381469727,
+          "semantic_score": null,
+          "cosine_distance": null
+        },
+        {
+          "rank": 4,
+          "chunk_id": "EXT-STD-001:0311:8B70E20E6E6B",
+          "source_id": "EXT-STD-001",
+          "score": 0.016129032258064516,
+          "lexical_rank": 2,
+          "semantic_rank": null,
+          "lexical_score": 8.800000190734863,
+          "semantic_score": null,
+          "cosine_distance": null
+        },
+        {
+          "rank": 5,
+          "chunk_id": "FG-DOC-002:0056:DCE4B763C6A9",
+          "source_id": "FG-DOC-002",
+          "score": 0.016129032258064516,
+          "lexical_rank": null,
+          "semantic_rank": 2,
+          "lexical_score": null,
+          "semantic_score": 0.4856874685777147,
+          "cosine_distance": 0.5143125314222853
+        }
+      ]
+    },
+    {
+      "question_id": "FG-RET-005",
+      "question": "How is Tan Yan Yi's personal FaceGuard Evidence work separated from the original MCS24 team project?",
+      "relevant_chunk_ids": [
+        "FG-DOC-003:0001:F321DD9A0B93",
+        "FG-DOC-003:0002:A780CC7455DF"
+      ],
+      "first_relevant_rank": 1,
+      "reciprocal_rank": 1.0,
+      "recall_at_k": {
+        "1": 0.5,
+        "3": 1.0,
+        "5": 1.0
+      },
+      "query_input_sha256": "C503B4BF8270FD2B30464ACD0F2C674DBB77BB1D14D372B1D2D25B484B9A5366",
+      "query_vector_sha256": "8CDB39A8D096E2565AD955E212FBE77307409B8F4F221CBC55F2E79E9F14004C",
+      "query_prompt_tokens": 20,
+      "query_embedding_latency_ms": 869.8936299988418,
+      "query_cost": "5E-7",
+      "lexical_latency_ms": 16.662558000462013,
+      "semantic_latency_ms": 11.09978900058195,
+      "fusion_latency_ms": 0.1295629990636371,
+      "lexical_candidates": [
+        {
+          "rank": 1,
+          "chunk_id": "FG-DOC-003:0002:A780CC7455DF",
+          "source_id": "FG-DOC-003",
+          "score": 12.800000190734863,
+          "strict_match": false
+        },
+        {
+          "rank": 2,
+          "chunk_id": "FG-DOC-003:0003:C3FBF0D5BE68",
+          "source_id": "FG-DOC-003",
+          "score": 8.0,
+          "strict_match": false
+        },
+        {
+          "rank": 3,
+          "chunk_id": "FG-DOC-003:0001:F321DD9A0B93",
+          "source_id": "FG-DOC-003",
+          "score": 7.800000190734863,
+          "strict_match": false
+        },
+        {
+          "rank": 4,
+          "chunk_id": "FG-DOC-001:0003:BDE868BE477E",
+          "source_id": "FG-DOC-001",
+          "score": 6.400000095367432,
+          "strict_match": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "FG-DOC-001:0013:38A34C25BCAD",
+          "source_id": "FG-DOC-001",
+          "score": 5.199999809265137,
+          "strict_match": false
+        },
+        {
+          "rank": 6,
+          "chunk_id": "FG-DOC-001:0002:FF3C5D865D6C",
+          "source_id": "FG-DOC-001",
+          "score": 4.800000190734863,
+          "strict_match": false
+        },
+        {
+          "rank": 7,
+          "chunk_id": "FG-DOC-002:0001:2CB5CE850EB2",
+          "source_id": "FG-DOC-002",
+          "score": 4.800000190734863,
+          "strict_match": false
+        },
+        {
+          "rank": 8,
+          "chunk_id": "EXT-STD-001:0410:5FD2A066E14D",
+          "source_id": "EXT-STD-001",
+          "score": 4.199999809265137,
+          "strict_match": false
+        },
+        {
+          "rank": 9,
+          "chunk_id": "FG-DOC-001:0011:A4E978A8466C",
+          "source_id": "FG-DOC-001",
+          "score": 4.199999809265137,
+          "strict_match": false
+        },
+        {
+          "rank": 10,
+          "chunk_id": "FG-DOC-001:0014:AFA4D03EE952",
+          "source_id": "FG-DOC-001",
+          "score": 4.199999809265137,
+          "strict_match": false
+        },
+        {
+          "rank": 11,
+          "chunk_id": "EXT-REPORT-001:0089:FE5040316128",
+          "source_id": "EXT-REPORT-001",
+          "score": 4.0,
+          "strict_match": false
+        },
+        {
+          "rank": 12,
+          "chunk_id": "FG-DOC-001:0001:99120F622068",
+          "source_id": "FG-DOC-001",
+          "score": 4.0,
+          "strict_match": false
+        },
+        {
+          "rank": 13,
+          "chunk_id": "FG-DOC-002:0032:84B6F92F8C91",
+          "source_id": "FG-DOC-002",
+          "score": 4.0,
+          "strict_match": false
+        },
+        {
+          "rank": 14,
+          "chunk_id": "FG-DOC-001:0006:6AEBD9307939",
+          "source_id": "FG-DOC-001",
+          "score": 3.5999999046325684,
+          "strict_match": false
+        },
+        {
+          "rank": 15,
+          "chunk_id": "FG-DOC-002:0004:2CAE1443B878",
+          "source_id": "FG-DOC-002",
+          "score": 3.5999999046325684,
+          "strict_match": false
+        },
+        {
+          "rank": 16,
+          "chunk_id": "FG-DOC-002:0005:21DB78365DA2",
+          "source_id": "FG-DOC-002",
+          "score": 3.5999999046325684,
+          "strict_match": false
+        },
+        {
+          "rank": 17,
+          "chunk_id": "FG-DOC-002:0017:6FA3B2A54C12",
+          "source_id": "FG-DOC-002",
+          "score": 3.5999999046325684,
+          "strict_match": false
+        },
+        {
+          "rank": 18,
+          "chunk_id": "FG-DOC-001:0004:4F47CFCD1552",
+          "source_id": "FG-DOC-001",
+          "score": 3.200000047683716,
+          "strict_match": false
+        },
+        {
+          "rank": 19,
+          "chunk_id": "FG-DOC-001:0007:C1010E17492A",
+          "source_id": "FG-DOC-001",
+          "score": 3.200000047683716,
+          "strict_match": false
+        },
+        {
+          "rank": 20,
+          "chunk_id": "FG-DOC-002:0036:35933C158656",
+          "source_id": "FG-DOC-002",
+          "score": 3.200000047683716,
+          "strict_match": false
+        }
+      ],
+      "semantic_candidates": [
+        {
+          "rank": 1,
+          "chunk_id": "FG-DOC-003:0001:F321DD9A0B93",
+          "source_id": "FG-DOC-003",
+          "score": 0.6621000597802389,
+          "cosine_distance": 0.3378999402197611
+        },
+        {
+          "rank": 2,
+          "chunk_id": "FG-DOC-001:0003:BDE868BE477E",
+          "source_id": "FG-DOC-001",
+          "score": 0.6319797248185272,
+          "cosine_distance": 0.36802027518147284
+        },
+        {
+          "rank": 3,
+          "chunk_id": "FG-DOC-003:0003:C3FBF0D5BE68",
+          "source_id": "FG-DOC-003",
+          "score": 0.617588607237395,
+          "cosine_distance": 0.38241139276260505
+        },
+        {
+          "rank": 4,
+          "chunk_id": "FG-DOC-003:0002:A780CC7455DF",
+          "source_id": "FG-DOC-003",
+          "score": 0.6094270128508552,
+          "cosine_distance": 0.3905729871491448
+        },
+        {
+          "rank": 5,
+          "chunk_id": "FG-DOC-001:0013:38A34C25BCAD",
+          "source_id": "FG-DOC-001",
+          "score": 0.5309823073359603,
+          "cosine_distance": 0.4690176926640397
+        },
+        {
+          "rank": 6,
+          "chunk_id": "FG-DOC-002:0001:2CB5CE850EB2",
+          "source_id": "FG-DOC-002",
+          "score": 0.5232984276950462,
+          "cosine_distance": 0.4767015723049538
+        },
+        {
+          "rank": 7,
+          "chunk_id": "FG-DOC-002:0005:21DB78365DA2",
+          "source_id": "FG-DOC-002",
+          "score": 0.5126752754715361,
+          "cosine_distance": 0.48732472452846387
+        },
+        {
+          "rank": 8,
+          "chunk_id": "FG-DOC-002:0021:3E2C54BB44F8",
+          "source_id": "FG-DOC-002",
+          "score": 0.502689758067863,
+          "cosine_distance": 0.497310241932137
+        },
+        {
+          "rank": 9,
+          "chunk_id": "FG-DOC-002:0004:2CAE1443B878",
+          "source_id": "FG-DOC-002",
+          "score": 0.500224964382687,
+          "cosine_distance": 0.49977503561731296
+        },
+        {
+          "rank": 10,
+          "chunk_id": "FG-DOC-001:0008:96B4D0A6C5EA",
+          "source_id": "FG-DOC-001",
+          "score": 0.4962351749401571,
+          "cosine_distance": 0.5037648250598429
+        },
+        {
+          "rank": 11,
+          "chunk_id": "FG-DOC-001:0014:AFA4D03EE952",
+          "source_id": "FG-DOC-001",
+          "score": 0.4955290546020521,
+          "cosine_distance": 0.5044709453979479
+        },
+        {
+          "rank": 12,
+          "chunk_id": "FG-DOC-001:0001:99120F622068",
+          "source_id": "FG-DOC-001",
+          "score": 0.48993226481070207,
+          "cosine_distance": 0.5100677351892979
+        },
+        {
+          "rank": 13,
+          "chunk_id": "FG-DOC-001:0004:4F47CFCD1552",
+          "source_id": "FG-DOC-001",
+          "score": 0.4758173279575044,
+          "cosine_distance": 0.5241826720424956
+        },
+        {
+          "rank": 14,
+          "chunk_id": "FG-DOC-002:0028:3CC198C4F4EF",
+          "source_id": "FG-DOC-002",
+          "score": 0.4752613626626825,
+          "cosine_distance": 0.5247386373373175
+        },
+        {
+          "rank": 15,
+          "chunk_id": "FG-DOC-001:0002:FF3C5D865D6C",
+          "source_id": "FG-DOC-001",
+          "score": 0.4735179878142518,
+          "cosine_distance": 0.5264820121857482
+        },
+        {
+          "rank": 16,
+          "chunk_id": "FG-DOC-003:0005:2A9E9B20BA57",
+          "source_id": "FG-DOC-003",
+          "score": 0.4695810165566128,
+          "cosine_distance": 0.5304189834433872
+        },
+        {
+          "rank": 17,
+          "chunk_id": "FG-DOC-002:0012:D98824F3E7A4",
+          "source_id": "FG-DOC-002",
+          "score": 0.4646594577132499,
+          "cosine_distance": 0.5353405422867501
+        },
+        {
+          "rank": 18,
+          "chunk_id": "FG-DOC-003:0004:E565DA2639BA",
+          "source_id": "FG-DOC-003",
+          "score": 0.4480982210885418,
+          "cosine_distance": 0.5519017789114582
+        },
+        {
+          "rank": 19,
+          "chunk_id": "FG-DOC-002:0013:FB8E5B0BE5D6",
+          "source_id": "FG-DOC-002",
+          "score": 0.44365068504556504,
+          "cosine_distance": 0.556349314954435
+        },
+        {
+          "rank": 20,
+          "chunk_id": "FG-DOC-002:0039:2BC9F89A99D3",
+          "source_id": "FG-DOC-002",
+          "score": 0.44331031666472387,
+          "cosine_distance": 0.5566896833352761
+        }
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "chunk_id": "FG-DOC-003:0001:F321DD9A0B93",
+          "source_id": "FG-DOC-003",
+          "score": 0.032266458495966696,
+          "lexical_rank": 3,
+          "semantic_rank": 1,
+          "lexical_score": 7.800000190734863,
+          "semantic_score": 0.6621000597802389,
+          "cosine_distance": 0.3378999402197611
+        },
+        {
+          "rank": 2,
+          "chunk_id": "FG-DOC-003:0002:A780CC7455DF",
+          "source_id": "FG-DOC-003",
+          "score": 0.032018442622950824,
+          "lexical_rank": 1,
+          "semantic_rank": 4,
+          "lexical_score": 12.800000190734863,
+          "semantic_score": 0.6094270128508552,
+          "cosine_distance": 0.3905729871491448
+        },
+        {
+          "rank": 3,
+          "chunk_id": "FG-DOC-003:0003:C3FBF0D5BE68",
+          "source_id": "FG-DOC-003",
+          "score": 0.03200204813108039,
+          "lexical_rank": 2,
+          "semantic_rank": 3,
+          "lexical_score": 8.0,
+          "semantic_score": 0.617588607237395,
+          "cosine_distance": 0.38241139276260505
+        },
+        {
+          "rank": 4,
+          "chunk_id": "FG-DOC-001:0003:BDE868BE477E",
+          "source_id": "FG-DOC-001",
+          "score": 0.031754032258064516,
+          "lexical_rank": 4,
+          "semantic_rank": 2,
+          "lexical_score": 6.400000095367432,
+          "semantic_score": 0.6319797248185272,
+          "cosine_distance": 0.36802027518147284
+        },
+        {
+          "rank": 5,
+          "chunk_id": "FG-DOC-001:0013:38A34C25BCAD",
+          "source_id": "FG-DOC-001",
+          "score": 0.03076923076923077,
+          "lexical_rank": 5,
+          "semantic_rank": 5,
+          "lexical_score": 5.199999809265137,
+          "semantic_score": 0.5309823073359603,
+          "cosine_distance": 0.4690176926640397
+        }
+      ]
+    },
+    {
+      "question_id": "FG-RET-006",
+      "question": "What were Tan Yan Yi's reported contributions to the original FaceGuard project?",
+      "relevant_chunk_ids": [
+        "FG-DOC-003:0003:C3FBF0D5BE68"
+      ],
+      "first_relevant_rank": 1,
+      "reciprocal_rank": 1.0,
+      "recall_at_k": {
+        "1": 1.0,
+        "3": 1.0,
+        "5": 1.0
+      },
+      "query_input_sha256": "3AF1FF83E1A0D6A60FCF28C2CFF37E50A39808B41C8EE4CB8E1567C0C9B2569A",
+      "query_vector_sha256": "18F9012F18F475BBF848E09A5B986124A1565390AE821FE64C9488A420E76F89",
+      "query_prompt_tokens": 15,
+      "query_embedding_latency_ms": 609.7700979989895,
+      "query_cost": "3.75E-7",
+      "lexical_latency_ms": 6.302896999841323,
+      "semantic_latency_ms": 7.721601001321687,
+      "fusion_latency_ms": 0.1018919992930023,
+      "lexical_candidates": [
+        {
+          "rank": 1,
+          "chunk_id": "FG-DOC-003:0003:C3FBF0D5BE68",
+          "source_id": "FG-DOC-003",
+          "score": 10.199999809265137,
+          "strict_match": false
+        },
+        {
+          "rank": 2,
+          "chunk_id": "FG-DOC-003:0002:A780CC7455DF",
+          "source_id": "FG-DOC-003",
+          "score": 10.0,
+          "strict_match": false
+        },
+        {
+          "rank": 3,
+          "chunk_id": "FG-DOC-001:0003:BDE868BE477E",
+          "source_id": "FG-DOC-001",
+          "score": 5.199999809265137,
+          "strict_match": false
+        },
+        {
+          "rank": 4,
+          "chunk_id": "FG-DOC-003:0001:F321DD9A0B93",
+          "source_id": "FG-DOC-003",
+          "score": 5.199999809265137,
+          "strict_match": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "EXT-STD-001:0410:5FD2A066E14D",
+          "source_id": "EXT-STD-001",
+          "score": 4.199999809265137,
+          "strict_match": false
+        },
+        {
+          "rank": 6,
+          "chunk_id": "FG-DOC-001:0002:FF3C5D865D6C",
+          "source_id": "FG-DOC-001",
+          "score": 4.0,
+          "strict_match": false
+        },
+        {
+          "rank": 7,
+          "chunk_id": "FG-DOC-001:0013:38A34C25BCAD",
+          "source_id": "FG-DOC-001",
+          "score": 3.4000000953674316,
+          "strict_match": false
+        },
+        {
+          "rank": 8,
+          "chunk_id": "FG-DOC-002:0031:2327CE814BAC",
+          "source_id": "FG-DOC-002",
+          "score": 3.4000000953674316,
+          "strict_match": false
+        },
+        {
+          "rank": 9,
+          "chunk_id": "FG-DOC-001:0001:99120F622068",
+          "source_id": "FG-DOC-001",
+          "score": 3.200000047683716,
+          "strict_match": false
+        },
+        {
+          "rank": 10,
+          "chunk_id": "FG-DOC-001:0006:6AEBD9307939",
+          "source_id": "FG-DOC-001",
+          "score": 3.200000047683716,
+          "strict_match": false
+        },
+        {
+          "rank": 11,
+          "chunk_id": "FG-DOC-001:0007:C1010E17492A",
+          "source_id": "FG-DOC-001",
+          "score": 2.799999952316284,
+          "strict_match": false
+        },
+        {
+          "rank": 12,
+          "chunk_id": "FG-DOC-001:0011:A4E978A8466C",
+          "source_id": "FG-DOC-001",
+          "score": 2.799999952316284,
+          "strict_match": false
+        },
+        {
+          "rank": 13,
+          "chunk_id": "EXT-STD-001:0411:E343A3B21186",
+          "source_id": "EXT-STD-001",
+          "score": 2.5999999046325684,
+          "strict_match": false
+        },
+        {
+          "rank": 14,
+          "chunk_id": "FG-DOC-002:0001:2CB5CE850EB2",
+          "source_id": "FG-DOC-002",
+          "score": 2.5999999046325684,
+          "strict_match": false
+        },
+        {
+          "rank": 15,
+          "chunk_id": "EXT-STD-001:0558:43F256A8A467",
+          "source_id": "EXT-STD-001",
+          "score": 2.4000000953674316,
+          "strict_match": false
+        },
+        {
+          "rank": 16,
+          "chunk_id": "FG-DOC-001:0004:4F47CFCD1552",
+          "source_id": "FG-DOC-001",
+          "score": 2.4000000953674316,
+          "strict_match": false
+        },
+        {
+          "rank": 17,
+          "chunk_id": "FG-DOC-001:0005:857AC7053ACC",
+          "source_id": "FG-DOC-001",
+          "score": 2.4000000953674316,
+          "strict_match": false
+        },
+        {
+          "rank": 18,
+          "chunk_id": "FG-DOC-001:0008:96B4D0A6C5EA",
+          "source_id": "FG-DOC-001",
+          "score": 2.4000000953674316,
+          "strict_match": false
+        },
+        {
+          "rank": 19,
+          "chunk_id": "FG-DOC-001:0014:AFA4D03EE952",
+          "source_id": "FG-DOC-001",
+          "score": 2.4000000953674316,
+          "strict_match": false
+        },
+        {
+          "rank": 20,
+          "chunk_id": "FG-DOC-002:0004:2CAE1443B878",
+          "source_id": "FG-DOC-002",
+          "score": 2.200000047683716,
+          "strict_match": false
+        }
+      ],
+      "semantic_candidates": [
+        {
+          "rank": 1,
+          "chunk_id": "FG-DOC-003:0003:C3FBF0D5BE68",
+          "source_id": "FG-DOC-003",
+          "score": 0.7738288070314642,
+          "cosine_distance": 0.22617119296853583
+        },
+        {
+          "rank": 2,
+          "chunk_id": "FG-DOC-001:0003:BDE868BE477E",
+          "source_id": "FG-DOC-001",
+          "score": 0.651397983758542,
+          "cosine_distance": 0.34860201624145803
+        },
+        {
+          "rank": 3,
+          "chunk_id": "FG-DOC-003:0001:F321DD9A0B93",
+          "source_id": "FG-DOC-003",
+          "score": 0.6503764930924226,
+          "cosine_distance": 0.3496235069075774
+        },
+        {
+          "rank": 4,
+          "chunk_id": "FG-DOC-003:0002:A780CC7455DF",
+          "source_id": "FG-DOC-003",
+          "score": 0.6451817833756748,
+          "cosine_distance": 0.3548182166243252
+        },
+        {
+          "rank": 5,
+          "chunk_id": "FG-DOC-002:0005:21DB78365DA2",
+          "source_id": "FG-DOC-002",
+          "score": 0.5101829430232067,
+          "cosine_distance": 0.48981705697679334
+        },
+        {
+          "rank": 6,
+          "chunk_id": "FG-DOC-001:0008:96B4D0A6C5EA",
+          "source_id": "FG-DOC-001",
+          "score": 0.4793761375268506,
+          "cosine_distance": 0.5206238624731494
+        },
+        {
+          "rank": 7,
+          "chunk_id": "FG-DOC-002:0001:2CB5CE850EB2",
+          "source_id": "FG-DOC-002",
+          "score": 0.47933561445895223,
+          "cosine_distance": 0.5206643855410478
+        },
+        {
+          "rank": 8,
+          "chunk_id": "FG-DOC-002:0004:2CAE1443B878",
+          "source_id": "FG-DOC-002",
+          "score": 0.47703390252915767,
+          "cosine_distance": 0.5229660974708423
+        },
+        {
+          "rank": 9,
+          "chunk_id": "FG-DOC-003:0005:2A9E9B20BA57",
+          "source_id": "FG-DOC-003",
+          "score": 0.4657679242239491,
+          "cosine_distance": 0.5342320757760509
+        },
+        {
+          "rank": 10,
+          "chunk_id": "FG-DOC-001:0002:FF3C5D865D6C",
+          "source_id": "FG-DOC-001",
+          "score": 0.46316328425932707,
+          "cosine_distance": 0.5368367157406729
+        },
+        {
+          "rank": 11,
+          "chunk_id": "FG-DOC-002:0021:3E2C54BB44F8",
+          "source_id": "FG-DOC-002",
+          "score": 0.4605966979215592,
+          "cosine_distance": 0.5394033020784408
+        },
+        {
+          "rank": 12,
+          "chunk_id": "FG-DOC-001:0014:AFA4D03EE952",
+          "source_id": "FG-DOC-001",
+          "score": 0.4502262323293007,
+          "cosine_distance": 0.5497737676706993
+        },
+        {
+          "rank": 13,
+          "chunk_id": "FG-DOC-001:0013:38A34C25BCAD",
+          "source_id": "FG-DOC-001",
+          "score": 0.44873074352470677,
+          "cosine_distance": 0.5512692564752932
+        },
+        {
+          "rank": 14,
+          "chunk_id": "FG-DOC-001:0001:99120F622068",
+          "source_id": "FG-DOC-001",
+          "score": 0.44611741074006406,
+          "cosine_distance": 0.5538825892599359
+        },
+        {
+          "rank": 15,
+          "chunk_id": "FG-DOC-002:0028:3CC198C4F4EF",
+          "source_id": "FG-DOC-002",
+          "score": 0.43065864443818636,
+          "cosine_distance": 0.5693413555618136
+        },
+        {
+          "rank": 16,
+          "chunk_id": "FG-DOC-003:0004:E565DA2639BA",
+          "source_id": "FG-DOC-003",
+          "score": 0.4236130635416381,
+          "cosine_distance": 0.5763869364583619
+        },
+        {
+          "rank": 17,
+          "chunk_id": "FG-DOC-002:0036:35933C158656",
+          "source_id": "FG-DOC-002",
+          "score": 0.420912683716846,
+          "cosine_distance": 0.579087316283154
+        },
+        {
+          "rank": 18,
+          "chunk_id": "FG-DOC-002:0037:8FB12D920C07",
+          "source_id": "FG-DOC-002",
+          "score": 0.41656789641468195,
+          "cosine_distance": 0.583432103585318
+        },
+        {
+          "rank": 19,
+          "chunk_id": "FG-DOC-002:0013:FB8E5B0BE5D6",
+          "source_id": "FG-DOC-002",
+          "score": 0.41614234256165394,
+          "cosine_distance": 0.5838576574383461
+        },
+        {
+          "rank": 20,
+          "chunk_id": "FG-DOC-001:0004:4F47CFCD1552",
+          "source_id": "FG-DOC-001",
+          "score": 0.4121238200912667,
+          "cosine_distance": 0.5878761799087333
+        }
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "chunk_id": "FG-DOC-003:0003:C3FBF0D5BE68",
+          "source_id": "FG-DOC-003",
+          "score": 0.03278688524590164,
+          "lexical_rank": 1,
+          "semantic_rank": 1,
+          "lexical_score": 10.199999809265137,
+          "semantic_score": 0.7738288070314642,
+          "cosine_distance": 0.22617119296853583
+        },
+        {
+          "rank": 2,
+          "chunk_id": "FG-DOC-001:0003:BDE868BE477E",
+          "source_id": "FG-DOC-001",
+          "score": 0.03200204813108039,
+          "lexical_rank": 3,
+          "semantic_rank": 2,
+          "lexical_score": 5.199999809265137,
+          "semantic_score": 0.651397983758542,
+          "cosine_distance": 0.34860201624145803
+        },
+        {
+          "rank": 3,
+          "chunk_id": "FG-DOC-003:0002:A780CC7455DF",
+          "source_id": "FG-DOC-003",
+          "score": 0.031754032258064516,
+          "lexical_rank": 2,
+          "semantic_rank": 4,
+          "lexical_score": 10.0,
+          "semantic_score": 0.6451817833756748,
+          "cosine_distance": 0.3548182166243252
+        },
+        {
+          "rank": 4,
+          "chunk_id": "FG-DOC-003:0001:F321DD9A0B93",
+          "source_id": "FG-DOC-003",
+          "score": 0.03149801587301587,
+          "lexical_rank": 4,
+          "semantic_rank": 3,
+          "lexical_score": 5.199999809265137,
+          "semantic_score": 0.6503764930924226,
+          "cosine_distance": 0.3496235069075774
+        },
+        {
+          "rank": 5,
+          "chunk_id": "FG-DOC-001:0002:FF3C5D865D6C",
+          "source_id": "FG-DOC-001",
+          "score": 0.029437229437229435,
+          "lexical_rank": 6,
+          "semantic_rank": 10,
+          "lexical_score": 4.0,
+          "semantic_score": 0.46316328425932707,
+          "cosine_distance": 0.5368367157406729
+        }
+      ]
+    },
+    {
+      "question_id": "FG-RET-007",
+      "question": "Can provenance information prove that the content of an image is true or factual?",
+      "relevant_chunk_ids": [
+        "EXT-GUIDE-001:0024:D80C02EF84A8"
+      ],
+      "first_relevant_rank": 1,
+      "reciprocal_rank": 1.0,
+      "recall_at_k": {
+        "1": 1.0,
+        "3": 1.0,
+        "5": 1.0
+      },
+      "query_input_sha256": "F2DAE007302C959D4AFEE170271905B4934C50A053E3951621358F813EE8B13F",
+      "query_vector_sha256": "E23B78E5619A7AE4D0DF672457192C0888D24F630A9386C79A4518290F49D45D",
+      "query_prompt_tokens": 16,
+      "query_embedding_latency_ms": 656.787620000614,
+      "query_cost": "4E-7",
+      "lexical_latency_ms": 32.788435000838945,
+      "semantic_latency_ms": 12.320277999606333,
+      "fusion_latency_ms": 0.10117799865838606,
+      "lexical_candidates": [
+        {
+          "rank": 1,
+          "chunk_id": "EXT-REPORT-001:0067:72CC098E7A8F",
+          "source_id": "EXT-REPORT-001",
+          "score": 14.800000190734863,
+          "strict_match": false
+        },
+        {
+          "rank": 2,
+          "chunk_id": "EXT-REPORT-001:0015:ED4F4D88258A",
+          "source_id": "EXT-REPORT-001",
+          "score": 13.600000381469727,
+          "strict_match": false
+        },
+        {
+          "rank": 3,
+          "chunk_id": "EXT-GUIDE-001:0024:D80C02EF84A8",
+          "source_id": "EXT-GUIDE-001",
+          "score": 13.200000405311584,
+          "strict_match": true
+        },
+        {
+          "rank": 4,
+          "chunk_id": "EXT-REPORT-001:0123:781E37352742",
+          "source_id": "EXT-REPORT-001",
+          "score": 12.40000057220459,
+          "strict_match": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "EXT-REPORT-001:0008:B7DA79B794B1",
+          "source_id": "EXT-REPORT-001",
+          "score": 12.0,
+          "strict_match": false
+        },
+        {
+          "rank": 6,
+          "chunk_id": "EXT-REPORT-001:0119:747DF6103F4D",
+          "source_id": "EXT-REPORT-001",
+          "score": 12.0,
+          "strict_match": false
+        },
+        {
+          "rank": 7,
+          "chunk_id": "EXT-REPORT-001:0014:834E8C4E1246",
+          "source_id": "EXT-REPORT-001",
+          "score": 11.199999809265137,
+          "strict_match": false
+        },
+        {
+          "rank": 8,
+          "chunk_id": "EXT-REPORT-001:0016:2BE73D3C11B3",
+          "source_id": "EXT-REPORT-001",
+          "score": 11.199999809265137,
+          "strict_match": false
+        },
+        {
+          "rank": 9,
+          "chunk_id": "EXT-REPORT-001:0009:88534448FB01",
+          "source_id": "EXT-REPORT-001",
+          "score": 10.800000190734863,
+          "strict_match": false
+        },
+        {
+          "rank": 10,
+          "chunk_id": "EXT-REPORT-001:0037:0D2978BB0902",
+          "source_id": "EXT-REPORT-001",
+          "score": 10.800000190734863,
+          "strict_match": false
+        },
+        {
+          "rank": 11,
+          "chunk_id": "EXT-REPORT-001:0066:692B56118CFD",
+          "source_id": "EXT-REPORT-001",
+          "score": 10.800000190734863,
+          "strict_match": false
+        },
+        {
+          "rank": 12,
+          "chunk_id": "EXT-REPORT-001:0029:2210F83DDD21",
+          "source_id": "EXT-REPORT-001",
+          "score": 10.399999618530273,
+          "strict_match": false
+        },
+        {
+          "rank": 13,
+          "chunk_id": "EXT-REPORT-001:0054:A9513F3E3FB3",
+          "source_id": "EXT-REPORT-001",
+          "score": 10.399999618530273,
+          "strict_match": false
+        },
+        {
+          "rank": 14,
+          "chunk_id": "EXT-REPORT-001:0068:625EDF364E4C",
+          "source_id": "EXT-REPORT-001",
+          "score": 10.399999618530273,
+          "strict_match": false
+        },
+        {
+          "rank": 15,
+          "chunk_id": "EXT-REPORT-001:0120:0CBD3697048C",
+          "source_id": "EXT-REPORT-001",
+          "score": 10.399999618530273,
+          "strict_match": false
+        },
+        {
+          "rank": 16,
+          "chunk_id": "EXT-REPORT-001:0018:88C0D0F8855E",
+          "source_id": "EXT-REPORT-001",
+          "score": 10.0,
+          "strict_match": false
+        },
+        {
+          "rank": 17,
+          "chunk_id": "EXT-REPORT-001:0081:2BE8366910AB",
+          "source_id": "EXT-REPORT-001",
+          "score": 10.0,
+          "strict_match": false
+        },
+        {
+          "rank": 18,
+          "chunk_id": "EXT-GUIDE-001:0003:DC127BC868D7",
+          "source_id": "EXT-GUIDE-001",
+          "score": 9.600000381469727,
+          "strict_match": false
+        },
+        {
+          "rank": 19,
+          "chunk_id": "EXT-REPORT-001:0057:907C0627DE5C",
+          "source_id": "EXT-REPORT-001",
+          "score": 9.600000381469727,
+          "strict_match": false
+        },
+        {
+          "rank": 20,
+          "chunk_id": "EXT-REPORT-001:0059:9F7988DF95FF",
+          "source_id": "EXT-REPORT-001",
+          "score": 9.600000381469727,
+          "strict_match": false
+        }
+      ],
+      "semantic_candidates": [
+        {
+          "rank": 1,
+          "chunk_id": "EXT-GUIDE-001:0024:D80C02EF84A8",
+          "source_id": "EXT-GUIDE-001",
+          "score": 0.7236637440027005,
+          "cosine_distance": 0.2763362559972995
+        },
+        {
+          "rank": 2,
+          "chunk_id": "EXT-REPORT-001:0087:9B7FB0C38CAE",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.616222777452119,
+          "cosine_distance": 0.38377722254788105
+        },
+        {
+          "rank": 3,
+          "chunk_id": "EXT-REPORT-001:0016:2BE73D3C11B3",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.6157780011991771,
+          "cosine_distance": 0.38422199880082286
+        },
+        {
+          "rank": 4,
+          "chunk_id": "EXT-REPORT-001:0037:0D2978BB0902",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.6116291446091793,
+          "cosine_distance": 0.3883708553908207
+        },
+        {
+          "rank": 5,
+          "chunk_id": "EXT-STD-001:0002:9937B2E14462",
+          "source_id": "EXT-STD-001",
+          "score": 0.6080128302835084,
+          "cosine_distance": 0.3919871697164916
+        },
+        {
+          "rank": 6,
+          "chunk_id": "EXT-REPORT-001:0067:72CC098E7A8F",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.6067806793332723,
+          "cosine_distance": 0.3932193206667277
+        },
+        {
+          "rank": 7,
+          "chunk_id": "EXT-REPORT-001:0041:B6019DAD8521",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.5945876944991393,
+          "cosine_distance": 0.4054123055008607
+        },
+        {
+          "rank": 8,
+          "chunk_id": "EXT-GUIDE-001:0023:DD49CC13284F",
+          "source_id": "EXT-GUIDE-001",
+          "score": 0.5876218153953457,
+          "cosine_distance": 0.41237818460465425
+        },
+        {
+          "rank": 9,
+          "chunk_id": "EXT-REPORT-001:0015:ED4F4D88258A",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.5851293119069253,
+          "cosine_distance": 0.4148706880930747
+        },
+        {
+          "rank": 10,
+          "chunk_id": "EXT-GUIDE-001:0009:12202258D0BC",
+          "source_id": "EXT-GUIDE-001",
+          "score": 0.5569598754769332,
+          "cosine_distance": 0.44304012452306685
+        },
+        {
+          "rank": 11,
+          "chunk_id": "EXT-GUIDE-001:0020:16AB3B7CE802",
+          "source_id": "EXT-GUIDE-001",
+          "score": 0.5554080542819125,
+          "cosine_distance": 0.44459194571808747
+        },
+        {
+          "rank": 12,
+          "chunk_id": "EXT-GUIDE-001:0026:B91E16C08ADE",
+          "source_id": "EXT-GUIDE-001",
+          "score": 0.5399442940806316,
+          "cosine_distance": 0.4600557059193684
+        },
+        {
+          "rank": 13,
+          "chunk_id": "EXT-GUIDE-001:0003:DC127BC868D7",
+          "source_id": "EXT-GUIDE-001",
+          "score": 0.5360956178276491,
+          "cosine_distance": 0.46390438217235086
+        },
+        {
+          "rank": 14,
+          "chunk_id": "EXT-REPORT-001:0036:261242C95907",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.5358633240257209,
+          "cosine_distance": 0.4641366759742791
+        },
+        {
+          "rank": 15,
+          "chunk_id": "EXT-REPORT-001:0065:521BAF2A4AD8",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.5313158997503953,
+          "cosine_distance": 0.4686841002496047
+        },
+        {
+          "rank": 16,
+          "chunk_id": "EXT-GUIDE-001:0012:3784CFC984D7",
+          "source_id": "EXT-GUIDE-001",
+          "score": 0.5299957950814738,
+          "cosine_distance": 0.47000420491852624
+        },
+        {
+          "rank": 17,
+          "chunk_id": "EXT-REPORT-001:0014:834E8C4E1246",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.5270952428064516,
+          "cosine_distance": 0.4729047571935484
+        },
+        {
+          "rank": 18,
+          "chunk_id": "EXT-GUIDE-001:0013:5149C3B0AA4E",
+          "source_id": "EXT-GUIDE-001",
+          "score": 0.5266832986739749,
+          "cosine_distance": 0.4733167013260251
+        },
+        {
+          "rank": 19,
+          "chunk_id": "EXT-STD-001:0032:A5EC8D254FC8",
+          "source_id": "EXT-STD-001",
+          "score": 0.5251019197824504,
+          "cosine_distance": 0.47489808021754965
+        },
+        {
+          "rank": 20,
+          "chunk_id": "EXT-REPORT-001:0086:216D73904EE0",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.5237635006580548,
+          "cosine_distance": 0.47623649934194523
+        }
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "chunk_id": "EXT-GUIDE-001:0024:D80C02EF84A8",
+          "source_id": "EXT-GUIDE-001",
+          "score": 0.032266458495966696,
+          "lexical_rank": 3,
+          "semantic_rank": 1,
+          "lexical_score": 13.200000405311584,
+          "semantic_score": 0.7236637440027005,
+          "cosine_distance": 0.2763362559972995
+        },
+        {
+          "rank": 2,
+          "chunk_id": "EXT-REPORT-001:0067:72CC098E7A8F",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.031544957774465976,
+          "lexical_rank": 1,
+          "semantic_rank": 6,
+          "lexical_score": 14.800000190734863,
+          "semantic_score": 0.6067806793332723,
+          "cosine_distance": 0.3932193206667277
+        },
+        {
+          "rank": 3,
+          "chunk_id": "EXT-REPORT-001:0015:ED4F4D88258A",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.030621785881252923,
+          "lexical_rank": 2,
+          "semantic_rank": 9,
+          "lexical_score": 13.600000381469727,
+          "semantic_score": 0.5851293119069253,
+          "cosine_distance": 0.4148706880930747
+        },
+        {
+          "rank": 4,
+          "chunk_id": "EXT-REPORT-001:0016:2BE73D3C11B3",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.03057889822595705,
+          "lexical_rank": 8,
+          "semantic_rank": 3,
+          "lexical_score": 11.199999809265137,
+          "semantic_score": 0.6157780011991771,
+          "cosine_distance": 0.38422199880082286
+        },
+        {
+          "rank": 5,
+          "chunk_id": "EXT-REPORT-001:0037:0D2978BB0902",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.029910714285714284,
+          "lexical_rank": 10,
+          "semantic_rank": 4,
+          "lexical_score": 10.800000190734863,
+          "semantic_score": 0.6116291446091793,
+          "cosine_distance": 0.3883708553908207
+        }
+      ]
+    },
+    {
+      "question_id": "FG-RET-008",
+      "question": "Should media without Content Credentials automatically be distrusted?",
+      "relevant_chunk_ids": [
+        "EXT-GUIDE-001:0020:16AB3B7CE802"
+      ],
+      "first_relevant_rank": 1,
+      "reciprocal_rank": 1.0,
+      "recall_at_k": {
+        "1": 1.0,
+        "3": 1.0,
+        "5": 1.0
+      },
+      "query_input_sha256": "BA0DD9FD43E0F08B0E265CA825C947CCF5E1C1D5BEF1A8FA377722EE3B5B463D",
+      "query_vector_sha256": "F3E0EF1ADC53069941D6D44B06B453C95361C29F3A501A12DA96A1B73205EE24",
+      "query_prompt_tokens": 10,
+      "query_embedding_latency_ms": 849.250129000211,
+      "query_cost": "2.5E-7",
+      "lexical_latency_ms": 27.27919000062684,
+      "semantic_latency_ms": 9.899919999952544,
+      "fusion_latency_ms": 0.06991599911998492,
+      "lexical_candidates": [
+        {
+          "rank": 1,
+          "chunk_id": "EXT-GUIDE-001:0020:16AB3B7CE802",
+          "source_id": "EXT-GUIDE-001",
+          "score": 14.600000381469727,
+          "strict_match": false
+        },
+        {
+          "rank": 2,
+          "chunk_id": "EXT-STD-001:0413:90F3B0A95C6C",
+          "source_id": "EXT-STD-001",
+          "score": 11.199999809265137,
+          "strict_match": false
+        },
+        {
+          "rank": 3,
+          "chunk_id": "EXT-REPORT-001:0119:747DF6103F4D",
+          "source_id": "EXT-REPORT-001",
+          "score": 10.399999618530273,
+          "strict_match": false
+        },
+        {
+          "rank": 4,
+          "chunk_id": "EXT-STD-001:0176:7CFE933347B3",
+          "source_id": "EXT-STD-001",
+          "score": 10.199999809265137,
+          "strict_match": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "EXT-GUIDE-001:0016:E8463597FD1D",
+          "source_id": "EXT-GUIDE-001",
+          "score": 10.0,
+          "strict_match": false
+        },
+        {
+          "rank": 6,
+          "chunk_id": "EXT-REPORT-001:0039:9E99B2F84B42",
+          "source_id": "EXT-REPORT-001",
+          "score": 9.600000381469727,
+          "strict_match": false
+        },
+        {
+          "rank": 7,
+          "chunk_id": "EXT-REPORT-001:0067:72CC098E7A8F",
+          "source_id": "EXT-REPORT-001",
+          "score": 9.600000381469727,
+          "strict_match": false
+        },
+        {
+          "rank": 8,
+          "chunk_id": "EXT-REPORT-001:0123:781E37352742",
+          "source_id": "EXT-REPORT-001",
+          "score": 9.600000381469727,
+          "strict_match": false
+        },
+        {
+          "rank": 9,
+          "chunk_id": "EXT-GUIDE-001:0003:DC127BC868D7",
+          "source_id": "EXT-GUIDE-001",
+          "score": 9.199999809265137,
+          "strict_match": false
+        },
+        {
+          "rank": 10,
+          "chunk_id": "EXT-GUIDE-001:0018:2190575AE011",
+          "source_id": "EXT-GUIDE-001",
+          "score": 9.199999809265137,
+          "strict_match": false
+        },
+        {
+          "rank": 11,
+          "chunk_id": "EXT-GUIDE-001:0029:46C27914C1D7",
+          "source_id": "EXT-GUIDE-001",
+          "score": 9.199999809265137,
+          "strict_match": false
+        },
+        {
+          "rank": 12,
+          "chunk_id": "EXT-REPORT-001:0008:B7DA79B794B1",
+          "source_id": "EXT-REPORT-001",
+          "score": 9.199999809265137,
+          "strict_match": false
+        },
+        {
+          "rank": 13,
+          "chunk_id": "EXT-STD-001:0028:241FC4FB3E28",
+          "source_id": "EXT-STD-001",
+          "score": 9.199999809265137,
+          "strict_match": false
+        },
+        {
+          "rank": 14,
+          "chunk_id": "EXT-GUIDE-001:0032:D0E85F7B98BC",
+          "source_id": "EXT-GUIDE-001",
+          "score": 8.800000190734863,
+          "strict_match": false
+        },
+        {
+          "rank": 15,
+          "chunk_id": "EXT-REPORT-001:0018:88C0D0F8855E",
+          "source_id": "EXT-REPORT-001",
+          "score": 8.800000190734863,
+          "strict_match": false
+        },
+        {
+          "rank": 16,
+          "chunk_id": "EXT-REPORT-001:0068:625EDF364E4C",
+          "source_id": "EXT-REPORT-001",
+          "score": 8.800000190734863,
+          "strict_match": false
+        },
+        {
+          "rank": 17,
+          "chunk_id": "EXT-STD-001:0272:4B24A452B94F",
+          "source_id": "EXT-STD-001",
+          "score": 8.600000381469727,
+          "strict_match": false
+        },
+        {
+          "rank": 18,
+          "chunk_id": "EXT-GUIDE-001:0007:CC9EACFFB7B7",
+          "source_id": "EXT-GUIDE-001",
+          "score": 8.399999618530273,
+          "strict_match": false
+        },
+        {
+          "rank": 19,
+          "chunk_id": "EXT-GUIDE-001:0022:74B2F6541D23",
+          "source_id": "EXT-GUIDE-001",
+          "score": 8.399999618530273,
+          "strict_match": false
+        },
+        {
+          "rank": 20,
+          "chunk_id": "EXT-GUIDE-001:0035:EC2EE7B73B41",
+          "source_id": "EXT-GUIDE-001",
+          "score": 8.399999618530273,
+          "strict_match": false
+        }
+      ],
+      "semantic_candidates": [
+        {
+          "rank": 1,
+          "chunk_id": "EXT-GUIDE-001:0020:16AB3B7CE802",
+          "source_id": "EXT-GUIDE-001",
+          "score": 0.7074324115758012,
+          "cosine_distance": 0.29256758842419883
+        },
+        {
+          "rank": 2,
+          "chunk_id": "EXT-GUIDE-001:0013:5149C3B0AA4E",
+          "source_id": "EXT-GUIDE-001",
+          "score": 0.5990860121563121,
+          "cosine_distance": 0.4009139878436879
+        },
+        {
+          "rank": 3,
+          "chunk_id": "EXT-GUIDE-001:0009:12202258D0BC",
+          "source_id": "EXT-GUIDE-001",
+          "score": 0.583676560220709,
+          "cosine_distance": 0.416323439779291
+        },
+        {
+          "rank": 4,
+          "chunk_id": "EXT-GUIDE-001:0019:7506ECE057F5",
+          "source_id": "EXT-GUIDE-001",
+          "score": 0.5601479672511985,
+          "cosine_distance": 0.43985203274880147
+        },
+        {
+          "rank": 5,
+          "chunk_id": "EXT-STD-001:0002:9937B2E14462",
+          "source_id": "EXT-STD-001",
+          "score": 0.5498370208214493,
+          "cosine_distance": 0.45016297917855075
+        },
+        {
+          "rank": 6,
+          "chunk_id": "EXT-REPORT-001:0046:21E4714D5F69",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.5435295900004887,
+          "cosine_distance": 0.4564704099995113
+        },
+        {
+          "rank": 7,
+          "chunk_id": "EXT-GUIDE-001:0012:3784CFC984D7",
+          "source_id": "EXT-GUIDE-001",
+          "score": 0.5403362112620391,
+          "cosine_distance": 0.4596637887379609
+        },
+        {
+          "rank": 8,
+          "chunk_id": "EXT-REPORT-001:0067:72CC098E7A8F",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.535802675398688,
+          "cosine_distance": 0.464197324601312
+        },
+        {
+          "rank": 9,
+          "chunk_id": "EXT-GUIDE-001:0004:60FCEFE59477",
+          "source_id": "EXT-GUIDE-001",
+          "score": 0.5153121126785879,
+          "cosine_distance": 0.4846878873214121
+        },
+        {
+          "rank": 10,
+          "chunk_id": "EXT-STD-001:0036:8653656B7C56",
+          "source_id": "EXT-STD-001",
+          "score": 0.5144187924793528,
+          "cosine_distance": 0.48558120752064715
+        },
+        {
+          "rank": 11,
+          "chunk_id": "EXT-GUIDE-001:0035:EC2EE7B73B41",
+          "source_id": "EXT-GUIDE-001",
+          "score": 0.5103668946572812,
+          "cosine_distance": 0.48963310534271876
+        },
+        {
+          "rank": 12,
+          "chunk_id": "EXT-GUIDE-001:0014:EDE4FE8E6B71",
+          "source_id": "EXT-GUIDE-001",
+          "score": 0.5092807435194802,
+          "cosine_distance": 0.49071925648051984
+        },
+        {
+          "rank": 13,
+          "chunk_id": "EXT-GUIDE-001:0024:D80C02EF84A8",
+          "source_id": "EXT-GUIDE-001",
+          "score": 0.5084735831659083,
+          "cosine_distance": 0.4915264168340917
+        },
+        {
+          "rank": 14,
+          "chunk_id": "EXT-GUIDE-001:0011:DC0C6434AE11",
+          "source_id": "EXT-GUIDE-001",
+          "score": 0.5077719699780453,
+          "cosine_distance": 0.4922280300219547
+        },
+        {
+          "rank": 15,
+          "chunk_id": "EXT-GUIDE-001:0010:8389EB165CDA",
+          "source_id": "EXT-GUIDE-001",
+          "score": 0.5076756036120281,
+          "cosine_distance": 0.4923243963879719
+        },
+        {
+          "rank": 16,
+          "chunk_id": "EXT-REPORT-001:0047:430254DB9350",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.4999216881757864,
+          "cosine_distance": 0.5000783118242136
+        },
+        {
+          "rank": 17,
+          "chunk_id": "EXT-STD-001:0169:BA78388E6CE7",
+          "source_id": "EXT-STD-001",
+          "score": 0.49881802139298026,
+          "cosine_distance": 0.5011819786070197
+        },
+        {
+          "rank": 18,
+          "chunk_id": "EXT-REPORT-001:0069:F781C4EB6489",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.49868617048315067,
+          "cosine_distance": 0.5013138295168493
+        },
+        {
+          "rank": 19,
+          "chunk_id": "EXT-STD-001:0164:90403255DA97",
+          "source_id": "EXT-STD-001",
+          "score": 0.4986171782529091,
+          "cosine_distance": 0.5013828217470909
+        },
+        {
+          "rank": 20,
+          "chunk_id": "EXT-STD-001:0006:ABFA244C3D60",
+          "source_id": "EXT-STD-001",
+          "score": 0.49262448797212344,
+          "cosine_distance": 0.5073755120278766
+        }
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "chunk_id": "EXT-GUIDE-001:0020:16AB3B7CE802",
+          "source_id": "EXT-GUIDE-001",
+          "score": 0.03278688524590164,
+          "lexical_rank": 1,
+          "semantic_rank": 1,
+          "lexical_score": 14.600000381469727,
+          "semantic_score": 0.7074324115758012,
+          "cosine_distance": 0.29256758842419883
+        },
+        {
+          "rank": 2,
+          "chunk_id": "EXT-REPORT-001:0067:72CC098E7A8F",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.029631255487269532,
+          "lexical_rank": 7,
+          "semantic_rank": 8,
+          "lexical_score": 9.600000381469727,
+          "semantic_score": 0.535802675398688,
+          "cosine_distance": 0.464197324601312
+        },
+        {
+          "rank": 3,
+          "chunk_id": "EXT-GUIDE-001:0035:EC2EE7B73B41",
+          "source_id": "EXT-GUIDE-001",
+          "score": 0.02658450704225352,
+          "lexical_rank": 20,
+          "semantic_rank": 11,
+          "lexical_score": 8.399999618530273,
+          "semantic_score": 0.5103668946572812,
+          "cosine_distance": 0.48963310534271876
+        },
+        {
+          "rank": 4,
+          "chunk_id": "EXT-GUIDE-001:0013:5149C3B0AA4E",
+          "source_id": "EXT-GUIDE-001",
+          "score": 0.016129032258064516,
+          "lexical_rank": null,
+          "semantic_rank": 2,
+          "lexical_score": null,
+          "semantic_score": 0.5990860121563121,
+          "cosine_distance": 0.4009139878436879
+        },
+        {
+          "rank": 5,
+          "chunk_id": "EXT-STD-001:0413:90F3B0A95C6C",
+          "source_id": "EXT-STD-001",
+          "score": 0.016129032258064516,
+          "lexical_rank": 2,
+          "semantic_rank": null,
+          "lexical_score": 11.199999809265137,
+          "semantic_score": null,
+          "cosine_distance": null
+        }
+      ]
+    },
+    {
+      "question_id": "FG-RET-009",
+      "question": "Which detector metric measures true positive rate while limiting false positives to a fixed rate?",
+      "relevant_chunk_ids": [
+        "EXT-REPORT-001:0076:23981DA22651"
+      ],
+      "first_relevant_rank": 3,
+      "reciprocal_rank": 0.3333333333333333,
+      "recall_at_k": {
+        "1": 0.0,
+        "3": 1.0,
+        "5": 1.0
+      },
+      "query_input_sha256": "13B3555244780F907AD5EB254BC41A2EE7B35852CE7FDF82C586926946650F7E",
+      "query_vector_sha256": "5E941DBB53AE99898331EAA6AEB7C7F26B7D076966140355C2C39BFD69C3B806",
+      "query_prompt_tokens": 16,
+      "query_embedding_latency_ms": 778.8179649996891,
+      "query_cost": "4E-7",
+      "lexical_latency_ms": 10.729362000347464,
+      "semantic_latency_ms": 9.455344999878434,
+      "fusion_latency_ms": 0.07530400034738705,
+      "lexical_candidates": [
+        {
+          "rank": 1,
+          "chunk_id": "EXT-REPORT-001:0135:8330787A328B",
+          "source_id": "EXT-REPORT-001",
+          "score": 7.599999904632568,
+          "strict_match": false
+        },
+        {
+          "rank": 2,
+          "chunk_id": "EXT-REPORT-001:0076:23981DA22651",
+          "source_id": "EXT-REPORT-001",
+          "score": 7.200000286102295,
+          "strict_match": false
+        },
+        {
+          "rank": 3,
+          "chunk_id": "EXT-REPORT-001:0134:256D1F186B6F",
+          "source_id": "EXT-REPORT-001",
+          "score": 6.0,
+          "strict_match": false
+        },
+        {
+          "rank": 4,
+          "chunk_id": "EXT-REPORT-001:0133:DD099791EE9F",
+          "source_id": "EXT-REPORT-001",
+          "score": 4.800000190734863,
+          "strict_match": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "EXT-REPORT-001:0060:7A8BEDD43CF7",
+          "source_id": "EXT-REPORT-001",
+          "score": 4.0,
+          "strict_match": false
+        },
+        {
+          "rank": 6,
+          "chunk_id": "EXT-REPORT-001:0064:E7D0C3453BF9",
+          "source_id": "EXT-REPORT-001",
+          "score": 3.6000001430511475,
+          "strict_match": false
+        },
+        {
+          "rank": 7,
+          "chunk_id": "EXT-REPORT-001:0075:DE3D67DCBE07",
+          "source_id": "EXT-REPORT-001",
+          "score": 3.200000047683716,
+          "strict_match": false
+        },
+        {
+          "rank": 8,
+          "chunk_id": "EXT-REPORT-001:0057:907C0627DE5C",
+          "source_id": "EXT-REPORT-001",
+          "score": 2.799999952316284,
+          "strict_match": false
+        },
+        {
+          "rank": 9,
+          "chunk_id": "EXT-REPORT-001:0059:9F7988DF95FF",
+          "source_id": "EXT-REPORT-001",
+          "score": 2.799999952316284,
+          "strict_match": false
+        },
+        {
+          "rank": 10,
+          "chunk_id": "EXT-REPORT-001:0034:BBE9E3F01AB4",
+          "source_id": "EXT-REPORT-001",
+          "score": 2.4000000953674316,
+          "strict_match": false
+        },
+        {
+          "rank": 11,
+          "chunk_id": "EXT-REPORT-001:0073:75140C71191A",
+          "source_id": "EXT-REPORT-001",
+          "score": 2.4000000953674316,
+          "strict_match": false
+        },
+        {
+          "rank": 12,
+          "chunk_id": "EXT-REPORT-001:0141:3D43AC01E699",
+          "source_id": "EXT-REPORT-001",
+          "score": 2.4000000953674316,
+          "strict_match": false
+        },
+        {
+          "rank": 13,
+          "chunk_id": "EXT-STD-001:0315:F5B34855DC18",
+          "source_id": "EXT-STD-001",
+          "score": 2.4000000953674316,
+          "strict_match": false
+        },
+        {
+          "rank": 14,
+          "chunk_id": "FG-DOC-002:0038:F0053477C6FD",
+          "source_id": "FG-DOC-002",
+          "score": 2.4000000953674316,
+          "strict_match": false
+        },
+        {
+          "rank": 15,
+          "chunk_id": "EXT-STD-001:0319:1B0EF5BF38CB",
+          "source_id": "EXT-STD-001",
+          "score": 2.200000047683716,
+          "strict_match": false
+        },
+        {
+          "rank": 16,
+          "chunk_id": "FG-DOC-001:0012:27DD2BFFFC10",
+          "source_id": "FG-DOC-001",
+          "score": 2.200000047683716,
+          "strict_match": false
+        },
+        {
+          "rank": 17,
+          "chunk_id": "EXT-REPORT-001:0018:88C0D0F8855E",
+          "source_id": "EXT-REPORT-001",
+          "score": 2.0,
+          "strict_match": false
+        },
+        {
+          "rank": 18,
+          "chunk_id": "EXT-REPORT-001:0021:F55BC7AB73E1",
+          "source_id": "EXT-REPORT-001",
+          "score": 2.0,
+          "strict_match": false
+        },
+        {
+          "rank": 19,
+          "chunk_id": "EXT-REPORT-001:0077:0D723202D1B0",
+          "source_id": "EXT-REPORT-001",
+          "score": 2.0,
+          "strict_match": false
+        },
+        {
+          "rank": 20,
+          "chunk_id": "EXT-REPORT-001:0093:B16DA9684279",
+          "source_id": "EXT-REPORT-001",
+          "score": 2.0,
+          "strict_match": false
+        }
+      ],
+      "semantic_candidates": [
+        {
+          "rank": 1,
+          "chunk_id": "EXT-REPORT-001:0134:256D1F186B6F",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.6193128454293493,
+          "cosine_distance": 0.3806871545706507
+        },
+        {
+          "rank": 2,
+          "chunk_id": "EXT-REPORT-001:0076:23981DA22651",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.5484997914479506,
+          "cosine_distance": 0.4515002085520494
+        },
+        {
+          "rank": 3,
+          "chunk_id": "EXT-REPORT-001:0135:8330787A328B",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.472595134929238,
+          "cosine_distance": 0.527404865070762
+        },
+        {
+          "rank": 4,
+          "chunk_id": "EXT-REPORT-001:0133:DD099791EE9F",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.4631261752565774,
+          "cosine_distance": 0.5368738247434226
+        },
+        {
+          "rank": 5,
+          "chunk_id": "EXT-REPORT-001:0061:84610738F95B",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.45020385368143945,
+          "cosine_distance": 0.5497961463185606
+        },
+        {
+          "rank": 6,
+          "chunk_id": "EXT-REPORT-001:0059:9F7988DF95FF",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.42652767842902894,
+          "cosine_distance": 0.573472321570971
+        },
+        {
+          "rank": 7,
+          "chunk_id": "EXT-REPORT-001:0075:DE3D67DCBE07",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.4176220241251549,
+          "cosine_distance": 0.5823779758748451
+        },
+        {
+          "rank": 8,
+          "chunk_id": "EXT-REPORT-001:0060:7A8BEDD43CF7",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.40624435386730673,
+          "cosine_distance": 0.5937556461326933
+        },
+        {
+          "rank": 9,
+          "chunk_id": "FG-DOC-002:0040:433B3A0CCF28",
+          "source_id": "FG-DOC-002",
+          "score": 0.398263443748597,
+          "cosine_distance": 0.601736556251403
+        },
+        {
+          "rank": 10,
+          "chunk_id": "FG-DOC-002:0034:C31C5693670E",
+          "source_id": "FG-DOC-002",
+          "score": 0.39822657626121827,
+          "cosine_distance": 0.6017734237387817
+        },
+        {
+          "rank": 11,
+          "chunk_id": "FG-DOC-002:0035:2FDBAB990B83",
+          "source_id": "FG-DOC-002",
+          "score": 0.3960449809919415,
+          "cosine_distance": 0.6039550190080585
+        },
+        {
+          "rank": 12,
+          "chunk_id": "EXT-REPORT-001:0057:907C0627DE5C",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.396040915557647,
+          "cosine_distance": 0.603959084442353
+        },
+        {
+          "rank": 13,
+          "chunk_id": "FG-DOC-001:0013:38A34C25BCAD",
+          "source_id": "FG-DOC-001",
+          "score": 0.39341264832458056,
+          "cosine_distance": 0.6065873516754194
+        },
+        {
+          "rank": 14,
+          "chunk_id": "FG-DOC-001:0004:4F47CFCD1552",
+          "source_id": "FG-DOC-001",
+          "score": 0.3903942628332566,
+          "cosine_distance": 0.6096057371667434
+        },
+        {
+          "rank": 15,
+          "chunk_id": "EXT-REPORT-001:0064:E7D0C3453BF9",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.3892412662251642,
+          "cosine_distance": 0.6107587337748358
+        },
+        {
+          "rank": 16,
+          "chunk_id": "FG-DOC-002:0038:F0053477C6FD",
+          "source_id": "FG-DOC-002",
+          "score": 0.38307838139008454,
+          "cosine_distance": 0.6169216186099155
+        },
+        {
+          "rank": 17,
+          "chunk_id": "FG-DOC-002:0039:2BC9F89A99D3",
+          "source_id": "FG-DOC-002",
+          "score": 0.37783223816374367,
+          "cosine_distance": 0.6221677618362563
+        },
+        {
+          "rank": 18,
+          "chunk_id": "EXT-REPORT-001:0074:4CB207093F74",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.37324186026588524,
+          "cosine_distance": 0.6267581397341148
+        },
+        {
+          "rank": 19,
+          "chunk_id": "FG-DOC-001:0007:C1010E17492A",
+          "source_id": "FG-DOC-001",
+          "score": 0.3690331685228778,
+          "cosine_distance": 0.6309668314771222
+        },
+        {
+          "rank": 20,
+          "chunk_id": "EXT-REPORT-001:0073:75140C71191A",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.358763518127202,
+          "cosine_distance": 0.641236481872798
+        }
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "chunk_id": "EXT-REPORT-001:0134:256D1F186B6F",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.032266458495966696,
+          "lexical_rank": 3,
+          "semantic_rank": 1,
+          "lexical_score": 6.0,
+          "semantic_score": 0.6193128454293493,
+          "cosine_distance": 0.3806871545706507
+        },
+        {
+          "rank": 2,
+          "chunk_id": "EXT-REPORT-001:0135:8330787A328B",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.032266458495966696,
+          "lexical_rank": 1,
+          "semantic_rank": 3,
+          "lexical_score": 7.599999904632568,
+          "semantic_score": 0.472595134929238,
+          "cosine_distance": 0.527404865070762
+        },
+        {
+          "rank": 3,
+          "chunk_id": "EXT-REPORT-001:0076:23981DA22651",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.03225806451612903,
+          "lexical_rank": 2,
+          "semantic_rank": 2,
+          "lexical_score": 7.200000286102295,
+          "semantic_score": 0.5484997914479506,
+          "cosine_distance": 0.4515002085520494
+        },
+        {
+          "rank": 4,
+          "chunk_id": "EXT-REPORT-001:0133:DD099791EE9F",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.03125,
+          "lexical_rank": 4,
+          "semantic_rank": 4,
+          "lexical_score": 4.800000190734863,
+          "semantic_score": 0.4631261752565774,
+          "cosine_distance": 0.5368738247434226
+        },
+        {
+          "rank": 5,
+          "chunk_id": "EXT-REPORT-001:0060:7A8BEDD43CF7",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.030090497737556562,
+          "lexical_rank": 5,
+          "semantic_rank": 8,
+          "lexical_score": 4.0,
+          "semantic_score": 0.40624435386730673,
+          "cosine_distance": 0.5937556461326933
+        }
+      ]
+    },
+    {
+      "question_id": "FG-RET-010",
+      "question": "What tradeoff exists between watermark robustness and watermark capacity?",
+      "relevant_chunk_ids": [
+        "EXT-REPORT-001:0027:786D1CEA953F",
+        "EXT-REPORT-001:0028:D8EDCB5281EB"
+      ],
+      "first_relevant_rank": 1,
+      "reciprocal_rank": 1.0,
+      "recall_at_k": {
+        "1": 0.5,
+        "3": 0.5,
+        "5": 1.0
+      },
+      "query_input_sha256": "F1F2CB33EF184CA16BF6A2FD48E4421D6D713F72992760C362B8F72F7573541E",
+      "query_vector_sha256": "AAC5AB4DFAD324A7C4B20AA9E187BD22BAEEB80B8BC3A3ECD6CF6C65C2F8BC7A",
+      "query_prompt_tokens": 12,
+      "query_embedding_latency_ms": 815.3995009997743,
+      "query_cost": "3E-7",
+      "lexical_latency_ms": 7.863595001253998,
+      "semantic_latency_ms": 10.27896399864403,
+      "fusion_latency_ms": 0.08075799996731803,
+      "lexical_candidates": [
+        {
+          "rank": 1,
+          "chunk_id": "EXT-REPORT-001:0028:D8EDCB5281EB",
+          "source_id": "EXT-REPORT-001",
+          "score": 10.0,
+          "strict_match": false
+        },
+        {
+          "rank": 2,
+          "chunk_id": "EXT-REPORT-001:0032:CDC8FC8F3F35",
+          "source_id": "EXT-REPORT-001",
+          "score": 8.800000190734863,
+          "strict_match": false
+        },
+        {
+          "rank": 3,
+          "chunk_id": "EXT-REPORT-001:0019:3353E40AB236",
+          "source_id": "EXT-REPORT-001",
+          "score": 8.0,
+          "strict_match": false
+        },
+        {
+          "rank": 4,
+          "chunk_id": "EXT-REPORT-001:0018:88C0D0F8855E",
+          "source_id": "EXT-REPORT-001",
+          "score": 7.200000286102295,
+          "strict_match": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "EXT-REPORT-001:0027:786D1CEA953F",
+          "source_id": "EXT-REPORT-001",
+          "score": 7.200000286102295,
+          "strict_match": false
+        },
+        {
+          "rank": 6,
+          "chunk_id": "EXT-REPORT-001:0029:2210F83DDD21",
+          "source_id": "EXT-REPORT-001",
+          "score": 7.200000286102295,
+          "strict_match": false
+        },
+        {
+          "rank": 7,
+          "chunk_id": "EXT-REPORT-001:0017:557587623590",
+          "source_id": "EXT-REPORT-001",
+          "score": 6.800000190734863,
+          "strict_match": false
+        },
+        {
+          "rank": 8,
+          "chunk_id": "EXT-REPORT-001:0031:9B4A36F0D21F",
+          "source_id": "EXT-REPORT-001",
+          "score": 6.0,
+          "strict_match": false
+        },
+        {
+          "rank": 9,
+          "chunk_id": "EXT-REPORT-001:0034:BBE9E3F01AB4",
+          "source_id": "EXT-REPORT-001",
+          "score": 6.0,
+          "strict_match": false
+        },
+        {
+          "rank": 10,
+          "chunk_id": "EXT-REPORT-001:0033:76989234F9B0",
+          "source_id": "EXT-REPORT-001",
+          "score": 5.599999904632568,
+          "strict_match": false
+        },
+        {
+          "rank": 11,
+          "chunk_id": "EXT-REPORT-001:0072:1650EF6D2A3D",
+          "source_id": "EXT-REPORT-001",
+          "score": 5.599999904632568,
+          "strict_match": false
+        },
+        {
+          "rank": 12,
+          "chunk_id": "EXT-REPORT-001:0099:07FBD028866D",
+          "source_id": "EXT-REPORT-001",
+          "score": 5.599999904632568,
+          "strict_match": false
+        },
+        {
+          "rank": 13,
+          "chunk_id": "EXT-REPORT-001:0030:5AA6232DFC75",
+          "source_id": "EXT-REPORT-001",
+          "score": 5.200000286102295,
+          "strict_match": false
+        },
+        {
+          "rank": 14,
+          "chunk_id": "EXT-REPORT-001:0035:A36649472E4E",
+          "source_id": "EXT-REPORT-001",
+          "score": 4.800000190734863,
+          "strict_match": false
+        },
+        {
+          "rank": 15,
+          "chunk_id": "EXT-REPORT-001:0016:2BE73D3C11B3",
+          "source_id": "EXT-REPORT-001",
+          "score": 3.6000001430511475,
+          "strict_match": false
+        },
+        {
+          "rank": 16,
+          "chunk_id": "EXT-REPORT-001:0020:8D43FFDF9FCE",
+          "source_id": "EXT-REPORT-001",
+          "score": 3.6000001430511475,
+          "strict_match": false
+        },
+        {
+          "rank": 17,
+          "chunk_id": "EXT-REPORT-001:0114:A1C44CC5FCB1",
+          "source_id": "EXT-REPORT-001",
+          "score": 3.6000001430511475,
+          "strict_match": false
+        },
+        {
+          "rank": 18,
+          "chunk_id": "EXT-REPORT-001:0014:834E8C4E1246",
+          "source_id": "EXT-REPORT-001",
+          "score": 3.200000047683716,
+          "strict_match": false
+        },
+        {
+          "rank": 19,
+          "chunk_id": "EXT-REPORT-001:0023:A9C0149CC551",
+          "source_id": "EXT-REPORT-001",
+          "score": 3.200000047683716,
+          "strict_match": false
+        },
+        {
+          "rank": 20,
+          "chunk_id": "EXT-REPORT-001:0024:AC2523B98FC4",
+          "source_id": "EXT-REPORT-001",
+          "score": 3.200000047683716,
+          "strict_match": false
+        }
+      ],
+      "semantic_candidates": [
+        {
+          "rank": 1,
+          "chunk_id": "EXT-REPORT-001:0028:D8EDCB5281EB",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.6999331175941972,
+          "cosine_distance": 0.3000668824058028
+        },
+        {
+          "rank": 2,
+          "chunk_id": "EXT-REPORT-001:0034:BBE9E3F01AB4",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.5737848711335045,
+          "cosine_distance": 0.4262151288664955
+        },
+        {
+          "rank": 3,
+          "chunk_id": "EXT-REPORT-001:0025:AF1C9A9AEFCE",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.5661077886737245,
+          "cosine_distance": 0.43389221132627553
+        },
+        {
+          "rank": 4,
+          "chunk_id": "EXT-REPORT-001:0019:3353E40AB236",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.5614045207737203,
+          "cosine_distance": 0.4385954792262797
+        },
+        {
+          "rank": 5,
+          "chunk_id": "EXT-REPORT-001:0073:75140C71191A",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.5554317090559601,
+          "cosine_distance": 0.44456829094403993
+        },
+        {
+          "rank": 6,
+          "chunk_id": "EXT-REPORT-001:0024:AC2523B98FC4",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.5343765914466146,
+          "cosine_distance": 0.46562340855338535
+        },
+        {
+          "rank": 7,
+          "chunk_id": "EXT-REPORT-001:0027:786D1CEA953F",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.5274514246494246,
+          "cosine_distance": 0.4725485753505754
+        },
+        {
+          "rank": 8,
+          "chunk_id": "EXT-REPORT-001:0029:2210F83DDD21",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.5273793850711009,
+          "cosine_distance": 0.47262061492889906
+        },
+        {
+          "rank": 9,
+          "chunk_id": "EXT-REPORT-001:0033:76989234F9B0",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.5246471812916558,
+          "cosine_distance": 0.4753528187083442
+        },
+        {
+          "rank": 10,
+          "chunk_id": "EXT-REPORT-001:0035:A36649472E4E",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.5204224055557234,
+          "cosine_distance": 0.4795775944442766
+        },
+        {
+          "rank": 11,
+          "chunk_id": "EXT-REPORT-001:0017:557587623590",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.513427587636413,
+          "cosine_distance": 0.48657241236358695
+        },
+        {
+          "rank": 12,
+          "chunk_id": "EXT-REPORT-001:0021:F55BC7AB73E1",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.5122971829890218,
+          "cosine_distance": 0.4877028170109782
+        },
+        {
+          "rank": 13,
+          "chunk_id": "EXT-REPORT-001:0099:07FBD028866D",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.5112045167773046,
+          "cosine_distance": 0.4887954832226954
+        },
+        {
+          "rank": 14,
+          "chunk_id": "EXT-REPORT-001:0032:CDC8FC8F3F35",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.49883589855292687,
+          "cosine_distance": 0.5011641014470731
+        },
+        {
+          "rank": 15,
+          "chunk_id": "EXT-REPORT-001:0030:5AA6232DFC75",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.48907842346737085,
+          "cosine_distance": 0.5109215765326292
+        },
+        {
+          "rank": 16,
+          "chunk_id": "EXT-REPORT-001:0023:A9C0149CC551",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.48638598246443965,
+          "cosine_distance": 0.5136140175355604
+        },
+        {
+          "rank": 17,
+          "chunk_id": "EXT-REPORT-001:0018:88C0D0F8855E",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.4764942827406393,
+          "cosine_distance": 0.5235057172593607
+        },
+        {
+          "rank": 18,
+          "chunk_id": "EXT-REPORT-001:0020:8D43FFDF9FCE",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.4718055844971205,
+          "cosine_distance": 0.5281944155028795
+        },
+        {
+          "rank": 19,
+          "chunk_id": "EXT-REPORT-001:0031:9B4A36F0D21F",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.4677995057020786,
+          "cosine_distance": 0.5322004942979214
+        },
+        {
+          "rank": 20,
+          "chunk_id": "EXT-REPORT-001:0026:BBE35258DAFA",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.45945455418406467,
+          "cosine_distance": 0.5405454458159353
+        }
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "chunk_id": "EXT-REPORT-001:0028:D8EDCB5281EB",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.03278688524590164,
+          "lexical_rank": 1,
+          "semantic_rank": 1,
+          "lexical_score": 10.0,
+          "semantic_score": 0.6999331175941972,
+          "cosine_distance": 0.3000668824058028
+        },
+        {
+          "rank": 2,
+          "chunk_id": "EXT-REPORT-001:0019:3353E40AB236",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.03149801587301587,
+          "lexical_rank": 3,
+          "semantic_rank": 4,
+          "lexical_score": 8.0,
+          "semantic_score": 0.5614045207737203,
+          "cosine_distance": 0.4385954792262797
+        },
+        {
+          "rank": 3,
+          "chunk_id": "EXT-REPORT-001:0034:BBE9E3F01AB4",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.030621785881252923,
+          "lexical_rank": 9,
+          "semantic_rank": 2,
+          "lexical_score": 6.0,
+          "semantic_score": 0.5737848711335045,
+          "cosine_distance": 0.4262151288664955
+        },
+        {
+          "rank": 4,
+          "chunk_id": "EXT-REPORT-001:0027:786D1CEA953F",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.030309988518943745,
+          "lexical_rank": 5,
+          "semantic_rank": 7,
+          "lexical_score": 7.200000286102295,
+          "semantic_score": 0.5274514246494246,
+          "cosine_distance": 0.4725485753505754
+        },
+        {
+          "rank": 5,
+          "chunk_id": "EXT-REPORT-001:0029:2210F83DDD21",
+          "source_id": "EXT-REPORT-001",
+          "score": 0.029857397504456328,
+          "lexical_rank": 6,
+          "semantic_rank": 8,
+          "lexical_score": 7.200000286102295,
+          "semantic_score": 0.5273793850711009,
+          "cosine_distance": 0.47262061492889906
+        }
+      ]
+    },
+    {
+      "question_id": "FG-RET-011",
+      "question": "How are assertions, claims and a C2PA Manifest related?",
+      "relevant_chunk_ids": [
+        "EXT-STD-001:0005:13F20BB283A4"
+      ],
+      "first_relevant_rank": 5,
+      "reciprocal_rank": 0.2,
+      "recall_at_k": {
+        "1": 0.0,
+        "3": 0.0,
+        "5": 1.0
+      },
+      "query_input_sha256": "4E40F88035BE1CF1A7CB0C8F612054118C5878620394F8EBFCCE9345CF4335EB",
+      "query_vector_sha256": "53BE906A276CD146FBE20194C78D66BF0EB4B0B2DFCBB895E417B1DA214A194A",
+      "query_prompt_tokens": 13,
+      "query_embedding_latency_ms": 815.1793939996423,
+      "query_cost": "3.25E-7",
+      "lexical_latency_ms": 26.620358001309796,
+      "semantic_latency_ms": 11.021561000234215,
+      "fusion_latency_ms": 0.06805699922551867,
+      "lexical_candidates": [
+        {
+          "rank": 1,
+          "chunk_id": "EXT-STD-001:0196:A0CDA70AB163",
+          "source_id": "EXT-STD-001",
+          "score": 105.20000457763672,
+          "strict_match": false
+        },
+        {
+          "rank": 2,
+          "chunk_id": "EXT-STD-001:0194:E3FD997542C6",
+          "source_id": "EXT-STD-001",
+          "score": 22.80000114440918,
+          "strict_match": false
+        },
+        {
+          "rank": 3,
+          "chunk_id": "EXT-STD-001:0102:3DF3F24D77B4",
+          "source_id": "EXT-STD-001",
+          "score": 21.0,
+          "strict_match": false
+        },
+        {
+          "rank": 4,
+          "chunk_id": "EXT-STD-001:0137:3793507CDB88",
+          "source_id": "EXT-STD-001",
+          "score": 20.200000762939453,
+          "strict_match": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "EXT-STD-001:0195:3323E5E6357A",
+          "source_id": "EXT-STD-001",
+          "score": 19.600000381469727,
+          "strict_match": false
+        },
+        {
+          "rank": 6,
+          "chunk_id": "EXT-STD-001:0459:3F7B13ED33E6",
+          "source_id": "EXT-STD-001",
+          "score": 19.0,
+          "strict_match": false
+        },
+        {
+          "rank": 7,
+          "chunk_id": "EXT-STD-001:0447:3DD4E693818C",
+          "source_id": "EXT-STD-001",
+          "score": 18.421061638742685,
+          "strict_match": true
+        },
+        {
+          "rank": 8,
+          "chunk_id": "EXT-STD-001:0465:A620905CEE21",
+          "source_id": "EXT-STD-001",
+          "score": 18.399999618530273,
+          "strict_match": false
+        },
+        {
+          "rank": 9,
+          "chunk_id": "EXT-STD-001:0549:04847E5C8B9A",
+          "source_id": "EXT-STD-001",
+          "score": 18.0,
+          "strict_match": false
+        },
+        {
+          "rank": 10,
+          "chunk_id": "EXT-STD-001:0458:21250983405E",
+          "source_id": "EXT-STD-001",
+          "score": 16.600000381469727,
+          "strict_match": false
+        },
+        {
+          "rank": 11,
+          "chunk_id": "EXT-STD-001:0460:2687B1A6826C",
+          "source_id": "EXT-STD-001",
+          "score": 15.800000190734863,
+          "strict_match": false
+        },
+        {
+          "rank": 12,
+          "chunk_id": "EXT-STD-001:0328:C99715346BFA",
+          "source_id": "EXT-STD-001",
+          "score": 15.600000381469727,
+          "strict_match": false
+        },
+        {
+          "rank": 13,
+          "chunk_id": "EXT-STD-001:0457:7D2C2DF3E50F",
+          "source_id": "EXT-STD-001",
+          "score": 15.0,
+          "strict_match": false
+        },
+        {
+          "rank": 14,
+          "chunk_id": "EXT-STD-001:0609:06A3C4865BA3",
+          "source_id": "EXT-STD-001",
+          "score": 14.800000190734863,
+          "strict_match": false
+        },
+        {
+          "rank": 15,
+          "chunk_id": "EXT-STD-001:0256:45B3D8CE255B",
+          "source_id": "EXT-STD-001",
+          "score": 14.600000381469727,
+          "strict_match": false
+        },
+        {
+          "rank": 16,
+          "chunk_id": "EXT-STD-001:0558:43F256A8A467",
+          "source_id": "EXT-STD-001",
+          "score": 13.800000190734863,
+          "strict_match": false
+        },
+        {
+          "rank": 17,
+          "chunk_id": "EXT-STD-001:0257:AA22F7ABEBE8",
+          "source_id": "EXT-STD-001",
+          "score": 13.40000057220459,
+          "strict_match": false
+        },
+        {
+          "rank": 18,
+          "chunk_id": "EXT-STD-001:0230:6588C1A943F0",
+          "source_id": "EXT-STD-001",
+          "score": 13.199999809265137,
+          "strict_match": false
+        },
+        {
+          "rank": 19,
+          "chunk_id": "EXT-STD-001:0461:5F3F85DF5877",
+          "source_id": "EXT-STD-001",
+          "score": 13.0,
+          "strict_match": false
+        },
+        {
+          "rank": 20,
+          "chunk_id": "EXT-STD-001:0520:4420A94737D0",
+          "source_id": "EXT-STD-001",
+          "score": 12.800000190734863,
+          "strict_match": false
+        }
+      ],
+      "semantic_candidates": [
+        {
+          "rank": 1,
+          "chunk_id": "EXT-STD-001:0143:2F1A7D3D6493",
+          "source_id": "EXT-STD-001",
+          "score": 0.7234109876324436,
+          "cosine_distance": 0.2765890123675564
+        },
+        {
+          "rank": 2,
+          "chunk_id": "EXT-STD-001:0026:B60DF6F81E79",
+          "source_id": "EXT-STD-001",
+          "score": 0.715683290385187,
+          "cosine_distance": 0.28431670961481303
+        },
+        {
+          "rank": 3,
+          "chunk_id": "EXT-STD-001:0005:13F20BB283A4",
+          "source_id": "EXT-STD-001",
+          "score": 0.7128789533832951,
+          "cosine_distance": 0.2871210466167049
+        },
+        {
+          "rank": 4,
+          "chunk_id": "EXT-STD-001:0072:35DC03DEC196",
+          "source_id": "EXT-STD-001",
+          "score": 0.6960221231194316,
+          "cosine_distance": 0.30397787688056843
+        },
+        {
+          "rank": 5,
+          "chunk_id": "EXT-STD-001:0227:9036E613D3D7",
+          "source_id": "EXT-STD-001",
+          "score": 0.6802217224427082,
+          "cosine_distance": 0.3197782775572918
+        },
+        {
+          "rank": 6,
+          "chunk_id": "EXT-STD-001:0189:0EC376C2F856",
+          "source_id": "EXT-STD-001",
+          "score": 0.6778774738031653,
+          "cosine_distance": 0.3221225261968347
+        },
+        {
+          "rank": 7,
+          "chunk_id": "EXT-STD-001:0226:0ECC6592010C",
+          "source_id": "EXT-STD-001",
+          "score": 0.6776169723470585,
+          "cosine_distance": 0.32238302765294147
+        },
+        {
+          "rank": 8,
+          "chunk_id": "EXT-STD-001:0110:23982F24E7EB",
+          "source_id": "EXT-STD-001",
+          "score": 0.671292706962936,
+          "cosine_distance": 0.32870729303706403
+        },
+        {
+          "rank": 9,
+          "chunk_id": "EXT-STD-001:0171:0CA1B5588F23",
+          "source_id": "EXT-STD-001",
+          "score": 0.6626331302220273,
+          "cosine_distance": 0.3373668697779727
+        },
+        {
+          "rank": 10,
+          "chunk_id": "EXT-STD-001:0105:7668EEF5D7DE",
+          "source_id": "EXT-STD-001",
+          "score": 0.6623859278749952,
+          "cosine_distance": 0.3376140721250048
+        },
+        {
+          "rank": 11,
+          "chunk_id": "EXT-STD-001:0228:35839A0ACE74",
+          "source_id": "EXT-STD-001",
+          "score": 0.6545148049694627,
+          "cosine_distance": 0.3454851950305373
+        },
+        {
+          "rank": 12,
+          "chunk_id": "EXT-GUIDE-001:0006:2B94FFD72ED2",
+          "source_id": "EXT-GUIDE-001",
+          "score": 0.6498807209559555,
+          "cosine_distance": 0.3501192790440445
+        },
+        {
+          "rank": 13,
+          "chunk_id": "EXT-STD-001:0024:112154882BD8",
+          "source_id": "EXT-STD-001",
+          "score": 0.6483971647432958,
+          "cosine_distance": 0.3516028352567042
+        },
+        {
+          "rank": 14,
+          "chunk_id": "EXT-STD-001:0066:740790823089",
+          "source_id": "EXT-STD-001",
+          "score": 0.6479983904081481,
+          "cosine_distance": 0.3520016095918519
+        },
+        {
+          "rank": 15,
+          "chunk_id": "EXT-STD-001:0327:DA0C02A3F927",
+          "source_id": "EXT-STD-001",
+          "score": 0.645190352007443,
+          "cosine_distance": 0.354809647992557
+        },
+        {
+          "rank": 16,
+          "chunk_id": "EXT-STD-001:0170:F4F6E93008C0",
+          "source_id": "EXT-STD-001",
+          "score": 0.6380853088173399,
+          "cosine_distance": 0.36191469118266006
+        },
+        {
+          "rank": 17,
+          "chunk_id": "EXT-STD-001:0027:1428EE9E062E",
+          "source_id": "EXT-STD-001",
+          "score": 0.6348616500109181,
+          "cosine_distance": 0.3651383499890819
+        },
+        {
+          "rank": 18,
+          "chunk_id": "EXT-STD-001:0470:97DC5F67DF81",
+          "source_id": "EXT-STD-001",
+          "score": 0.6332579769567052,
+          "cosine_distance": 0.36674202304329484
+        },
+        {
+          "rank": 19,
+          "chunk_id": "EXT-STD-001:0023:4FF22EF0CBB2",
+          "source_id": "EXT-STD-001",
+          "score": 0.6316367934254442,
+          "cosine_distance": 0.3683632065745558
+        },
+        {
+          "rank": 20,
+          "chunk_id": "EXT-STD-001:0314:FCA50B4014FD",
+          "source_id": "EXT-STD-001",
+          "score": 0.6290288374505862,
+          "cosine_distance": 0.37097116254941376
+        }
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "chunk_id": "EXT-STD-001:0143:2F1A7D3D6493",
+          "source_id": "EXT-STD-001",
+          "score": 0.01639344262295082,
+          "lexical_rank": null,
+          "semantic_rank": 1,
+          "lexical_score": null,
+          "semantic_score": 0.7234109876324436,
+          "cosine_distance": 0.2765890123675564
+        },
+        {
+          "rank": 2,
+          "chunk_id": "EXT-STD-001:0196:A0CDA70AB163",
+          "source_id": "EXT-STD-001",
+          "score": 0.01639344262295082,
+          "lexical_rank": 1,
+          "semantic_rank": null,
+          "lexical_score": 105.20000457763672,
+          "semantic_score": null,
+          "cosine_distance": null
+        },
+        {
+          "rank": 3,
+          "chunk_id": "EXT-STD-001:0026:B60DF6F81E79",
+          "source_id": "EXT-STD-001",
+          "score": 0.016129032258064516,
+          "lexical_rank": null,
+          "semantic_rank": 2,
+          "lexical_score": null,
+          "semantic_score": 0.715683290385187,
+          "cosine_distance": 0.28431670961481303
+        },
+        {
+          "rank": 4,
+          "chunk_id": "EXT-STD-001:0194:E3FD997542C6",
+          "source_id": "EXT-STD-001",
+          "score": 0.016129032258064516,
+          "lexical_rank": 2,
+          "semantic_rank": null,
+          "lexical_score": 22.80000114440918,
+          "semantic_score": null,
+          "cosine_distance": null
+        },
+        {
+          "rank": 5,
+          "chunk_id": "EXT-STD-001:0005:13F20BB283A4",
+          "source_id": "EXT-STD-001",
+          "score": 0.015873015873015872,
+          "lexical_rank": null,
+          "semantic_rank": 3,
+          "lexical_score": null,
+          "semantic_score": 0.7128789533832951,
+          "cosine_distance": 0.2871210466167049
+        }
+      ]
+    },
+    {
+      "question_id": "FG-RET-012",
+      "question": "What is a C2PA hard binding?",
+      "relevant_chunk_ids": [
+        "EXT-STD-001:0034:888C1A64966A"
+      ],
+      "first_relevant_rank": null,
+      "reciprocal_rank": 0.0,
+      "recall_at_k": {
+        "1": 0.0,
+        "3": 0.0,
+        "5": 0.0
+      },
+      "query_input_sha256": "F5E4923E74AF6EF037DACDA117531706C3337CF81ECEE62912E9D0751BA28453",
+      "query_vector_sha256": "0D779533B8762CB86E9B6C078D15BDDAF1D3BC86BA6989A53178CAED15DA5737",
+      "query_prompt_tokens": 9,
+      "query_embedding_latency_ms": 769.2790679993777,
+      "query_cost": "2.25E-7",
+      "lexical_latency_ms": 23.62745899881702,
+      "semantic_latency_ms": 9.280558999307686,
+      "fusion_latency_ms": 0.11717400047928095,
+      "lexical_candidates": [
+        {
+          "rank": 1,
+          "chunk_id": "EXT-STD-001:0196:A0CDA70AB163",
+          "source_id": "EXT-STD-001",
+          "score": 43.04492712020874,
+          "strict_match": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "EXT-STD-001:0387:451885E94CAC",
+          "source_id": "EXT-STD-001",
+          "score": 13.600000381469727,
+          "strict_match": false
+        },
+        {
+          "rank": 3,
+          "chunk_id": "EXT-STD-001:0328:C99715346BFA",
+          "source_id": "EXT-STD-001",
+          "score": 13.199999809265137,
+          "strict_match": false
+        },
+        {
+          "rank": 4,
+          "chunk_id": "EXT-STD-001:0097:2B608D4481CA",
+          "source_id": "EXT-STD-001",
+          "score": 12.693299531936646,
+          "strict_match": true
+        },
+        {
+          "rank": 5,
+          "chunk_id": "EXT-STD-001:0137:3793507CDB88",
+          "source_id": "EXT-STD-001",
+          "score": 11.0,
+          "strict_match": false
+        },
+        {
+          "rank": 6,
+          "chunk_id": "EXT-STD-001:0397:6562A7271CAD",
+          "source_id": "EXT-STD-001",
+          "score": 10.399999618530273,
+          "strict_match": false
+        },
+        {
+          "rank": 7,
+          "chunk_id": "EXT-STD-001:0195:3323E5E6357A",
+          "source_id": "EXT-STD-001",
+          "score": 10.0,
+          "strict_match": false
+        },
+        {
+          "rank": 8,
+          "chunk_id": "EXT-STD-001:0091:0F8E758F1CB6",
+          "source_id": "EXT-STD-001",
+          "score": 9.960000038146973,
+          "strict_match": true
+        },
+        {
+          "rank": 9,
+          "chunk_id": "EXT-STD-001:0194:E3FD997542C6",
+          "source_id": "EXT-STD-001",
+          "score": 9.199999809265137,
+          "strict_match": false
+        },
+        {
+          "rank": 10,
+          "chunk_id": "EXT-STD-001:0392:A7B6CFB49F32",
+          "source_id": "EXT-STD-001",
+          "score": 9.0,
+          "strict_match": false
+        },
+        {
+          "rank": 11,
+          "chunk_id": "EXT-STD-001:0394:54AD58E23F2A",
+          "source_id": "EXT-STD-001",
+          "score": 8.199999809265137,
+          "strict_match": false
+        },
+        {
+          "rank": 12,
+          "chunk_id": "EXT-STD-001:0449:978905E0712E",
+          "source_id": "EXT-STD-001",
+          "score": 8.199999809265137,
+          "strict_match": false
+        },
+        {
+          "rank": 13,
+          "chunk_id": "EXT-STD-001:0435:1D9FA5705AB0",
+          "source_id": "EXT-STD-001",
+          "score": 8.050000000745058,
+          "strict_match": true
+        },
+        {
+          "rank": 14,
+          "chunk_id": "EXT-STD-001:0391:E1500961A55E",
+          "source_id": "EXT-STD-001",
+          "score": 7.800000190734863,
+          "strict_match": false
+        },
+        {
+          "rank": 15,
+          "chunk_id": "EXT-STD-001:0396:87AF227E816D",
+          "source_id": "EXT-STD-001",
+          "score": 7.800000190734863,
+          "strict_match": false
+        },
+        {
+          "rank": 16,
+          "chunk_id": "EXT-STD-001:0385:962096C75763",
+          "source_id": "EXT-STD-001",
+          "score": 7.599999904632568,
+          "strict_match": false
+        },
+        {
+          "rank": 17,
+          "chunk_id": "EXT-STD-001:0459:3F7B13ED33E6",
+          "source_id": "EXT-STD-001",
+          "score": 7.400000095367432,
+          "strict_match": false
+        },
+        {
+          "rank": 18,
+          "chunk_id": "EXT-STD-001:0098:47CA90221675",
+          "source_id": "EXT-STD-001",
+          "score": 7.21860446035862,
+          "strict_match": true
+        },
+        {
+          "rank": 19,
+          "chunk_id": "EXT-STD-001:0549:04847E5C8B9A",
+          "source_id": "EXT-STD-001",
+          "score": 7.200000286102295,
+          "strict_match": false
+        },
+        {
+          "rank": 20,
+          "chunk_id": "EXT-STD-001:0095:BA4015B64E62",
+          "source_id": "EXT-STD-001",
+          "score": 7.122435748577118,
+          "strict_match": true
+        }
+      ],
+      "semantic_candidates": [
+        {
+          "rank": 1,
+          "chunk_id": "EXT-STD-001:0098:47CA90221675",
+          "source_id": "EXT-STD-001",
+          "score": 0.6301205706006198,
+          "cosine_distance": 0.36987942939938023
+        },
+        {
+          "rank": 2,
+          "chunk_id": "EXT-STD-001:0091:0F8E758F1CB6",
+          "source_id": "EXT-STD-001",
+          "score": 0.6264519009142904,
+          "cosine_distance": 0.37354809908570963
+        },
+        {
+          "rank": 3,
+          "chunk_id": "EXT-STD-001:0034:888C1A64966A",
+          "source_id": "EXT-STD-001",
+          "score": 0.6168058354223448,
+          "cosine_distance": 0.3831941645776552
+        },
+        {
+          "rank": 4,
+          "chunk_id": "EXT-STD-001:0033:BDE69FA4856F",
+          "source_id": "EXT-STD-001",
+          "score": 0.6124253449673291,
+          "cosine_distance": 0.38757465503267086
+        },
+        {
+          "rank": 5,
+          "chunk_id": "EXT-STD-001:0396:87AF227E816D",
+          "source_id": "EXT-STD-001",
+          "score": 0.6036794263728837,
+          "cosine_distance": 0.39632057362711626
+        },
+        {
+          "rank": 6,
+          "chunk_id": "EXT-STD-001:0099:AA6F38EAA776",
+          "source_id": "EXT-STD-001",
+          "score": 0.6032374925192504,
+          "cosine_distance": 0.3967625074807496
+        },
+        {
+          "rank": 7,
+          "chunk_id": "EXT-STD-001:0386:968269D3B014",
+          "source_id": "EXT-STD-001",
+          "score": 0.5962330757000028,
+          "cosine_distance": 0.40376692429999717
+        },
+        {
+          "rank": 8,
+          "chunk_id": "EXT-STD-001:0397:6562A7271CAD",
+          "source_id": "EXT-STD-001",
+          "score": 0.595409705314177,
+          "cosine_distance": 0.40459029468582297
+        },
+        {
+          "rank": 9,
+          "chunk_id": "EXT-STD-001:0388:BD900AC07413",
+          "source_id": "EXT-STD-001",
+          "score": 0.594349737211892,
+          "cosine_distance": 0.405650262788108
+        },
+        {
+          "rank": 10,
+          "chunk_id": "EXT-STD-001:0395:965C3B73BC03",
+          "source_id": "EXT-STD-001",
+          "score": 0.5909128558537377,
+          "cosine_distance": 0.40908714414626235
+        },
+        {
+          "rank": 11,
+          "chunk_id": "EXT-STD-001:0097:2B608D4481CA",
+          "source_id": "EXT-STD-001",
+          "score": 0.5852506224698527,
+          "cosine_distance": 0.4147493775301473
+        },
+        {
+          "rank": 12,
+          "chunk_id": "EXT-STD-001:0389:58678E3308F4",
+          "source_id": "EXT-STD-001",
+          "score": 0.581060095437534,
+          "cosine_distance": 0.418939904562466
+        },
+        {
+          "rank": 13,
+          "chunk_id": "EXT-STD-001:0393:C4CA955A8274",
+          "source_id": "EXT-STD-001",
+          "score": 0.566913193054285,
+          "cosine_distance": 0.433086806945715
+        },
+        {
+          "rank": 14,
+          "chunk_id": "EXT-STD-001:0092:6EE22A9DB120",
+          "source_id": "EXT-STD-001",
+          "score": 0.5660253039468778,
+          "cosine_distance": 0.4339746960531222
+        },
+        {
+          "rank": 15,
+          "chunk_id": "EXT-STD-001:0469:9F3DD18EDBAF",
+          "source_id": "EXT-STD-001",
+          "score": 0.5615084738217022,
+          "cosine_distance": 0.4384915261782978
+        },
+        {
+          "rank": 16,
+          "chunk_id": "EXT-STD-001:0096:634E6FA4462E",
+          "source_id": "EXT-STD-001",
+          "score": 0.5539111509897497,
+          "cosine_distance": 0.44608884901025025
+        },
+        {
+          "rank": 17,
+          "chunk_id": "EXT-STD-001:0035:37ADDE2C7AD6",
+          "source_id": "EXT-STD-001",
+          "score": 0.5480845896540212,
+          "cosine_distance": 0.4519154103459788
+        },
+        {
+          "rank": 18,
+          "chunk_id": "EXT-STD-001:0390:4C35FAA22FFF",
+          "source_id": "EXT-STD-001",
+          "score": 0.5418065730946987,
+          "cosine_distance": 0.4581934269053013
+        },
+        {
+          "rank": 19,
+          "chunk_id": "EXT-STD-001:0392:A7B6CFB49F32",
+          "source_id": "EXT-STD-001",
+          "score": 0.5338413098314462,
+          "cosine_distance": 0.4661586901685538
+        },
+        {
+          "rank": 20,
+          "chunk_id": "EXT-STD-001:0387:451885E94CAC",
+          "source_id": "EXT-STD-001",
+          "score": 0.5321183501462666,
+          "cosine_distance": 0.4678816498537334
+        }
+      ],
+      "retrieved": [
+        {
+          "rank": 1,
+          "chunk_id": "EXT-STD-001:0091:0F8E758F1CB6",
+          "source_id": "EXT-STD-001",
+          "score": 0.030834914611005692,
+          "lexical_rank": 8,
+          "semantic_rank": 2,
+          "lexical_score": 9.960000038146973,
+          "semantic_score": 0.6264519009142904,
+          "cosine_distance": 0.37354809908570963
+        },
+        {
+          "rank": 2,
+          "chunk_id": "EXT-STD-001:0397:6562A7271CAD",
+          "source_id": "EXT-STD-001",
+          "score": 0.029857397504456328,
+          "lexical_rank": 6,
+          "semantic_rank": 8,
+          "lexical_score": 10.399999618530273,
+          "semantic_score": 0.595409705314177,
+          "cosine_distance": 0.40459029468582297
+        },
+        {
+          "rank": 3,
+          "chunk_id": "EXT-STD-001:0097:2B608D4481CA",
+          "source_id": "EXT-STD-001",
+          "score": 0.029709507042253523,
+          "lexical_rank": 4,
+          "semantic_rank": 11,
+          "lexical_score": 12.693299531936646,
+          "semantic_score": 0.5852506224698527,
+          "cosine_distance": 0.4147493775301473
+        },
+        {
+          "rank": 4,
+          "chunk_id": "EXT-STD-001:0098:47CA90221675",
+          "source_id": "EXT-STD-001",
+          "score": 0.02921395544346364,
+          "lexical_rank": 18,
+          "semantic_rank": 1,
+          "lexical_score": 7.21860446035862,
+          "semantic_score": 0.6301205706006198,
+          "cosine_distance": 0.36987942939938023
+        },
+        {
+          "rank": 5,
+          "chunk_id": "EXT-STD-001:0396:87AF227E816D",
+          "source_id": "EXT-STD-001",
+          "score": 0.02871794871794872,
+          "lexical_rank": 15,
+          "semantic_rank": 5,
+          "lexical_score": 7.800000190734863,
+          "semantic_score": 0.6036794263728837,
+          "cosine_distance": 0.39632057362711626
+        }
+      ]
+    }
+  ],
+  "embedding_configuration": {
+    "deployment_name": "faceguard-embedding-3-small",
+    "model_name": "text-embedding-3-small",
+    "model_version": "1",
+    "dimensions": 1536,
+    "region": "Japan East",
+    "document_input_version": "source-heading-content-v1",
+    "query_input_version": "raw-question-v1",
+    "semantic_ranking": "exact cosine; index and bitmap scans disabled"
+  },
+  "pricing": {
+    "price_per_million_input_tokens": "0.025",
+    "currency": "USD",
+    "checked_at": "2026-10-11"
+  },
+  "application_revision": "b7960a48fce23aeece0dbdff74cdea9d2115a9ce-dirty",
+  "measured_at": "2026-10-11T07:00:13.442568+00:00"
+}

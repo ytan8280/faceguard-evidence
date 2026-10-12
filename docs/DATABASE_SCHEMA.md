@@ -16,10 +16,11 @@ migration while the RAG pipeline is being built and evaluated.
 PostgreSQL changes use ordered, versioned SQL files under
 `database/migrations/`.
 
-The initial migration is:
+The migrations are:
 
 ```text
 database/migrations/001_create_rag_core.sql
+database/migrations/002_add_chunk_embeddings.sql
 ```
 
 Plain SQL is used first so PostgreSQL types, constraints, generated columns
@@ -53,6 +54,9 @@ rag.corpus_revisions
 rag.corpus_sources
 rag.evidence_chunks
 rag.ingestion_runs
+rag.embedding_models
+rag.embedding_runs
+rag.chunk_embeddings
 rag.schema_migrations
 ```
 
@@ -72,6 +76,11 @@ corpus_sources >---- corpus_revisions
 evidence_chunks
 
 ingestion_runs ----> corpus_revisions
+
+embedding_models <---- embedding_runs ----> corpus_revisions
+       ^                       |
+       |                       |
+       +------ chunk_embeddings ------> evidence_chunks
 ```
 
 ## `rag.source_documents`
@@ -185,29 +194,93 @@ Failed runs require an error message. Completed and failed runs require a
 completion timestamp. This makes failures explicit instead of returning a
 success-shaped fallback.
 
-## Why Embeddings Are Not in Migration 001
+## Embedding Schema
 
-pgvector requires a known embedding dimension for the clearest type and index,
-for example:
+Migration `001` intentionally deferred embeddings until a live Azure request
+verified the model output. `FG-EXP-011` confirmed that
+`text-embedding-3-small` version `1` returned exactly `1,536` values.
+
+Migration `002` therefore enables pgvector and adds:
+
+```text
+rag.embedding_models
+rag.embedding_runs
+rag.chunk_embeddings
+```
+
+### `rag.embedding_models`
+
+This registry separates the Azure deployment name used by API requests from
+the model family and effective model version required for provenance.
+
+It records:
+
+- provider, deployment, model and model version;
+- API version and Azure region;
+- fixed output dimension and distance metric;
+- document and query input-format versions;
+- Azure version-upgrade policy; and
+- additional non-secret metadata.
+
+The current schema accepts only `1,536` dimensions and cosine distance. A
+different model dimension requires a deliberate migration rather than an
+unreviewed runtime value.
+
+### `rag.embedding_runs`
+
+This operational table records attempts to embed one exact corpus revision
+with one registered model configuration.
+
+It tracks:
+
+- running, completed or failed state;
+- application revision;
+- target, embedded, reused and failed chunk counts;
+- Azure input-token usage and API latency; and
+- optional verified price, currency, price-check date and calculated cost.
+
+Pricing fields are nullable as one consistent group. This allows embedding
+work to proceed without inventing a cost when an official price has not yet
+been verified.
+
+### `rag.chunk_embeddings`
+
+Each row stores one vector for:
+
+```text
+corpus revision + chunk ID + embedding model identity
+```
+
+The foreign key also includes the exact chunk `content_sha256`. An embedding
+therefore cannot be attached to a different version of the chunk text.
+
+The table records:
+
+- the embedding-input SHA-256 and character count;
+- measured prompt tokens and API latency;
+- optional calculated cost;
+- Azure's response-model identity;
+- a vector SHA-256; and
+- the `VECTOR(1536)` value.
+
+The primary key prevents duplicate vectors for the same chunk and model
+identity. Repeated generation must verify and reuse an existing row or surface
+a conflict.
+
+### Cosine Search
+
+The vector column is declared explicitly:
 
 ```sql
 embedding VECTOR(1536)
 ```
 
-The project has not yet selected and measured an Azure embedding deployment.
-Adding an arbitrary dimension would falsely lock the schema to an unapproved
-model.
+An HNSW index uses `vector_cosine_ops`. A separate B-tree index narrows
+retrieval by corpus revision and embedding-model identity.
 
-A later migration will add:
-
-- an embedding-model registry;
-- chunk embeddings tied to the exact chunk content hash;
-- the selected vector dimension;
-- cosine-distance indexing; and
-- model/deployment version metadata.
-
-This separates the PostgreSQL full-text baseline from the semantic-retrieval
-experiment.
+The first release intentionally has one approved embedding model. If future
+experiments store vectors from multiple model spaces, indexing must be
+revisited so approximate candidates are not mixed across incompatible models.
 
 ## Persistent Local Development
 
@@ -225,6 +298,42 @@ experiment.
 The image is pinned by digest rather than relying only on a moving tag.
 Migration files are not mounted into `docker-entrypoint-initdb.d`; schema
 changes are always explicit and checksum-tracked.
+
+The optional `tools` Compose profile also defines `rag-tools`, a pinned
+Python 3.12 environment containing only the database-backed RAG CLI
+dependencies. It exists because Windows Application Control blocks the host
+psycopg native DLL. Running the tool in Linux preserves the security policy
+and avoids adding a second database driver.
+
+The tools container:
+
+- mounts the repository at `/workspace`;
+- connects to `rag-postgres` through the internal Compose network;
+- receives secrets from the ignored `.env`;
+- overrides the host PostgreSQL URL with the internal service address; and
+- starts only when the `tools` profile is explicitly selected.
+
+The `evidence` Compose profile adds a persistent localhost-only `rag-api`
+service on `127.0.0.1:8002`. It uses the same pinned tools image and cache,
+loads the reranker at startup and creates a fresh PostgreSQL connection for
+each report request.
+
+The detector backend sends only:
+
+- privacy-limited observation statements;
+- versioned detector output and caveats; and
+- the user's evidence question.
+
+The image bytes and heatmap are not sent to the RAG sidecar or Azure
+generation model.
+
+For reproducible CPU validation, the `evidence` profile also defines a
+`detector-api` service on `127.0.0.1:8001`. It bind-mounts the verified
+checkpoint read-only and communicates with `rag-api` over the private Compose
+network.
+
+Its build context excludes the ignored `.env` and all repository content
+except the Dockerfile and minimal requirements file.
 
 Configure the `RAG_POSTGRES_*` values and `RAG_DATABASE_URL` in the ignored
 root `.env`. Never commit the real password or database URL.
@@ -269,6 +378,25 @@ was healthy on `127.0.0.1:55432`, and the recorded migration remained after a
 container restart. The separate PDPA database remained healthy and unchanged
 on `127.0.0.1:5432`.
 
+Migration `002` was validated first in a temporary PostgreSQL database, where
+a `1,536`-dimensional vector was inserted and queried with cosine distance and
+an unsupported `3,072`-dimension model registration was rejected.
+
+Windows Application Control subsequently blocked the pinned psycopg binary's
+native DLL. The persistent migration was therefore executed through the
+trusted `psql` client inside the existing PostgreSQL container. It used one
+transaction, the same advisory-lock key and the original migration-file
+SHA-256, then inserted the normal `rag.schema_migrations` history row.
+Migration history now contains:
+
+```text
+002_add_chunk_embeddings.sql
+784AACF3608D702167F7947E6B9315912DCD9E817C224C89F40D329B0549FB37
+```
+
+This fallback did not bypass or weaken the operating-system security policy.
+The separate PDPA database remained healthy and unchanged.
+
 ## Idempotent Corpus Ingestion
 
 `tools/ingest_rag_corpus.py`:
@@ -301,3 +429,26 @@ python tools/ingest_rag_corpus.py
 
 The first measured ingestion and controlled rollback test are recorded as
 `FG-EXP-009` in [`EXPERIMENTS.md`](EXPERIMENTS.md).
+
+## Idempotent Chunk Embedding
+
+`tools/embed_rag_corpus.py`:
+
+1. resolves one exact corpus SHA-256;
+2. orders chunks by corpus source order and source ordinal;
+3. builds `source-heading-content-v1` input;
+4. hashes the exact UTF-8 input;
+5. registers or verifies the Azure model identity;
+6. records a running embedding attempt;
+7. verifies and reuses matching stored vectors;
+8. requests only missing vectors from Azure;
+9. inserts all newly generated vectors and completes the run in one final
+   transaction; and
+10. records a failed run without inserting partial vectors if preparation,
+   Azure validation or final storage fails.
+
+The command requires `--limit N` or explicit `--all`, preventing an accidental
+full-corpus Azure run. `--dry-run` prepares and reports input hashes without
+calling Azure or writing embedding rows.
+
+The first three-chunk pilot and reuse run are recorded as `FG-EXP-013`.

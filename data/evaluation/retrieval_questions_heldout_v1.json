@@ -1,0 +1,204 @@
+{
+  "schema_version": 1,
+  "question_set_id": "faceguard-retrieval-heldout-v1",
+  "title": "FaceGuard Evidence held-out retrieval questions",
+  "created_at": "2026-10-11",
+  "corpus_sha256": "842CBBEFA28D2B8389FF2694420F771A12DFAEBF9F9DDFA5A214BF258F596CEB",
+  "judgment_method": "Manual review of exact corpus revision 2 chunks before running any retriever on these questions. This set is reserved for held-out comparison and must not be used to tune retrieval or reranking configuration.",
+  "questions": [
+    {
+      "question_id": "FG-HOLD-001",
+      "question": "Which conclusions and decisions must the FaceGuard detector not make by itself?",
+      "relevant_chunk_ids": [
+        "FG-DOC-001:0005:857AC7053ACC"
+      ],
+      "source_ids": [
+        "FG-DOC-001"
+      ],
+      "rationale": "The Out-of-Scope Uses section lists prohibited identity, attribution, intent, trustworthiness and automatic-decision uses.",
+      "tags": [
+        "model-card",
+        "out-of-scope",
+        "responsible-use"
+      ]
+    },
+    {
+      "question_id": "FG-HOLD-002",
+      "question": "Why should the historical FaceGuard evaluation numbers not be treated as independently validated performance?",
+      "relevant_chunk_ids": [
+        "FG-DOC-001:0012:27DD2BFFFC10"
+      ],
+      "source_ids": [
+        "FG-DOC-001"
+      ],
+      "rationale": "The Known Limitations and Risks section records distribution shift, test imbalance, unresolved leakage, generator-level splitting and the lack of independent reproduction.",
+      "tags": [
+        "model-card",
+        "historical-evaluation",
+        "limitations"
+      ]
+    },
+    {
+      "question_id": "FG-HOLD-003",
+      "question": "What did successful CPU loading of the selected checkpoint establish, and what detector behavior remained untested?",
+      "relevant_chunk_ids": [
+        "FG-DOC-002:0017:6FA3B2A54C12",
+        "FG-DOC-002:0018:549C8C1D9305"
+      ],
+      "source_ids": [
+        "FG-DOC-002"
+      ],
+      "rationale": "The interpretation establishes structural loading compatibility, while the limitations list image inference, probabilities, labels, Grad-CAM, latency and identity questions that were not tested.",
+      "tags": [
+        "experiment",
+        "checkpoint",
+        "limitations"
+      ]
+    },
+    {
+      "question_id": "FG-HOLD-004",
+      "question": "Why was the faster request observed after adding the detector adapter not claimed as a performance improvement?",
+      "relevant_chunk_ids": [
+        "FG-DOC-002:0039:2BC9F89A99D3"
+      ],
+      "source_ids": [
+        "FG-DOC-002"
+      ],
+      "rationale": "The adapter interpretation explicitly states that one request per implementation is not a latency comparison.",
+      "tags": [
+        "experiment",
+        "adapter",
+        "latency"
+      ]
+    },
+    {
+      "question_id": "FG-HOLD-005",
+      "question": "What identifies the exact FaceGuard detector checkpoint, and why is it kept outside Git?",
+      "relevant_chunk_ids": [
+        "FG-DOC-003:0004:E565DA2639BA"
+      ],
+      "source_ids": [
+        "FG-DOC-003"
+      ],
+      "rationale": "The Detector Artifact section records the filename, byte size and SHA-256 and states that permission to use the artifact does not imply public redistribution permission.",
+      "tags": [
+        "attribution",
+        "checkpoint",
+        "redistribution"
+      ]
+    },
+    {
+      "question_id": "FG-HOLD-006",
+      "question": "How does FaceGuard Evidence treat the rights and licences of third-party datasets, weights and libraries?",
+      "relevant_chunk_ids": [
+        "FG-DOC-003:0005:2A9E9B20BA57"
+      ],
+      "source_ids": [
+        "FG-DOC-003"
+      ],
+      "rationale": "The Third-Party Materials section states that external materials remain subject to their rightsholders' original licences and terms and are documented separately.",
+      "tags": [
+        "attribution",
+        "third-party",
+        "licensing"
+      ]
+    },
+    {
+      "question_id": "FG-HOLD-007",
+      "question": "Why can a Content Credential's provenance history be incomplete after an asset is edited?",
+      "relevant_chunk_ids": [
+        "EXT-GUIDE-001:0023:DD49CC13284F"
+      ],
+      "source_ids": [
+        "EXT-GUIDE-001"
+      ],
+      "rationale": "The explainer states that edits made by tools unaware of Content Credentials may not update provenance, although later workflows may record that the earlier history is unknown.",
+      "tags": [
+        "c2pa",
+        "provenance",
+        "incomplete-history"
+      ]
+    },
+    {
+      "question_id": "FG-HOLD-008",
+      "question": "Does the core C2PA specification require a Content Credential to identify the human creator?",
+      "relevant_chunk_ids": [
+        "EXT-GUIDE-001:0026:B91E16C08ADE"
+      ],
+      "source_ids": [
+        "EXT-GUIDE-001"
+      ],
+      "rationale": "The identity FAQ says the core specification focuses on content provenance and authenticity rather than requiring specific human or organizational identity.",
+      "tags": [
+        "c2pa",
+        "identity",
+        "privacy"
+      ]
+    },
+    {
+      "question_id": "FG-HOLD-009",
+      "question": "Why does NIST say digital-content transparency techniques should not be treated as comprehensive solutions on their own?",
+      "relevant_chunk_ids": [
+        "EXT-REPORT-001:0010:67CB01722BD3"
+      ],
+      "source_ids": [
+        "EXT-REPORT-001"
+      ],
+      "rationale": "The report states that each technique is a context-specific building block whose value depends on use case, implementation and social framework.",
+      "tags": [
+        "nist",
+        "transparency",
+        "defense-in-depth"
+      ]
+    },
+    {
+      "question_id": "FG-HOLD-010",
+      "question": "What privacy harms can provenance metadata create, and what kinds of mitigations does NIST identify?",
+      "relevant_chunk_ids": [
+        "EXT-REPORT-001:0043:ACAE91051EE9",
+        "EXT-REPORT-001:0044:8E563C36D74C"
+      ],
+      "source_ids": [
+        "EXT-REPORT-001"
+      ],
+      "rationale": "The privacy section describes sensitive-data leakage and possible human-rights harms, then identifies data minimization, user participation and data security as mitigation directions.",
+      "tags": [
+        "nist",
+        "metadata",
+        "privacy"
+      ]
+    },
+    {
+      "question_id": "FG-HOLD-011",
+      "question": "In C2PA, what is an ingredient and how is its use represented in an asset's provenance?",
+      "relevant_chunk_ids": [
+        "EXT-STD-001:0112:AE6CBC7BF249"
+      ],
+      "source_ids": [
+        "EXT-STD-001"
+      ],
+      "rationale": "The Adding Ingredients section defines existing assets used to create derived, composed or rendition assets as ingredients and documents them through ingredient assertions.",
+      "tags": [
+        "c2pa-specification",
+        "ingredients",
+        "provenance"
+      ]
+    },
+    {
+      "question_id": "FG-HOLD-012",
+      "question": "What problem do C2PA soft bindings solve when an asset's underlying bytes have changed?",
+      "relevant_chunk_ids": [
+        "EXT-STD-001:0098:47CA90221675"
+      ],
+      "source_ids": [
+        "EXT-STD-001"
+      ],
+      "rationale": "The Soft Bindings section explains that fingerprints or invisible watermarks can match digital content even when the underlying bits differ.",
+      "tags": [
+        "c2pa-specification",
+        "soft-binding",
+        "content-matching"
+      ]
+    }
+  ]
+}

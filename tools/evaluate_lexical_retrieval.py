@@ -47,6 +47,10 @@ def parse_args() -> argparse.Namespace:
         type=Path,
         help="Optional JSON path for complete per-question results.",
     )
+    parser.add_argument(
+        "--application-revision",
+        help="Explicit Git revision for container runs.",
+    )
     return parser.parse_args()
 
 
@@ -64,7 +68,11 @@ def main() -> None:
         )
 
     result = retrieval_evaluation_to_dict(evaluation)
-    result["application_revision"] = application_revision(REPO_ROOT)
+    result["application_revision"] = (
+        args.application_revision
+        if args.application_revision is not None
+        else application_revision(REPO_ROOT)
+    )
     result["measured_at"] = datetime.now(timezone.utc).isoformat()
 
     print(f"Question set: {question_set.question_set_id}")

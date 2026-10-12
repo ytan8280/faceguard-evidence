@@ -109,6 +109,30 @@ licenses when its dependency manifest is introduced. A package's inclusion in
 a public package registry does not by itself establish that every associated
 dataset, pretrained model or external artifact may be redistributed.
 
+## MS MARCO MiniLM Cross-Encoder
+
+- **Model:** `cross-encoder/ms-marco-MiniLM-L6-v2`
+- **Publisher:** Cross-Encoder / Sentence Transformers project
+- **Model page:**
+  <https://huggingface.co/cross-encoder/ms-marco-MiniLM-L6-v2>
+- **Pinned revision:**
+  `233902d25c440f23af6f7d6e94d2946bac0bee0a`
+- **Declared license:** Apache License 2.0
+- **Training task:** MS MARCO passage ranking
+- **Language:** English
+
+FaceGuard Evidence uses this model only for a measured local reranking
+experiment. The model weights are downloaded into a Docker-managed Hugging
+Face cache and are not committed to this repository.
+
+The model card reports benchmark results on MS MARCO and TREC Deep Learning.
+Those published results are not FaceGuard measurements and must not be
+presented as evidence of performance on this project's corpus.
+
+Any redistribution of the model artifact must preserve the upstream Apache
+2.0 license and notices. The MS MARCO training dataset is not included or
+redistributed by FaceGuard Evidence.
+
 ## Redistribution Policy
 
 Unless a later verified record states otherwise, this repository will not

@@ -231,7 +231,7 @@ def score_ranked_chunk_ids(
     )
 
 
-def _verify_judgments(
+def verify_retrieval_judgments(
     connection: Connection,
     *,
     corpus_revision_id: int,
@@ -299,7 +299,7 @@ def evaluate_lexical_retrieval(
         connection,
         corpus_sha256=question_set.corpus_sha256,
     )
-    _verify_judgments(
+    verify_retrieval_judgments(
         connection,
         corpus_revision_id=corpus_revision_id,
         question_set=question_set,
