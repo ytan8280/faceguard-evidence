@@ -1,5 +1,7 @@
 from pydantic import BaseModel, Field
 
+from .rag.evidence_report_models import EvidenceReportResponse
+
 
 class HealthResponse(BaseModel):
     status: str = "ok"
@@ -37,6 +39,38 @@ class PredictionResponse(BaseModel):
         description="Explainability method used to generate the overlay.",
     )
     report: DetectionReport | None = None
+
+
+class EvidenceImageMetadataResponse(BaseModel):
+    format_name: str
+    width: int = Field(gt=0)
+    height: int = Field(gt=0)
+    color_mode: str
+    file_size_bytes: int = Field(gt=0)
+    has_exif: bool
+    software: str | None = None
+    captured_at: str | None = None
+    gps_present: bool
+    content_credentials_status: str
+
+
+class EvidenceDetectorResponse(BaseModel):
+    label: str
+    confidence: float = Field(ge=0.0, le=1.0)
+    fake_probability: float = Field(ge=0.0, le=1.0)
+    threshold: float = Field(ge=0.0, le=1.0)
+    explanation: str
+    model_name: str
+    adapter_version: str
+    preprocessing_version: str
+    heatmap_overlay: str | None = None
+    explainability_method: str
+
+
+class EvidenceAnalysisResponse(BaseModel):
+    metadata: EvidenceImageMetadataResponse
+    detector: EvidenceDetectorResponse
+    evidence_report: EvidenceReportResponse
 
 
 class SignInRequest(BaseModel):
@@ -105,4 +139,3 @@ class UserProfileResponse(BaseModel):
     stats: ProfileStats
     activity_by_day: list[ProfileActivityPoint]
     recent_analyses: list[ProfileAnalysisItem]
-

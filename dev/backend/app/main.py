@@ -10,6 +10,9 @@ from google.oauth2 import id_token as google_id_token
 
 from .core.settings_loader import load_settings
 from .schemas import (
+    EvidenceAnalysisResponse,
+    EvidenceDetectorResponse,
+    EvidenceImageMetadataResponse,
     GoogleAuthRequest,
     GoogleAuthResponse,
     HealthResponse,
@@ -27,6 +30,11 @@ from .services.demo_overrides import (
     is_elon_musk_demo_file,
 )
 from .services.detector_adapter import FaceGuardDetectorAdapterV1
+from .services.evidence_analysis_service import build_evidence_analysis
+from .services.evidence_client import EvidenceReportClient
+from .services.image_metadata import (
+    ImageMetadataError,
+)
 from .services.model_service import model_service_from_settings
 from .services.preprocessing import strip_exif_and_load_image, validate_upload
 from .services.report_service import ReportService
@@ -46,6 +54,9 @@ auth_service = AuthService(
     database_url=settings.database_url,
     database_name=settings.database_name,
     users_collection=settings.users_collection,
+)
+evidence_report_client = EvidenceReportClient(
+    base_url=settings.rag_api_url,
 )
 
 
@@ -220,6 +231,57 @@ def analyze_image(
         explainability_method=result.explainability_method,
         report=report,
     )
+
+
+@app.post(
+    "/api/evidence/analyze",
+    response_model=EvidenceAnalysisResponse,
+)
+def analyze_image_with_evidence(
+    file: UploadFile = File(...),
+    question: str = Form(
+        default=(
+            "What can be responsibly concluded from the image observations, "
+            "detector output, and retrieved evidence?"
+        )
+    ),
+) -> EvidenceAnalysisResponse:
+    try:
+        normalized_question = question.strip()
+        if not normalized_question:
+            raise HTTPException(
+                status_code=400,
+                detail="Evidence question must not be blank.",
+            )
+        raw = validate_upload(
+            upload=file,
+            allowed_mime_types=settings.allowed_mime_types,
+            max_upload_bytes=settings.max_upload_bytes,
+        )
+        return build_evidence_analysis(
+            raw=raw,
+            content_type=(
+                file.content_type or "application/octet-stream"
+            ),
+            question=normalized_question,
+            detector=detector_adapter,
+            report_builder=evidence_report_client,
+        )
+    except HTTPException:
+        raise
+    except ImageMetadataError as exc:
+        raise HTTPException(status_code=400, detail=str(exc)) from exc
+    except Exception as exc:
+        logger.exception("Evidence image analysis failed.")
+        raise HTTPException(
+            status_code=502,
+            detail=(
+                "Evidence image analysis failed: "
+                f"{exc.__class__.__name__}"
+            ),
+        ) from exc
+
+    raise AssertionError("Evidence analysis returned without a response.")
 
 
 @app.exception_handler(HTTPException)

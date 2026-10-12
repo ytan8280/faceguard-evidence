@@ -3,11 +3,20 @@ from __future__ import annotations
 from collections import Counter
 from datetime import datetime, timezone
 import re
+from typing import Any
 
-import bcrypt
-from pymongo import MongoClient
-from pymongo.collection import Collection
-from pymongo.errors import PyMongoError
+try:
+	import bcrypt
+	from pymongo import MongoClient
+	from pymongo.collection import Collection
+	from pymongo.errors import PyMongoError
+except ModuleNotFoundError:
+	bcrypt = None
+	MongoClient = None
+	Collection = Any
+
+	class PyMongoError(Exception):
+		pass
 
 
 class AuthService:
@@ -22,7 +31,13 @@ class AuthService:
 		self.database_url = database_url
 		self.database_name = database_name
 		self.users_collection = users_collection
-		self._client: MongoClient | None = None
+		self._client: Any | None = None
+
+	def _require_dependencies(self) -> None:
+		if bcrypt is None or MongoClient is None:
+			raise RuntimeError(
+				"MongoDB authentication dependencies are not installed."
+			)
 
 	def authenticate(self, email: str, password: str) -> tuple[bool, str, int]:
 		if not self.enabled:
@@ -31,6 +46,7 @@ class AuthService:
 				"Sign-in is disabled. Set FACEGUARD_ENABLE_DATABASE=true and configure MongoDB settings.",
 				503,
 			)
+		self._require_dependencies()
 
 		try:
 			users = self._get_users_collection()
@@ -73,6 +89,7 @@ class AuthService:
 				"Sign-up is disabled. Set FACEGUARD_ENABLE_DATABASE=true and configure MongoDB settings.",
 				503,
 			)
+		self._require_dependencies()
 
 		normalized_email = email.strip().lower()
 
@@ -298,6 +315,7 @@ class AuthService:
 		return True, self._build_profile_payload(user), 200
 
 	def _get_users_collection(self) -> Collection:
+		self._require_dependencies()
 		if self._client is None:
 			self._client = MongoClient(self.database_url, serverSelectionTimeoutMS=5000)
 

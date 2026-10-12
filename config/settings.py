@@ -96,6 +96,10 @@ class FaceGuardSettings:
 
     # PostgreSQL evidence retrieval
     rag_database_url: str = os.getenv("RAG_DATABASE_URL", "")
+    rag_api_url: str = os.getenv(
+        "RAG_API_URL",
+        "http://127.0.0.1:8002",
+    )
 
     @property
     def max_upload_bytes(self) -> int:
